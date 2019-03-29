@@ -34,6 +34,8 @@ Automatically synchronizes data between documents held locally in MongoDB Mobile
 ### MongoDB Stitch Tutorials
 The easiest way to get started is to follow the [MongoDB stitch tutorials](https://docs.mongodb.com/stitch/tutorials/). The best tutorial to begin with is the basic [blog tutorial](https://docs.mongodb.com/stitch/tutorials/build-blog/). This tutorial walks you through the steps of creating your own free tier MongoDB Atlas cluster, introduces you to the stitch application web based GUI and shows you how to create your first application.  This tutorial provides a great deal of information to help you get started, and does so in an easy way in about 15 minutes.
 
+[![blog](img/basicblog.png "blog")](https://docs.mongodb.com/stitch/tutorials/build-blog/)
+
 ### MongoDB Stitch Application Hosting
 Once you have created your first application you are ready to now host it for the world to see! Read the [hosting documentaion](https://docs.mongodb.com/stitch/hosting/) to get started. Its a two step process to [enable hosting](https://docs.mongodb.com/stitch/hosting/enable-hosting/) and then [upload content](https://docs.mongodb.com/stitch/hosting/upload-content-to-stitch/). 
 
