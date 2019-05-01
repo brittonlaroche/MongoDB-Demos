@@ -32,7 +32,7 @@ Automatically synchronizes data between documents held locally in MongoDB Mobile
 ## Getting Started
 
 ### MongoDB Stitch Tutorials
-The easiest way to get started is to follow the [MongoDB stitch tutorials](https://docs.mongodb.com/stitch/tutorials/). The best tutorial to begin with is the basic [blog tutorial](https://docs.mongodb.com/stitch/tutorials/build-blog/). This tutorial walks you through the steps of creating your own free tier MongoDB Atlas cluster, introduces you to the stitch application web based GUI and shows you how to create your first application.  This tutorial provides a great deal of information to help you get started, and does so in an easy way in about 15 minutes.
+The easiest way to get started is to follow the [MongoDB stitch tutorials](https://docs.mongodb.com/stitch/tutorials/). The best tutorial to begin with is the basic [blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/). This tutorial walks you through the steps of creating your own free tier MongoDB Atlas cluster, introduces you to the stitch application web based GUI and shows you how to create your first application.  This tutorial provides a great deal of information to help you get started, and does so in an easy way in about 15 minutes.
 
 [![blog](img/basicblog.png "blog")](https://docs.mongodb.com/stitch/tutorials/build-blog/)
 
