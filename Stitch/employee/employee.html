@@ -5,7 +5,7 @@
     <script>
         const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
         const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
-        "mongodb-atlas").db('Compliance');
+        "mongodb-atlas").db('HR');
 
         function displayEmployeesOnLoad() {
           client.auth
