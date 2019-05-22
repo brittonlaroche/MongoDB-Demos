@@ -9,3 +9,6 @@ After the application in created click the "HumanResources" stitch application t
 Enable aunonmous authentication by moving the slider button to the right.
 ### Initialize a MongoDB Collection
 Specify a new collection where application will write data.  Use the database name "HR" and the collection name "employees" (note the names are case sensitive)
+
+## 3. Create the browser client application
+Download the [employee.html](./employee.html) file 
