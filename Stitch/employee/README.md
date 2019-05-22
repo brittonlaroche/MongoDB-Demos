@@ -17,3 +17,14 @@ by replacing your-app-id with the APP ID displayed in the upper left of your sti
 
 You should see something like the following   
 ![Employees](img/employeelist.jpg "Employee List")
+
+## 4. Create a trigger to track changes to employees over time
+In the left hand navigation pannel of the stitch console select "Triggers" and then click the "Add a trigger" button.  
+
+Name the new trigger "trgEmployeeHist" Select the your clsuer from the "Select Linked Cluster" drop down.  Select "HR" for the database and "employees" for the collection. Check all the boxes for the opertaion type "Insert, Update, Delete and Replace." Finally be sure to move the slider to get the full document.   
+
+In the linked function drop list select "+ New Function" and give the function a name of "fncEmployeeHist" and then save the trigger.  Be sure to keep all the sample documentation, we will need it for a future step.
+
+## 5. Create two new history collections
+
+## 6. Write the history function
