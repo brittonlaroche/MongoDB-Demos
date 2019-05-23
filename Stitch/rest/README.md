@@ -4,6 +4,8 @@
 In this section we will cover the Stitch query anywhere functionality through a REST based API.  We will create two webhooks that allow employee data to be queried or modified through a REST based API layer.  This surfaces the HR application we built to a wide range of producers and consumers of employee data. Examples include payroll processors, health care providers and mobile devices that allow employees to keep up to date on their payment and benefits data.
 
 ### 1. Create a stitch function to query employee data
+
+Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name "findEmployee" and click "Save."  This will bring up the function editor, cut and paste the code below.
 ```
 exports = async function( aSearchDoc ){
   /*
@@ -28,6 +30,8 @@ exports = async function( aSearchDoc ){
   return doc;
 };
 ```
+
+Notice that we made this function async in the declaration.  This will allow the calling function to await a database response while it does the work to find the employee specified in the search document passed in as an argument.
 
 ### 2. Create a webhook to call the function to query employee data
 
