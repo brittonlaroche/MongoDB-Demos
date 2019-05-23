@@ -29,7 +29,7 @@ In the left hand navigation pannel of the stitch console select "Triggers" and t
 Name the new trigger "trgEmployeeHist" Select your cluster from the "Select Linked Cluster" drop down.  Select "HR" for the database and "employees" for the collection. Check all the boxes for the opertaion type "Insert, Update, Delete and Replace." Finally be sure to move the slider to get the full document.   
 
 In the linked function drop list select "+ New Function" and give the function a name of "fncEmployeeHist" and then save the trigger.  Be sure to keep all the sample documentation, we will need it for a future step.
-(img/trgEmployeeHist.jpg "Employee Trigger")
+![Employee Trigger](img/trgEmployeeHist.jpg "Employee Trigger")
 ## 5. Create two new history collections
 
 ## 6. Write the history function
