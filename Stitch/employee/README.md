@@ -30,6 +30,10 @@ Name the new trigger "trgEmployeeHist" Select your cluster from the "Select Link
 
 In the linked function drop list select "+ New Function" and give the function a name of "fncEmployeeHist" and then save the trigger.  Be sure to keep all the sample documentation, we will need it for a future step.
 ![Employee Trigger](img/trgEmployeeHist.jpg "Employee Trigger")
+
 ## 5. Create two new history collections
+Slect the ">_Getting Started_" menu item in the left pannel or add a new rule for two new collections.  Specify the HR database and the collection names "empHistFull" and "empHist" these collections must be present in the stitch rules for the trigger to update these collections.
+![Add Collection](img/addCollection.jpg "Add Collection")
 
 ## 6. Write the history function
+
