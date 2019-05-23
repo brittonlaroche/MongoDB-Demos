@@ -1,3 +1,5 @@
+Note this tutorial build's on the [Employee Tutorial](../employee)
+
 ## Atlas Stitch Query Anywhere Overview
 ![Diagram](img/restapi.jpg "Diagram")
 
