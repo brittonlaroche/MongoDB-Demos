@@ -31,7 +31,7 @@ exports = async function( aSearchDoc ){
 };
 ```
 
-Notice that we made this function async in the declaration.  This will allow the calling function to await a database response while it does the work to find the employee specified in the search document passed in as an argument.
+Notice that we made this function async in the declaration.  This will allow the calling function to await a database response while this function does the work to find the employee specified.  The employee search criteria is specified in the search document passed in as an argument.
 
 ### 2. Create a webhook to call the function to query employee data
 
