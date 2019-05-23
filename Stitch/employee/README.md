@@ -1,5 +1,5 @@
 ## Overview 
-In this short tutorial we are going to create a Human Reousrces application that tracks changes to employees over time.  To accomplish this we will modify our blog tutorial by adding fields and using an upsert into a new HR database with an employees collection. We will add a trigger to take thenew full document into one collection, and just the updated fields into a second collection.
+In this short tutorial we are going to create a Human Reousrces application that tracks changes to employees over time.  To accomplish this we will modify our blog tutorial by adding fields and using an upsert into a new HR database with an employees collection. We will add a trigger to take the new full employee document into one collection, and just the updated fields into a second collection.
 
 ![Diagram](img/employeeTrigger.jpg "Diagram")
 
@@ -9,7 +9,7 @@ Click the button "Create New Stitch App. Type in "HumanResources" (no spaces) fo
 
 
 ## 2. Configure the stitch application
-After the application in created click the "HumanResources" stitch application to enter into the applications stitch console
+After the new application is created, click the "HumanResources" stitch application to enter into the stitch console.
 ### Turn on anonymous authentication 
 Enable aunonmous authentication by moving the slider button to the right.
 ### Initialize a MongoDB Collection
@@ -26,7 +26,7 @@ You should see something like the following
 ## 4. Create a trigger to track changes to employees over time
 In the left hand navigation pannel of the stitch console select "Triggers" and then click the "Add a trigger" button.  
 
-Name the new trigger "trgEmployeeHist" Select the your clsuer from the "Select Linked Cluster" drop down.  Select "HR" for the database and "employees" for the collection. Check all the boxes for the opertaion type "Insert, Update, Delete and Replace." Finally be sure to move the slider to get the full document.   
+Name the new trigger "trgEmployeeHist" Select your cluster from the "Select Linked Cluster" drop down.  Select "HR" for the database and "employees" for the collection. Check all the boxes for the opertaion type "Insert, Update, Delete and Replace." Finally be sure to move the slider to get the full document.   
 
 In the linked function drop list select "+ New Function" and give the function a name of "fncEmployeeHist" and then save the trigger.  Be sure to keep all the sample documentation, we will need it for a future step.
 
