@@ -1,10 +1,10 @@
-## Stitch Query Anywhere Overview
+## Atlas Stitch Query Anywhere Overview
 ![Diagram](img/restapi.jpg "Diagram")
 
 In this section we will cover the Stitch query anywhere functionality through a REST based API.  We will create two webhooks that allow employee data to be queried or modified through a REST based API layer.  This surfaces the HR application we built to a wide range of producers and consumers of employee data. Examples include payroll processors, health care providers and mobile devices that allow employees to keep up to date on their payment and benefits data.
 
 ### 1. Create a stitch function to query employee data
-
+![Console](img/findEmployee1.jpg "Console")
 Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name "findEmployee" and click "Save."  This will bring up the function editor, cut and paste the code below.
 ```
 exports = async function( aSearchDoc ){
@@ -34,6 +34,14 @@ exports = async function( aSearchDoc ){
 Notice that we made this function async in the declaration.  This will allow the calling function to await a database response while this function does the work to find the employee specified.  The employee search criteria is specified in the search document passed in as an argument.
 
 ### 2. Create a webhook to call the function to query employee data
+Select "Servcies" from the left navigation panel in the Stitch Console.  Click the "Add a Service" button. In the add a service dialog select the "HTTP" button and give the service a name "findEmployeeService" and click the "Add Service" button.
+![Console](img/findEmployee2.jpg "Console")
+
+Next we add an incoming webhook.  The prompt screen should appear after saving the service.  Click the "Add Incoming Webhook" button. In the add webhook screen give the webhook a name "findEmployeeWebhook" and move the slider to "Respond with Result."  For now we will turn off validation. Click the save button.  
+
+![Webhook](img/findEmployee3.jpg "Webhook")
+
+After saving the findEmployeeWebhook the function editor is now present.  Cut and paste the code below.
 
 ```
 // This function is the webhook's request handler.
@@ -52,6 +60,8 @@ exports = async function(payload) {
     return  result;
 };
 ```
+
+Notice that in our webhook function we take in the payload body, which should be a search document, and call our find employee function created earlier.
 
 ### 3. Create a webhook to call the function add or update employee data
 ```
