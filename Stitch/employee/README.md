@@ -36,4 +36,85 @@ Slect the ">_Getting Started_" menu item in the left pannel or add a new rule fo
 ![Add Collection](img/addCollection.jpg "Add Collection")
 
 ## 6. Write the history function
+Edit the fncEmployeeHist by selecting "Functions" in the left navigation pane of the stitch console. The list of fucntions appear, click the row with fncEmployeeHist. It will bring up the editor.  You should be able to copy / paste the code below.  Once the code has been pasted press the save button
 
+```
+exports = function(changeEvent) {
+  /*
+    A Database Trigger will always call a function with a changeEvent.
+    Documentation on ChangeEvents: https://docs.mongodb.com/manual/reference/change-events/
+
+    Access the _id of the changed document:
+    var docId = changeEvent.documentKey._id;
+
+    Access the latest version of the changed document
+    (with Full Document enabled for Insert, Update, and Replace operations):
+    var fullDocument = changeEvent.fullDocument;
+
+    var updateDescription = changeEvent.updateDescription;
+
+    See which fields were changed (if any):
+    if (updateDescription) {
+      var updatedFields = updateDescription.updatedFields; // A document containing updated fields
+    }
+
+    See which fields were removed (if any):
+    if (updateDescription) {
+      var removedFields = updateDescription.removedFields; // An array of removed fields
+    }
+
+    Functions run by Triggers are run as System users and have full access to Services, Functions, and MongoDB Data.
+
+    Accessing a mongodb service:
+    var collection = context.services.get("mongodb-atlas").db("db_name").collection("coll_name");
+    var doc = collection.findOne({ name: "mongodb" });
+
+    To call other named functions:
+    var result = context.functions.execute("function_name", arg1, arg2);
+  */
+    var fullDocument = changeEvent.fullDocument;
+    var fullCopy = fullDocument;
+    var updateDescription = changeEvent.updateDescription;
+    var cEmpHistFull = context.services.get("mongodb-atlas").db("HR").collection("empHistFull");
+    var cEmpHist = context.services.get("mongodb-atlas").db("HR").collection("empHist");
+    var nDate = new Date();
+    
+    if (updateDescription) {
+      //--------------------------------------------------
+      //we have an update.
+      //--------------------------------------------------
+      //we will update both collections
+      var updatedFields = updateDescription.updatedFields; 
+      //lets add the employee_id and date fields so we know when the change was made and to which employee_id
+      //lets also track the document id as the parent_id of the change
+      updatedFields.employee_id = fullDocument.employee_id;
+      updatedFields.date = nDate;
+      updatedFields.parent_id = fullDocument._id;
+      cEmpHist.insertOne(updatedFields);
+      
+      //lets track a full document change as well
+      // lets set the _id field of the original document as parent_id
+      // and delete the _id field as this original document will change multiple times and violate the unique key for _id 
+      // in the history table
+      fullCopy.date = nDate;
+      parent_id = fullDocument._id;
+      delete fullCopy._id; 
+      cEmpHistFull.insertOne(fullCopy);
+    } else {
+      //--------------------------------------------------
+      //we have an insert
+      //--------------------------------------------------
+      // we will update the full history collection only
+      // lets set the _id field of the original document as parent_id
+      // and delete the _id field as this original document will change multiple times and violate the unique key for _id 
+      // in the history table
+      fullCopy.date = nDate;
+      parent_id = fullDocument._id;
+      delete fullCopy._id; 
+      cEmpHistFull.insertOne(fullCopy);
+    }
+  
+};
+```
+
+Add new employees and change salary information, titles and managers.  View the what is tracked in the history collections.
