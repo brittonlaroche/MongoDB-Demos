@@ -83,7 +83,7 @@ Use something like the following saerch document to find your employee.  Replace
 Repeat the steps above to add a new addEmployeeService. 
 ```
 exports = function(payload) {
-  var cEmployees = context.services.get("mongodb-atlas").db("Compliance").collection("employees");
+  var cEmployees = context.services.get("mongodb-atlas").db("HR").collection("employees");
   
   var queryArg = payload.query.arg || '';
   var body = {};
@@ -115,3 +115,13 @@ exports = function(payload) {
 
 ### 5. Test the REST based API add employee service through postman
 ![Postman](img/postman.jpg "postman")
+
+```
+{ 
+"employee_id": 111,
+"first_name": "Tom",
+"last_name": "Tucker",
+"department": "SALES",
+"title": "EAE",
+"manager_id": 100"
+}
