@@ -1,5 +1,6 @@
 ## Overview 
-In this short tutorial we are going to create a Human Reousrces appliaction that tracks changes to employees over time.  To accomplish this we will modify our blog tutorial by adding fields and using an upsert into a new HR database with an employees collection. We will add a trigger to take the full document into a collection 
+In this short tutorial we are going to create a Human Reousrces appliaction that tracks changes to employees over time.  To accomplish this we will modify our blog tutorial by adding fields and using an upsert into a new HR database with an employees collection. We will add a trigger to take thenew full document into one collection, and just the updated fields into a second collection.
+
 ![Diagram](img/employeeTrigger.jpg "Diagram")
 
 ## 1. Create a new stitch app
