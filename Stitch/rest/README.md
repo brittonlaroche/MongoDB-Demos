@@ -5,7 +5,7 @@ In this section we will cover the Stitch query anywhere functionality through a 
 
 ### 1. Create a stitch function to query employee data
 ![Console](img/findEmployee1.jpg "Console")
-Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name "findEmployee" and click "Save."  This will bring up the function editor, cut and paste the code below.
+Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name "findEmployee" and click "Save."  This will bring up the function editor, cut and paste the code below and click "Save."
 ```
 exports = async function( aSearchDoc ){
   /*
@@ -41,7 +41,7 @@ Next we add an incoming webhook.  The prompt screen should appear after saving t
 
 ![Webhook](img/findEmployee3.jpg "Webhook")
 
-After saving the findEmployeeWebhook the function editor is now present.  Cut and paste the code below.
+After saving the findEmployeeWebhook the function editor is now present.  Cut and paste the code below and click "Save."
 
 ```
 // This function is the webhook's request handler.
@@ -64,6 +64,12 @@ exports = async function(payload) {
 Notice that in our webhook function we take in the payload body, which should be a search document, and call our find employee function created earlier.
 
 ### 3. Test the search employee REST based API service through postman
+Our fist step is to get the new URL for our findEmployeeService. In the findEmployeeWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
+
+![Webhook](img/findEmployee3.jpg "Webhook")
+
+Next we use postman to test our service.  Create a new collection for MongoDB and add a new post service test.  In the body bew sure to select RAW JSON.
+
 ![Postman](img/postman.jpg "postman")
 
 ### 4. Create a webhook to call the function add or update employee data
