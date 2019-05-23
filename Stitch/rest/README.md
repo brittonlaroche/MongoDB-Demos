@@ -66,13 +66,19 @@ Notice that in our webhook function we take in the payload body, which should be
 ### 3. Test the search employee REST based API service through postman
 Our fist step is to get the new URL for our findEmployeeService. In the findEmployeeWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
 
-![Webhook](img/findEmployee3.jpg "Webhook")
+![Webhook URL](img/findEmployee4.jpg "Webhook URL")
 
-Next we use postman to test our service.  Create a new collection for MongoDB and add a new post service test.  In the body bew sure to select RAW JSON.
+Next we use postman to test our service.  Create a new collection for MongoDB and add a new post service test. Adda new tab and select "POST" from the drop list. Paste in the URL.  Seelct the "Body" tab and be sure to select RAW JSON(application/json). Click teh save button and name it "Find Employee."
+
+Use something like the following saerch document to find your employee.  Replace "Bob" with the first name you used in setting up your employee data. Hit send and you should get your employee document back. Change first_name to "employee_id" and play around with your data.
+
+``` { "first_name": "Bob"}
 
 ![Postman](img/postman.jpg "postman")
 
 ### 4. Create a webhook to call the function add or update employee data
+
+Repeat the steps above to add a new addEmployeeService. 
 ```
 exports = function(payload) {
   var cEmployees = context.services.get("mongodb-atlas").db("Compliance").collection("employees");
