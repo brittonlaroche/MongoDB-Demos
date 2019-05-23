@@ -16,7 +16,7 @@
 
         function displayEmployees() {
           const tStrt = "<div><table><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
-                "<th>Name</th><th>Reports to</th><th>Last Modified<th></tr>";
+                "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified<th></tr>";
           db.collection('employees').find({}, {limit: 1000}).asArray()
             .then(docs => {
               const html = docs.map(c => "<tr><td>[" +
@@ -26,6 +26,7 @@
                                     c.first_name + " " +
                                     c.last_name + "</td><td>" +
                                     "[" + c.manager_id + "] </td><td>" +
+									c.salary + "</td><td>" +
                                     c.last_modified + "</td>" +
                                     "</tr>").join("");
               document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
@@ -39,6 +40,7 @@
             const eTitle = document.getElementById('title');
             const eDepartment = document.getElementById('department');
             const eManagerId = document.getElementById('manager_id');
+			const eSalary = document.getElementById('salary');
             var nDate = new Date();
             db.collection('employees').updateOne(
                 {employee_id: parseInt(eID.value)},
@@ -50,6 +52,7 @@
                     title: eTitle.value,
                     department: eDepartment.value,
                     manager_id: parseInt(eManagerId.value),
+					salary: parseFloat(eSalary.value),
                     last_modified: nDate,
                     trace_id: "Emp ID: " + eID.value + " - " + nDate.toString()
                     }
@@ -83,6 +86,8 @@
         <tr><td>Department:</td> <td> <input id="department" width=22></td>
         </tr>
         <tr><td>Manager ID:</td> <td> <input id="manager_id" width="22"></td>
+        </tr>
+		<tr><td>Salary:</td> <td> <input id="salary" width="22"></td>
         </tr>
      </table>
       <input type="submit" onClick="addEmployee()">
