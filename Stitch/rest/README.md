@@ -72,7 +72,7 @@ Next we use postman to test our service.  Create a new collection for MongoDB an
 
 Use something like the following saerch document to find your employee.  Replace "Bob" with the first name you used in setting up your employee data. Hit send and you should get your employee document back. Change first_name to "employee_id" and play around with your data.
 
-``` { "first_name": "Bob"}
+``` { "first_name": "Bob"}```
 
 ![Postman](img/postman.jpg "postman")
 
