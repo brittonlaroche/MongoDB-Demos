@@ -117,4 +117,4 @@ exports = function(changeEvent) {
 };
 ```
 
-Add new employees and change salary information, titles and managers.  View the what is tracked in the history collections.
+Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.
