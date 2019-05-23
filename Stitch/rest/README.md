@@ -63,7 +63,10 @@ exports = async function(payload) {
 
 Notice that in our webhook function we take in the payload body, which should be a search document, and call our find employee function created earlier.
 
-### 3. Create a webhook to call the function add or update employee data
+### 3. Test the search employee REST based API service through postman
+![Postman](img/postman.jpg "postman")
+
+### 4. Create a webhook to call the function add or update employee data
 ```
 exports = function(payload) {
   var cEmployees = context.services.get("mongodb-atlas").db("Compliance").collection("employees");
@@ -96,5 +99,5 @@ exports = function(payload) {
 };
 ```
 
-### 4. Call the REST based API webhook through postman
+### 5. Test the REST based API add employee service through postman
 ![Postman](img/postman.jpg "postman")
