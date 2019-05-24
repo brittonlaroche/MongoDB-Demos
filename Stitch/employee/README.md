@@ -18,7 +18,105 @@ Enable aunonmous authentication by moving the slider button to the right.
 Specify a new collection where the application will write data.  Use the database name "HR" and the collection name "employees" (note the names are case sensitive)
 
 ### 3. Create the browser client application
-Download the [employee.html](./employee.html) file (right click save link as) and save it to a directory of your choosing.  Open the file in the text editor of your choice and change the line:    
+Cut and paste the raw code from the [employee.html](./employee.html) file into a text editor and save it as "employee.html" to a directory of your choosing. For convience the file contents is also listed here for a quick copy paste:
+
+```
+<html>
+  <head>
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.8/stitch.js"></script>
+    <script>
+        const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
+        "mongodb-atlas").db('HR');
+
+        function displayEmployeesOnLoad() {
+          client.auth
+            .loginWithCredential(new stitch.AnonymousCredential())
+            .then(displayEmployees)
+            .catch(console.error);
+        }
+
+        function displayEmployees() {
+          const tStrt = "<div><table><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
+                "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified<th></tr>";
+          db.collection('employees').find({}, {limit: 1000}).asArray()
+            .then(docs => {
+              const html = docs.map(c => "<tr><td>[" +
+                                    c.employee_id +  "]</td><td>" +
+                                    c.department +  "</td><td>" +
+                                    c.title + "</td><td>" +
+                                    c.first_name + " " +
+                                    c.last_name + "</td><td>" +
+                                    "[" + c.manager_id + "] </td><td>" +
+                                    "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
+                                    c.last_modified + "</td>" +
+                                    "</tr>").join("");
+              document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
+            });
+        }
+	    
+        function addEmployee() {
+            const eID = document.getElementById('employee_id');
+            const eFname = document.getElementById('first_name');
+            const eLname = document.getElementById('last_name');
+            const eTitle = document.getElementById('title');
+            const eDepartment = document.getElementById('department');
+            const eManagerId = document.getElementById('manager_id');
+			const eSalary = document.getElementById('salary');
+            var nDate = new Date();
+            db.collection('employees').updateOne(
+                {employee_id: parseInt(eID.value)},
+                {$set: {
+                    owner_id: client.auth.user.id,
+                    employee_id: parseInt(eID.value),
+                    first_name: eFname.value,
+                    last_name: eLname.value,
+                    title: eTitle.value,
+                    department: eDepartment.value,
+                    manager_id: parseInt(eManagerId.value),
+					salary: parseFloat(eSalary.value),
+                    last_modified: nDate,
+                    trace_id: "Emp ID: " + eID.value + " - " + nDate.toString()
+                    }
+                },
+                {upsert: true}
+            )
+            .then(displayEmployees);
+            //eFname.value = '';
+            //eLname.value = '';
+            //eID.value = '';
+        }
+    </script>
+
+    </head>
+  <body onload="displayEmployeesOnLoad()">
+    <h3>Employee Information</h3>
+    <div id="content">
+      Enter Employee Data
+    </div>
+    <hr>
+      Add Employee:
+      <table>
+        <tr><td>Employee ID:</td> <td><input id="employee_id" width=12 ></td></tr>
+        <tr><td>First Name: </td> <td><input id="first_name" width=12></td></tr>
+        <tr><td>Last Name: </td> <td><input id="last_name" width=12></td></tr>
+        <tr><td>Title: </td> <td><input id="title" width=12></td></tr>
+        <tr><td>Department:</td> <td> <input id="department" width=22></td></tr>
+        <tr><td>Manager ID:</td> <td> <input id="manager_id" width="22"></td></tr>
+        <tr><td>Salary:</td> <td> <input id="salary" width="22"></td></tr>
+     </table>
+      <input type="submit" onClick="addEmployee()">
+
+      <hr>
+      Employee List:
+      <hr>
+	  <div id="employees"></div>
+  </body>
+</html>
+```
+
+
+Open the file in the text editor of your choice and change the line:    
 ``` const client = stitch.Stitch.initializeDefaultAppClient('your-app-id'); ```    
 by replacing your-app-id with the APP ID displayed in the upper left of your stitch console.  Enter some data, be sure to fill in the employee_id field with a unique number.  For example, start with 100. Then add another employee with and id of 101, next 102 etc... You can have the second employee 101 report to the first employee by setting the manager id to 100.   
 
