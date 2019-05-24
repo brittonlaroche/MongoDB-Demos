@@ -9,14 +9,16 @@ In this short tutorial we are going to create a Human Resources application that
 Log in to atlas from https://cloud.mongodb.com. Create a new stitch app by selecting "Stitch" from the left menu pain. 
 Click the button "Create New Stitch App. Type in "HumanResources" (no spaces) for the application name and click the create button in the lower right.
 
-![Stitch Application](img/humanResources.jpg "Stitch App")
 
 ### 2. Configure the stitch application
 After the new application is created, click the "HumanResources" stitch application to enter into the stitch console.
+![Stitch Application](img/humanResources.jpg "Stitch App")
+
 #### Turn on anonymous authentication 
 Enable aunonmous authentication by moving the slider button to the right.
 #### Initialize a MongoDB Collection
-Specify a new collection where the application will write data.  Use the database name "HR" and the collection name "employees" (note the names are case sensitive)
+Specify a new collection where the application will write data.  Use the uppercase database name _"HR"_ and the lower case collection name _"employees"_ (note the names are case sensitive)
+![Initialize Collection](img/initCollection.jpg "Init Collection")
 
 ### 3. Create the browser client application
 Cut and paste the raw code from the [employee.html](./employee.html) file into a text editor and save it as "employee.html" to a directory of your choosing. For convience the file contents is also listed here for a quick copy paste:
