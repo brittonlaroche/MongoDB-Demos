@@ -1,4 +1,8 @@
-This tutorial buildsupon concepts learned in the official [MongoDB blog](https://docs.mongodb.com/stitch/tutorials/blog-overview/) tutorial.
+This tutorial builds upon concepts learned in the official [MongoDB blog](https://docs.mongodb.com/stitch/tutorials/blog-overview/) tutorial.
+1. [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/)
+2. [Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
+3. [Stitch Query Anywhere tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/rest)
+4. [Atlas Charts tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts)
 
 ## Overview 
 _SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
