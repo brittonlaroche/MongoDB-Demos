@@ -148,7 +148,7 @@ Select the ">_Getting Started_" menu item in the left pannel or add a new rule f
 ![Add Collection](img/addCollection.jpg "Add Collection")
 
 ### 6. Write the history function
-Edit the fncEmployeeHist by selecting "Functions" in the left navigation pane of the stitch console. The list of fucntions appear, click the row with fncEmployeeHist. It will bring up the editor.  You should be able to copy / paste the code below.  Once the code has been pasted press the save button
+Edit the fncEmployeeHist by selecting "Functions" in the left navigation pane of the stitch console. The list of functions appear, click the row with the fncEmployeeHist. The click will bring up the function editor for fncEmployeeHist.  You should be able to copy / paste the code below.  Once the code has been pasted press the save button.  The trigger is ready to be tested!
 
 ```
 exports = function(changeEvent) {
@@ -229,7 +229,13 @@ exports = function(changeEvent) {
 };
 ```
 
-Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.
+Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.  You can see this information by openeing a new tab in your browser and going to https://cloud.mongodb.com
+
+Click on clusters and press the collection button.  This will bring up the collection browsing tab in atlas.
+![Collection Button](img/browseCollections1.jpg "Collection Button")
+
+Onceteh collection browsing tab is open navigate to your database and look at the data in the employee collection, employee history full collection, and the employe history collection which contains only the updated fields, employee_id and dates of modification.
+![Collection Browse](img/browseCollections2.jpg "Collection Browse")
 
 ## Next Steps
 Check out the next stitch tutorial on extending your app though the use of a REST based API to get access to your employee data through [Stitch Query Anywhere](../rest)
