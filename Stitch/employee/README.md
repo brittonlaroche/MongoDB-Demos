@@ -15,7 +15,8 @@ After the new application is created, click the "HumanResources" stitch applicat
 ![Stitch Application](img/humanResources.jpg "Stitch App")
 
 #### Turn on anonymous authentication 
-Enable aunonmous authentication by moving the slider button to the right.
+Enable aunonmous authentication by moving the slider button to the right. In general this is a bad idea, as we should have a secure way of identifying our users, but for brevity of this tutorial and for purely demonstrative purposes, we will use Anonymous Authentication and address user authentication in another tutorial.
+
 #### Initialize a MongoDB Collection
 Specify a new collection where the application will write data.  Use the uppercase database name _"HR"_ and the lower case collection name _"employees"_ (note the names are case sensitive)
 ![Initialize Collection](img/initCollection.jpg "Init Collection")
