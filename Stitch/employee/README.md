@@ -1,3 +1,5 @@
+This tutorial buildsupon concepts learned in the official [MongoDB blog](https://docs.mongodb.com/stitch/tutorials/blog-overview/) tutorial.
+
 ## Overview 
 _SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
@@ -222,3 +224,6 @@ exports = function(changeEvent) {
 ```
 
 Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.
+
+## Next Steps
+Check out the next stitch tutorial on extending your app though the use of a REST based API to get access to your employee data through [Stitch Query Anywhere](../rest)
