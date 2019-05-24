@@ -1,4 +1,7 @@
-Note this tutorial build's on the [Employee Tutorial](../employee)
+## Atlas Stitch Serverless Rest Based API 
+
+_SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
+Estimated time to complete 15 Minutes. Note this tutorial build's on the [Employee Tutorial](../employee)
 
 ## Tutorial Contents 
 1. [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/)
