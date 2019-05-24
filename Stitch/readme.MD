@@ -2,6 +2,12 @@
 
 _SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
+## Tutorial Contents 
+1. [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/)
+2. [Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
+3. [Stitch Query Anywhere tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/rest)
+4. [Atlas Charts tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts)
+
 The MongoDB Stitch serverless platform makes it easy to build modern, cross-platform applications on top of MongoDB. Stitch removes the need for tedious boilerplate and automatically manages your app’s backend so you can focus on building what matters.
 
 ![Serverless](img/serverless100.png "Serverless")
