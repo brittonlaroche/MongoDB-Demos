@@ -29,7 +29,7 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
 ```
 <html>
   <head>
-    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.8/stitch.js"></script>
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.3.1/stitch.js"></script>
     <script>
         const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
         const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
