@@ -1,6 +1,6 @@
 ## Atlas Stitch Serverless Rest Based API 
 
-_SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
+_SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 Estimated time to complete 15 Minutes. Note this tutorial build's on the [Employee Tutorial](../employee)
 
 ## Tutorial Contents 
