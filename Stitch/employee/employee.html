@@ -26,12 +26,13 @@
                                     c.first_name + " " +
                                     c.last_name + "</td><td>" +
                                     "[" + c.manager_id + "] </td><td>" +
-									c.salary + "</td><td>" +
+                                    "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
                                     c.last_modified + "</td>" +
                                     "</tr>").join("");
               document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
             });
         }
+		
 
         function addEmployee() {
             const eID = document.getElementById('employee_id');
@@ -95,8 +96,7 @@
       <hr>
       Employee List:
       <hr>
-
-    <div id="employees"></div>
+	  <div id="employees"></div>
   </body>
 
 </html>
