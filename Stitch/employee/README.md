@@ -1,4 +1,6 @@
 This tutorial builds upon concepts learned in the official [MongoDB blog](https://docs.mongodb.com/stitch/tutorials/blog-overview/) tutorial.
+
+## Tutorial Contents 
 1. [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/)
 2. [Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
 3. [Stitch Query Anywhere tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/rest)
