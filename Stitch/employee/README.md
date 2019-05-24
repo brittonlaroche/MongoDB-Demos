@@ -42,15 +42,15 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
           db.collection('employees').find({}, {limit: 1000}).asArray()
             .then(docs => {
               const html = docs.map(c => "<tr><td>[" +
-                                    c.employee_id +  "]</td><td>" +
-                                    c.department +  "</td><td>" +
-                                    c.title + "</td><td>" +
-                                    c.first_name + " " +
-                                    c.last_name + "</td><td>" +
-                                    "[" + c.manager_id + "] </td><td>" +
-                                    "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
-                                    c.last_modified + "</td>" +
-                                    "</tr>").join("");
+                  c.employee_id +  "]</td><td>" +
+                  c.department +  "</td><td>" +
+                  c.title + "</td><td>" +
+                  c.first_name + " " +
+                  c.last_name + "</td><td>" +
+                  "[" + c.manager_id + "] </td><td>" +
+                  "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
+                  c.last_modified + "</td>" +
+                  "</tr>").join("");
               document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
             });
         }
