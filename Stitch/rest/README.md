@@ -89,7 +89,7 @@ Use something like the following saerch document to find your employee.  Replace
 
 ### 4. Create a webhook to call the function add or update employee data
 
-Repeat the steps above to add a new addEmployeeService. 
+Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhook function editior cut and paste the code below. 
 ```
 exports = function(payload) {
   var cEmployees = context.services.get("mongodb-atlas").db("HR").collection("employees");
@@ -124,6 +124,8 @@ exports = function(payload) {
 
 ### 5. Test the REST based API add employee service through postman
 ![Postman](img/postman.jpg "postman")
+
+Once post man is configured use the json template below in the postman body to add a new employee.
 
 ```
 { 
