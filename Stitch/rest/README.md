@@ -16,6 +16,9 @@ In this section we will cover the Stitch query anywhere functionality through a 
 
 ### 1. Create a stitch function to query employee data
 ![Console](img/findEmployee1.jpg "Console")
+
+Create a new function named: __findEmployee__
+
 Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name "findEmployee" and click "Save."  This will bring up the function editor, cut and paste the code below and click "Save."
 ```
 exports = async function( aSearchDoc ){
@@ -88,7 +91,7 @@ Use something like the following saerch document to find your employee.  Replace
 ![Postman](img/postman.jpg "postman")
 
 ### 4. Create a webhook to call the function add or update employee data
-Craete a new Service named: _addEmployeeService_
+Create a new Service named: __addEmployeeService__
 
 Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhook function editior cut and paste the code below. 
 ```
