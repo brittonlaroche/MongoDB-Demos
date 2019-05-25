@@ -100,8 +100,7 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
             //eID.value = '';
         }
     </script>
-
-    </head>
+  </head>
   <body onload="displayEmployeesOnLoad()">
     <h3>Employee Information</h3>
     <div id="content">
@@ -119,11 +118,10 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
         <tr><td>Salary:</td> <td> <input id="salary" width="22"></td></tr>
      </table>
       <input type="submit" onClick="addEmployee()">
-
       <hr>
       Employee List:
       <hr>
-	  <div id="employees"></div>
+      <div id="employees"></div>
   </body>
 </html>
 ```
