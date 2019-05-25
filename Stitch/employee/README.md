@@ -63,7 +63,7 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
                   c.last_name + "</td><td>" +
                   "[" + c.manager_id + "] </td><td>" +
                   "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
-                  c.last_modified + "</td>" +
+                  c.last_modified.toLocaleDateString() + "</td>" +
                   "</tr>").join("");
               document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
             });
@@ -88,9 +88,8 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
                     title: eTitle.value,
                     department: eDepartment.value,
                     manager_id: parseInt(eManagerId.value),
-					salary: parseFloat(eSalary.value),
-                    last_modified: nDate,
-                    trace_id: "Emp ID: " + eID.value + " - " + nDate.toString()
+                    salary: parseFloat(eSalary.value),
+                    last_modified: nDate
                     }
                 },
                 {upsert: true}
