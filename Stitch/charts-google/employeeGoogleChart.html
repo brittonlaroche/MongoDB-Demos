@@ -11,8 +11,8 @@
         function displayEmployeesOnLoad() {
           client.auth
             .loginWithCredential(new stitch.AnonymousCredential())
-			.then(drawEmployeeCountChart)
-			.then(displayEmployeeCounts)
+            .then(drawEmployeeCountChart)
+            .then(displayEmployeeCounts)
             .then(displayEmployees)
             .catch(console.error);
         }
@@ -42,7 +42,7 @@
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', 'Department');
 		data.addColumn('number', 'EmployeeCount');
-
+		//Get the data to draw the chart from MongoDB, aggregate the employee data by department
 		const cEmployees = db.collection("employees");
 		cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
 	     	.then(docs => {
@@ -62,6 +62,7 @@
 	}
 		
 	function displayEmployeeCounts() {
+		//We will aggregate the employee data by department and create a table with totals
 		const tStrt = "<div><table><tr><th>Department</th><th>Number of Employees</th></tr>";
 		const cEmployees = db.collection("employees");
 		cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
