@@ -25,5 +25,7 @@ After the dashboard is created, click the "Add Chart" button. Next you have to s
 
 ![Data source Employees](img/achart5.jpg "Employees Data Source")
 
-### 3. Embed the new Atlas Chart in the Employee Applictaion
+### 3. Embed the new Atlas Chart in the employee applictaion
+The saved chart has a set of menu items along the top right ofthe chart border, they become visisble as you mouse over them inside the dashboard editor. Press the item labeled "..." for a drop list of menu items and select "Embed Chart"
 
+![Embed Chart](img/achart6.jpg "Embed Chart")
