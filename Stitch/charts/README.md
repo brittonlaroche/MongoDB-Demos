@@ -16,10 +16,8 @@ Log in to atlas from https://cloud.mongodb.com. Create a new stitch Atlas Dashbo
 
 ![Chart Menu](img/achart1.jpg "Chart Menu")
 
-After selecting the chart menu item a new charts window will open in your browser, press the "New Dashboard" button.
-![New Dashboard](img/achart2.jpg "New Dashboard")
+After selecting the chart menu item a new charts window will open in your browser, press the "New Dashboard" button. Give the new dashboard a name and description, such as "Employees" and "HR Data."   
 
-Give the new dashboard a name and description
 ![Dashboard Name](img/achart3.jpg "Name the Dashboard")
 
 ### 2. Create a new Atlas Chart
