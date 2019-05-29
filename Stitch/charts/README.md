@@ -33,3 +33,5 @@ The saved chart has a set of menu items along the top right ofthe chart border, 
 The embed chart dialog window will open. It is important to note that the user must have privileges to view the chart.  This is accomplished by following the instructions in the section labeled "Verified Signature."  There are multiple ways to control access to the data visualized in the chart.  See the bonus section for how to do this with stitch.  For the purpose of this tutorial we will provide "unauthenticated access" move the slider to the right and follow the instructions to allow unauthenticated access to your chart.
 
 ![Embed Chart](img/achart7.jpg "Embed Chart Dialog Window")
+
+Click the copy button icon.  This copies an iframe that can be embeded in your [employee.html](https://github.com/brittonlaroche/MongoDB-Demos/blob/master/Stitch/employee/employee.html)
