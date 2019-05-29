@@ -21,9 +21,6 @@ After selecting the chart menu item a new charts window will open in your browse
 ![Dashboard Name](img/achart3.jpg "Name the Dashboard")
 
 ### 2. Create a new Atlas Chart
-After the dashboard is created, click the "Add Chart" button. Next you have to select a datasource for the chart. 
-![Datasource](img/achart4.jpg "Choose a Datasource")
+After the dashboard is created, click the "Add Chart" button. Next you have to select a datasource for the chart. Press the green slector button "Choose a Data Source"  Select the HR.employees collection we created in the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/) 
 
-Select the HR.employees collection we created in the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/) 
-
-![Datasource Employees](img/achart4.jpg "Employees Datasource")
+![Data source Employees](img/achart5.jpg "Employees Data Source")
