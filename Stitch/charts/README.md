@@ -46,4 +46,4 @@ Click the copy button icon.  This copies an iframe that can be embeded in your [
 ```
 
 And the final result... is beatiful...   
-![Final Result](img/achartEmbed.jpg "Embeded Chart in our application")
+![Final Result](img/achartEmbed2.jpg "Embeded Chart in our application")
