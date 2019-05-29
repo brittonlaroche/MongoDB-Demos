@@ -26,6 +26,10 @@ After the dashboard is created, click the "Add Chart" button. Next you have to s
 ![Data source Employees](img/achart5.jpg "Employees Data Source")
 
 ### 3. Embed the new Atlas Chart in the employee applictaion
-The saved chart has a set of menu items along the top right ofthe chart border, they become visisble as you mouse over them inside the dashboard editor. Press the item labeled "..." for a drop list of menu items and select "Embed Chart"
+The saved chart has a set of menu items along the top right ofthe chart border, they become visisble as you mouse over them inside the dashboard editor. Press the item labeled "..." for a drop list of menu items and select "Embed Chart."
 
 ![Embed Chart](img/achart6.jpg "Embed Chart")
+
+The embed chart dialog window will open. It is important to note that the user must have privileges to view the chart.  This is accomplished by following the instructions in the section labeled "Verified Signature."  There are multiple ways to control access to the data visualized in the chart.  See the bonus section for how to do this with stitch.  For the purpose of this tutorial we will provide "unauthenticated access" move the slider to the right and follow the instructions to allow unauthenticated access to your chart.
+
+![Embed Chart](img/achart7.jpg "Embed Chart Dialog Window")
