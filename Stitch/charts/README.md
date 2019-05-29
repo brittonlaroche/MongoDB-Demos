@@ -34,9 +34,9 @@ The embed chart dialog window will open. It is important to note that the user m
 
 ![Embed Chart](img/achart7.jpg "Embed Chart Dialog Window")
 
-Click the copy button icon.  This copies an iframe that can be embeded in your [employee.html](https://github.com/brittonlaroche/MongoDB-Demos/blob/master/Stitch/employee/employee.html) file.  Lets put it in above the employee list:
+Click the copy button icon.  This copies an iframe that can be embeded in your [employee.html](https://github.com/brittonlaroche/MongoDB-Demos/blob/master/Stitch/employee/employee.html) file.  Lets put it in belwo the submit button, but above the employee list:
 
-```
+```   <input type="submit" onClick="addEmployee()">
       <hr>
       <iframe style="border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-ulibe/embed/charts?id=your-chart-data"></iframe>
       <hr>
@@ -44,3 +44,6 @@ Click the copy button icon.  This copies an iframe that can be embeded in your [
       <hr>
       <div id="employees"></div>
 ```
+
+And the final result... is beatiful...   
+![Final Result](img/achartEmbed.jpg "Embeded Chart in our application")
