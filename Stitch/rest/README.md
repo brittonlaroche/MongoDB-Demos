@@ -1,4 +1,4 @@
-## Atlas Stitch Serverless Rest Based API 
+## Atlas - Stitch Serverless Rest Based API (Query Anywhere)
 
 _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 (Note: this tutorial build's on the [Employee Tutorial](../employee))
