@@ -156,6 +156,7 @@ In the linked function drop list select "+ New Function" and give the function a
 
 ### 5. Create two new history collections
 Select the ">_Getting Started_" menu item in the left pannel or add a new rule for two new collections.  Specify the HR database and the collection names "empHistFull" and "empHist" these collections must be present in the stitch rules for the trigger to update these collections.
+
 ![Add Collection](img/addCollection.jpg "Add Collection")
 
 ### 6. Write the history function
@@ -247,7 +248,7 @@ Click on clusters and press the collection button.  This will bring up the colle
 
 Once the collection browsing tab is open, navigate to your database and look at the data in the employee collection. Next look at the employee history full docuement collection, and the employe history collection which contains only the updated fields.
 
-Add another employee and make him report in to a manager.  Give that employee a raise and a promotion, reporting directly to the CEO.  Observe the changes recorded in the employee history collections.
+Add another employee and make him or her report in to a lower level manager.  Give that employee a raise and a promotion, reporting directly to the CEO.  Observe the changes recorded for that employee in the employee history collections.
 
 ![Collection Browse](img/browseCollections2.jpg "Collection Browse")
 
