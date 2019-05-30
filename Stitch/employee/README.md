@@ -152,7 +152,8 @@ In the left hand navigation pannel of the stitch console select "Triggers" and t
 
 Name the new trigger __"trgEmployeeHist"__ Select your cluster from the "Select Linked Cluster" drop down.  Select __"HR"__ for the database and __"employees"__ for the collection. Check all the boxes for the opertaion type "Insert, Update, Delete and Replace." Finally be sure to move the slider to get the full document.   
 
-In the linked function drop list select "+ New Function" and give the function a name of __"fncEmployeeHist"__ and then save the trigger.  Be sure to keep all the sample documentation, we will need it for a future step.
+In the linked function drop list select "+ New Function" and give the function a name of __"fncEmployeeHist"__ and then save the trigger.  Be sure to keep all the sample documentation, we will need it for a future step.   
+
 ![Employee Trigger](img/trgEmployeeHist.jpg "Employee Trigger")
 
 ### 5. Create two new history collections
@@ -161,7 +162,7 @@ Select the ">_Getting Started_" menu item in the left pannel or add a new rule f
 ![Add Collection](img/addCollection.jpg "Add Collection")
 
 ### 6. Write the history function
-Edit the fncEmployeeHist by selecting "Functions" in the left navigation pane of the stitch console. The list of functions appear, click the row with the fncEmployeeHist. The click will bring up the function editor for fncEmployeeHist.  You should be able to copy / paste the code below.  Once the code has been pasted press the save button.  The trigger is ready to be tested!
+Edit the fncEmployeeHist by selecting "Functions" in the left navigation pane of the stitch console. The list of functions appear, click the row with the __fncEmployeeHist__ created in step 4. The click will bring up the function editor for fncEmployeeHist.  You should be able to copy / paste the code below.  Once the code has been pasted press the save button.  The trigger is ready to be tested!
 
 ```
 exports = function(changeEvent) {
