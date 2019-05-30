@@ -152,6 +152,8 @@ You should see something like the following:
 
 ![Employees](img/employeeApp.jpg "Employee List")
 
+Note: the employee.html app is bare bones on purpose, if you wish to add some style after this tutorial you might want to check out the [Adding Style](../style) tutorial.
+
 ### 4. Create a trigger to track changes to employees over time
 In the left hand navigation pannel of the stitch console select "Triggers" and then click the "Add a trigger" button.  
 
@@ -255,7 +257,7 @@ When the Atlas control panel opens, click on "clusters" in the left navigation m
 
 ![Collection Button](img/browseCollections1.jpg "Collection Button")
 
-Once the collection browsing tab is open, navigate to your database and look at the data in the employee collection. Next look at the employee history full docuement collection, and the employe history collection which contains only the updated fields.
+Once the collection browsing tab is open, navigate to your database and look at the data in the employee collection. Next look at the employee history full docuement collection, and the employee history collection which contains only the updated fields.
 
 Add another employee and make him or her report in to a lower level manager.  Give that employee a raise and a promotion, reporting directly to the CEO.  Observe the changes recorded for that employee in the employee history collections.
 
