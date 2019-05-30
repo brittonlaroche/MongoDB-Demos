@@ -67,7 +67,7 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
 
         function displayEmployees() {
           const tStrt = "<div><table><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
-                "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified<th></tr>";
+                "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified</th></tr>";
           db.collection('employees').find({}, {limit: 1000}).asArray()
             .then(docs => {
               const html = docs.map(c => "<tr><td>[" +
