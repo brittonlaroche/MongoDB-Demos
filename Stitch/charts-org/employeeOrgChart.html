@@ -11,7 +11,7 @@
         function displayEmployeesOnLoad() {
           client.auth
             .loginWithCredential(new stitch.AnonymousCredential())
-			.then(displayOrgChart)
+            .then(displayOrgChart)
             .then(displayEmployees)
             .catch(console.error);
         }
