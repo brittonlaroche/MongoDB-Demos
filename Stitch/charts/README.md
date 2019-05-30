@@ -51,7 +51,7 @@ Click the copy button icon.  This copies an iframe that can be embeded in your [
 ```
 
 And the final result... is beatiful...   
-![Final Result](img/achartEmbed2.jpg "Embeded Chart in our application")
+![Final Result](img/achartEmbed3.jpg "Embeded Chart in our application")
 
 ## Next Steps
 5. [Embed Google Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) in your application.
