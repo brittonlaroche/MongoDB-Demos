@@ -10,6 +10,12 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 6. [Embed an Org Chart tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) 
 7. [Host your application tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) 
 
+You will need a text editor for this section. If you do not have a text editor we recommend downloading a free text editor from one of the following sites (VS Code is best for Developers):
+
+[Notepad ++](https://notepad-plus-plus.org/download)   
+[Brackets](http://brackets.io/)   
+[VS Code](https://code.visualstudio.com/)   
+
 The blog tutorial is located in the MongoDb stitch tutorials here: [blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/). If you want to go directly to the source code you can get that [here](blog.html) cut and past the code into a text editor of your choice and replace ('your-app_id') with the application id specified in your stitch console. Save the file to your hard drive as blog.html and double click it to bring the file up in your browser.  
 
 It is highly recommended to complete the [blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/) as many new concepts related to stitch are introduced.
