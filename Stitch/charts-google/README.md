@@ -170,7 +170,7 @@ After we create the data table and load it with data we are ready to specify the
 	}
 ```
 
-The final step is to add in the div tags for the charts.  We would like to view the two charts side by side so we include them in an html table.  We place them above the html table that provided the counts in our first step.
+One last step is to add in the div tags for the charts.  We would like to view the two charts side by side so we include them in an html table.  We place them above the html table that provided the counts in our first step.
 
 ```
 ...
@@ -185,5 +185,25 @@ The final step is to add in the div tags for the charts.  We would like to view 
   </body>
 </html>
 ```
+### 4. Calling the function to draw the charts
+The final step is to draw the chart when the page loads.  We currently have a function to piggy back on, we simple add the following line of code to the load script. 
+
+```
+	.then(drawEmployeeCountChart)
+```
+
+We will login, draw the charts, display the employee counts and then list the employees.  Here is the new load script.
+
+```
+        function displayEmployeesOnLoad() {
+          client.auth
+            .loginWithCredential(new stitch.AnonymousCredential())
+            .then(drawEmployeeCountChart)
+            .then(displayEmployeeCounts)
+            .then(displayEmployees)
+            .catch(console.error);
+        }
+```
+
 ## Next Steps
 Check out the next stitch tutorial on adding an org chart to your application: [Embedding an Org Chart](../charts-org)!
