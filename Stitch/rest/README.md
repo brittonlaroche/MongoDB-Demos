@@ -86,7 +86,9 @@ Our fist step is to get the new URL for our findEmployeeService. In the findEmpl
 
 ![Webhook URL](img/findEmployee4.jpg "Webhook URL")
 
-Next we use postman to test our service.  Create a new collection for MongoDB and add a new post service test. Add a new tab and select "POST" from the drop list. Paste in the URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Find Employee."
+Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).
+
+In postman create a new collection for MongoDB and add a new post service. Add a new tab and select "POST" from the drop list. Paste in the URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Find Employee."
 
 Use something like the following search document to find your employee.  Replace "Bob" with the first name you used in setting up your employee data. Hit send and you should get your employee document back. Change first_name to "employee_id" and play around with your data.
 
