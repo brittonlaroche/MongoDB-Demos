@@ -240,8 +240,9 @@ exports = function(changeEvent) {
   
 };
 ```
+The first part of the trigger is a comment section which shows how to access document data through the change event. The comments have been left in to show how to handle a delete or replace event.  The full change event documentation is available here: [MongoDB Change Event Documentation](https://docs.mongodb.com/manual/reference/change-events/)
 
-Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.  You can see this information by openeing a new tab in your browser and going to https://cloud.mongodb.com
+Test the trigger with your employee.html application. Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.  You can see this information by openeing a new tab in your browser and going to https://cloud.mongodb.com
 
 Click on clusters and press the collection button.  This will bring up the collection browsing tab in atlas.
 ![Collection Button](img/browseCollections1.jpg "Collection Button")
