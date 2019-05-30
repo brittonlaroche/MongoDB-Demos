@@ -13,7 +13,7 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
 ### Google charts overview 
 
-Google has a number of easily imported charting functions that you can imbed in your stitch application with minimal coding effort.  In this tutorial we show how to embed a google pie and column chart into your basic employee application.  The data is loaded directly from stitch into a data object that is passed into the draw chart function.
+The [Google charts](https://developers.google.com/chart/interactive/docs/quick_start) javascript library has a number of easily imported charting functions that you can imbed in your stitch application with minimal coding effort.  In this tutorial we show how to embed a google pie and column chart into your basic employee application.  The data is loaded directly from stitch into a data object that is passed into the draw chart function.
 
 The result is shown below:
 ![Google Charts](img/googleChart.jpg "Google Charts")
@@ -86,4 +86,27 @@ After the java script code and div are added to the html we are now ready to cal
 Save the modified html file and double click it, or refresh the browser to see the employee counts by department.
 
 ### 2. Creating google charts
+Google charts are created in three steps.  The first step requires importing the javascript library form google.  Next we specify the chart type.  We then load the chart data into a data table object and pass that data object into the charts draw function. Lets begin by importing the chart's java script library from gooogle.  We add the import in the header section of the html right after we import the stitch sdk.
 
+```
+<html>
+  <head>
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    ...
+```
+
+Next we load the corechart package ```google.charts.load('current', {'packages':['corechart']});``` as we initialize variabled for all our functions.
+
+```
+<html>
+  <head>
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
+        "mongodb-atlas").db('HR');
+	google.charts.load('current', {'packages':['corechart']});
+	...
+```
