@@ -29,4 +29,4 @@ The completed source file is in the link here [Employee Org Chart](employeeOrgCh
 const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
 ```
 
-Save the file as employeeOrgChart.html and double click to see the reports generated for your employee application in the browser.  The rest of this tutorial explains how to create this file from the original employee.html covered in the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
+Save the file as employeeOrgChart.html and double click to see the reports generated for your employee application in the browser.  The rest of this tutorial explains how to create this file from the original [employee.html](../employee/employee.html) covered in the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
