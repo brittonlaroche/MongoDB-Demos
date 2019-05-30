@@ -102,47 +102,68 @@ We need to loop through each employee record and gather the data in a "forEach" 
 
 ```
 db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
-            .then(docs => {
-                docs.forEach( function(myDoc) {
-                        var mydiv = "<div>" +
-                            myDoc.first_name +
-                            " " + myDoc.last_name +
-                            "</div>"
-                        ;
-			data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
-		});
-```
-We want to add the fisrt and last name, title and department and give the title and department fancy colors on our org chart.  We accomplish that with the following function.
+    .then(docs => {
+	docs.forEach( function(myDoc) {
+		var mydiv = "<div>" +
+		    myDoc.first_name +
+		    " " + myDoc.last_name +
+		    "</div>"
+		;
+		data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
+	});
+```   
+
+We want to add the fisrt and last name, title and department and give the title and department fancy colors on our org chart.  We accomplish that with the following function.   
 
 ```
-	function displayOrgChart( aSearchDoc ) {
-            var data = new google.visualization.DataTable();
-            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-            data.addColumn('string', 'Employee');
-            data.addColumn('string', 'Manager');
-            var searchDoc = {};
-            db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
-            .then(docs => {
-                docs.forEach( function(myDoc) {
-                        var mydiv = "<div>" +
-                            myDoc.first_name +
-                            " " + myDoc.last_name +
-                            "</div>" +
-                            "<div>" +
-                            myDoc.employee_id +
-                            "</div>" +
-                            "<div style='color:red; font-style:italic'>" +
-                            myDoc.department +
-                            "</div>" +
-                            "<div style='color:green; font-style:italic'>" +
-                            myDoc.title +
-                            "</div>"
-                        ;
-			data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
-		});
-                // Create the chart.
-                chart.draw(data, {allowHtml:true});
-            });
-        }
+function displayOrgChart( aSearchDoc ) {
+    var data = new google.visualization.DataTable();
+    var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+    data.addColumn('string', 'Employee');
+    data.addColumn('string', 'Manager');
+    var searchDoc = {};
+    db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
+    .then(docs => {
+	docs.forEach( function(myDoc) {
+		var mydiv = "<div>" +
+		    myDoc.first_name +
+		    " " + myDoc.last_name +
+		    "</div>" +
+		    "<div>" +
+		    myDoc.employee_id +
+		    "</div>" +
+		    "<div style='color:red; font-style:italic'>" +
+		    myDoc.department +
+		    "</div>" +
+		    "<div style='color:green; font-style:italic'>" +
+		    myDoc.title +
+		    "</div>"
+		;
+		data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
+	});
+	// Create the chart.
+	chart.draw(data, {allowHtml:true});
+    });
+}
 ```
 ### 3. Calling the draw chart function
+The final step is to draw the org chart when the page loads.  We currently have a load function to piggy back on, we add the following line of code to the load script. 
+
+```
+	.then(displayOrgChart)
+```
+
+We will login, draw the charts, display the employee counts and then list the employees.  Here is the new load script.
+
+```
+        function displayEmployeesOnLoad() {
+          client.auth
+            .loginWithCredential(new stitch.AnonymousCredential())
+            .then(displayOrgChart)
+            .then(displayEmployees)
+            .catch(console.error);
+        }
+```
+
+## Next Steps
+Check out the next stitch tutorial on hosting your application: [Hosting your application](../hosting)!
