@@ -1,6 +1,5 @@
 ## Embedding Atlas Charts
 _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
-
 Note this tutorial build's on the [Employee Tutorial](../employee)
 
 ## Tutorial Contents 
