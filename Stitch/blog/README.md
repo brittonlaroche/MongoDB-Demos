@@ -10,7 +10,7 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 6. [Embed an Org Chart tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) 
 7. [Host your application tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) 
 
-You will need a text editor for this section. If you do not have a text editor we recommend downloading a free text editor from one of the following sites (VS Code is best for Developers):
+You will need a text editor for this section. If you do not have a text editor we recommend downloading a free text editor from one of the following sites:
 
 [Notepad ++](https://notepad-plus-plus.org/download)   
 [Brackets](http://brackets.io/)   
