@@ -111,13 +111,13 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
     <hr>
       Add Employee:
       <table>
-        <tr><td>Employee ID:</td> <td><input id="employee_id" width=12 ></td></tr>
-        <tr><td>First Name: </td> <td><input id="first_name" width=12></td></tr>
-        <tr><td>Last Name: </td> <td><input id="last_name" width=12></td></tr>
-        <tr><td>Title: </td> <td><input id="title" width=12></td></tr>
-        <tr><td>Department:</td> <td> <input id="department" width=22></td></tr>
-        <tr><td>Manager ID:</td> <td> <input id="manager_id" width="22"></td></tr>
-        <tr><td>Salary:</td> <td> <input id="salary" width="22"></td></tr>
+        <tr><td>Employee ID:</td> <td><input id="employee_id"></td></tr>
+        <tr><td>First Name: </td> <td><input id="first_name"></td></tr>
+        <tr><td>Last Name: </td> <td><input id="last_name"></td></tr>
+        <tr><td>Title: </td> <td><input id="title"></td></tr>
+        <tr><td>Department:</td> <td> <input id="department"></td></tr>
+        <tr><td>Manager ID:</td> <td> <input id="manager_id"></td></tr>
+        <tr><td>Salary:</td> <td> <input id="salary"></td></tr>
      </table>
       <input type="submit" onClick="addEmployee()">
       <hr>
