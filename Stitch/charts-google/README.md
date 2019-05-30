@@ -130,7 +130,7 @@ After we have initialized the chart objects we create a new data table object to
 	data.addColumn('number', 'EmployeeCount');
 ...	
 ```
-The next step involves calling stitch with an aggregation function to gather the data from the Atlas database.  We get the result set which contains a department name and employee count for each department. We use a "forEach" loop reading each record and storing it in the data table.  The "id" field is used as the aggregation id to group by which for this query is the department name.
+The next step involves calling stitch with an aggregation function to gather the data from the Atlas database.  We get the result set which contains a department name and employee count for each department. We use a "forEach" loop reading each record and storing it in the data table.  The "id" field is used as the "aggregation id" to perform the "group by." For this query we "group by" the department name and therefor department is the "id" field.
 
 ```
 cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
