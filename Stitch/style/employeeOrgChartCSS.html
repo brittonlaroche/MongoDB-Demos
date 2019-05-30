@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./mystyle.css">
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
+        "mongodb-atlas").db('HR');
+	google.charts.load('current', {packages:["orgchart"]});
+		
+        function displayEmployeesOnLoad() {
+          client.auth
+            .loginWithCredential(new stitch.AnonymousCredential())
+            .then(displayOrgChart)
+            .then(displayEmployees)
+            .catch(console.error);
+        }
+
+        function displayEmployees() {
+          const tStrt = "<div><table class=\"blueTable\"><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
+                "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified</th></tr>";
+          db.collection('employees').find({}, {limit: 1000}).asArray()
+            .then(docs => {
+              const html = docs.map(c => "<tr><td>[" +
+                  c.employee_id +  "]</td><td>" +
+                  c.department +  "</td><td>" +
+                  c.title + "</td><td>" +
+                  c.first_name + " " +
+                  c.last_name + "</td><td>" +
+                  "[" + c.manager_id + "] </td><td>" +
+                  "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
+                  c.last_modified.toLocaleDateString() + "</td>" +
+                  "</tr>").join("");
+              document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
+            });
+        }
+	    
+        function addEmployee() {
+            const eID = document.getElementById('employee_id');
+            const eFname = document.getElementById('first_name');
+            const eLname = document.getElementById('last_name');
+            const eTitle = document.getElementById('title');
+            const eDepartment = document.getElementById('department');
+            const eManagerId = document.getElementById('manager_id');
+            const eSalary = document.getElementById('salary');
+            var nDate = new Date();
+            db.collection('employees').updateOne(
+                {employee_id: parseInt(eID.value)},
+                {$set: {
+                    owner_id: client.auth.user.id,
+                    employee_id: parseInt(eID.value),
+                    first_name: eFname.value,
+                    last_name: eLname.value,
+                    title: eTitle.value,
+                    department: eDepartment.value,
+                    manager_id: parseInt(eManagerId.value),
+                    salary: parseFloat(eSalary.value),
+                    last_modified: nDate
+                    }
+                },
+                {upsert: true}
+            )
+            .then(displayEmployees);
+            //eFname.value = '';
+            //eLname.value = '';
+            //eID.value = '';
+        }
+	function displayOrgChart( aSearchDoc ) {
+            var data = new google.visualization.DataTable();
+            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+            data.addColumn('string', 'Employee');
+            data.addColumn('string', 'Manager');
+            var searchDoc = {};
+            db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
+            .then(docs => {
+                docs.forEach( function(myDoc) {
+                        var mydiv = "<div>" +
+                            myDoc.first_name +
+                            " " + myDoc.last_name +
+                            "</div>" +
+                            "<div>" +
+                            myDoc.employee_id +
+                            "</div>" +
+                            "<div style='color:red; font-style:italic'>" +
+                            myDoc.department +
+                            "</div>" +
+                            "<div style='color:green; font-style:italic'>" +
+                            myDoc.title +
+                            "</div>"
+                        ;
+			data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
+		});
+
+                // Create the chart.
+                chart.draw(data, {allowHtml:true});
+            });
+        }
+    </script>
+  </head>
+  <body onload="displayEmployeesOnLoad()">
+    <table><tr><td>
+        <div id="contact" class="container">
+            <h3>Employee Information</h3>
+    
+              Add Employee:
+                <fieldset><input type="text" placeholder="Employee ID:" id="employee_id"></fieldset>
+                <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
+                <fieldset><input type="text"  placeholder="Last Name:" id="last_name"></fieldset>
+                <fieldset><input type="text"  placeholder="Title:" id="title"></fieldset>
+                <fieldset><input type="text"  placeholder="Department:" id="department"></fieldset>
+                <fieldset><input type="text"  placeholder="Manager ID:" id="manager_id"></fieldset>
+                <fieldset><input type="text"  placeholder="Salary:" id="salary"></fieldset>
+                <button type="submit" id="contact-submit" onClick="addEmployee()">Submit</button>
+        </div>
+        </td>
+        <td>
+        <div id="contact">
+            <div id="chart_div"></div>
+            Employee List:
+            <div id="employees"></div>
+      </div>
+        </td>
+    </tr>
+    </table>
+    </body>
+</html>
