@@ -4,6 +4,6 @@
 [Click here to get started with MongoDB Stitch](Stitch)
 
 ## MongoDB Acid Compliant Multi-Document Transactions
-![Transactions](img/Transactions.jpg "Transactions")(Transactions) 
+![Transactions](img/transactions.jpg "Transactions")
 
 [Click here to get started with MongoDB Transactions](Transactions)
