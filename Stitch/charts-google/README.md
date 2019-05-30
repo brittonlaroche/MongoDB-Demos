@@ -186,4 +186,4 @@ The final step is to add in the div tags for the charts.  We would like to view 
 </html>
 ```
 ## Next Steps
-Check out the next stitch tutorial on adding an org chart to your application [Embed and Org Chart](../charts-org)
+Check out the next stitch tutorial on adding an org chart to your application: [Embedding an Org Chart](../charts-org)!
