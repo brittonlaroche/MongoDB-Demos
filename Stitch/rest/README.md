@@ -145,4 +145,4 @@ Once post man is configured, use the json template below by pasting it in the po
 
 Verify he or she was added by refreshing your employee application, or view the changes in the Atlas "collection" browser.
 
-__Next Steps:__ add some charts to your application with the [Embed Atlas Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts) in your application tutorial.
+__Next Steps:__ add some charts to your application with the [Embed Atlas Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts) tutorial.
