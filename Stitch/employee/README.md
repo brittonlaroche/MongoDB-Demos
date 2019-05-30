@@ -1,5 +1,5 @@
 ## Human Resources Employee Application
-_SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
+_SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
 This tutorial builds upon concepts learned in the official [MongoDB blog](https://docs.mongodb.com/stitch/tutorials/blog-overview/) tutorial.  Estimated time to complete: 15 to 20 minutes.
 
