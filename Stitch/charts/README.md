@@ -53,5 +53,5 @@ And the final result... is beatiful...
 ## Next Steps
 5. [Embed Google Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) in your application.
 6. [Embed an Org Chart](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) in your application.
-7. [Host your application](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) upload your application to Atlas hosting services and host it one the web at mongodbstitch.com for everyone to see.
+7. [Host your application](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) upload your application to stitch hosting services and host it on the web at mongodbstitch.com for everyone to see.
 
