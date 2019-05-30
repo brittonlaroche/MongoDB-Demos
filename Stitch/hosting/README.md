@@ -50,4 +50,4 @@ Lets see your new employee app in action! Type in the default address
 
  ```<your-app-id>.mongodbstitch.com```
 
-Notice how you can access the database directly from the web.
+Notice how you can access the database directly from the web.  __***Note:***__  you may need to select the  __"Actions"__ drop list in the hosting console and "Flush CDN Cache" to view your changes.
