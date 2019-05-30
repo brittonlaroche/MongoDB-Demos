@@ -1,4 +1,5 @@
 ## Adding some style
+![Style](img/employeestyle.jpg)
 
 ### Tutorial Contents 
 (Note: All tutorials are hands on and should take an estimated time of less than 20 minutes)
