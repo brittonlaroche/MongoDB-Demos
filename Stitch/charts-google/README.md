@@ -42,7 +42,7 @@ The first step is to gather the data required by the charts.  The charts will di
 	}
 ```
 
-Next we add a div tag __<div id="employee_counts"></div>__ to contain the "employee_counts" table.
+Next we add a div tag ```<div id="employee_counts"></div>``` to contain the "employee_counts" table.
 
 ```
      <input type="submit" onClick="addEmployee()">
