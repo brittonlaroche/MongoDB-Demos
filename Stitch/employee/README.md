@@ -245,7 +245,8 @@ Add new employees and change salary information, titles and managers.  View what
 Click on clusters and press the collection button.  This will bring up the collection browsing tab in atlas.
 ![Collection Button](img/browseCollections1.jpg "Collection Button")
 
-Onceteh collection browsing tab is open navigate to your database and look at the data in the employee collection, employee history full collection, and the employe history collection which contains only the updated fields, employee_id and dates of modification.
+Once the collection browsing tab is open, navigate to your database and look at the data in the employee collection. Next look at the employee history full docuement collection, and the employe history collection which contains only the updated fields.
+
 ![Collection Browse](img/browseCollections2.jpg "Collection Browse")
 
 ## Next Steps
