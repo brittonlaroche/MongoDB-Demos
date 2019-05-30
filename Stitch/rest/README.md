@@ -127,7 +127,7 @@ exports = function(payload) {
 ```
 
 ### 5. Test the REST based API add employee service through postman
-![Postman](img/postman.jpg "postman")
+![Postman](img/postmanAdd.jpg "postman")
 
 Once post man is configured, use the json template below by pasting it in the postman body to add a new employee.
 
