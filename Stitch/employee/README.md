@@ -37,7 +37,9 @@ After turning on to anonymous authentication we now move to section (2) where we
 
 ![Initialize Collection](img/initCollection.jpg "Init Collection")
 
-The default template has been applied to this collection allowing only the owner of the data to see his or her data.  This can be viewed by se;ecting the "Rules" menu item, and has been explained in the [blog tutorial](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/).
+The owner's template has been applied to this collection allowing only the owner of the data to see his or her data.  This rule and the permissions can be viewed by selecting the "Rules" menu item, and has been explained in the [blog tutorial](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/). 
+
+
 
 ### 3. Create the browser client application
 Cut and paste the raw code from the [employee.html](./employee.html) file into a text editor and save it as "employee.html" to a directory of your choosing. For convience the file contents is also listed here for a quick copy paste:
