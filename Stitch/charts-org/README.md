@@ -57,5 +57,92 @@ Next we load the orgchart package ```google.charts.load('current', {'packages':[
 	...
 ```
 
-### 2. Drawing the google org chart
+We also need to add a new div tag as a place for the rendered chart in our application.   Lets call it "chart_div" and place it after the submit button, but above the employee list.
 
+```
+      <input type="submit" onClick="addEmployee()">
+      <hr>
+	  <div id="chart_div"></div>
+      <hr>
+      Employee List:
+      <hr>
+	  <div id="employees"></div>
+  </body>
+</html>
+
+```
+
+### 2. Drawing the google org chart
+To draw the org chart we begin by initializing variables for the data table and the chart object.
+
+```
+            var data = new google.visualization.DataTable();
+            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+```
+
+Notice we pass in the "chart_div" created earlier when we initailize the chart variable to indicate where to render the chart.  Now we need to add columns for the org chart.  The org chart will map the employee id to the manager id.
+
+```
+            data.addColumn('string', 'Employee');
+            data.addColumn('string', 'Manager');
+```
+
+Now we need to query the database and add in the relevant information to the chart.  Everything we need to display has to be crammed in as a set of div tags in the employee column, right after the employee id.  If we want to simply display a bunch of numbers in an org chart we can do the following:
+
+```
+data.addRow([ myDoc.employee_id.toString(), myDoc.manager_id.toString()] );
+```
+But thats not very interesting.  We can pass in the title department and name along with the id as a json document with the following code. The "v" is for the value of the employee_id, and "f" is for the additional fields seperated by div tags.  We put those tags in a variable called mydiv.
+
+```
+data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
+```
+
+We need to loop through each employee record and gather the data in a "forEach" loop to build the mydiv varable.  Below is a sample that just adds the employee first name and last name to the mydiv variable.
+
+```
+db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
+            .then(docs => {
+                docs.forEach( function(myDoc) {
+                        var mydiv = "<div>" +
+                            myDoc.first_name +
+                            " " + myDoc.last_name +
+                            "</div>"
+                        ;
+			data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
+		});
+```
+We want to add the fisrt and last name, title and department and give the title and department fancy colors on our org chart.  We accomplish that with the following function.
+
+```
+	function displayOrgChart( aSearchDoc ) {
+            var data = new google.visualization.DataTable();
+            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+            data.addColumn('string', 'Employee');
+            data.addColumn('string', 'Manager');
+            var searchDoc = {};
+            db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
+            .then(docs => {
+                docs.forEach( function(myDoc) {
+                        var mydiv = "<div>" +
+                            myDoc.first_name +
+                            " " + myDoc.last_name +
+                            "</div>" +
+                            "<div>" +
+                            myDoc.employee_id +
+                            "</div>" +
+                            "<div style='color:red; font-style:italic'>" +
+                            myDoc.department +
+                            "</div>" +
+                            "<div style='color:green; font-style:italic'>" +
+                            myDoc.title +
+                            "</div>"
+                        ;
+			data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
+		});
+                // Create the chart.
+                chart.draw(data, {allowHtml:true});
+            });
+        }
+```
+### 3. Calling the draw chart function
