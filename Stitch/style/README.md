@@ -18,7 +18,7 @@ Style sheets, also known as CSS files, are the gateway drug to development frame
 ### 1. Adding a style sheet
 The process begins innocently enough by inluding a style sheet.  Its a simple link.  Next we make slight modifications to some of the div and table classes. Then we simply gut the input table and replace it with __fieldset__ tags around our inputs.   
 
-Lets get started.  We will need the [employee.html](../employee/employee.html) file from the [Atlas Triggers and Functions: HR Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/) and our new css file right here in this directory [mystyle.css](mystyle.css). Copy both files into the text editor of your choice and save them in the same directory as employee.html and mystyle.css respectively.  If you finished the employee tutorial, you may use the employee.html file created in the tutorial earlier if you wish.  Simply add mystyle.css to the same directory. 
+Lets get started.  We will need the [employee.html](../employee/employee.html) file from the [Atlas Triggers and Functions: HR Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/) and our new css file right here in this directory [mystyle.css](mystyle.css). Copy both files into the text editor of your choice and save them in the same directory as __employee.html__ and __mystyle.css__ respectively.  If you finished the employee tutorial, you may use the employee.html file created in the tutorial earlier if you wish.  Simply add mystyle.css to the same directory. 
 
 Be sure to change the application id to the application id displayed in your stitch console inside the employee.html, if you have not done so already.
 
