@@ -44,8 +44,13 @@ The owner's template has been applied to this collection allowing only the owner
 
 
 ### 3. Create the browser client application
-The MongoDB stitch browser client sdk documentation is in this link here [MongoDB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html)  At the time of the writing of this tutorial we are on sdk version 4.4.0 
+You will need a text editor for this section. If you do not have a text editor we recommend downloading a free text editor from one of the following sites (VS Code is best for Developers):
 
+[Notepad ++](https://notepad-plus-plus.org/download)   
+[Brackets](http://brackets.io/)   
+[VS Code](https://code.visualstudio.com/)   
+
+The MongoDB stitch browser client sdk documentation is in this link here [MongoDB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html)  At the time of the writing of this tutorial we are on sdk version 4.4.0 
 
 Cut and paste the raw code from the [employee.html](./employee.html) file into a text editor and save it as "employee.html" to a directory of your choosing.  For convience the file contents is also listed here for a quick copy paste:
 
