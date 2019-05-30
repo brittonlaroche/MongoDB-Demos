@@ -65,13 +65,13 @@
             //eLname.value = '';
             //eID.value = '';
         }
-		function displayOrgChart( aSearchDoc ) {
-          var data = new google.visualization.DataTable();
-          var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-          data.addColumn('string', 'Employee');
-          data.addColumn('string', 'Manager');
-          var searchDoc = {};
-          db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
+	function displayOrgChart( aSearchDoc ) {
+            var data = new google.visualization.DataTable();
+            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+            data.addColumn('string', 'Employee');
+            data.addColumn('string', 'Manager');
+            var searchDoc = {};
+            db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
             .then(docs => {
                 docs.forEach( function(myDoc) {
                         var mydiv = "<div>" +
@@ -88,8 +88,8 @@
                             myDoc.title +
                             "</div>"
                         ;
-						data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
-				});
+			data.addRow([{v: myDoc.employee_id.toString() , f: mydiv },myDoc.manager_id.toString()] );
+		});
 
                 // Create the chart.
                 chart.draw(data, {allowHtml:true});
