@@ -92,7 +92,7 @@ Use something like the following search document to find your employee.  Replace
 
 ### 4. Create a webhook to call the function add or update employee data
 Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhook function editior cut and paste the code below.  
-Create a new Service named: __addEmployeeService__   
+Create a new HTTP Service named: __addEmployeeService__   
 Create a new Webhook named: __addEmployeeWebhook__   
 
 
