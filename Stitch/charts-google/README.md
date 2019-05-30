@@ -45,16 +45,16 @@ The first step is to gather the data required by the charts.  The charts will di
 Next we add a div tag ```<div id="employee_counts"></div>``` to contain the "employee_counts" table.
 
 ```
+...
      <input type="submit" onClick="addEmployee()">
       <hr>
-	  <table><tr><td><div id="employee_piechart"></div><td><td><div id="employee_columnchart"></div></tr>
-	  </table>
 	  <div id="employee_counts"></div>
       <hr>
 	  Employee List:
       <hr>
 	  <div id="employees"></div>
   </body>
+...
 ```
 
 
