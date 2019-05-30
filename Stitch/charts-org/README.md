@@ -14,8 +14,9 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 ## Google Org chart overview
 Google has a number of easily imported charting functions that you can imbed in your stitch application with minimal coding effort. In this tutorial we show how to embed a google org chart into your basic employee application. The data is loaded directly from stitch into a data object that is passed into the draw chart function.
 
-The result is shown below: 
-![Google Charts](img/orgChart.jpg "Google Org Chart")
+The result is shown below:      
+
+![Google Charts](img/orgChart.jpg "Google Org Chart")   
 
 Google charts are a good alternative to Atlas charts, but they do require coding and additional effort to set up.  Atlas charts require no code and can be easily created in an intuitive interface and easily embeded as an iframe.  This tutorial is merely to show another method of adding another set of charts to your application. In this case an Org chart was chosen as this type of chart does not yet exist in Atlas charts.
 
