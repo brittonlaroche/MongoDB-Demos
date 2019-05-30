@@ -115,6 +115,11 @@ This goes directly beneath the input div tag
 
 We have now updated our employee.html file with some style.  Double click the file and look at the beatiful style in action.  If you goofed... no worries we have a completed copy here [employeeCSS.html](employeeCSS.html)
 
+### Charts with style
+We have uplaoded an [emplyeeOrgChartCss.html](emplyeeOrgChartCss.html) file to show how org charts and style sheets can be combined for a stunning prototype.
+
+![Chart Style](img/chartstyle.jpg)
+
 ### Next Steps
 
 Upload your beatiful creation by hosting it with the [Host your application tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) 
