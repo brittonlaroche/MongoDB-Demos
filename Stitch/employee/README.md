@@ -33,8 +33,11 @@ Notice the Stitch application ID (APP ID) dsiplayed in the upper left with a cop
 Enable anonymous authentication by moving the slider button to the right. In general this is a bad idea, as we should have a secure way of identifying our users, but for the brevity of this tutorial and for the purpose of demonstration, we will use Anonymous Authentication.  We will address user authentication in another tutorial.
 
 #### Initialize a MongoDB Collection
-Specify a new collection where the application will write data.  Use the uppercase database name __"HR"__ and the lower case collection name __"employees"__ (note the names are case sensitive)
+After turning on to anonymous authentication we now move to section (2) where we initiatlize a mongo DB collection.  This allows secure rules to apply to data accessing the collection.  If we do not specify a collection stitch will not have access to the data.  Specify a new collection where the application will write data.  Use the uppercase database name __"HR"__ and the lower case collection name __"employees"__ (note the names are case sensitive)
+
 ![Initialize Collection](img/initCollection.jpg "Init Collection")
+
+The default template has been applied to this collection allowing only the owner of the data to see his or her data.  This can be viewed by se;ecting the "Rules" menu item, and has been explained in the [blog tutorial](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/).
 
 ### 3. Create the browser client application
 Cut and paste the raw code from the [employee.html](./employee.html) file into a text editor and save it as "employee.html" to a directory of your choosing. For convience the file contents is also listed here for a quick copy paste:
