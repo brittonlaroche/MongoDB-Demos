@@ -44,6 +44,8 @@ You can now access them at <your-app-id>..mongodbstitch.com!  For example try
  
 Lets have fun and delete the old index file by selecting the "..." menu item in the list of files.  Next lets replace the old index by renaming __employeeOrgChart.html__ or one of your other files to index.html.  
 
+![Hosting](img/hosting3.jpg)
+
 Lets see your new employee app in action! Type in the default address 
 
  ```<your-app-id>.mongodbstitch.com```
