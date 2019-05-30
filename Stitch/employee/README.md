@@ -41,8 +41,6 @@ After turning on to anonymous authentication we now move to section (2) where we
 
 The owner's template has been applied to this collection allowing only the owner of the data to see his or her data.  This rule and the permissions can be viewed by selecting the "Rules" menu item, and has been explained in the [blog tutorial](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/). 
 
-
-
 ### 3. Create the browser client application
 You will need a text editor for this section. If you do not have a text editor we recommend downloading a free text editor from one of the following sites (VS Code is best for Developers):
 
