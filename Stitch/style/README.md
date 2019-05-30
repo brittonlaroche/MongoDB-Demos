@@ -72,7 +72,7 @@ We take the inout section and wrap it in a new div tag with an id of contact lik
 <div id="contact" class="container">
 ```
 
-Then we replace teh old input table with field set tags around our input variables.
+Then we replace the old input table with field set tags around our input variables.
 
 ```
 <body onload="displayEmployeesOnLoad()">
@@ -93,7 +93,7 @@ Then we replace teh old input table with field set tags around our input variabl
 			<button type="submit" id="contact-submit" onClick="addEmployee()">Submit</button>
 	</div>
 ```
-Now we create a new div for our table out put section also using the contact id.
+Now we create a new div for our table output section also using the contact id.
 
 ```
 <div id="contact" class="contact">
