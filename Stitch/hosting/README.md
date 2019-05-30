@@ -13,6 +13,14 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
 
 ### Hosting Overview
-
+Stitch Hosting allows you to host, manage, and serve your application’s static media and document files. You can use Hosting to store individual pieces of content or to upload and serve your entire client application. Stitch hosts your application’s content behind a unique domain name. By default, Stitch uses domains of the following form: ```<Your App ID>.mongodbstitch.com```. You can configure Stitch to host content at a custom domain name that you own in addition to the default hosting domain.
 
 For further infromation read the [hosting documentaion](https://docs.mongodb.com/stitch/hosting/) for an overview. Its a two step process to [enable hosting](https://docs.mongodb.com/stitch/hosting/enable-hosting/) and then [upload content](https://docs.mongodb.com/stitch/hosting/upload-content-to-stitch/). 
+
+### 1. Enable hosting
+Navigate to the Hosting Configuration Page
+To open the hosting configuration page, click Hosting in the left-hand navigation of the Stitch UI.
+
+![Hosting](img/hosting1.jpg)
+
+On the Hosting configuration page, click Enable Hosting. Stitch will begin provisioning hosting for your application.
