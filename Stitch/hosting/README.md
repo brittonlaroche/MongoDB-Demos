@@ -18,9 +18,33 @@ Stitch Hosting allows you to host, manage, and serve your application’s static
 For further infromation read the [hosting documentaion](https://docs.mongodb.com/stitch/hosting/) for an overview. Its a two step process to [enable hosting](https://docs.mongodb.com/stitch/hosting/enable-hosting/) and then [upload content](https://docs.mongodb.com/stitch/hosting/upload-content-to-stitch/). 
 
 ### 1. Enable hosting
-Navigate to the Hosting Configuration Page
-To open the hosting configuration page, click Hosting in the left-hand navigation of the Stitch UI.
+Navigate to the Hosting Configuration Page:   
+To open the hosting configuration page, click "Hosting" in the left-hand navigation of the Stitch UI.
 
 ![Hosting](img/hosting1.jpg)
 
-On the Hosting configuration page, click Enable Hosting. Stitch will begin provisioning hosting for your application.
+On the Hosting configuration page, click Enable Hosting. Stitch will begin provisioning hosting for your application.  You can no access your defaul index page by typing inthe following url into your browser:
+
+ ```<your-app-id>.mongodbstitch.com```
+ 
+
+### 2. Upload your files
+![Hosting](img/hosting2.jpg)
+
+Press the button labeled __"upload your files"__ and select all the html files you have been working on.
+__blog.html__   
+__employee.html__   
+__employeeGoogleChart.html__   
+__employeeOrgChart.html__   
+
+You can now access them at <your-app-id>..mongodbstitch.com!  For example try   
+  
+ ```<your-app-id>.mongodbstitch.com/blog.html```
+ 
+Lets have fun and delete the old index file by selecting the "..." menu item in the list of files.  Next lets replace the old index by renaming __employeeOrgChart.html__ or one of your other files to index.html.  
+
+Lets see your new employee app in action! Type in the default address 
+
+ ```<your-app-id>.mongodbstitch.com```
+
+Notice how you can access the database directly from the web.
