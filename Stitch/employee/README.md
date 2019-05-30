@@ -144,6 +144,7 @@ by replacing your-app-id with the APP ID displayed in the upper left of your sti
 Save the file as employee.html to a directory on your hard drive.  Navigate to that file in finder or windows explorer and double click the file to open it in your browser. Enter some data, be sure to fill in the employee_id field with a unique number.  For example, start with 100. Then add another employee with and id of 101, next 102 etc... You can have the second employee 101 report to the first employee by setting the manager id to 100.   
 
 You should see something like the following:   
+
 ![Employees](img/employeeApp.jpg "Employee List")
 
 ### 4. Create a trigger to track changes to employees over time
@@ -155,7 +156,7 @@ In the linked function drop list select "+ New Function" and give the function a
 ![Employee Trigger](img/trgEmployeeHist.jpg "Employee Trigger")
 
 ### 5. Create two new history collections
-Select the ">_Getting Started_" menu item in the left pannel or add a new rule for two new collections.  Specify the HR database and the collection names "empHistFull" and "empHist" these collections must be present in the stitch rules for the trigger to update these collections.
+Select the ">_Getting Started_" menu item in the left pannel or add a new rule for two new collections.  Specify the HR database and the collection names __"empHistFull"__ and __"empHist"__ these collections must be present in the stitch rules for the trigger to update these collections.  The names are case sensitive and used in the trigger so be sure they match.
 
 ![Add Collection](img/addCollection.jpg "Add Collection")
 
