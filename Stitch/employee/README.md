@@ -136,7 +136,7 @@ by replacing your-app-id with the APP ID displayed in the upper left of your sti
 Save the file as employee.html to a directory on your hard drive.  Navigate to that file in finder or windows explorer and double click the file to open it in your browser. Enter some data, be sure to fill in the employee_id field with a unique number.  For example, start with 100. Then add another employee with and id of 101, next 102 etc... You can have the second employee 101 report to the first employee by setting the manager id to 100.   
 
 You should see something like the following:   
-![Employees](img/employeelist.jpg "Employee List")
+![Employees](img/employeeApp.jpg "Employee List")
 
 ### 4. Create a trigger to track changes to employees over time
 In the left hand navigation pannel of the stitch console select "Triggers" and then click the "Add a trigger" button.  
