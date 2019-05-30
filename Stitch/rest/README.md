@@ -82,9 +82,9 @@ Our fist step is to get the new URL for our findEmployeeService. In the findEmpl
 
 ![Webhook URL](img/findEmployee4.jpg "Webhook URL")
 
-Next we use postman to test our service.  Create a new collection for MongoDB and add a new post service test. Adda new tab and select "POST" from the drop list. Paste in the URL.  Seelct the "Body" tab and be sure to select RAW JSON(application/json). Click teh save button and name it "Find Employee."
+Next we use postman to test our service.  Create a new collection for MongoDB and add a new post service test. Add a new tab and select "POST" from the drop list. Paste in the URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Find Employee."
 
-Use something like the following saerch document to find your employee.  Replace "Bob" with the first name you used in setting up your employee data. Hit send and you should get your employee document back. Change first_name to "employee_id" and play around with your data.
+Use something like the following search document to find your employee.  Replace "Bob" with the first name you used in setting up your employee data. Hit send and you should get your employee document back. Change first_name to "employee_id" and play around with your data.
 
 ``` { "first_name": "Bob"}```
 
@@ -128,12 +128,13 @@ exports = function(payload) {
 
 ### 5. Test the REST based API add employee service through postman
 ![Postman](img/postmanAdd.jpg "postman")
+Next we use postman to test our service.  Add a new tab and select "POST" from the drop list. Paste in the addEmployeeWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Add Employee."
 
-Once post man is configured, use the json template below by pasting it in the postman body to add a new employee.
+Once post man is configured, use the json template below by pasting it in the postman body to add a new employee.  Change the employee_id and manager_id, title and department to fit into your organization.  
 
 ```
 { 
-"employee_id": 111,
+"employee_id": 121,
 "first_name": "Tom",
 "last_name": "Tucker",
 "department": "SALES",
@@ -142,4 +143,6 @@ Once post man is configured, use the json template below by pasting it in the po
 }
 ```
 
-Next: add some charts to your application with the [Embed Atlas Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts) in your application tutorial.
+Verify he or she was added by refreshing your employee application, or view the changes in the Atlas "collection" browser.
+
+_Next Steps:_ add some charts to your application with the [Embed Atlas Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts) in your application tutorial.
