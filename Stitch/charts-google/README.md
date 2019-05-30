@@ -29,7 +29,7 @@ The completed source file is in the link here [Employee Google Charts](employeeG
 const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
 ```
 
-Save the file as employeeChartsGoogle.html and double click to see the reports generated for your employee application.  The rest of this tutorial explains how to create this file from the original employee.html covered in the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
+Save the file as employeeChartsGoogle.html and double click to see the reports generated for your employee application.  The rest of this tutorial explains how to create this file from the original [employee.html](../employee/employee.html) covered in the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
 
 ### 1. Aggregation of employees by department
 The first step is to gather the data required by the charts.  The charts will display a count of employees by department.  Lets begin by creating a new function to count the employees by department and display the results as a table.
