@@ -104,10 +104,10 @@ This goes directly beneath the input div tag
 
 ```
 	<div id="contact" class="contact">
-      <hr>
-      Employee List:
-      <hr>
-      <div id="employees"></div>
+      		<hr>
+      		Employee List:
+      		<hr>
+      		<div id="employees"></div>
 	</div>
   </body>
 </html>
