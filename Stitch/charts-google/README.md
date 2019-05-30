@@ -85,7 +85,7 @@ After the java script code and div are added to the html we are now ready to cal
 ```
 Save the modified html file and double click it, or refresh the browser to see the employee counts by department.
 
-### 2. Creating google charts
+### 2. Importing Google Charts
 Google charts are created in three steps.  The first step requires importing the javascript library form google.  Next we specify the chart type.  We then load the chart data into a data table object and pass that data object into the charts draw function. Lets begin by importing the chart's java script library from gooogle.  We add the import in the header section of the html right after we import the stitch sdk.
 
 ```
@@ -96,7 +96,7 @@ Google charts are created in three steps.  The first step requires importing the
     ...
 ```
 
-Next we load the corechart package ```google.charts.load('current', {'packages':['corechart']});``` as we initialize variables for all our functions.
+Next we load the corechart package ```google.charts.load('current', {'packages':['corechart']});``` as we initialize the variables for our functions.
 
 ```
 <html>
@@ -111,7 +111,38 @@ Next we load the corechart package ```google.charts.load('current', {'packages':
 	...
 ```
 
-Now that we have the chart objects loaded its time to write the aggregation function to load the chart data and draw the chart.
+### 3. Drawing google charts
+Now that we have the chart objects loaded its time to write the aggregation function to load the chart data and draw the charts.  We have two charts sharing the same data.  We have a pie chart and a column chart.  We create them by assignng a variable and initializing the google pie chart and column chart respectively. As part of the initialization process we pass in the id for the div tag in the html where the chart will be rendered.
+```
+...
+	var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
+	var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
+...
+```
+
+
+After we have initialized the chart objects we create a new data table object to store the data.  Then we add two columns one for the department name and the other for the employee count.
+
+```
+...
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'Department');
+	data.addColumn('number', 'EmployeeCount');
+...	
+```
+The next step involves calling stitch with an aggregation function to gather the data from the Atlas database.  We get the result set which contains a department name and employee count for each department. We use a "forEach" loop reading each record and storing it in the data table.  The "id" field is used as the aggregation id to group by which for this query is the department name.
+
+```
+cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
+	     	.then(docs => {
+			docs.forEach( function(myDoc) {
+				data.addRow([ myDoc._id , myDoc.num_employees ] );
+			});
+			....
+		});
+```
+
+After we create the data table and load it with data we are ready to specify the chart options and draw the table.  The completed function is shown below.
 
 ```
 	function drawEmployeeCountChart() {
@@ -137,4 +168,20 @@ Now that we have the chart objects loaded its time to write the aggregation func
 			chartColumn.draw(data, options);
 		});
 	}
+```
+
+The final step is to add in the div tags for the charts.  We would like to view the two charts side by side so we include them in an html table.  We place them above the html table that provided the counts in our first step.
+
+```
+...
+      <hr>
+	  <table><tr><td><div id="employee_piechart"></div><td><td><div id="employee_columnchart"></div></tr>
+	  </table>
+	  <div id="employee_counts"></div>
+      <hr>
+	  Employee List:
+      <hr>
+	  <div id="employees"></div>
+  </body>
+</html>
 ```
