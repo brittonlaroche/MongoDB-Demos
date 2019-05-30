@@ -1,6 +1,6 @@
 # MongoDB Stitch
 
-_SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
+_SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
 ## Tutorial Contents 
 1. [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/)
