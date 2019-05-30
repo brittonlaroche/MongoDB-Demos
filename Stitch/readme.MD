@@ -1,6 +1,8 @@
 # MongoDB Stitch
 
-_SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
+_SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
+
+![Stitch](../img/stitch2.jpg "Stitch")   
 
 ## Tutorial Contents 
 (Note: All tutorials are hands on and should take an estimated time of less than 20 minutes)
