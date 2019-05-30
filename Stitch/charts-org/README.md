@@ -30,3 +30,31 @@ const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
 ```
 
 Save the file as employeeOrgChart.html and double click to see the reports generated for your employee application in the browser.  The rest of this tutorial explains how to create this file from the original [employee.html](../employee/employee.html) covered in the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
+
+### 1. Importing Google Charts
+Google charts are created in three steps.  The first step requires importing the javascript library form google.  Next we specify the chart type.  We then load the chart data into a data table object and pass that data object into the charts draw function. Lets begin by importing the chart's java script library from gooogle.  We add the import in the header section of the html right after we import the stitch sdk.
+
+```
+<html>
+  <head>
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    ...
+```
+
+Next we load the orgchart package ```google.charts.load('current', {'packages':['orgchart']});``` as we initialize the variables for our functions.
+
+```
+<html>
+  <head>
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
+        "mongodb-atlas").db('HR');
+	google.charts.load('current', {'packages':['orgchart']});
+	...
+```
+
+### 2. Drawing google charts
