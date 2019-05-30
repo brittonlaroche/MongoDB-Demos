@@ -27,8 +27,10 @@ After the new application is created, click the "HumanResources" in the list of 
 
 ![Stitch Application](img/humanResources.jpg "Stitch App")
 
+Notice the Stitch application ID (APP ID) dsiplayed in the upper left with a copy button.  We will make use of the application id in a moment.  Also notice section (1) labeled "Turn on Authentication" at the bottom center of the screen.
+
 #### Turn on anonymous authentication 
-Enable aunonmous authentication by moving the slider button to the right. In general this is a bad idea, as we should have a secure way of identifying our users, but for the brevity of this tutorial and for the purpose of demonstration, we will use Anonymous Authentication.  We will address user authentication in another tutorial.
+Enable anonymous authentication by moving the slider button to the right. In general this is a bad idea, as we should have a secure way of identifying our users, but for the brevity of this tutorial and for the purpose of demonstration, we will use Anonymous Authentication.  We will address user authentication in another tutorial.
 
 #### Initialize a MongoDB Collection
 Specify a new collection where the application will write data.  Use the uppercase database name __"HR"__ and the lower case collection name __"employees"__ (note the names are case sensitive)
