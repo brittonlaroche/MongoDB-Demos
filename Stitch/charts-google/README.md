@@ -29,19 +29,22 @@ No effort was put into beautifying the html page, no css or framework was added 
 The first step is to gather the data required by the charts.  The charts will display a count of employees by department.  Lets begin by creating a new function to count the employees by department and display the results as a table.
 
 ```
+<script>
+...
 	function displayEmployeeCounts() {
 		//We will aggregate the employee data by department and create a table with totals
 		const tStrt = "<div><table><tr><th>Department</th><th>Number of Employees</th></tr>";
 		const cEmployees = db.collection("employees");
 		cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
 		    .then(docs => {
-		      const html = docs.map(c => "<tr><td>" +
-		      c._id +  "</td><td>" +
-		      c.num_employees + "</td><td>" +
-		      "</tr>").join("");
-		      document.getElementById("employee_counts").innerHTML = tStrt + html + "</table></div>";
+		      	const html = docs.map(c => "<tr><td>" +
+		      	c._id +  "</td><td>" +
+		      	c.num_employees + "</td><td>" +
+		      	"</tr>").join("");
+		      	document.getElementById("employee_counts").innerHTML = tStrt + html + "</table></div>";
 		    });
 	}
+</script>
 ```
 
 Next we add a div tag ```<div id="employee_counts"></div>``` to contain the "employee_counts" table.
@@ -59,4 +62,22 @@ Next we add a div tag ```<div id="employee_counts"></div>``` to contain the "emp
 ...
 ```
 
+After the java script code and div are added to the html we are now ready to call the function from the load function already in place, we simply add ```.then(displayEmployeeCounts)```.
+
+```
+<script>
+...
+        function displayEmployeesOnLoad() {
+          client.auth
+            .loginWithCredential(new stitch.AnonymousCredential())
+            .then(displayEmployeeCounts)
+            .then(displayEmployees)
+            .catch(console.error);
+        }
+...
+</script>
+```
+Save the modified html file and double click it, or refresh the browser to see the employee counts by department.
+
+# Creating the google charts
 
