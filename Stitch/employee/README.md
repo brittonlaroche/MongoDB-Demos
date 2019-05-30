@@ -247,6 +247,8 @@ Click on clusters and press the collection button.  This will bring up the colle
 
 Once the collection browsing tab is open, navigate to your database and look at the data in the employee collection. Next look at the employee history full docuement collection, and the employe history collection which contains only the updated fields.
 
+Add another employee and make him report in to a manager.  Give that employee a raise and a promotion, reporting directly to the CEO.  Observe the changes recorded in the employee history collections.
+
 ![Collection Browse](img/browseCollections2.jpg "Collection Browse")
 
 ## Next Steps
