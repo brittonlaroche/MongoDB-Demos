@@ -96,7 +96,7 @@ Google charts are created in three steps.  The first step requires importing the
     ...
 ```
 
-Next we load the corechart package ```google.charts.load('current', {'packages':['corechart']});``` as we initialize variabled for all our functions.
+Next we load the corechart package ```google.charts.load('current', {'packages':['corechart']});``` as we initialize variables for all our functions.
 
 ```
 <html>
