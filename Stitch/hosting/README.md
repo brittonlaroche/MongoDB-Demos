@@ -31,7 +31,8 @@ On the Hosting configuration page, click Enable Hosting. Stitch will begin provi
 ### 2. Upload your files
 ![Hosting](img/hosting2.jpg)
 
-Press the button labeled __"upload your files"__ and select all the html files you have been working on.
+Press the button labeled __"upload your files"__ and select all the html files you have been working on.   
+
 __blog.html__   
 __employee.html__   
 __employeeGoogleChart.html__   
