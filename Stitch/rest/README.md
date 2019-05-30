@@ -140,3 +140,6 @@ Once post man is configured, use the json template below by pasting it in the po
 "title": "EAE",
 "manager_id": 100"
 }
+
+
+Next add some charts to your application with the [Embed Atlas Charts in your app tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts)
