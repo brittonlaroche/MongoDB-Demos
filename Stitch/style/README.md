@@ -67,13 +67,13 @@ It looks like this when finished:
 
 ### 2. Doing the body work
 
-We take the inout section and wrap it in a new div tag with an id of contact like so:
+We take the old input section and wrap it in a new div tag with an id of "contact" like so:
 
 ```
 <div id="contact" class="container">
 ```
 
-Then we replace the old input table with field set tags around our input variables.
+Then we replace the old input table with fieldset tags around our input variables.
 
 ```
 <body onload="displayEmployeesOnLoad()">
