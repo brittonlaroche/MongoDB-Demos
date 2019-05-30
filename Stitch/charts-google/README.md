@@ -186,7 +186,7 @@ One last step is to add in the div tags for the charts.  We would like to view t
 </html>
 ```
 ### 4. Calling the function to draw the charts
-The final step is to draw the chart when the page loads.  We currently have a function to piggy back on, we simple add the following line of code to the load script. 
+The final step is to draw the chart when the page loads.  We currently have a load function to piggy back on, we add the following line of code to the load script. 
 
 ```
 	.then(drawEmployeeCountChart)
