@@ -13,4 +13,6 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
 
 ### Hosting Overview
-Read the [hosting documentaion](https://docs.mongodb.com/stitch/hosting/) for an overview. Its a two step process to [enable hosting]
+
+
+For further infromation read the [hosting documentaion](https://docs.mongodb.com/stitch/hosting/) for an overview. Its a two step process to [enable hosting](https://docs.mongodb.com/stitch/hosting/enable-hosting/) and then [upload content](https://docs.mongodb.com/stitch/hosting/upload-content-to-stitch/). 
