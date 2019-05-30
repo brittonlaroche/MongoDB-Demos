@@ -51,7 +51,7 @@ And the final result... is beatiful...
 ![Final Result](img/achartEmbed2.jpg "Embeded Chart in our application")
 
 ## Next Steps
-[Embed Google Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) in your application.
-[Embed an Org Chart](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) in your application.
-[Host your application](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) upload your application to Atlas hosting services and host it one the web at mongodbstitch.com for everyone to see.
+5. [Embed Google Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) in your application.
+6. [Embed an Org Chart](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) in your application.
+7. [Host your application](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) upload your application to Atlas hosting services and host it one the web at mongodbstitch.com for everyone to see.
 
