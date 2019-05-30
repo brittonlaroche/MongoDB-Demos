@@ -79,5 +79,5 @@ After the java script code and div are added to the html we are now ready to cal
 ```
 Save the modified html file and double click it, or refresh the browser to see the employee counts by department.
 
-### 2. Creating the google charts
+### 2. Creating google charts
 
