@@ -2,7 +2,7 @@
 _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 (Note this tutorial build's on the [Employee Tutorial](../employee))
 
-## Full Tutorial Contents 
+## Tutorial Contents 
 1. [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/)
 2. [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
 3. [Stitch Query Anywhere tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/rest)
