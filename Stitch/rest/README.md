@@ -1,7 +1,7 @@
 ## Atlas Stitch Serverless Rest Based API 
 
-_SA Creator_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
-Estimated time to complete 15 Minutes. Note this tutorial build's on the [Employee Tutorial](../employee)
+_SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
+(Note: this tutorial build's on the [Employee Tutorial](../employee))
 
 ## Tutorial Contents 
 1. [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/)
@@ -140,6 +140,6 @@ Once post man is configured, use the json template below by pasting it in the po
 "title": "EAE",
 "manager_id": 100"
 }
-
+```
 
 Next add some charts to your application with the [Embed Atlas Charts in your app tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts)
