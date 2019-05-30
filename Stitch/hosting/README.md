@@ -12,4 +12,5 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 7. [Host your application tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) 
 
 
-
+### Hosting Overview
+Read the [hosting documentaion](https://docs.mongodb.com/stitch/hosting/) for an overview. Its a two step process to [enable hosting]
