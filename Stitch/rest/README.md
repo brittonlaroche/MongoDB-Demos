@@ -91,9 +91,11 @@ Use something like the following search document to find your employee.  Replace
 ![Postman](img/postman.jpg "postman")
 
 ### 4. Create a webhook to call the function add or update employee data
-Create a new Service named: __addEmployeeService__
+Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhook function editior cut and paste the code below.  
+Create a new Service named: __addEmployeeService__   
+Create a new Webhook named: __addEmployeeWebhook__   
 
-Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhook function editior cut and paste the code below. 
+
 ```
 exports = function(payload) {
   var cEmployees = context.services.get("mongodb-atlas").db("HR").collection("employees");
