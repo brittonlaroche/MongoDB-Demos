@@ -10,4 +10,6 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 6. [Embed an Org Chart tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) 
 7. [Host your application tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) 
 
-The blog tutorial is located in the MongoDb stitch tutorials [here](https://docs.mongodb.com/stitch/tutorials/blog-overview/) complete the tutorial,  and then progress to the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
+The blog tutorial is located in the MongoDb stitch tutorials here [blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/). 
+
+Complete the blog tutorial, and then progress to the [Atlas Triggers and Functions: Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
