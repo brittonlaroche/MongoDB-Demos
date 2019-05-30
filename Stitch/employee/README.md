@@ -23,7 +23,7 @@ Click the button "Create New Stitch App. Type in __"HumanResources"__ (no spaces
 
 
 ### 2. Configure the stitch application
-After the new application is created, click the "HumanResources" stitch application to enter into the stitch console.
+After the new application is created, click the "HumanResources" in the list of stitch applications to enter into the application's stitch console.
 ![Stitch Application](img/humanResources.jpg "Stitch App")
 
 #### Turn on anonymous authentication 
