@@ -12,5 +12,4 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 7. [Host your application tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) 
 
 
-[go](http://stackoverflow.com){:target="_blank" rel="noopener"}
-<a href="http://example.com/" target="_blank">example</a>
+
