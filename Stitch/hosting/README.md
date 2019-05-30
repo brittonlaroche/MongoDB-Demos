@@ -10,3 +10,7 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 5. [Embed Google Charts tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) 
 6. [Embed an Org Chart tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-org) 
 7. [Host your application tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) 
+
+
+[go](http://stackoverflow.com){:target="_blank" rel="noopener"}
+<a href="http://example.com/" target="_blank">example</a>
