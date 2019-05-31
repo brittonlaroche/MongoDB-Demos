@@ -163,7 +163,7 @@ The standard is not to run in async mode.
 exports = function(payload) {
 ```
 
-The result for the default behavior would be an empty or undefined return document.  It might have take some time to figure out why.  
+The result for the default synchronous behavior would be an empty or undefined return document.  If you are not aware of the  __"async"__ keyword, which is required for database look ups when calling another function, it might take some time to figure out why the return document is always null or undefined.  
 
 ### 5. Test the REST based API add employee service through postman
 Next we use postman to test our service.  Add a new tab and select "POST" from the drop list. Paste in the addEmployeeWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Add Employee."   
