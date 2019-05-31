@@ -181,9 +181,13 @@ Once post man is configured, use the json template below by pasting it in the po
 }
 ```
 
-Verify he or she was added as an employee by refreshing your employee.html application, or view the changes in the Atlas "collection" browser.  The employee should show up in compass, and the atlas collection browser but not in your employee.html application.  The reason is the owner_id of the webhook is not the same as the owner_id of the application. The stitch rules need to be changed.  Open the rules editor by selecting the "Rules" menu item in the left navigation pane.  We need to remove the rule which matches the owner_id to the user id.
+Verify he or she was added as an employee by refreshing your employee.html application, or view the changes in the Atlas "collection" browser.  The employee should show up in compass, and the atlas collection browser but not in your employee.html application.  The reason is the owner_id of the webhook is not the same as the owner_id of the application. The stitch rules need to be changed.  
+
+Open the rules editor by selecting the "Rules" menu item in the left navigation pane.  We need to remove the rule which matches the owner_id to the user id. Click the edit icon for the owner shaped like a pencil.
 
 ![Rules](img/rules1.jpg)
+
+
 
 ## Next Steps
 Add some charts to your application with the [Embed Atlas Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts) tutorial.
