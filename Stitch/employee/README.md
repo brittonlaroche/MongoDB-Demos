@@ -15,7 +15,7 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
 In this short tutorial we are going to create a Human Resources application that tracks changes to employees over time.  To accomplish this we will modify the results of our [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/) by adding additional fields and using an "upsert" (update / insert) into a new HR database with an employees collection. We will add a trigger to take the new full employee document into one collection, and just the updated fields into a second collection.  
 
-![Diagram](img/employeeTrigger.jpg "Diagram")   
+![Diagram](img/employeeOverview.png "Diagram")   
 
 Additonal information on triggers are available here [MongoDB Trigger Documenatation](https://docs.mongodb.com/stitch/triggers/)
 
