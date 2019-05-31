@@ -51,7 +51,7 @@ exports = async function( aSearchDoc ){
 Notice that we made this function async in the declaration.  This will allow the calling function to await a database response while this function does the work to find the employee specified.  The employee search criteria is specified in the search document passed in as an argument.
 
 ### 2. Create a webhook to call the function to query employee data
-Select "Servcies" from the left navigation panel in the Stitch Console.  Click the "Add a Service" button. In the add a service dialog select the "HTTP" button and give the service a name "findEmployeeService" and click the "Add Service" button.   
+Select "Services" from the left navigation panel in the Stitch Console.  Click the "Add a Service" button. In the add a service dialog select the "HTTP" button and give the service a name "findEmployeeService" and click the "Add Service" button.   
 
 ![Console](img/findEmployee2.jpg "Console")
 
@@ -82,7 +82,7 @@ exports = async function(payload) {
 Notice that in our webhook function we take in the payload body, which should be a search document, and call our find employee function created earlier.
 
 ### 3. Test the search employee REST based API service through postman
-Our fist step is to get the new URL for our findEmployeeService. In the findEmployeeWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
+Our first step is to get the new URL for our findEmployeeService. In the findEmployeeWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
 
 ![Webhook URL](img/findEmployee4.jpg "Webhook URL")
 
@@ -97,7 +97,7 @@ Use something like the following search document to find your employee.  Replace
 ![Postman](img/postman.jpg "postman")
 
 ### 4. Create a webhook to call the function add or update employee data
-Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhook function editior cut and paste the code below.  
+Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhook function editor cut and paste the code below.  
 Create a new HTTP Service named: __addEmployeeService__   
 Create a new Webhook named: __addEmployeeWebhook__   
 
@@ -109,7 +109,7 @@ exports = async function(payload) {
   console.log("Executing addEmployeeWebhook");
   var queryArg = payload.query.arg || '';
   var body = {};
-  var result = { "status": "Unkown: Payload body may be empty"};
+  var result = { "status": "Unknown: Payload body may be empty"};
   
   if (payload.body) {
     console.log(JSON.stringify(payload.body));
@@ -141,7 +141,7 @@ exports = async function(payload) {
       return result;
     }
 
-    // Lets return the document we find after creating the employee 
+    // Let's return the document we find after creating the employee 
     var searchDoc = { "employee_id": parseInt(body.employee_id)};
     result = await context.functions.execute("findEmployee", searchDoc);
   }
@@ -149,7 +149,7 @@ exports = async function(payload) {
 };
 ```
 
-The function above checks the pay load body and for the presence of an employee_id.  If either is missing it will return a document with a status of error or unknown.  If it is succeful in creating the employee, it will search for the employee and return the newly created document.  This ties together many concepts as addEmployeeWebhook function calls the findEmployee function asynchronously and awaits the result.  This is not the default behavior, to getthe function to run asychnously we have to add the following __"async"__ keyword to the function declaration.
+The function above checks the payload body and for the presence of an employee_id.  If either is missing it will return a document with a status of error or unknown.  If it is successful in creating the employee, it will search for the employee and return the newly created document.  This ties together many concepts as addEmployeeWebhook function calls the findEmployee function asynchronously and awaits the result.  This is not the default behavior, to get the function to run asynchronously we have to add the following __"async"__ keyword to the function declaration.
 
 ```
 exports = async function(payload) {
@@ -168,7 +168,7 @@ Next we use postman to test our service.  Add a new tab and select "POST" from t
 
 ![Postman](img/postmanAdd.jpg "postman")
 
-Once post man is configured, use the json template below by pasting it in the postman body to add a new employee.  Change the employee_id and manager_id, title and department to fit into your organization.  
+Once postman is configured, use the json template below by pasting it in the postman body to add a new employee.  Change the employee_id and manager_id, title and department to fit into your organization.  
 
 ```
 { 
@@ -198,7 +198,9 @@ This rule matches the owner_id inserted in the app to the anonymous user we crea
 ```
 {}
 ```
-Save the changes in the rules editor by clicking the save button in the upper right. Refresh the empoyee.html in the browser and you should see the employees recently added through the rest API webhook.
+Save the changes in the rules editor by clicking the save button in the upper right. Refresh the employee.html in the browser and you should see the employees recently added through the rest API webhook.
 
 ## Next Steps
 Add some charts to your application with the [Embed Atlas Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts) tutorial.
+
+
