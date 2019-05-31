@@ -183,19 +183,23 @@ exports = function(changeEvent) {
       //--------------------------------------------------
       //we have an update.
       //--------------------------------------------------
-      //we will update both collections
+      // we will update both collections
+      // let's add the employee_id and date fields so we know when the change 
+      // was made and to which employee_id
+      // let's also track the document id as the parent_id of the change
+      // we will start by recording only the updated fields in empHist
       var updatedFields = updateDescription.updatedFields; 
-      //lets add the employee_id and date fields so we know when the change was made and to which employee_id
-      //lets also track the document id as the parent_id of the change
       updatedFields.employee_id = fullDocument.employee_id;
       updatedFields.date = nDate;
       updatedFields.parent_id = fullDocument._id;
       cEmpHist.insertOne(updatedFields);
-      
-      //lets track a full document change as well
+     
+      // lets track a full document change as well
       // lets set the _id field of the original document as parent_id
-      // and delete the _id field as this original document will change multiple times and violate the unique key for _id 
+      // and delete the _id field as this original document will change 
+      // multiple times and violate the unique key for _id 
       // in the history table
+      // we will finish by recording the full document in empHistFull
       fullCopy.date = nDate;
       parent_id = fullDocument._id;
       delete fullCopy._id; 
@@ -206,7 +210,8 @@ exports = function(changeEvent) {
       //--------------------------------------------------
       // we will update the full history collection only
       // lets set the _id field of the original document as parent_id
-      // and delete the _id field as this original document will change multiple times and violate the unique key for _id 
+      // and delete the _id field as this original document will change 
+      // multiple times and violate the unique key for _id 
       // in the history table
       fullCopy.date = nDate;
       parent_id = fullDocument._id;
