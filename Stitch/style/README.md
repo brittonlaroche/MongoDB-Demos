@@ -22,13 +22,13 @@ Lets get started.  We will need the [employee.html](../employee/employee.html) f
 
 Be sure to change the application id to the application id displayed in your stitch console inside the employee.html, if you have not done so already.
 
-```
+```js
 const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
 ```
 
 Now we link the mystyle.css style sheet into the employee.html file right after the "head" tag as seen below:
 
-```
+```html
 html>
   <head>
 	<link rel="stylesheet" type="text/css" href="./mystyle.css">
