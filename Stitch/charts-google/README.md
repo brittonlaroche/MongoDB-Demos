@@ -27,7 +27,7 @@ Note: the employeeChartsGoogle.html app is bare bones on purpose, if you wish to
 ### Source file
 The completed source file is in the link here [Employee Google Charts](employeeGoogleChart.html), you can click the link and copy the html into a text editor.  Change 'your-app-id' to the application displayed in your stitch console.  
 
-```
+```js
 const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
 ```
 
@@ -36,7 +36,7 @@ Save the file as employeeChartsGoogle.html and double click to see the reports g
 ### 1. Count of employees by department
 The first step is to gather the data required by the charts.  The charts will display a count of employees by department.  Lets begin by creating a new function to count the employees by department and display the results as a table.
 
-```
+```js
 <script>
 ...
 	function displayEmployeeCounts() {
@@ -53,11 +53,11 @@ The first step is to gather the data required by the charts.  The charts will di
 		    });
 	}
 </script>
-```
+```html
 
 Next we add a div tag ```<div id="employee_counts"></div>``` to contain the "employee_counts" table.
 
-```
+```html
 ...
      <input type="submit" onClick="addEmployee()">
       <hr>
@@ -72,7 +72,7 @@ Next we add a div tag ```<div id="employee_counts"></div>``` to contain the "emp
 
 After the java script code and div are added to the html we are now ready to call the function from the load function already in place, we simply add ```.then(displayEmployeeCounts)```.
 
-```
+```js
 <script>
 ...
         function displayEmployeesOnLoad() {
@@ -90,7 +90,7 @@ Save the modified html file and double click it, or refresh the browser to see t
 ### 2. Importing Google Charts
 Google charts are created in three steps.  The first step requires importing the javascript library form google.  Next we specify the chart type.  We then load the chart data into a data table object and pass that data object into the charts draw function. Lets begin by importing the chart's java script library from gooogle.  We add the import in the header section of the html right after we import the stitch sdk.
 
-```
+```html
 <html>
   <head>
     <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
@@ -100,7 +100,7 @@ Google charts are created in three steps.  The first step requires importing the
 
 Next we load the corechart package ```google.charts.load('current', {'packages':['corechart']});``` as we initialize the variables for our functions.
 
-```
+```html
 <html>
   <head>
     <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
@@ -115,7 +115,7 @@ Next we load the corechart package ```google.charts.load('current', {'packages':
 
 ### 3. Drawing google charts
 Now that we have the chart objects loaded its time to write the aggregation function to load the chart data and draw the charts.  We have two charts sharing the same data.  We have a pie chart and a column chart.  We create them by assignng a variable and initializing the google pie chart and column chart respectively. As part of the initialization process we pass in the id for the div tag in the html where the chart will be rendered.
-```
+```js
 ...
 	var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
 	var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
@@ -125,7 +125,7 @@ Now that we have the chart objects loaded its time to write the aggregation func
 
 After we have initialized the chart objects we create a new data table object to store the data.  Then we add two columns one for the department name and the other for the employee count.
 
-```
+```js
 ...
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Department');
@@ -134,7 +134,7 @@ After we have initialized the chart objects we create a new data table object to
 ```
 The next step involves calling stitch with an aggregation function to gather the data from the Atlas database.  We get the result set which contains a department name and employee count for each department. We use a "forEach" loop reading each record and storing it in the data table.  The "id" field is used as the "aggregation id" to perform the "group by." For this query we "group by" the department name and therefor department is the "id" field.
 
-```
+```js
 cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
 	     	.then(docs => {
 			docs.forEach( function(myDoc) {
@@ -146,7 +146,7 @@ cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}
 
 After we create the data table and load it with data we are ready to specify the chart options and draw the table.  The completed function is shown below.
 
-```
+```js
 	function drawEmployeeCountChart() {
 		var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
 		var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
@@ -174,7 +174,7 @@ After we create the data table and load it with data we are ready to specify the
 
 One last step is to add in the div tags for the charts.  We would like to view the two charts side by side so we include them in an html table.  We place them above the html table that provided the counts in our first step.
 
-```
+```js
 ...
       <hr>
 	  <table><tr><td><div id="employee_piechart"></div><td><td><div id="employee_columnchart"></div></tr>
@@ -190,13 +190,13 @@ One last step is to add in the div tags for the charts.  We would like to view t
 ### 4. Calling the function to draw the charts
 The final step is to draw the chart when the page loads.  We currently have a load function to piggy back on, we add the following line of code to the load script. 
 
-```
+```js
 	.then(drawEmployeeCountChart)
 ```
 
 We will login, draw the charts, display the employee counts and then list the employees.  Here is the new load script.
 
-```
+```js
         function displayEmployeesOnLoad() {
           client.auth
             .loginWithCredential(new stitch.AnonymousCredential())
