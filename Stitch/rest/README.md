@@ -15,7 +15,7 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 ## Atlas - Stitch Query Anywhere Overview
 In this section we will cover the Stitch query anywhere functionality through a REST based API.  We will create two webhooks that allow employee data to be queried or modified through a serverless REST based API layer.  This surfaces the HR application we built to a wide range of producers and consumers of employee data. Examples include payroll processors, health care providers and mobile devices that allow employees to keep up to date on their payment and benefits data. This stitch layer is serverless and no setup or configuration of additional servers are required.
 
-![Diagram](img/StitchRestAPI901.png "Diagram")
+![Diagram](img/stitchRestAPI901.png "Diagram")
 
 ### 1. Create a stitch function to query employee data
 ![Console](img/findEmployee1.jpg "Console")
