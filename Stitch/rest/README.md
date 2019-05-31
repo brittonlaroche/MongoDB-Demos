@@ -20,9 +20,9 @@ In this section we will cover the Stitch query anywhere functionality through a 
 Examples include payroll processors, health care providers and mobile devices that allow employees to keep up to date on their payment and benefits data. This stitch layer is serverless and no setup or configuration of additional servers are required.
 
 ### 1. Create a stitch function to query employee data
-![Console](img/findEmployee1.jpg "Console")
+Create a new function named: __findEmployee__   
 
-Create a new function named: __findEmployee__
+![Console](img/findEmployee1.jpg "Console")
 
 Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name "findEmployee" and click "Save."  This will bring up the function editor, cut and paste the code below and click "Save."
 ```
