@@ -260,6 +260,7 @@ The first part of the trigger is a comment section which shows how to access doc
 ```
 The full change event documentation is available here: [MongoDB Change Event Documentation](https://docs.mongodb.com/manual/reference/change-events/)   
 
+### 7. Test the trigger
 Test the trigger with your employee.html application. Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.  You can see this information by opening a new tab in your browser and going to https://cloud.mongodb.com
 
 When the Atlas control panel opens, click on "clusters" in the left navigation menu panel. This will show the clusters in the main panel. Press the "collection" button for your cluster.  This will bring up the collection browsing tab in Atlas. An example is provided in the screen capture below.   
