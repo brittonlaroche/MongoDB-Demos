@@ -216,7 +216,7 @@ exports = function(changeEvent) {
   
 };
 ```
-The first part of the trigger is a comment section which shows how to access document data through the change event. The comments have  to shown below so we can see how to handle a delete or replace event.  We removed them from the code to make a cut and paste easier.   
+The first part of the trigger is a comment section which shows how to access document data through the change event.   We removed them from the code above to make a cut and paste easier, and to focus on the execution of our task at hand. The comments have  to shown below so we can see how to handle a delete or replace event.  
 
 ```
   /*
@@ -242,7 +242,8 @@ The first part of the trigger is a comment section which shows how to access doc
       var removedFields = updateDescription.removedFields; // An array of removed fields
     }
 
-    Functions run by Triggers are run as System users and have full access to Services, Functions, and MongoDB Data.
+    Functions run by Triggers are run as System users and have full access to Services, 
+    Functions, and MongoDB Data.
 
     Accessing a mongodb service:
     var collection = context.services.get("mongodb-atlas").db("db_name").collection("coll_name");
