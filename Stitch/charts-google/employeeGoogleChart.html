@@ -3,110 +3,99 @@
     <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-        const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
-        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
-        "mongodb-atlas").db('HR');
-	google.charts.load('current', {'packages':['corechart']});
-		
-        function displayEmployeesOnLoad() {
-          client.auth
-            .loginWithCredential(new stitch.AnonymousCredential())
-            .then(drawEmployeeCountChart)
-            .then(displayEmployeeCounts)
-            .then(displayEmployees)
-            .catch(console.error);
-        }
-
-        function displayEmployees() {
-          const tStrt = "<div><table><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
-                "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified</th></tr>";
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
+      "mongodb-atlas").db('HR');
+      google.charts.load('current', {'packages':['corechart']});
+      function displayEmployeesOnLoad() {
+        client.auth
+          .loginWithCredential(new stitch.AnonymousCredential())
+          .then(drawEmployeeCountChart)
+          .then(displayEmployeeCounts)
+          .then(displayEmployees)
+          .catch(console.error);
+      }
+      function displayEmployees() {
+        const tStrt = "<div><table><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
+          "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified</th></tr>";
           db.collection('employees').find({}, {limit: 1000}).asArray()
             .then(docs => {
               const html = docs.map(c => "<tr><td>[" +
-                  c.employee_id +  "]</td><td>" +
-                  c.department +  "</td><td>" +
-                  c.title + "</td><td>" +
-                  c.first_name + " " +
-                  c.last_name + "</td><td>" +
-                  "[" + c.manager_id + "] </td><td>" +
-                  "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
-                  c.last_modified.toLocaleDateString() + "</td>" +
-                  "</tr>").join("");
+                c.employee_id +  "]</td><td>" +
+                c.department +  "</td><td>" +
+                c.title + "</td><td>" +
+                c.first_name + " " +
+                c.last_name + "</td><td>" +
+                "[" + c.manager_id + "] </td><td>" +
+                "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
+                c.last_modified.toLocaleDateString() + "</td>" +
+                "</tr>").join("");
               document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
+          });
+      }	    
+      function drawEmployeeCountChart() {
+        var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
+        var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
+        var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Department');
+          data.addColumn('number', 'EmployeeCount');
+          //Get the data to draw the chart from MongoDB, aggregate the employee data by department
+          const cEmployees = db.collection("employees");
+          cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
+            .then(docs => {
+              docs.forEach( function(myDoc) {
+                data.addRow([ myDoc._id , myDoc.num_employees ] );
+              });
+              // Create the chart.
+              var options = {
+                title: 'Employee Counts By Department',
+                is3D: true,
+                allowHtml:true
+              };
+              chartPie.draw(data, options);
+              chartColumn.draw(data, options);
             });
-        }
-	    
-	function drawEmployeeCountChart() {
-		var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
-		var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
-		var data = new google.visualization.DataTable();
-		data.addColumn('string', 'Department');
-		data.addColumn('number', 'EmployeeCount');
-		//Get the data to draw the chart from MongoDB, aggregate the employee data by department
-		const cEmployees = db.collection("employees");
-		cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
-	     	.then(docs => {
-			docs.forEach( function(myDoc) {
-				data.addRow([ myDoc._id , myDoc.num_employees ] );
-			});
-			// Create the chart.
-			var options = {
-				title: 'Employee Counts By Department',
-				is3D: true,
-				allowHtml:true
-			};
-			chartPie.draw(data, options);
-			chartColumn.draw(data, options);
-		});
-
-	}
-		
-	function displayEmployeeCounts() {
-		//We will aggregate the employee data by department and create a table with totals
-		const tStrt = "<div><table><tr><th>Department</th><th>Number of Employees</th></tr>";
-		const cEmployees = db.collection("employees");
-		cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
-		    .then(docs => {
-		      const html = docs.map(c => "<tr><td>" +
-			  c._id +  "</td><td>" +
-			  c.num_employees + "</td><td>" +
-			  "</tr>").join("");
-		      document.getElementById("employee_counts").innerHTML = tStrt + html + "</table></div>";
-		    });
-	}
-		
+      }	
+      function displayEmployeeCounts() {
+        //We will aggregate the employee data by department and create a table with totals
+        const tStrt = "<div><table><tr><th>Department</th><th>Number of Employees</th></tr>";
+        const cEmployees = db.collection("employees");
+        cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
+          .then(docs => {
+            const html = docs.map(c => "<tr><td>" +
+              c._id +  "</td><td>" +
+              c.num_employees + "</td><td>" +
+              "</tr>").join("");
+            document.getElementById("employee_counts").innerHTML = tStrt + html + "</table></div>";
+          });
+	}	
         function addEmployee() {
-            const eID = document.getElementById('employee_id');
-            const eFname = document.getElementById('first_name');
-            const eLname = document.getElementById('last_name');
-            const eTitle = document.getElementById('title');
-            const eDepartment = document.getElementById('department');
-            const eManagerId = document.getElementById('manager_id');
-            const eSalary = document.getElementById('salary');
+          const eID = document.getElementById('employee_id');
+          const eFname = document.getElementById('first_name');
+          const eLname = document.getElementById('last_name');
+          const eTitle = document.getElementById('title');
+          const eDepartment = document.getElementById('department');
+          const eManagerId = document.getElementById('manager_id');
+          const eSalary = document.getElementById('salary');
             var nDate = new Date();
             db.collection('employees').updateOne(
-                {employee_id: parseInt(eID.value)},
-                {$set: {
-                    owner_id: client.auth.user.id,
-                    employee_id: parseInt(eID.value),
-                    first_name: eFname.value,
-                    last_name: eLname.value,
-                    title: eTitle.value,
-                    department: eDepartment.value,
-                    manager_id: parseInt(eManagerId.value),
-                    salary: parseFloat(eSalary.value),
-                    last_modified: nDate
-                    }
-                },
-                {upsert: true}
+              {employee_id: parseInt(eID.value)},
+              {$set: {
+                owner_id: client.auth.user.id,
+                employee_id: parseInt(eID.value),
+                first_name: eFname.value,
+                last_name: eLname.value,
+                title: eTitle.value,
+                department: eDepartment.value,
+                manager_id: parseInt(eManagerId.value),
+                salary: parseFloat(eSalary.value),
+                last_modified: nDate
+              	}
+              },
+              {upsert: true}
             )
             .then(displayEmployees);
-            //eFname.value = '';
-            //eLname.value = '';
-            //eID.value = '';
         }
-		
-
     </script>
   </head>
   <body onload="displayEmployeesOnLoad()">
@@ -127,12 +116,12 @@
      </table>
       <input type="submit" onClick="addEmployee()">
       <hr>
-	  <table><tr><td><div id="employee_piechart"></div><td><td><div id="employee_columnchart"></div></tr>
-	  </table>
-	  <div id="employee_counts"></div>
+         <table><tr><td><div id="employee_piechart"></div><td><td><div id="employee_columnchart"></div></tr>
+         </table>
+         <div id="employee_counts"></div>
       <hr>
-	  Employee List:
+         Employee List:
       <hr>
-	  <div id="employees"></div>
+        <div id="employees"></div>
   </body>
 </html>
