@@ -11,14 +11,12 @@
       );
       // Get a reference to the blog database
       const db = mongodb.db("blog");
-
-
-	  function displayComments() {
-		db.collection('comments').find({}, {limit: 1000}).asArray()
-		  .then(docs => {
-			 const html = docs.map(c => "<div>" + c.comment + "</div>").join("");
-			document.getElementById("comments").innerHTML = html;
-		  });
+      function displayComments() {
+	db.collection('comments').find({}, {limit: 1000}).asArray()
+	  .then(docs => {
+		 const html = docs.map(c => "<div>" + c.comment + "</div>").join("");
+		document.getElementById("comments").innerHTML = html;
+	  });
        }
       function displayCommentsOnLoad() {
         client.auth
@@ -36,17 +34,14 @@
       }
     </script>
   </head>
-
   <body onLoad="displayCommentsOnLoad()">
     <h3>This is a great blog post</h3>
     <div id="content">
       I like to write about technology because I want to get on the front page of hacker news.
     </div>
-	<hr>
-    Add a Comment: <input id="new_comment"><input type="submit" onClick="addComment()">
+    <hr>
+      Add a Comment: <input id="new_comment"><input type="submit" onClick="addComment()">
     <hr>
     <div id="comments"></div>
- 
   </body>
-
 </html>
