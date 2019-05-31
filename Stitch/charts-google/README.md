@@ -147,29 +147,29 @@ cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}
 After we create the data table and load it with data we are ready to specify the chart options and draw the table.  The completed function is shown below.
 
 ```js
-      function drawEmployeeCountChart() {
-        var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
-        var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
-        var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Department');
-          data.addColumn('number', 'EmployeeCount');
-          //Get the data to draw the chart from MongoDB, aggregate the employee data by department
-          const cEmployees = db.collection("employees");
-          cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
-            .then(docs => {
-              docs.forEach( function(myDoc) {
-                data.addRow([ myDoc._id , myDoc.num_employees ] );
-              });
-              // Create the chart.
-              var options = {
-                title: 'Employee Counts By Department',
-                is3D: true,
-                allowHtml:true
-              };
-              chartPie.draw(data, options);
-              chartColumn.draw(data, options);
+  function drawEmployeeCountChart() {
+    var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
+    var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
+    var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Department');
+      data.addColumn('number', 'EmployeeCount');
+      //Get the data to draw the chart from MongoDB, aggregate the employee data by department
+      const cEmployees = db.collection("employees");
+        cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
+          .then(docs => {
+            docs.forEach( function(myDoc) {
+              data.addRow([ myDoc._id , myDoc.num_employees ] );
             });
-      }
+            // Create the chart.
+            var options = {
+              title: 'Employee Counts By Department',
+              is3D: true,
+              allowHtml:true
+            };
+            chartPie.draw(data, options);
+            chartColumn.draw(data, options);
+          });
+  }
 ```
 
 One last step is to add in the div tags for the charts.  We would like to view the two charts side by side so we include them in an html table.  We place them above the html table that provided the counts in our first step.
