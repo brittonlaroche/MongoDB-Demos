@@ -187,7 +187,18 @@ Open the rules editor by selecting the "Rules" menu item in the left navigation 
 
 ![Rules](img/rules1.jpg)
 
+```
+{
+  "owner_id": "%%user.id"
+}
+```
 
+This rule matches the owner_id inserted in the app to the anonymous user we created for authentication.  This works well for the data entered from the employee.html, but not from other sources. Change the rule to be an empty document.
+
+```
+{}
+```
+Save the changes in the rules editor by clicking the save button in the upper right. Refresh the empoyee.html in the browser and you should see the employees recently added through the rest API webhook.
 
 ## Next Steps
 Add some charts to your application with the [Embed Atlas Charts](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts) tutorial.
