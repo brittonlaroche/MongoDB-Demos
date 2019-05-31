@@ -170,7 +170,7 @@ Select the ">_Getting Started_" menu item in the left pannel or add a new rule f
 ### 6. Write the history function
 Edit the fncEmployeeHist by selecting "Functions" in the left navigation pane of the stitch console. The list of functions appear, click the row with the __fncEmployeeHist__ created in step 4. The click will bring up the function editor for fncEmployeeHist.  You should be able to copy / paste the code below.  Once the code has been pasted press the save button.  The trigger is ready to be tested!
 
-```
+```js
 exports = function(changeEvent) {
     var fullDocument = changeEvent.fullDocument;
     var fullCopy = fullDocument;
@@ -216,7 +216,43 @@ exports = function(changeEvent) {
   
 };
 ```
-The first part of the trigger is a comment section which shows how to access document data through the change event. The comments have been left in to show how to handle a delete or replace event.  The full change event documentation is available here: [MongoDB Change Event Documentation](https://docs.mongodb.com/manual/reference/change-events/)
+The first part of the trigger is a comment section which shows how to access document data through the change event. The comments have  to shown below so we can see how to handle a delete or replace event.  We removed them from the code to make a cut and paste easier.   
+
+```
+  /*
+    A Database Trigger will always call a function with a changeEvent.
+    Documentation on ChangeEvents: https://docs.mongodb.com/manual/reference/change-events/
+
+    Access the _id of the changed document:
+    var docId = changeEvent.documentKey._id;
+
+    Access the latest version of the changed document
+    (with Full Document enabled for Insert, Update, and Replace operations):
+    var fullDocument = changeEvent.fullDocument;
+
+    var updateDescription = changeEvent.updateDescription;
+
+    See which fields were changed (if any):
+    if (updateDescription) {
+      var updatedFields = updateDescription.updatedFields; // A document containing updated fields
+    }
+
+    See which fields were removed (if any):
+    if (updateDescription) {
+      var removedFields = updateDescription.removedFields; // An array of removed fields
+    }
+
+    Functions run by Triggers are run as System users and have full access to Services, Functions, and MongoDB Data.
+
+    Accessing a mongodb service:
+    var collection = context.services.get("mongodb-atlas").db("db_name").collection("coll_name");
+    var doc = collection.findOne({ name: "mongodb" });
+
+    To call other named functions:
+    var result = context.functions.execute("function_name", arg1, arg2);
+  */
+```
+The full change event documentation is available here: [MongoDB Change Event Documentation](https://docs.mongodb.com/manual/reference/change-events/)   
 
 Test the trigger with your employee.html application. Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.  You can see this information by opening a new tab in your browser and going to https://cloud.mongodb.com
 
