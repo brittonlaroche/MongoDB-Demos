@@ -31,20 +31,20 @@ Now we link the mystyle.css style sheet into the employee.html file right after 
 ```html
 html>
   <head>
-	<link rel="stylesheet" type="text/css" href="./mystyle.css">
+    <link rel="stylesheet" type="text/css" href="./mystyle.css">
     <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
     <script>
 ```
 
 The style sheet has two main classes we wish to use one is named "contact" and the other is "blueTable."  Lets start by updating our display employees table first. We will make sure we add the following line to the displayEmployees function.
 
-```
+```js
 <table class=\"blueTable\">
 ```
 
 It looks like this when finished:
 
-```
+```js
       function displayEmployees() {
           const tStrt = "<div><table class=\"blueTable\"><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
                 "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified</th></tr>";
@@ -69,13 +69,13 @@ It looks like this when finished:
 
 We take the old input section and wrap it in a new div tag with an id of "contact" like so:
 
-```
+```html
 <div id="contact" class="container">
 ```
 
 Then we replace the old input table with fieldset tags around our input variables.
 
-```
+```html
 <body onload="displayEmployeesOnLoad()">
 	<div id="contact" class="container">
 		<h3>Employee Information</h3>
@@ -96,13 +96,13 @@ Then we replace the old input table with fieldset tags around our input variable
 ```
 Now we create a new div for our table output section also using the contact id.
 
-```
+```html
 <div id="contact" class="contact">
 ```
 
 This goes directly beneath the input div tag
 
-```
+```html
 	<div id="contact" class="contact">
       		<hr>
       		Employee List:
