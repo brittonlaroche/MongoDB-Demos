@@ -53,7 +53,7 @@ The first step is to gather the data required by the charts.  The charts will di
 		    });
 	}
 </script>
-```html
+```
 
 Next we add a div tag ```<div id="employee_counts"></div>``` to contain the "employee_counts" table.
 
