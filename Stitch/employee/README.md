@@ -53,71 +53,65 @@ The MongoDB stitch browser client sdk documentation is in this link here [MongoD
 
 Cut and paste the raw code from the [employee.html](./employee.html) file into a text editor and save it as "employee.html" to a directory of your choosing.  For convience the file contents is also listed here for a quick copy paste:
 
-```
+```html
 <html>
   <head>
     <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
     <script>
-        const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
-        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
-        "mongodb-atlas").db('HR');
-
-        function displayEmployeesOnLoad() {
-          client.auth
-            .loginWithCredential(new stitch.AnonymousCredential())
-            .then(displayEmployees)
-            .catch(console.error);
-        }
-
-        function displayEmployees() {
-          const tStrt = "<div><table><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
-                "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified</th></tr>";
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
+      "mongodb-atlas").db('HR');
+      function displayEmployeesOnLoad() {
+        client.auth
+          .loginWithCredential(new stitch.AnonymousCredential())
+          .then(displayEmployees)
+          .catch(console.error);
+      }
+      function displayEmployees() {
+        const tStrt = "<div><table><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
+          "<th>Name</th><th>Reports to</th><th>Salary</th><th>Last Modified</th></tr>";
           db.collection('employees').find({}, {limit: 1000}).asArray()
             .then(docs => {
               const html = docs.map(c => "<tr><td>[" +
-                  c.employee_id +  "]</td><td>" +
-                  c.department +  "</td><td>" +
-                  c.title + "</td><td>" +
-                  c.first_name + " " +
-                  c.last_name + "</td><td>" +
-                  "[" + c.manager_id + "] </td><td>" +
-                  "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
-                  c.last_modified.toLocaleDateString() + "</td>" +
-                  "</tr>").join("");
+                c.employee_id +  "]</td><td>" +
+                c.department +  "</td><td>" +
+                c.title + "</td><td>" +
+                c.first_name + " " +
+                c.last_name + "</td><td>" +
+                "[" + c.manager_id + "] </td><td>" +
+                "$" + parseFloat(c.salary).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td>" +
+                c.last_modified.toLocaleDateString() + "</td>" +
+                "</tr>").join("");
               document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
-            });
-        }
-	    
-        function addEmployee() {
-            const eID = document.getElementById('employee_id');
-            const eFname = document.getElementById('first_name');
-            const eLname = document.getElementById('last_name');
-            const eTitle = document.getElementById('title');
-            const eDepartment = document.getElementById('department');
-            const eManagerId = document.getElementById('manager_id');
-            const eSalary = document.getElementById('salary');
-            var nDate = new Date();
-            db.collection('employees').updateOne(
-                {employee_id: parseInt(eID.value)},
-                {$set: {
-                    owner_id: client.auth.user.id,
-                    employee_id: parseInt(eID.value),
-                    first_name: eFname.value,
-                    last_name: eLname.value,
-                    title: eTitle.value,
-                    department: eDepartment.value,
-                    manager_id: parseInt(eManagerId.value),
-                    salary: parseFloat(eSalary.value),
-                    last_modified: nDate
-                    }
-                },
-                {upsert: true}
-            )
-            .then(displayEmployees);
-            //eFname.value = '';
-            //eLname.value = '';
-            //eID.value = '';
-        }
+          });
+      }
+      function addEmployee() {
+        const eID = document.getElementById('employee_id');
+        const eFname = document.getElementById('first_name');
+        const eLname = document.getElementById('last_name');
+        const eTitle = document.getElementById('title');
+        const eDepartment = document.getElementById('department');
+        const eManagerId = document.getElementById('manager_id');
+        const eSalary = document.getElementById('salary');
+        var nDate = new Date();
+        db.collection('employees').updateOne(
+          {employee_id: parseInt(eID.value)},
+          {$set: {
+            owner_id: client.auth.user.id,
+            employee_id: parseInt(eID.value),
+            first_name: eFname.value,
+            last_name: eLname.value,
+            title: eTitle.value,
+            department: eDepartment.value,
+            manager_id: parseInt(eManagerId.value),
+            salary: parseFloat(eSalary.value),
+            last_modified: nDate
+            }
+          },
+          {upsert: true}
+        )
+        .then(displayEmployees);
+      }
     </script>
   </head>
   <body onload="displayEmployeesOnLoad()">
@@ -131,18 +125,19 @@ Cut and paste the raw code from the [employee.html](./employee.html) file into a
         <tr><td>Employee ID:</td><td><input id="employee_id"></td></tr>
         <tr><td>First Name:</td><td><input id="first_name"></td></tr>
         <tr><td>Last Name:</td><td><input id="last_name"></td></tr>
-        <tr><td>Title:</td><td><input id="title"></td></tr>
-        <tr><td>Department:</td><td> <input id="department"></td></tr>
-        <tr><td>Manager ID:</td><td> <input id="manager_id"></td></tr>
+        <tr><td>Title:</td> <td><input id="title"></td></tr>
+        <tr><td>Department:</td><td><input id="department"></td></tr>
+        <tr><td>Manager ID:</td><td><input id="manager_id"></td></tr>
         <tr><td>Salary:</td><td><input id="salary"></td></tr>
      </table>
-      <input type="submit" onClick="addEmployee()">
-      <hr>
-      Employee List:
-      <hr>
-      <div id="employees"></div>
+     <input type="submit" onClick="addEmployee()">
+     <hr>
+     Employee List:
+     <hr>
+     <div id="employees"></div>
   </body>
 </html>
+
 ```
 
 
