@@ -103,16 +103,19 @@ Create a new Webhook named: __addEmployeeWebhook__
 
 
 ```
-exports = function(payload) {
+exports = async function(payload) {
   var cEmployees = context.services.get("mongodb-atlas").db("HR").collection("employees");
-  
+  console.log("Executing addEmployeeWebhook");
   var queryArg = payload.query.arg || '';
   var body = {};
+  var result = { "status": "unknown"};
+  
   if (payload.body) {
     console.log(JSON.stringify(payload.body));
     body = EJSON.parse(payload.body.text());
     console.log(JSON.stringify(body));
     var nDate = new Date();
+    console.log("updating employees collection");
     cEmployees.updateOne(
                 {employee_id: parseInt(body.employee_id)},
                 {$set: {
@@ -129,8 +132,13 @@ exports = function(payload) {
                 },
                 {upsert: true}
             );
+    console.log("after update");
+    // Lets return the document we find after creating the employee 
+    var searchDoc = { "employee_id": parseInt(body.employee_id)};
+    result = await context.functions.execute("findEmployee", searchDoc);
   }
-  return {"status": "success"};
+  
+  return  result;
 };
 ```
 
