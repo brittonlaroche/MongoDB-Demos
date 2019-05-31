@@ -24,7 +24,7 @@ Create a new function named: __findEmployee__
 
 ![Console](img/findEmployee1.jpg "Console")
 
-Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name "findEmployee" and click "Save."  This will bring up the function editor, cut and paste the code below and click "Save."
+Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name __"findEmployee"__ and click "Save."  This will bring up the function editor, cut and paste the code below and click "Save."
 ```
 exports = async function( aSearchDoc ){
   /*
