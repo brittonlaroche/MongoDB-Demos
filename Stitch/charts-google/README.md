@@ -39,18 +39,18 @@ The first step is to gather the data required by the charts.  The charts will di
 ```js
 <script>
 ...
-	function displayEmployeeCounts() {
-		//We will aggregate the employee data by department and create a table with totals
-		const tStrt = "<div><table><tr><th>Department</th><th>Number of Employees</th></tr>";
-		const cEmployees = db.collection("employees");
-		cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
-		    .then(docs => {
-		      	const html = docs.map(c => "<tr><td>" +
-		      	c._id +  "</td><td>" +
-		      	c.num_employees + "</td><td>" +
-		      	"</tr>").join("");
-		      	document.getElementById("employee_counts").innerHTML = tStrt + html + "</table></div>";
-		    });
+      function displayEmployeeCounts() {
+        //We will aggregate the employee data by department and create a table with totals
+        const tStrt = "<div><table><tr><th>Department</th><th>Number of Employees</th></tr>";
+        const cEmployees = db.collection("employees");
+        cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
+          .then(docs => {
+            const html = docs.map(c => "<tr><td>" +
+              c._id +  "</td><td>" +
+              c.num_employees + "</td><td>" +
+              "</tr>").join("");
+            document.getElementById("employee_counts").innerHTML = tStrt + html + "</table></div>";
+          });
 	}
 </script>
 ```
@@ -61,11 +61,11 @@ Next we add a div tag ```<div id="employee_counts"></div>``` to contain the "emp
 ...
      <input type="submit" onClick="addEmployee()">
       <hr>
-	  <div id="employee_counts"></div>
+        <div id="employee_counts"></div>
       <hr>
-	  Employee List:
+        Employee List:
       <hr>
-	  <div id="employees"></div>
+        <div id="employees"></div>
   </body>
 ...
 ```
@@ -75,13 +75,13 @@ After the java script code and div are added to the html we are now ready to cal
 ```js
 <script>
 ...
-        function displayEmployeesOnLoad() {
-          client.auth
-            .loginWithCredential(new stitch.AnonymousCredential())
-            .then(displayEmployeeCounts)
-            .then(displayEmployees)
-            .catch(console.error);
-        }
+    function displayEmployeesOnLoad() {
+      client.auth
+        .loginWithCredential(new stitch.AnonymousCredential())
+        .then(displayEmployeeCounts)
+        .then(displayEmployees)
+        .catch(console.error);
+    }
 ...
 </script>
 ```
@@ -106,10 +106,10 @@ Next we load the corechart package ```google.charts.load('current', {'packages':
     <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.4.0/stitch.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-        const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
-        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
-        "mongodb-atlas").db('HR');
-	google.charts.load('current', {'packages':['corechart']});
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
+      "mongodb-atlas").db('HR');
+      google.charts.load('current', {'packages':['corechart']});
 	...
 ```
 
@@ -117,8 +117,8 @@ Next we load the corechart package ```google.charts.load('current', {'packages':
 Now that we have the chart objects loaded its time to write the aggregation function to load the chart data and draw the charts.  We have two charts sharing the same data.  We have a pie chart and a column chart.  We create them by assignng a variable and initializing the google pie chart and column chart respectively. As part of the initialization process we pass in the id for the div tag in the html where the chart will be rendered.
 ```js
 ...
-	var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
-	var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
+    var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
+    var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
 ...
 ```
 
@@ -127,49 +127,49 @@ After we have initialized the chart objects we create a new data table object to
 
 ```js
 ...
-	var data = new google.visualization.DataTable();
-	data.addColumn('string', 'Department');
-	data.addColumn('number', 'EmployeeCount');
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Department');
+    data.addColumn('number', 'EmployeeCount');
 ...	
 ```
 The next step involves calling stitch with an aggregation function to gather the data from the Atlas database.  We get the result set which contains a department name and employee count for each department. We use a "forEach" loop reading each record and storing it in the data table.  The "id" field is used as the "aggregation id" to perform the "group by." For this query we "group by" the department name and therefor department is the "id" field.
 
 ```js
 cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
-	     	.then(docs => {
-			docs.forEach( function(myDoc) {
-				data.addRow([ myDoc._id , myDoc.num_employees ] );
-			});
+    .then(docs => {
+       docs.forEach( function(myDoc) {
+         data.addRow([ myDoc._id , myDoc.num_employees ] );
+       });
 			....
-		});
+    });
 ```
 
 After we create the data table and load it with data we are ready to specify the chart options and draw the table.  The completed function is shown below.
 
 ```js
-	function drawEmployeeCountChart() {
-		var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
-		var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
-		var data = new google.visualization.DataTable();
-		data.addColumn('string', 'Department');
-		data.addColumn('number', 'EmployeeCount');
-		//Get the data to draw the chart from MongoDB, aggregate the employee data by department
-		const cEmployees = db.collection("employees");
-		cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
-	     	.then(docs => {
-			docs.forEach( function(myDoc) {
-				data.addRow([ myDoc._id , myDoc.num_employees ] );
-			});
-			// Create the chart.
-			var options = {
-				title: 'Employee Counts By Department',
-				is3D: true,
-				allowHtml:true
-			};
-			chartPie.draw(data, options);
-			chartColumn.draw(data, options);
-		});
-	}
+      function drawEmployeeCountChart() {
+        var chartPie = new google.visualization.PieChart(document.getElementById('employee_piechart'));
+        var chartColumn = new google.visualization.ColumnChart(document.getElementById('employee_columnchart'));
+        var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Department');
+          data.addColumn('number', 'EmployeeCount');
+          //Get the data to draw the chart from MongoDB, aggregate the employee data by department
+          const cEmployees = db.collection("employees");
+          cEmployees.aggregate([{"$group":{"_id":"$department","num_employees":{"$sum":1}}}]).asArray()
+            .then(docs => {
+              docs.forEach( function(myDoc) {
+                data.addRow([ myDoc._id , myDoc.num_employees ] );
+              });
+              // Create the chart.
+              var options = {
+                title: 'Employee Counts By Department',
+                is3D: true,
+                allowHtml:true
+              };
+              chartPie.draw(data, options);
+              chartColumn.draw(data, options);
+            });
+      }
 ```
 
 One last step is to add in the div tags for the charts.  We would like to view the two charts side by side so we include them in an html table.  We place them above the html table that provided the counts in our first step.
