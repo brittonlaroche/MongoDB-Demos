@@ -257,9 +257,11 @@ The first part of the trigger is a comment section which shows how to access doc
 
 Test the trigger with your employee.html application. Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.  You can see this information by opening a new tab in your browser and going to https://cloud.mongodb.com
 
-When the Atlas control panel opens, click on "clusters" in the left navigation menu panel. This will show the clusters in the main panel. Press the "collection" button for your cluster.  This will bring up the collection browsing tab in Atlas. An example is provided in the screen capture below.  Alternatively you can download a client tool known as [MongoDB Compass](https://www.mongodb.com/download-center/compass?jmp=hero) and find connection information by clicking the "connect" button on the cluster panel (see below).    
-
+When the Atlas control panel opens, click on "clusters" in the left navigation menu panel. This will show the clusters in the main panel. Press the "collection" button for your cluster.  This will bring up the collection browsing tab in Atlas. An example is provided in the screen capture below.  
 ![Collection Button](img/browseCollections1.jpg "Collection Button")
+
+Alternatively you can download a client tool known as [MongoDB Compass](https://www.mongodb.com/download-center/compass?jmp=hero) and find connection information by clicking the "connect" button on the cluster panel (see above).    
+
 
 Once the collection browsing tab is open, navigate to your database and look at the data in the employee collection. Next look at the employee history full docuement collection, and the employee history collection which contains only the updated fields.
 
