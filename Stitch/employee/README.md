@@ -19,11 +19,11 @@ In this short tutorial we are going to create a Human Resources application that
 
 Additonal information on triggers are available here [MongoDB Trigger Documenatation](https://docs.mongodb.com/stitch/triggers/)
 
+If you have not created an Atlas account then you need to register at https://cloud.mongodb.com and create a free tier cluster before you can continue.  Instructions on creating a frie tier accouunt can be found here: https://docs.atlas.mongodb.com/getting-started/
+
 ### 1. Create a new stitch app
 Log in to atlas from https://cloud.mongodb.com. Create a new stitch app by selecting "Stitch" from the left menu pain. 
 Click the button "Create New Stitch App. Type in __"HumanResources"__ (no spaces) for the application name and click the create button in the lower right.
-
-If you have not created an Atlas account then you need to register at https://cloud.mongodb.com and create a free tier cluster before you can continue.  Instructions on creating a frie tier accouunt can be found here: https://docs.atlas.mongodb.com/getting-started/
 
 ### 2. Configure the stitch application
 After the new application is created, click the "HumanResources" in the list of stitch applications to enter into the application's stitch console.  The console will display and look like the following screen.
