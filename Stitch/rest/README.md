@@ -108,36 +108,42 @@ exports = async function(payload) {
   console.log("Executing addEmployeeWebhook");
   var queryArg = payload.query.arg || '';
   var body = {};
-  var result = { "status": "unknown"};
+  var result = { "status": "Unkown: Payload body may be empty"};
   
   if (payload.body) {
     console.log(JSON.stringify(payload.body));
     body = EJSON.parse(payload.body.text());
     console.log(JSON.stringify(body));
     var nDate = new Date();
-    console.log("updating employees collection");
-    cEmployees.updateOne(
-                {employee_id: parseInt(body.employee_id)},
-                {$set: {
-                    owner_id: "webhook",
-                    employee_id: parseInt(body.employee_id),
-                    first_name: body.first_name,
-                    last_name: body.last_name,
-                    title: body.title,
-                    department: body.department,
-                    manager_id: parseInt(body.manager_id),
-                    last_modified: nDate,
-                    trace_id: "Emp ID: " + body.employee_id + " - " + nDate.toString()
-                    }
-                },
-                {upsert: true}
-            );
-    console.log("after update");
+    //check the employee_id
+    if ( body.employee_id ) {
+        console.log("updating employees collection");
+        cEmployees.updateOne(
+                    {employee_id: parseInt(body.employee_id)},
+                    {$set: {
+                        owner_id: "webhook",
+                        employee_id: parseInt(body.employee_id),
+                        first_name: body.first_name,
+                        last_name: body.last_name,
+                        title: body.title,
+                        department: body.department,
+                        manager_id: parseInt(body.manager_id),
+                        last_modified: nDate,
+                        trace_id: "Emp ID: " + body.employee_id + " - " + nDate.toString()
+                        }
+                    },
+                    {upsert: true}
+                );
+        console.log("after update");
+    } else {
+      result = { "status": "Error: employee_id is not present"};
+      return result;
+    }
+
     // Lets return the document we find after creating the employee 
     var searchDoc = { "employee_id": parseInt(body.employee_id)};
     result = await context.functions.execute("findEmployee", searchDoc);
   }
-  
   return  result;
 };
 ```
