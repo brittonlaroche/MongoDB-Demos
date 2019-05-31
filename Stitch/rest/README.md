@@ -101,6 +101,7 @@ Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhoo
 Create a new HTTP Service named: __addEmployeeService__   
 Create a new Webhook named: __addEmployeeWebhook__   
 
+After the webhook is created paste the following script into the __addEmployeeWebhook__ function editor and click save. 
 
 ```
 exports = async function(payload) {
@@ -147,6 +148,20 @@ exports = async function(payload) {
   return  result;
 };
 ```
+
+The function above checks the pay load body and for the presence of an employee_id.  If either is missing it will return a document with a status of error or unknown.  If it is succeful in creating the employee, it will search for the employee and return the newly created document.  This ties together many concepts as addEmployeeWebhook function calls the findEmployee function asynchornously and awaits the result.  This si not the default behavior and we had to add the following __"async"__ key word to the function declaration.
+
+```
+exports = async function(payload) {
+```
+
+The standard is not to run in async mode.
+
+```
+exports = function(payload) {
+```
+
+The result for the default behavior would be an empty or undefined return document.  It might have take some time to figure out why.  You are welcome.
 
 ### 5. Test the REST based API add employee service through postman
 Next we use postman to test our service.  Add a new tab and select "POST" from the drop list. Paste in the addEmployeeWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Add Employee."   
