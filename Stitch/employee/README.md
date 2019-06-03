@@ -279,7 +279,7 @@ Add another employee and make him or her report in to a lower level manager.  Gi
 Check out the next stitch tutorial on extending your app though the use of a REST based API to get access to your employee data through [Stitch Query Anywhere](../rest)
 
 ### Bonus
-Once you complete the Stitch Query anwhere tutorial, create a new HTTP Service __myPayrollHttpService__ and return here to add a call to the service.  Add a trigger or modify the employee trigger to insert the employee record into a payroll collection, and then send a message with the employee document to a payroll processor to begin sending payment to the employee.
+Once you complete the Stitch Query anwhere tutorial, create a new HTTP Service __myPayrollHttpService__ and return here to add a call to the service.  Add a trigger or modify the employee trigger to insert the employee record into a payroll collection, and then send a message with the employee document from the trigger to a payroll processor.  This completes the loop from the hiring process to begin sending payments to the employee from an external payroll processor.
 
 ```js
 ...
