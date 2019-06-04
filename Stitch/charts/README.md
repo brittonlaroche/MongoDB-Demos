@@ -47,7 +47,8 @@ Click the copy button icon.  This copies an iframe that can be embeded in your [
 
 An example is provided here
 
-```   <input type="submit" onClick="addEmployee()">
+```html
+      <input type="submit" onClick="addEmployee()">
       <hr>
       <iframe style="border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-ulibe/embed/charts?id=your-chart-data"></iframe>
       <hr>
