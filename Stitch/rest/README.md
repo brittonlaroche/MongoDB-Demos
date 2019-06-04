@@ -69,7 +69,7 @@ Next we add an incoming webhook.  The prompt screen should appear after saving t
 
 After saving the findEmployeeWebhook the function editor is now present.  Cut and paste the code below and click "Save."
 
-```
+```js
 // This function is the webhook's request handler.
 exports = async function(payload) {
     // Data can be extracted from the request as follows:
@@ -111,7 +111,7 @@ Create a new Webhook named: __addEmployeeWebhook__
 
 After the webhook is created paste the following script into the __addEmployeeWebhook__ function editor and click save. 
 
-```
+```js
 exports = async function(payload) {
   var cEmployees = context.services.get("mongodb-atlas").db("HR").collection("employees");
   console.log("Executing addEmployeeWebhook");
@@ -178,7 +178,7 @@ Next we use postman to test our service.  Add a new tab and select "POST" from t
 
 Once postman is configured, use the json template below by pasting it in the postman body to add a new employee.  Change the employee_id and manager_id, title and department to fit into your organization.  
 
-```
+```jason
 { 
 "employee_id": 121,
 "first_name": "Tom",
@@ -195,7 +195,7 @@ Open the rules editor by selecting the "Rules" menu item in the left navigation 
 
 ![Rules](img/rules1.jpg)
 
-```
+```js
 {
   "owner_id": "%%user.id"
 }
