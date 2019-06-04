@@ -31,7 +31,7 @@ Create a new function named: __findEmployee__
 ![Console](img/findEmployee1.jpg "Console")
 
 Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name __"findEmployee"__ and click "Save."  This will bring up the function editor, cut and paste the code below and click "Save."
-```
+```js
 exports = async function( aSearchDoc ){
   /*
     Accessing application's values:
@@ -178,7 +178,7 @@ Next we use postman to test our service.  Add a new tab and select "POST" from t
 
 Once postman is configured, use the json template below by pasting it in the postman body to add a new employee.  Change the employee_id and manager_id, title and department to fit into your organization.  
 
-```jason
+```js
 { 
 "employee_id": 121,
 "first_name": "Tom",
