@@ -163,12 +163,7 @@ In the linked function drop list select "+ New Function" and give the function a
 
 ![Employee Trigger](img/trgEmployeeHist2.jpg "Employee Trigger")
 
-### 5. Create two new history collections
-Select the ">_Getting Started_" menu item in the left pannel or add a new rule for two new collections.  Specify the HR database and the collection names __"empHistFull"__ and __"empHist"__ these collections must be present in the stitch rules for the trigger to update these collections.  The names are case sensitive and used in the trigger so be sure they match.
-
-![Add Collection](img/addCollection.jpg "Add Collection")
-
-### 6. Write the history function
+### 5. Write the history function
 Edit the fncEmployeeHist by selecting "Functions" in the left navigation pane of the stitch console. The list of functions appear, click the row with the __fncEmployeeHist__ created in step 4. The click will bring up the function editor for fncEmployeeHist.  You should be able to copy / paste the code below.  Once the code has been pasted press the save button.  The trigger is ready to be tested!
 
 ```js
@@ -261,7 +256,7 @@ The first part of the trigger is a comment section which shows how to access doc
 ```
 The full change event documentation is available here: [MongoDB Change Event Documentation](https://docs.mongodb.com/manual/reference/change-events/)   
 
-### 7. Test the trigger
+### 6. Test the trigger
 Test the trigger with your employee.html application. Add new employees and change salary information, titles and managers.  View what is tracked in the history collections.  You can see this information by opening a new tab in your browser and going to https://cloud.mongodb.com
 
 When the Atlas control panel opens, click on "clusters" in the left navigation menu panel. This will show the clusters in the main panel. Press the "collection" button for your cluster.  This will bring up the collection browsing tab in Atlas. An example is provided in the screen capture below.   
