@@ -4,13 +4,13 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
 ## Tutorial Contents 
 (Note: All tutorials are hands on and should take an estimated time of less than 20 minutes)
-1. [MongoDB blog tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/blog)
-2. [Atlas Triggers and Functions: HR Employee tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/employee/)
-3. [Stitch Query Anywhere tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/rest)
-4. [Embed Atlas Charts in your app tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts)
-5. [Embed Google Charts tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-google) 
-6. [Embed an Org Chart tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/charts-org) 
-7. [Host your application tutorial](https://github.com/brittonlaroche/MongoDB-Demos/edit/master/Stitch/hosting) 
+1. [MongoDB blog tutorial](https:../blog)
+2. [Atlas Triggers and Functions: HR Employee tutorial](../employee/)
+3. [Stitch Query Anywhere tutorial](../rest)
+4. [Embed Atlas Charts in your app tutorial](../charts)
+5. [Embed Google Charts tutorial](../charts-google) 
+6. [Embed an Org Chart tutorial](../charts-org) 
+7. [Host your application tutorial](../hosting) 
 
 ## Atlas Charts Overview
 In this short tutorial we are going to build some atlas charts on our employee data created in our HR application.  Once the charts are created we will embed them in our employee application.  Creating charts is very easy, it does not require any code, you can drag and drop fields and apply functions such as sum and count to create stunning charts in a matter of minutes.  Charts is hosted as a service along with Atlas so you do not need to configure any servers.  If you do want to run charts on premises you can install your own container after downloading the image from the [MongoDB Charts](https://www.mongodb.com/products/charts) page.  Instruction for installing charts on premises can be found [here](https://docs.mongodb.com/charts/onprem/installation/).
