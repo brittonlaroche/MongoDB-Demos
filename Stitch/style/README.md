@@ -13,7 +13,7 @@
 
 
 ### Style sheets overview
-Style sheets, also known as CSS files, are the gateway drug to development frameworks like Bootstrap, and then full on platforms like Angular and React. One devaites quickly from the path pure html and javascript into a dark and seedy developement underwold. Obviously CSS and these frameworks and development platforms provide rich beautiful interfaces, but at a small cost of complexity. You have to pick one and provide an example. That complexity was avoided in these initial tutorials. These tutorails will work with all frameworks and platforms. Our plan is to provide tutorials for React in the future in this github repository. For now we deviate only slightly into the realm of CSS for a nice looking style.
+Style sheets, also known as CSS files, are the gateway drug to development frameworks like Bootstrap, and then full on platforms like Angular and React. One devaites quickly from the path pure html and javascript into the rabbit hole of the developement underwold. Obviously CSS and these frameworks and development platforms provide rich beautiful interfaces, but at a small cost of complexity. You have to pick one and provide an example. That complexity was avoided in these initial tutorials. These tutorails will work with all frameworks and platforms. Our plan is to provide tutorials for React in the future in this github repository. For now we deviate only slightly into the realm of CSS for a nice looking style.
 
 ### 1. Adding a style sheet
 The process begins innocently enough by inluding a style sheet.  Its a simple link.  Next we make slight modifications to some of the div and table classes. Then we simply gut the input table and replace it with __fieldset__ tags around our inputs.   
