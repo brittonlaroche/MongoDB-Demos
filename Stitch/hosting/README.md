@@ -4,7 +4,7 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
 ## Tutorial Contents 
 (Note: All tutorials are hands on and should take an estimated time of less than 20 minutes)
-1. [MongoDB blog tutorial](https:../blog)
+1. [MongoDB blog tutorial](../blog)
 2. [Atlas Triggers and Functions: HR Employee tutorial](../employee/)
 3. [Stitch Query Anywhere tutorial](../rest)
 4. [Embed Atlas Charts in your app tutorial](../charts)
