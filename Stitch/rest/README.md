@@ -188,7 +188,7 @@ Once postman is configured, use the json template below by pasting it in the pos
 "last_name": "Tucker",
 "department": "SALES",
 "title": "EAE",
-"manager_id": 100"
+"manager_id": 100
 }
 ```
 
