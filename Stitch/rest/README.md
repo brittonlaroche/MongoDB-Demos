@@ -107,9 +107,10 @@ Use something like the following search document to find your employee.  Replace
 ![Postman](img/postman.jpg "postman")
 
 ### 4. Create a webhook to call the function add or update employee data
-Repeat steps 2 and 3 above above to add a new "addEmployeeService" in the webhook function editor cut and paste the code below.  
-Create a new HTTP Service named: __addEmployeeService__   
-Create a new Webhook named: __addEmployeeWebhook__   
+Repeat steps 2 and 3 above above to create a new __"addEmployeeService"__ and a new __"addEmployeeWebhook"__,  in the webhook function editor cut and paste the code below.  
+
+1. Create a new HTTP Service named: __addEmployeeService__   
+2. Create a new Webhook named: __addEmployeeWebhook__   
 
 After the webhook is created paste the following script into the __addEmployeeWebhook__ function editor and click save. 
 
