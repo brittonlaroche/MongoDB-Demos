@@ -27,7 +27,7 @@ Examples include payroll processors, health care providers and mobile devices th
 4. Not required, but nice to have: [employee.html](../employee/employee.html). Copy and paste code into a text editor, change 'your-app_id' to the APP ID of your stitch application, and save as employee.html. Double click employee.html to bring up in a browser.
 
 ### 1. Create a stitch function to query employee data
-Create a new function named: __findEmployee__   
+log into the atlas console https://cloud.mongodb.com and click the "Stitch" menu item on the left. Select your stitch application. Select "functions" from the menu item on the left and create a new function named: __findEmployee__   
 
 ![Console](img/findEmployee1.jpg "Console")
 
