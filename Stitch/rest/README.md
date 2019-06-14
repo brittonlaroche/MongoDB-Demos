@@ -60,11 +60,12 @@ exports = async function( aSearchDoc ){
 Notice that we made this function async in the declaration.  This will allow the calling function to await a database response while this function does the work to find the employee specified.  The employee search criteria is specified in the search document passed in as an argument.
 
 ### 2. Create a webhook to call the function to query employee data
-Select "Services" from the left navigation panel in the Stitch Console.  Click the "Add a Service" button. In the add a service dialog select the "HTTP" button and give the service a name "findEmployeeService" and click the "Add Service" button.   
+Create the __"findEmployeeService"__    
+Select "Services" from the left navigation panel in the Stitch Console.  Click the "Add a Service" button. In the add a service dialog select the "HTTP" button and give the service a name __"findEmployeeService"__ and click the "Add Service" button.   
 
 ![Console](img/findEmployee2.jpg "Console")
-
-Next we add an incoming webhook.  The prompt screen should appear after saving the service.  Click the "Add Incoming Webhook" button. In the add webhook screen give the webhook a name "findEmployeeWebhook" and move the slider to "Respond with Result."  For now we will turn off validation. Click the save button.  
+Create the __"findEmployeeWebhook"__   
+Next we add an incoming webhook.  The prompt screen should appear after saving the service.  Click the "Add Incoming Webhook" button. In the add webhook screen give the webhook a name __"findEmployeeWebhook"__ and move the slider to "Respond with Result."  For now we will turn off validation. Click the save button.  
 
 ![Webhook](img/findEmployee3.jpg "Webhook")
 
