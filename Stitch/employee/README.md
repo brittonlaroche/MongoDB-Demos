@@ -197,7 +197,7 @@ exports = function(changeEvent) {
       // in the history table
       // we will finish by recording the full document in empHistFull
       fullCopy.date = nDate;
-      parent_id = fullDocument._id;
+      fullCopy.parent_id = fullDocument._id;
       delete fullCopy._id; 
       cEmpHistFull.insertOne(fullCopy);
     } else {
@@ -210,7 +210,7 @@ exports = function(changeEvent) {
       // multiple times and violate the unique key for _id 
       // in the history table
       fullCopy.date = nDate;
-      parent_id = fullDocument._id;
+      fullCopy.parent_id = fullDocument._id;
       delete fullCopy._id; 
       cEmpHistFull.insertOne(fullCopy);
     }
