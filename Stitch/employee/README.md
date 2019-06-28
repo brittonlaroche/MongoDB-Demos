@@ -1,4 +1,4 @@
-## Human Resources: Employee Application
+## Atlas Triggers and Functions: Employee Application
 _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 (Note: This tutorial builds upon concepts learned in the official [MongoDB blog](https://docs.mongodb.com/stitch/tutorials/blog-overview/) tutorial.)
 
