@@ -9,4 +9,6 @@
 [Click here to get started with MongoDB Transactions](Transactions)
 
 ## Sample Applications
-![Applications](img/applications.jpg "Applications")
+![Applications](img/applications.jpg "Applications")   
+
+[Click here to get started with MongoDB Sample Applications](Applications)
