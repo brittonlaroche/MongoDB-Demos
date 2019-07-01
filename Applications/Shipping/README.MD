@@ -37,9 +37,9 @@ __trgPackageCheckpoint__: a trigger that watches the package collection and call
 
 ### Services
 __findShipmentService__: A REST based service that calls the __findShipment__ function and returns the shipment document   
-__findPackageService__:  
-__addShipmentService__   
-__updatePackageService__   
+__findPackageService__: A REST based service that calls the __findPackage__ function and returns a specific package document
+__addShipmentService__: A REST based service that allows a full shipping document to be inserted into MongoDB   
+__updatePackageService__: A REST based service that can be called from multiple sources including a package scanner to update package events, checkpoints and location information.   
 
 
 ## Shipping Document
