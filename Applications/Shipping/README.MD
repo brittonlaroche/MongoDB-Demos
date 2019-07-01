@@ -156,14 +156,15 @@ Below we have a sample shipping document with a mix of items.  A football team i
 ```
 Notice that the shipping document has a plan.  The plan is an array of subdocuments or objects that describe what flights the packages will be shipped on and in what order. Now that we have a basic overview, we are ready to begin developing the shipping application.
 
-## Create an Atlas Cluster
-Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
-
-## Create the stitch shipping application
-Once we have created the cluster we will create a new stitch application.  Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application."
-
 ## Design Patterns
 One of the most critical aspects of application design is getting the document schema correct.  In our application we could have one single shipping collection.  We would maintain all packages in an array in the main shipping document.  This would satisfy the majority of the requirements. Lets assume that tracking the package and knowing its history is important.  We want to know how long it takes to load a package from curbside checkin to the plane, and how long it takes to offload the packages and put them in the right location once the plane lands.  This information is critical for process improvements that reduce costs and increase revenue.  Additionally most of the updates are directed to the package not any of the shipping information.  
 
 Lets review some of the design patterns here [MongoDB Docunent Design Patterns](https://www.mongodb.com/blog/post/building-with-patterns-a-summary) to get some ideas that may help shape our collection choices and our schema design.  After reviewing the patterns we see two that help us come up with an efficent design to handle updates and search requests at the package level, and to keep a full history of the time it took to process the package at each step.
 
+To capture the changes to the packages over time keeping a full history of the time it took to pass through each checkpoint we will use apsect of the [document versioning](https://www.mongodb.com/blog/post/building-with-patterns-the-document-versioning-pattern) pattern.  In order to keep package information relevant with shipping information we can use the [extended reference](https://www.mongodb.com/blog/post/building-with-patterns-the-extended-reference-pattern) pattern.
+
+## Create an Atlas Cluster
+Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
+
+## Create the stitch shipping application
+Once we have created the cluster we will create a new stitch application.  Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application."
