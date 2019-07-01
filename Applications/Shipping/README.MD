@@ -122,7 +122,8 @@ Below we have a sample shipping document with a mix of items.  A football team i
 		            "$numberLong": "1564091863533"
 		        }
 		    }
-        },{
+        },
+	{
             "package_id": "ABCXYZ1236",
             "tag_id": "XYZ1236",
             "desc": "Laundry Bag of football jerseys",
