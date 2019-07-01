@@ -21,19 +21,20 @@ The bag scanner or the application that is updated by the bag scanner can update
 All of the major components of the shipping application have been captured in the diagrams above. In this tutorial we will create the following objects to develop the shipping application.
 
 ### Collections
-__shipment__
-__package__
-__checkpoint__
+__shipment__   
+__package__   
+__checkpoint__   
 
 ### Functions
-__findShipment__
-__findPackage__
-__fncPackageUpdate__
+__findShipment__   
+__findPackage__   
+__fncPackageUpdate__   
 
 ### Trigger
-__trgPackageCheckpoint__
+__trgPackageCheckpoint__   
 
 ### Services
+
 
 ### Webhooks
 
