@@ -6,4 +6,8 @@ In this short tutorial we are going to create a Shipping application that tracks
 
 ![Diagram](img/packageTrigger3.png "Diagram")   
 
-It is important to note the various componets we will be using in the tutorial, listed in the diagram above.  You will be both the developer and user on an HR application insterting employee data into the employees collection.  The Stitch serverless framework will monitor the employee collection through an Stitch trigger.  As soon as it detects a change a trigger function will execute inside the Stitch serverless framework and outside of the database.  This affords a highly scalable solution with out impacting database processing, as the trigger function code always executes outside of the database server. Additonal information on triggers are available here [MongoDB Trigger Documenatation](https://docs.mongodb.com/stitch/triggers/).
+It is important to note the various componets we will be using in the tutorial, listed in the diagram above. The Stitch serverless framework will monitor the package collection through a Stitch trigger.  As soon as it detects a change, the trigger function will execute inside the Stitch serverless framework and outside of the database.  This affords a highly scalable solution with out impacting database processing, as the trigger function code always executes outside of the database server. Additonal information on triggers are available here [MongoDB Trigger Documenatation](https://docs.mongodb.com/stitch/triggers/).
+
+The process begins with a user inserting a shipping document insto the shipping collection.  The shipping collection containins an array of packages to be shipped.  As the packages are tagged and checked in, the package information is updated or inserted into the package collection.  The trigger fires and updates the shipping document with the new package location and event information.
+
+![Bag Check](img/efficiencies-check.jpg "Bag Check")  
