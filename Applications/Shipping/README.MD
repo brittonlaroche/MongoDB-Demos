@@ -43,7 +43,7 @@ __updatePackageService__
 
 
 ## Shipping Document
-Below we have a sample shipping document with a mix of items.  A football team is shipping its gear along with a mix of packages and envelopes related to the football game.  Additional items are expected and will be added to the packages array when they are checked in.
+Below we have a sample shipping document with a mix of items.  A football team is shipping its gear along with a mix of coordinated FedEx packages and envelopes related to the football game.  Additional items are expected and will be added to the packages array when they are checked in.
 ```
 { 
 	"shipment_id": 100,
@@ -77,6 +77,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
             "desc": "2x4 Foot Locker Blue",
             "weight": "125 lbs",
             "last_event": "curbside check in",
+	    "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863001"
@@ -89,6 +90,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
             "desc": "2x4 Foot Locker Red",
             "weight": "120 lbs",
             "last_event": "curbside check in",
+	    "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863007"
@@ -101,6 +103,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
             "description": "black suitcase",
             "weight": "55 lbs",
             "last_event": "curbside check in",
+	    "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863033"
@@ -113,6 +116,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
             "desc": "Laundry Bag of foot ball jerseys",
             "weight": "35 lbs",
             "last_event": "curbside check in",
+	    "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863533"
@@ -124,6 +128,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
             "desc": "Laundry Bag of football jerseys",
             "weight": "35 lbs",
             "last_event": "curbside check in",
+	    "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863633"
@@ -136,7 +141,8 @@ Below we have a sample shipping document with a mix of items.  A football team i
             "FedexTracking": "12344456789",
             "desc": "8 x 10 Envelope",
             "weight": "8 ounces",
-            "last_event": "Fed Ex Delivery",
+            "last_event": "Fed Ex Dropship",
+	    "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863033"
@@ -148,3 +154,10 @@ Below we have a sample shipping document with a mix of items.  A football team i
 }
 ```
 Notice that the shipping document has a plan.  The plan is an array of subdocuments or objects that describe what flights the packages will be shipped on and in what order. Now that we have a basic overview, we are ready to begin developing the shipping application.
+
+## Creating an Atlas Cluster
+Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https:/cloud.mongodb.com to sign up.  Additional instructions are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
+
+## Creating the stitch shipping application
+Once we have created the cluster we will create a new stitch application.  Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application."
+
