@@ -41,6 +41,7 @@ __updatePackageService__
 
 
 ## Shipping Document
+Below we have a sample shipping document with a mix of items.  A football team is shipping its gear along with a mix of packages and envelopes related to the football game.  Additional items are expected and will be added to the packages array when they are checked in.
 ```
 { 
 	"shipment_id": 100,
@@ -53,12 +54,14 @@ __updatePackageService__
 	"description": "5x8x10 Cargo hold expect 5 to 10 Packages",
 	"plan": [
         {
-            "flight": "123",
+            "order": 1,
+	    "flight": "123",
             "from": "DFW",
             "to": "BOS",
             "date": "07/25/2019"
         },
         {
+            "order": 2,
             "flight": "227",
             "from": "BOS",
             "to": "BUF",
@@ -67,8 +70,8 @@ __updatePackageService__
     ],
     "packages": [
     	{
-    		"package_id": "ABCXYZ1233",
-    		"tag_id": "XYZ123",
+            "package_id": "ABCXYZ1233",
+            "tag_id": "XYZ123",
             "desc": "2x4 Foot Locker Blue",
             "weight": "125 lbs",
             "last_event": "curbside check in",
@@ -79,8 +82,8 @@ __updatePackageService__
 		    }
         },
         {
-    		"package_id": "ABCXYZ1234",
-    		"tag_id": "XYZ1234",
+            "package_id": "ABCXYZ1234",
+            "tag_id": "XYZ1234",
             "desc": "2x4 Foot Locker Red",
             "weight": "120 lbs",
             "last_event": "curbside check in",
@@ -91,8 +94,8 @@ __updatePackageService__
 		    }
         },
         {
-    		"package_id": "ABCXYZ1235",
-    		"tag_id": "XYZ1235",
+            "package_id": "ABCXYZ1235",
+            "tag_id": "XYZ1235",
             "description": "black suitcase",
             "weight": "55 lbs",
             "last_event": "curbside check in",
@@ -103,8 +106,8 @@ __updatePackageService__
 		    }
         },
         {
-    		"package_id": "ABCXYZ1236",
-    		"tag_id": "XYZ1236",
+            "package_id": "ABCXYZ1236",
+            "tag_id": "XYZ1236",
             "desc": "Laundry Bag of foot ball jerseys",
             "weight": "35 lbs",
             "last_event": "curbside check in",
@@ -114,8 +117,8 @@ __updatePackageService__
 		        }
 		    }
         },{
-    		"package_id": "ABCXYZ1236",
-    		"tag_id": "XYZ1236",
+            "package_id": "ABCXYZ1236",
+            "tag_id": "XYZ1236",
             "desc": "Laundry Bag of football jerseys",
             "weight": "35 lbs",
             "last_event": "curbside check in",
@@ -126,9 +129,9 @@ __updatePackageService__
 		    }
         },
         {
-    		"package_id": "ABCXYZ1237",
-    		"tag_id": "XYZ1236",
-    		"FedexTracking": "12344456789",
+            "package_id": "ABCXYZ1237",
+            "tag_id": "XYZ1236",
+            "FedexTracking": "12344456789",
             "desc": "8 x 10 Envelope",
             "weight": "8 ounces",
             "last_event": "Fed Ex Delivery",
@@ -142,3 +145,4 @@ __updatePackageService__
     "last_modified": "07/25/2019"
 }
 ```
+Notice that the shipping document has a plan.  The plan is an array of subdocuments or objects that describe what flights the packages will be shipped on and in what order. Now that we have a basic overview, we are ready to begin developing the shipping application.
