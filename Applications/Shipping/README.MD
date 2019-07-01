@@ -16,3 +16,24 @@ As the packages are tagged and checked in, the package information is updated or
 The bag scanner or the application that is updated by the bag scanner can update the package information using the stitch serverless rest based API called Stitch.  The REST based API opens the door for shipping companies to send shipping documents before the packages arrive.  The shipping document is updated as the packages are checked in and loaded and acts as a bill of lading, acknowledging receipt of each package as cargo for shipment.
 
 ![REST API](img/queryAnywhereRestAPI.png "REST API")  
+
+
+All of the major components of the shipping application have been captured in the diagrams above. In this tutorial we will create the following objects to develop the shipping application.
+
+### Collections
+__shipment__
+__package__
+__checkpoint__
+
+### Functions
+__findShipment__
+__findPackage__
+__fncPackageUpdate__
+
+### Trigger
+__trgPackageCheckpoint__
+
+### Services
+
+### Webhooks
+
