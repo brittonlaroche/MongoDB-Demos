@@ -156,7 +156,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
 Notice that the shipping document has a plan.  The plan is an array of subdocuments or objects that describe what flights the packages will be shipped on and in what order. Now that we have a basic overview, we are ready to begin developing the shipping application.
 
 ## Creating an Atlas Cluster
-Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https:/cloud.mongodb.com to sign up.  Additional instructions are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
+Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
 
 ## Creating the stitch shipping application
 Once we have created the cluster we will create a new stitch application.  Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application."
