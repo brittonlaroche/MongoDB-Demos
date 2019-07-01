@@ -32,7 +32,7 @@ __findShipment__: finds a specific shipping document based on a search document
 __findPackage__: finds a specific package document based on a search document   
 __fncPackageUpdate__: a function that updates the checkpoint and shipping collection   
 
-### Trigger
+### Triggers
 __trgPackageCheckpoint__: a trigger that watches the package collection and calls the __fncPackageUpdate__ function   
 
 ### Services
@@ -167,4 +167,7 @@ To capture the changes to the packages over time keeping a full history of the t
 Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
 
 ## Create the stitch shipping application
-Once we have created the cluster we will create a new stitch application.  Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application."
+Once we have created the cluster we will create a new stitch application.  Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application." Click the create new application button and give the new stitch application the name "__shipping__" in the pop up window.  Scroll to the bottom of the window and click the create button.
+
+The stitch application console should appear displaying new stitch shipping application window.
+
