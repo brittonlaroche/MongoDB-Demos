@@ -54,6 +54,8 @@ Below we have a sample shipping document with a mix of items.  A football team i
 	"contact_email": "bjones@mail.com",
 	"address": "123 Main Street, Frisco TX 75034",
 	"description": "5x8x10 Cargo hold expect 5 to 10 Packages",
+	"ship_date": "07/25/2019",
+	"last_modified": "07/25/2019",
 	"plan": [
         {
             "order": 1,
@@ -150,8 +152,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
 		        }
 		    }
         }
-    ],
-    "last_modified": "07/25/2019"
+    ]
 }
 ```
 Notice that the shipping document has a plan.  The plan is an array of subdocuments or objects that describe what flights the packages will be shipped on and in what order. Now that we have a basic overview, we are ready to begin developing the shipping application.
