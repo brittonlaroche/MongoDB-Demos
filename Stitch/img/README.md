@@ -2,7 +2,10 @@
 
 https://github.com/MaBeuLux88/mongodb-stitch-movie-collection   
 https://github.com/mongodb-developer/mugs/
+http://bit.ly/MongoWorkshopAtlas
+http://bit.ly/MongoWorkshopStitch
 
+http://portquiz.net:8080/
 
 ## Stitch Overview & Description:
 ### 1 Take a Tour of MongoDB Atlas:  
