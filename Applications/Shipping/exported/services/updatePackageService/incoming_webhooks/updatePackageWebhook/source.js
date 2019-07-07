@@ -25,11 +25,16 @@ exports = async function(payload) {
     //check the package_id
     if ( body.package_id ) {
         //Get current package from shipping document to insure we dont lose data 
+        //Webhook may contain partial information
         searchDoc = {"shipment_id": parseInt(body.shipment_id), "package_id": body.package_id};
+        console.log("searchDoc");
+        console.log(JSON.stringify(searchDoc));
         currentPkgDoc = await context.functions.execute("findPackage", searchDoc);
         if (currentPkgDoc){
           console.log("Current Package Found");
+          console.log(JSON.stringify(currentPkgDoc));
         } else {
+          console.log("Current Package NOT Found! Assuming new package is added to shipment.");
           currentPkgDoc = {};
         }
         //build an update document
