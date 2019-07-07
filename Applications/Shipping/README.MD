@@ -76,11 +76,11 @@ Below we have a sample shipping document with a mix of items.  A football team i
     	{
             "package_id": "ABCXYZ1233",
             "tag_id": "XYZ123",
-	    "Type": "DIRECT SHIP",
-            "desc": "2x4 Foot Locker Blue",
+            "type": "DIRECT SHIP",
+            "description": "2x4 Foot Locker Blue",
             "weight": "125 lbs",
             "last_event": "curbside check in",
-	    "location": "DFW",
+            "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863001"
@@ -90,11 +90,11 @@ Below we have a sample shipping document with a mix of items.  A football team i
         {
             "package_id": "ABCXYZ1235",
             "tag_id": "XYZ1235",
-	    "Type": "DIRECT SHIP",
+            "type": "DIRECT SHIP",
             "description": "black suitcase",
             "weight": "55 lbs",
             "last_event": "curbside check in",
-	    "location": "DFW",
+            "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863033"
@@ -104,12 +104,12 @@ Below we have a sample shipping document with a mix of items.  A football team i
         {
             "package_id": "ABCXYZ1237",
             "tag_id": "XYZ1236",
-	    "Type": "FEDEX",
-            "Tracking": "12344456789",
+            "type": "FEDEX",
+            "tracking": "12344456789",
             "description": "8 x 10 Envelope",
             "weight": "8 ounces",
             "last_event": "Fed Ex Dropship",
-	    "location": "DFW",
+            "location": "DFW",
             "last_modified": {
 		        "$date": {
 		            "$numberLong": "1564091863033"
