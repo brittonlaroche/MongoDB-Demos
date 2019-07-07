@@ -1,0 +1,22 @@
+{
+    "id": "5d215f84e0601bec3dacf590",
+    "database": "ship",
+    "collection": "codes",
+    "roles": [
+        {
+            "name": "default",
+            "apply_when": {},
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "additional_fields": {}
+        }
+    ],
+    "schema": {
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            }
+        }
+    }
+}

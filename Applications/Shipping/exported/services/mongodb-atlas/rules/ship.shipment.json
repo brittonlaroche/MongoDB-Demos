@@ -1,0 +1,22 @@
+{
+    "id": "5d1ed56bfbc812ace19767dc",
+    "database": "ship",
+    "collection": "shipment",
+    "roles": [
+        {
+            "name": "default",
+            "apply_when": {},
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "additional_fields": {}
+        }
+    ],
+    "schema": {
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            }
+        }
+    }
+}

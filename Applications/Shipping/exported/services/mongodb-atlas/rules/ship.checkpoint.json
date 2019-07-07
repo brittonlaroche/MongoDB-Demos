@@ -1,0 +1,26 @@
+{
+    "id": "5d128a670bb5682444c7f553",
+    "database": "ship",
+    "collection": "checkpoint",
+    "roles": [
+        {
+            "name": "owner",
+            "apply_when": {},
+            "read": true,
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "additional_fields": {}
+        }
+    ],
+    "schema": {
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "owner_id": {
+                "bsonType": "string"
+            }
+        }
+    }
+}

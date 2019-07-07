@@ -1,0 +1,12 @@
+{
+    "app_id": "shipping-ekqoy",
+    "config_version": 20180301,
+    "name": "shipping",
+    "location": "US-VA",
+    "deployment_model": "GLOBAL",
+    "security": {},
+    "hosting": {
+        "enabled": true,
+        "app_default_domain": "shipping-ekqoy.mongodbstitch.com"
+    }
+}

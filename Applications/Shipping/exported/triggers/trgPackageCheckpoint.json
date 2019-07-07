@@ -1,0 +1,21 @@
+{
+    "id": "5d12b1296a9a9a73a5292127",
+    "name": "trgPackageCheckpoint",
+    "type": "DATABASE",
+    "config": {
+        "operation_types": [
+            "INSERT",
+            "UPDATE",
+            "DELETE",
+            "REPLACE"
+        ],
+        "database": "ship",
+        "collection": "package",
+        "service_name": "mongodb-atlas",
+        "match": {},
+        "full_document": true,
+        "unordered": false
+    },
+    "function_name": "fncPackageUpdate",
+    "disabled": false
+}
