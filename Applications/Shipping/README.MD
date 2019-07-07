@@ -53,7 +53,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
 	"contact_phone": "19721234444",
 	"contact_email": "bjones@mail.com",
 	"address": "123 Main Street, Frisco TX 75034",
-	"description": "5x8x10 Cargo hold expect 5 to 10 Packages",
+	"description": "5x8x10 Cargo hold. Expect 5 to 10 Packages Football team shipment.",
 	"ship_date": "07/25/2019",
 	"last_modified": "07/25/2019",
 	"plan": [
@@ -76,6 +76,7 @@ Below we have a sample shipping document with a mix of items.  A football team i
     	{
             "package_id": "ABCXYZ1233",
             "tag_id": "XYZ123",
+	    "Type": "DIRECT SHIP",
             "desc": "2x4 Foot Locker Blue",
             "weight": "125 lbs",
             "last_event": "curbside check in",
@@ -87,21 +88,9 @@ Below we have a sample shipping document with a mix of items.  A football team i
 		    }
         },
         {
-            "package_id": "ABCXYZ1234",
-            "tag_id": "XYZ1234",
-            "desc": "2x4 Foot Locker Red",
-            "weight": "120 lbs",
-            "last_event": "curbside check in",
-	    "location": "DFW",
-            "last_modified": {
-		        "$date": {
-		            "$numberLong": "1564091863007"
-		        }
-		    }
-        },
-        {
             "package_id": "ABCXYZ1235",
             "tag_id": "XYZ1235",
+	    "Type": "DIRECT SHIP",
             "description": "black suitcase",
             "weight": "55 lbs",
             "last_event": "curbside check in",
@@ -113,36 +102,11 @@ Below we have a sample shipping document with a mix of items.  A football team i
 		    }
         },
         {
-            "package_id": "ABCXYZ1236",
-            "tag_id": "XYZ1236",
-            "desc": "Laundry Bag of foot ball jerseys",
-            "weight": "35 lbs",
-            "last_event": "curbside check in",
-	    "location": "DFW",
-            "last_modified": {
-		        "$date": {
-		            "$numberLong": "1564091863533"
-		        }
-		    }
-        },
-	{
-            "package_id": "ABCXYZ1236",
-            "tag_id": "XYZ1236",
-            "desc": "Laundry Bag of football jerseys",
-            "weight": "35 lbs",
-            "last_event": "curbside check in",
-	    "location": "DFW",
-            "last_modified": {
-		        "$date": {
-		            "$numberLong": "1564091863633"
-		        }
-		    }
-        },
-        {
             "package_id": "ABCXYZ1237",
             "tag_id": "XYZ1236",
-            "FedexTracking": "12344456789",
-            "desc": "8 x 10 Envelope",
+	    "Type": "FEDEX",
+            "Tracking": "12344456789",
+            "description": "8 x 10 Envelope",
             "weight": "8 ounces",
             "last_event": "Fed Ex Dropship",
 	    "location": "DFW",
