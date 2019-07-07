@@ -13,9 +13,11 @@ exports = async function( aSearchDoc ){
     Try running in the console below.
   */
   
-  console.log(JSON.stringify("Function findPackage called ... executing..." ));
-  var checkpoint = context.services.get("mongodb-atlas").db("ship").collection("package");
-  var doc = checkpoint.findOne(aSearchDoc);
+  console.log("Function findPackage called ... executing...");
+  console.log("Search Doc:");
+  console.log(JSON.stringify(aSearchDoc));
+  var packages = context.services.get("mongodb-atlas").db("ship").collection("package");
+  var doc = await packages.findOne(aSearchDoc);
   console.log(JSON.stringify("return document" ));
   console.log(JSON.stringify(doc));
   return doc;
