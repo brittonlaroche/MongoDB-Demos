@@ -58,14 +58,14 @@ Below we have a sample shipping document with a mix of items.  A football team i
 	"last_modified": "07/25/2019",
 	"plan": [
         {
-            "order": 1,
+            "order": "1",
 	    "flight": "123",
             "from": "DFW",
             "to": "BOS",
             "date": "07/25/2019"
         },
         {
-            "order": 2,
+            "order": "2",
             "flight": "227",
             "from": "BOS",
             "to": "BUF",
