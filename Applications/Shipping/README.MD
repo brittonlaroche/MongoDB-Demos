@@ -128,6 +128,8 @@ Lets review some of the design patterns here [MongoDB Docunent Design Patterns](
 
 To capture the changes to the packages over time keeping a full history of the time it took to pass through each checkpoint we will use apsect of the [document versioning](https://www.mongodb.com/blog/post/building-with-patterns-the-document-versioning-pattern) pattern.  In order to keep package information relevant with shipping information we can use the [extended reference](https://www.mongodb.com/blog/post/building-with-patterns-the-extended-reference-pattern) pattern.
 
+We will dicuss the use of the design patterns in the relevant sections of the tutorial, for now we simply wish to introduce the concept of using design patterns to develop and effective document schema.
+
 ## 1. Create an Atlas Cluster
 Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
 
