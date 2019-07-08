@@ -3,14 +3,15 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 (Note this tutorial build's on the [Employee Tutorial](../employee))
 
 ## Tutorial Contents 
-(Note: All tutorials are hands on and should take an estimated time of less than 20 minutes)
+(Note: All HR tutorials are hands on and should take an estimated time of less than 20 minutes)
 1. [MongoDB blog tutorial](../blog)
-2. [Atlas Triggers and Functions: HR Employee tutorial](../employee/)
-3. [Stitch Query Anywhere tutorial](../rest)
+2. [Atlas Triggers, Functions & Stitch Query Anywhere: HR Employee tutorial](../employee/)
+3. [Stitch Rest API: HR Employee Tutorial](../rest)
 4. [Embed Atlas Charts in your app tutorial](../charts)
 5. [Embed Google Charts tutorial](../charts-google) 
 6. [Embed an Org Chart tutorial](../charts-org) 
 7. [Host your application tutorial](../hosting) 
+
 
 ### Hosting Overview
 Stitch Hosting allows you to host, manage, and serve your application’s static media and document files. You can use Hosting to store individual pieces of content or to upload and serve your entire client application. Stitch hosts your application’s content behind a unique domain name. By default, Stitch uses domains of the following form: ```<Your App ID>.mongodbstitch.com```. You can configure Stitch to host content at a custom domain name that you own in addition to the default hosting domain.
