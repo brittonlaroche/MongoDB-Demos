@@ -148,15 +148,20 @@ A quick way to get started is to import the application via this GitHub and the 
 
 The directions here are terse but complete as I refer you to documenation on setting up the stitch command line interface tool and importing the existing stitch shipping application:
 
-#### 1. Begin by [Installing the Stitch Command Line Interface tool](https://docs.mongodb.com/stitch/import-export/stitch-cli-reference/)
+#### 1. Intsall the stitch-cli tool
+Begin by [Installing the Stitch Command Line Interface tool](https://docs.mongodb.com/stitch/import-export/stitch-cli-reference/)
 
-#### 2. Next [Create a Project API key](https://docs.atlas.mongodb.com/configure-api-access/#programmatic-api-keys).  When you createthe API key be sure to give yourself the __"Project Owner"__ role as you will need this to import the stitch application.   
+#### 2. Creat a project API key
+Next [Create a Project API key](https://docs.atlas.mongodb.com/configure-api-access/#programmatic-api-keys).  When you createthe API key be sure to give yourself the __"Project Owner"__ role as you will need this to import the stitch application.   
 
-#### 3. Export the MongoDB Demos as a zip file from https://github.com/brittonlaroche/MongoDB-Demos. Press the green button in the upper right labled __"Clone Or Download"__ and press the download a zip file link.   
+#### 3. Download the GitHub code
+Export the MongoDB Demos as a zip file from https://github.com/brittonlaroche/MongoDB-Demos. Press the green button in the upper right labled __"Clone Or Download"__ and press the download a zip file link.   
 
-#### 4. Exctact the zip file to the directory you installed the stitch-cli tool.   
+#### 4. Extract the zip file
+Exctact the zip file to the directory you installed the stitch-cli tool.   
 
-#### 5. log into your atlas cluster with your API key (public and pprivate keys) with the stich command line tool.
+#### 5. Log in via stitch-cli
+log into your atlas cluster with your API key (public and pprivate keys) with the stich command line tool.
 
 Sample login instructions:
 ```
@@ -167,6 +172,6 @@ Example login:
 ```
 stitch-cli login --api-key=ytqictxq --private-api-key=8137b118-4a36-4197-a3c7-23b73ba49775
 ```
-
+#### 6. Import the shipping application
 
 
