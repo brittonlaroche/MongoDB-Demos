@@ -143,7 +143,7 @@ Select "Stitch" from the left hand navigation pane of the Atlas console.  This b
 
 The stitch application console should appear displaying new stitch shipping application window.   
 
-![Stitch App](img/shippinApp.jpg "Stitch App") 
+![Stitch App](img/shippingApp.jpg "Stitch App") 
 
 The next step is to insert the shipping document through the stitch serveless REST based API.  Please click the link here [Shipping REST API](/rest/README.md) to continue building the application.  
 
