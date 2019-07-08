@@ -134,12 +134,12 @@ We will dicuss the use of the design patterns in the relevant sections of the tu
 Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Click the following link https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
 
 ## 2. Create the stitch shipping application
-Once we have created the cluster we will create a new stitch application.  There are two different approaches to creating the shipping application.  Because the application has been created and hosted in github, you could import the application directly into your environment.  Alternatively you can follow this tutorial and manually create the application. 
+Once we have created the cluster we will create a new stitch application.  There are two different approaches to creating the shipping application.  Because the application has been created and hosted in GitHub, you could import the application directly into your environment.  Alternatively you can follow this tutorial and manually create the application. 
 
-If you are new to MongoDB Stitch I recommend creating the functions and services manually through this tutorial as it will help you learn the process of creating a stitch application step by step.  You can follow up with the stitch command line tool by exporting your completed application and loading it into github.
+If you are new to MongoDB Stitch I recommend creating the functions and services manually through this tutorial as it will help you learn the process of creating a stitch application step by step.  You can follow up with the stitch command line tool by exporting your completed application and loading it into GitHub.
 
-### A. Importing the Application from git hub
-A quick way to get started is to import the application via this github and the stitch command line tool __"stitch-cli"__. Knowledge of how the stitch command line works is important as you can integrate stitch-cli with your CICD (continuous integration and continuous delivery) tools.  This allows you to work in your native development enviroment, commit changes to github and then deploy and test as you would normally through your CICD work flow.
+### A. Importing the Application from GitHub
+A quick way to get started is to import the application via this GitHub and the stitch command line tool __"stitch-cli"__. Knowledge of how the stitch command line works is important as you can integrate stitch-cli with your CICD (continuous integration and continuous delivery) tools.  This allows you to work in your native development enviroment, commit changes to GitHub and then deploy and test as you would normally through your CICD work flow.
 
 The directions here are terse but complete as I refer you to documenation on setting up the stitch command line interface tool and importing the existing stitch shipping application:
 
@@ -151,8 +151,17 @@ The directions here are terse but complete as I refer you to documenation on set
 
 4. Exctact the zip file to the directory you installed the stitch-cli tool.   
 
-5. log into your atlas cluster with your API key with the stich command line tool.
+5. log into your atlas cluster with your API key (public and pprivate keys) with the stich command line tool.
 
+Sample login instructions:
+```
+stitch-cli login --api-key=my-api-key --private-api-key=my-private-api-key
+```
+
+Example login:
+```
+stitch-cli login --api-key=ytqictxq --private-api-key=8137b118-4a36-4197-a3c7-23b73ba49775
+```
 
 ### B. Manually Creating the Application
 Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application." Click the create new application button and give the new stitch application the name "__shipping__" in the pop up window.  Scroll to the bottom of the window and click the create button.
