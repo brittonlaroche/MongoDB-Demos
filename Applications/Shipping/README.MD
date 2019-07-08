@@ -224,3 +224,9 @@ If you named your cluster "DevCluster" for example you would change the __"clust
 }
 ```
 Once you save your changes you are ready to try the import again.
+
+#### 7. Prepare the database
+
+Now that the application is created we need to prepare the database.  One of the things we need to do is add a unique index on the shipping_id field so we dont accidentally create duplicate shipment documents if someone attempts to add the same shipment twice.
+
+
