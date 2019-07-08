@@ -141,10 +141,16 @@ If you are new to MongoDB Stitch I recommend creating the functions and services
 ### A. Manually Creating the Application
 Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application." Click the create new application button and give the new stitch application the name "__shipping__" in the pop up window.  Scroll to the bottom of the window and click the create button.
 
-The stitch application console should appear displaying new stitch shipping application window.
+The stitch application console should appear displaying new stitch shipping application window.   
+
+![Stitch App](img/shippinApp.jpg "Stitch App") 
+
+The next step is to insert the shipping document through the stitch serveless REST based API.  Please click the link here [Shipping REST API](/rest/README.md) to continue building the application.  
 
 ### B. Importing the Application from GitHub
-A quick way to get started is to import the application via this GitHub and the stitch command line tool __"stitch-cli"__. Knowledge of how the stitch command line works is important as you can integrate stitch-cli with your CICD (continuous integration and continuous delivery) tools.  This allows you to work in your native development enviroment, commit changes to GitHub and then deploy and test as you would normally through your CICD work flow.
+Note only follow this section if you plan on importing the application rather than learning all the steps to build it.  Please click the link here [Shipping REST API](/rest/README.md) to continue following the flow of the tutorial.  
+
+The following section shows how to import the application via this GitHub and the stitch command line tool __"stitch-cli"__. Knowledge of how the stitch command line works is important as you can integrate stitch-cli with your CICD (continuous integration and continuous delivery) tools.  This allows you to work in your native development enviroment, commit changes to GitHub and then deploy and test as you would normally through your CICD work flow.
 
 The directions here are terse but complete as I refer you to documenation on setting up the stitch command line interface tool and importing the existing stitch shipping application:
 
