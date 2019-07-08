@@ -11,3 +11,4 @@ The diagram below shows how a third party shipping provider can interact with us
 ![Rest Diagram](../img/queryAnywhereRestAPI.png)   
 
 
+We will focus on creating the findShipmentService, the addShipmentService, and the updatePackageService.  These services will have correespond webhooks that allow the third party shipping providers to access their data in our system.
