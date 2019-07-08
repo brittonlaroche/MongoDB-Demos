@@ -17,7 +17,7 @@ We will focus on creating the findShipmentService, the addShipmentService, and t
 [Postman](https://www.getpostman.com/downloads/) or curl   
 
 
-### 1. Create a stitch function to query employee data
+### 1. Create a stitch function to query shipment data
 log into the atlas console https://cloud.mongodb.com and click the "Stitch" menu item on the left. Select your stitch application "HumanResources." Select "functions" from the menu item on the left and create a new function named: __findShipment__   
 
 ![Console](img/findShipment.jpg "Console")
@@ -36,7 +36,7 @@ exports = async function( aSearchDoc ){
 
 Notice that we made this function async in the declaration.  This will allow the calling function to await a database response while this function does the work to find the shipment specified.  The shipment search criteria is specified in the search document passed in as an argument.
 
-### 2. Create a webhook to call the function to query employee data
+### 2. Create a webhook to call the function to query shipment data
 Create the __"findShipmentService"__    
 Select "Services" from the left navigation panel in the Stitch Console.  Click the "Add a Service" button. In the add a service dialog select the "HTTP" button and give the service a name __"findShipmentService"__ and click the "Add Service" button.   
 
