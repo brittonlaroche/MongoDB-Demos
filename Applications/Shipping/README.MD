@@ -223,4 +223,4 @@ If you named your cluster "DevCluster" for example you would change the __"clust
     "version": 1
 }
 ```
-Once you save your changes you are ready to trey the import again.
+Once you save your changes you are ready to try the import again.
