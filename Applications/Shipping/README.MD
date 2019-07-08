@@ -154,11 +154,13 @@ Begin by [Installing the Stitch Command Line Interface tool](https://docs.mongod
 #### 2. Creat a project API key
 Next [Create a Project API key](https://docs.atlas.mongodb.com/configure-api-access/#programmatic-api-keys).  When you createthe API key be sure to give yourself the __"Project Owner"__ role as you will need this to import the stitch application.   
 
+Click right this link [Create a Project API key](https://docs.atlas.mongodb.com/configure-api-access/#programmatic-api-keys) open in new tab. Follow intrsuction under __Manage Programmatic Access to a Project__ perform each step listed in the section __Create an API Key for a Project__ be sure to copy the private API key somewhere safe for future refence.
+
 #### 3. Download the GitHub code
 Export the MongoDB Demos as a zip file from https://github.com/brittonlaroche/MongoDB-Demos. Press the green button in the upper right labled __"Clone Or Download"__ and press the download a zip file link.   
 
 #### 4. Extract the zip file
-Exctact the zip file to the directory you installed the stitch-cli tool.   
+Exctact the zip file to the directory you installed the stitch-cli tool.  The shipping application stitch export is located under (stitch-cli path)/MongoDB-Demos-master/Applications/Shipping/exported
 
 #### 5. Log in via stitch-cli
 log into your atlas cluster with your API key (public and pprivate keys) with the stich command line tool.
@@ -171,7 +173,12 @@ stitch-cli login --api-key=my-api-key --private-api-key=my-private-api-key
 Example login:
 ```
 stitch-cli login --api-key=ytqictxq --private-api-key=8137b118-4a36-4197-a3c7-23b73ba49775
+←[0;0myou have successfully logged in as ytqictxq←[0m
 ```
+
 #### 6. Import the shipping application
+After logging in the command line maintains the connection until you execute the command __stitch-cli logout__.  We are now ready to import the application.
 
+```
 
+```
