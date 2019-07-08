@@ -134,7 +134,7 @@ We will dicuss the use of the design patterns in the relevant sections of the tu
 Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
 
 ## 2. Create the stitch shipping application
-Once we have created the cluster we will create a new stitch application.  There are two different approaches to creatingthe shipping application.  Because the application has been created and hosted in github you could import the application directly.  Alternatively you can follow the tutorial. 
+Once we have created the cluster we will create a new stitch application.  There are two different approaches to creating the shipping application.  Because the application has been created and hosted in github, you could import the application directly into your environment.  Alternatively you can follow this tutorial and manually create the application. 
 
 If you are new to MongoDB Stitch I recommend creating the functions and services manually through this tutorial as it will help you learn the process of creating a stitch application step by step.  You can follow up with the stitch command line tool by exporting your completed application and loading it into github.
 
