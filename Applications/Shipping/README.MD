@@ -180,5 +180,36 @@ stitch-cli login --api-key=ytqictxq --private-api-key=8137b118-4a36-4197-a3c7-23
 After logging in the command line maintains the connection until you execute the command __stitch-cli logout__.  We are now ready to import the application.
 
 ```
+stitch-cli import  --app-id=shipping-ekqoy --path=./MongoDB-Demos-master/Applications/Shipping/exported --strategy=replace
+←[0;0mUnable to find app with ID: "shipping-ekqoy": would you like to create a new app? [y/n]:←[0m y
+←[0;0mApp name [shipping]:←[0m
+←[0;0mAvailable Projects:←[0m
+←[0;0mProject 0 - 5ce58a9fc56c98145d922e93←[0m
+←[0;0mAtlas Project Name or ID [Project 0]:←[0m
+←[0;0mLocation [US-VA]:←[0m
+←[0;0mDeployment Model [GLOBAL]:←[0m
+←[0;0mNew app created: shipping-vibtf←[0m
+←[0;0mImporting app...←[0m
+←[0;0mDone.←[0m
+←[0;0mSuccessfully imported 'shipping-vibtf'←[0m
+```
+
+If you named your cluster anything other than the default __"Cluster0"__ then you will need to modify a json document to reflect your cluster name. The document is located in your directory here: /MongoDB-Demos-master/Applications/Shipping/exportedservices/mongodb-atlas/config.json
+
+If you named your cluster "DevCluster" for example you would change the __"clusterName":__ field from __"Cluster0"__ to __"DevCluster"__.  An example has been provided below.
 
 ```
+
+{
+    "id": "5d218cb4e0601bec3de065c7",
+    "name": "mongodb-atlas",
+    "type": "mongodb-atlas",
+    "config": {
+        "clusterName": "DevCluster",
+        "readPreference": "primary",
+        "wireProtocolEnabled": false
+    },
+    "version": 1
+}
+```
+Once you save your changes you are ready to trey the import again.
