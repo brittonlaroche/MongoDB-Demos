@@ -1,0 +1,371 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./ship.css">
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+      /* NOTE: handle your API key with another method than what is provided in this example 
+       * (dont paste your API key in your code its easily obtained by the browser view source)
+       * API key is pasted here for a simple prototype example with out key management 
+       */       
+      const credential = new stitch.UserApiKeyCredential("y2yhO49BDf4zvQVnt5GEC0Ge90VJVsByuSGVVJAvUr4Z9tZjWvJ2iZiL8OhKKY0M");
+      const client = stitch.Stitch.initializeDefaultAppClient('shipping-wkfkx');
+      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('ship');
+      function displayShipmentsOnLoad() {
+        client.auth
+          .loginWithCredential(credential)
+          .then(displayShipments)
+          .catch(console.error);
+      }
+      function displayShipments() {
+        var searchDoc = {};
+        var sShip = document.getElementById('s_shipment_id'); 
+        var sCust = document.getElementById('s_customer_id'); 
+        var sPhone = document.getElementById('s_contact_phone');
+        var sPkg = document.getElementById('s_package_id');
+        var sShip = document.getElementById('s_shipment_id'); 
+        if ( sCust.value != "") {
+          searchDoc = {customer_id: sCust.value}; 
+        }
+        if ( sPhone.value != "") {
+          searchDoc = {contact_phone: sPhone.value}; 
+        }
+        if ( sPkg.value != "") {
+          searchDoc = { "packages.package_id": sPkg.value}; 
+        }
+        if ( parseInt(sShip.value) > 0) {
+          searchDoc = {shipment_id: parseInt(sShip.value)}; 
+        }
+        const tStrt = "<div><table class=\"blueTable\"><th>Shipment ID</th><th>Customer ID</th><th>Name</th>" +
+          "<th>Conact Phone</th><th>Email</th><th>Ship Date</th><th>Description</th><th>last_modified</th><th>Edit</th>";
+          db.collection('shipment').find(searchDoc, {limit: 1000}).asArray()
+            .then(docs => {
+              const html = docs.map(c => "<tr>" +
+                "<td>[" + c.shipment_id +  "]</td>" +
+                "<td>" + c.customer_id +  "</td>" +
+                "<td>" + c.first_name + " " + c.last_name + "</td>" +
+                "<td>" + c.contact_phone + "</td>" + 
+                "<td>" + c.contact_email + "</td>" +
+                "<td>" + c.ship_date + "</td>" +
+                "<td>" + c.description + "</td>" +
+                "<td>" + c.last_modified + "</td>" +
+                "<td> " + 
+                "<button type=\"checkbox\" class=\"blueTable\"" +
+                "onClick=\"editShipment(" + c.shipment_id +")\">" +
+                "<i class=\"material-icons\" style=\"font-size:18px\">" +
+                "mode_edit</i></button>" + 
+                "</td>" +
+                "</tr>").join("");
+              document.getElementById("shipments").innerHTML = tStrt + html + "</table></div>";
+          });
+        }
+      function padDigits(number, digits) {
+        return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
+      }
+      function checkDate(argDate){
+        if (argDate) {
+          return argDate.toLocaleDateString();
+        } else {
+          return "";
+        }
+      }
+      function formatDate(argdate){
+        var date = argdate.getFullYear()+'-'+padDigits((argdate.getMonth()+1),2) +'-'+padDigits(argdate.getDate(),2);
+        var time = padDigits(argdate.getHours(),2) + ":" + padDigits(argdate.getMinutes(),2) + ":" + padDigits(argdate.getSeconds(),2);
+        var dateTime = date+' '+time;
+        return dateTime;
+      }
+      function showQRcode(){
+          var sID = document.getElementById('shipment_id').value;
+          var vshow_qr_code = document.getElementById('show_qr_code').checked;
+          if (vshow_qr_code && parseInt(sID) > 0){
+            editShipment( sID );
+          }
+      }
+      function addShipment() {
+        const sID = document.getElementById('shipment_id');
+        const cID = document.getElementById('customer_id');
+        const desc = document.getElementById('description');
+        const cFname = document.getElementById('first_name');
+        const cLname = document.getElementById('last_name');
+        const cPhone = document.getElementById('contact_phone');
+        const cEmail = document.getElementById('contact_email');
+        const sShipDate = document.getElementById('ship_date');
+        var nDate = new Date();
+        db.collection('shipment').updateOne(
+          {shipment_id: parseInt(sID.value)},
+          {$set: {
+            owner_id: client.auth.user.id,
+            shipment_id: parseInt(sID.value),
+            description: desc.value,
+            customer_id: cID.value,
+            first_name: cFname.value,
+            last_name: cLname.value,
+            contact_phone: cPhone.value,
+            contact_email: cEmail.value,
+            //ship_date: new Date(sShipDate.value),
+            ship_date: sShipDate.value,
+            last_modified: nDate
+            }
+          },
+          {upsert: true}
+        )
+        .then(displayShipments);
+      }
+      function editShipment(aSID) {
+        //build the html for dynamically displaying additional fields to edit
+        editSearchDoc = {shipment_id: parseInt(aSID)};
+        db.collection('shipment').find(editSearchDoc, {limit: 1}).asArray()
+        .then(docs => {
+          var vSID  = docs.map(s => s.shipment_id);
+          var vCID  = docs.map(s => s.customer_id);
+          var vfname  = docs.map(s => s.first_name);
+          var vlname  = docs.map(s => s.last_name);
+          var vPhone  = docs.map(s => s.contact_phone);
+          var vEmail  = docs.map(s => s.contact_email);
+          var vDesc  = docs.map(s => s.description);
+          var vShipDate  = docs.map(s => s.ship_date);
+          var vLastModified  = docs.map(s => s.last_modified);
+          var vplan = docs.map(s => s.plan);
+          var vqrcode_start = " ";
+          var vqrcode_end = " ";
+          var vshow_qr_code = document.getElementById('show_qr_code').checked;
+          if (vshow_qr_code) {
+            vqrcode_start = "<img src=\"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=";
+            vqrcode_end = "\">";  
+          }
+          var vplanhtml = "<table class=\"blueTable\"><th>Order</th><th>Flight</th><th>From</th><th>To</th><th>Date</th>";
+          docs.map(s => {
+            if (s.plan) {
+              s.plan.forEach( function(myDoc) {
+                vplanhtml = vplanhtml + "<tr><td>"+ myDoc.order + "</td>" +
+                "<td>"+ myDoc.flight + "</td>" +
+                "<td>"+ myDoc.from + "</td>" +
+                "<td>"+ myDoc.to + "</td>" +
+                "<td>"+ myDoc.date + "</td></tr>"
+                ;
+              });
+            }
+          });
+          var vpackageshtml = "<table class=\"blueTable\"><th>Package ID</th><th>Tag ID</th><th>Type</th>" +
+          "<th>Tracking</th><th>Description</th><th>Last Event</th><th>Location</th><th>Last Modified</th>" +
+          "<th>edit</th>";
+          docs.map(s => {
+            if (s.packages) {
+              s.packages.forEach( function(myDoc) { 
+                vpackageshtml = vpackageshtml + "<tr><td>"+ myDoc.package_id + "</td>" +
+                "<td>"+ vqrcode_start + myDoc.tag_id + vqrcode_end + "</td>" +
+                "<td>"+ myDoc.type + "</td>" +
+                "<td>"+ myDoc.tracking + "</td>" +
+                "<td>"+ myDoc.description + "</td>" +
+                "<td>"+ myDoc.last_event + "</td>" +
+                "<td>"+ myDoc.location + "</td>" +
+                "<td>"+ formatDate(myDoc.last_modified) + "</td>" +
+                "<td> " + 
+                "<button type=\"checkbox\" class=\"blueTable\"" +
+                "onClick=\"editPkg(" + 
+                    "\'"+ myDoc.package_id + "\'," +
+                    "\'"+ myDoc.tag_id + "\'," +
+                    "\'"+ myDoc.type + "\'," +
+                    "\'"+ myDoc.tracking + "\'," +
+                    "\'"+ myDoc.description + "\'," +
+                    "\'"+ myDoc.last_event + "\'," +
+                    "\'"+ myDoc.location + "\'" +
+                ")\">" +
+                "<i class=\"material-icons\" style=\"font-size:18px\">" +
+                "mode_edit</i></button>" + 
+                "</td>" +
+                "</tr>"
+                ;
+              });
+            }
+          });
+          document.getElementById("shipment_id").value = vSID;
+          document.getElementById("description").value = vDesc;
+          document.getElementById("customer_id").value = vCID;
+          document.getElementById("first_name").value = vfname;
+          document.getElementById("last_name").value = vlname;
+          document.getElementById("contact_phone").value = vPhone;
+          document.getElementById("contact_email").value = vEmail;
+          document.getElementById("ship_date").value = vShipDate;
+          html = "<h3>Shipment Details</h3>" + 
+            "<table style=\"padding: 30px\">" +
+            "<tr><td>Shipment ID:  </td><td>" + vSID + "</td></tr>" +
+            "<tr><td>Customer ID:  </td><td>" + vCID + "</td></tr>" +
+            "<tr><td>First Name:  </td><td>" + vfname + "</td></tr>" +
+            "<tr><td>Last Name:  </td><td>" + vlname + "</td></tr>" +
+            "<tr><td>Contact Phone:  </td><td>" + vPhone + "</td></tr>" +
+            "<tr><td>Contact Email:  </td><td>" + vEmail + "</td></tr>" +
+            "<tr><td>Shipment Description:  </td><td>" + vDesc + "</td></tr>" +
+            "<tr><td>Ship Date:  </td><td>" + vShipDate + "</td></tr></table>" +
+            "<h3>Shipment Plan</h3>" + 
+            vplanhtml +
+              "<tr><td><input id=\"plan_order\"></td>" + 
+              "<td><input id=\"plan_flight\"></td>" +
+              "<td><input id=\"plan_from\"></td>" +
+              "<td><input id=\"plan_to\"></td>" +
+              "<td><input id=\"plan_date\"></td>" +
+            "</tr></table>" +
+            "<button type=\"submit\" id=\"contact-submit\" onClick=\"updatePlan()\">Update Plan</button>" +
+            vpackageshtml +
+            "<h3>Package List</h3>" +
+              "<tr><td><input id=\"pkg_package_id\"></td>" + 
+              "<td><input id=\"pkg_tag_id\"></td>" +
+              "<td><div class=\"contact\" id=\"pkg_types\"></div></td>" +
+              "<td><input id=\"pkg_tracking\"></td>" +
+              "<td><input id=\"pkg_description\"></td>" +
+              "<td><input id=\"pkg_last_event\"></td>" +
+              "<td><input id=\"pkg_location\"></td>" +
+              "<td></td>" +
+            "</tr></table>" +
+            "<button type=\"submit\" id=\"contact-submit\" onClick=\"updatePackage()\">Update Package</button>" +
+            "<br><hr><br>" +
+            "<button type=\"submit\" id=\"contact-submit\" onClick=\"displayShipments()\">Return to List</button>";
+          document.getElementById("shipments").innerHTML = html;
+          displayPkgTypeDropList();
+          }); 
+      }
+      function editPkg(apackage_id, atag_id, atype, atracking, adescription, alast_event, alocation ){
+        document.getElementById('pkg_package_id').value = apackage_id;
+        document.getElementById('pkg_tag_id').value = atag_id;
+        document.getElementById('dl_pkg_type').value = atype;
+        document.getElementById('pkg_tracking').value = atracking;
+        document.getElementById('pkg_description').value = adescription;
+        document.getElementById('pkg_last_event').value = alast_event;
+        document.getElementById('pkg_location').value = alocation;
+      }
+      async function updatePackage() {
+        // we could write our own update using query anywhere like the shipment example or we can call
+        // a rest API.  This example uses the rest API
+        var vshipment_id = document.getElementById('shipment_id');
+        var vpackage_id = document.getElementById('pkg_package_id');
+        var vpkg_tag_id = document.getElementById('pkg_tag_id');
+        var vpkg_type = document.getElementById('dl_pkg_type');
+        var vpkg_tracking = document.getElementById('pkg_tracking');
+        var vpkg_description = document.getElementById('pkg_description');
+        var vpkg_last_event = document.getElementById('pkg_last_event');
+        var vpkg_location = document.getElementById('pkg_location');
+        var packageDoc = {};
+        var vurl = "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/shipping-wkfkx/service/updatePackageService/incoming_webhook/updatePackageWebhook";
+        if (parseInt(vshipment_id.value) < 1) {
+          alert("Shipment ID is required");
+          return;
+        }
+        //capture the user input but dont use blank fields
+        if (vpackage_id.value != "") {
+          packageDoc = {shipment_id: parseInt(vshipment_id.value), package_id: vpackage_id.value}
+          packageDoc.owner_id = client.auth.user.id;
+          if ( vpkg_tag_id.value != "" ) {
+            packageDoc.tag_id = vpkg_tag_id.value;
+          }
+          if ( vpkg_type.value != "" ) {
+            packageDoc.type = vpkg_type.value;
+          }
+          if ( vpkg_tracking.value != "" ) {
+            packageDoc.tracking = vpkg_tracking.value;
+          }
+          if ( vpkg_description.value != "" ) {
+            packageDoc.description = vpkg_description.value;
+          }
+          if ( vpkg_last_event.value != "" ) {
+            packageDoc.last_event = vpkg_last_event.value;
+          }
+          if ( pkg_location.value != "" ) {
+            packageDoc.location = vpkg_location.value;
+          }
+        } else {
+          alert("Package ID is required");
+          return;
+        }
+        const response = await fetch(vurl, {
+          method: 'POST',
+          body: JSON.stringify(packageDoc), // string or object
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const myJson = await response.json(); //extract JSON from the http response
+        // do something with myJson
+        editShipment(vshipment_id.value);
+      }
+      async function updatePlan() {
+        var vorder = document.getElementById('plan_order');
+        var vSID = document.getElementById('shipment_id');
+        var vflight = document.getElementById('plan_flight');
+        var vfrom = document.getElementById('plan_from');
+        var vto = document.getElementById('plan_to');
+        var vdate = document.getElementById('plan_date');
+        var planDoc = {};
+        //here we will execute a remote function
+        //all logoc for handeling updates will be there
+        if (vorder.value == ""){
+          alert("Order is required. 1 is for first flight, 2 for second flight etc..");
+          return;
+        }
+        if (vflight.value == ""){
+          alert("Flight number is required.");
+          return;
+        }
+        if (vdate.value == ""){
+          alert("Flight departure date is required.");
+          return;
+        }
+        planDoc.shipment_id = vSID.value;
+        planDoc.order = vorder.value;
+        planDoc.flight = vflight.value;
+        planDoc.from = vfrom.value;
+        planDoc.to = vto.value;
+        planDoc.date = vdate.value;
+        await client.callFunction("fncPlanUpdate", [planDoc]).then(editShipment( vSID.value ));
+      }
+      function displayPkgTypeDropList() {
+          var searchDoc = {CODE_TYPE: "PACKAGE_TYPE"};
+		  db.collection('codes').find(searchDoc, {limit: 1000}).asArray()
+			  .then(docs => {
+				const html = docs.map(c =>
+				"<option value=\"" +
+				c.VALUE + "\"" +
+				">" +
+				c.VALUE +
+				"</option>").join("");
+				document.getElementById("pkg_types").innerHTML = "<fieldset>" +
+                    "<select class=\"select\" id=\"dl_pkg_type\">" +
+                    "<option value=\"\">Select Package Type</option> " + html +
+                    "</select></fieldset>";
+		  });
+      }
+    </script>
+  </head>
+  <body onload="displayShipmentsOnLoad()">
+    <table><tr><td>
+        <div id="contact" class="container">
+            <img src="logo.png">
+            <h3>Shipment Information</h3>
+            Find Shipment:
+            <fieldset><input type="text" placeholder="Shipment ID:" id="s_shipment_id"></fieldset>
+            <fieldset><input type="text" placeholder="Customer ID:" id="s_customer_id"></fieldset>
+            <fieldset><input type="text" placeholder="Contact Phone:" id="s_contact_phone"></fieldset>
+            <fieldset><input type="text" placeholder="Package ID:" id="s_package_id"></fieldset>
+            <button type="submit" id="contact-submit" onClick="displayShipments()">Search</button>
+            Add Shipment:
+            <fieldset><input type="text" placeholder="Shipment ID:" id="shipment_id"></fieldset>
+            <fieldset><input type="text" placeholder="Shipment Description:" id="description"></fieldset>
+            <fieldset><input type="text" placeholder="Customer ID:" id="customer_id"></fieldset>
+            <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
+            <fieldset><input type="text" placeholder="Last Name:" id="last_name"></fieldset>
+            <fieldset><input type="text" placeholder="Contact Phone:" id="contact_phone"></fieldset>
+            <fieldset><input type="text" placeholder="Contact Email:" id="contact_email"></fieldset>
+            <fieldset><input type="text" placeholder="Ship Date (MM/DD/YYYY):" id="ship_date"></fieldset>
+            <button type="submit" id="contact-submit" onClick="addShipment()">Update</button>
+            <br><hr><br>Show QR Code:   <input type="checkbox" id="show_qr_code" onClick="showQRcode()">
+        </div>
+    </td>
+    <td>
+    <div id="contact">
+        <div id="shipments">Loading...<br><img src="loading.gif"></div>
+    </div>
+    </td>
+    </tr>
+    </table>
+</body>
+</html>
