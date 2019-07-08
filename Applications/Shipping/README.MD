@@ -177,7 +177,12 @@ stitch-cli login --api-key=ytqictxq --private-api-key=8137b118-4a36-4197-a3c7-23
 ```
 
 #### 6. Import the shipping application
-After logging in the command line maintains the connection until you execute the command __stitch-cli logout__.  We are now ready to import the application. Follow the prompts and respond __y__ when asked if you would like to create a new app. Press enter to accept the default values.  Change the values to match your configuration.  An example is provided below.
+After logging in the command line maintains the connection until you execute the command __stitch-cli logout__.  We are now ready to import the application. The following command below should work.
+```
+stitch-cli import  --app-id=shipping-ekqoy --path=./MongoDB-Demos-master/Applications/Shipping/exported --strategy=replace
+```
+
+Follow the prompts and respond __y__ when asked if you would like to create a new app. Press enter to accept the default values.  Change the values to match your configuration.  An example is provided below.
 
 ```
 stitch-cli import  --app-id=shipping-ekqoy --path=./MongoDB-Demos-master/Applications/Shipping/exported --strategy=replace
