@@ -131,7 +131,7 @@ To capture the changes to the packages over time keeping a full history of the t
 We will dicuss the use of the design patterns in the relevant sections of the tutorial, for now we simply wish to introduce the concept of using design patterns to develop and effective document schema.
 
 ## 1. Create an Atlas Cluster
-Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Head to https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
+Our first step is to create an atlas cluster.  In our example we will create a free tier cluster known as an M0.  Click the following link https://cloud.mongodb.com to sign up.  Additional instructions on creating an Atlas cluster are available here: [Atlas getting started Guide](https://docs.atlas.mongodb.com/getting-started/)   
 
 ## 2. Create the stitch shipping application
 Once we have created the cluster we will create a new stitch application.  There are two different approaches to creating the shipping application.  Because the application has been created and hosted in github, you could import the application directly into your environment.  Alternatively you can follow this tutorial and manually create the application. 
@@ -140,6 +140,8 @@ If you are new to MongoDB Stitch I recommend creating the functions and services
 
 ### A. Importing the Application from git hub
 A quick way to get started is to import the application via this github and the stitch command line tool __"stitch-cli"__. Knowledge of how the stitch command line works is important as you can integrate stitch-cli with your CICD (continuous integration and continuous delivery) tools.  This allows you to work in your native development enviroment, commit changes to github and then deploy and test as you would normally through your CICD work flow.
+
+Begin by [Installing the Stitch Command Line Interface tool](https://docs.mongodb.com/stitch/import-export/stitch-cli-reference/)
 
 ### B. Manually Creating the Application
 Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application." Click the create new application button and give the new stitch application the name "__shipping__" in the pop up window.  Scroll to the bottom of the window and click the create button.
