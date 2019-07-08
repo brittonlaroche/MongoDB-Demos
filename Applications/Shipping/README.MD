@@ -138,7 +138,12 @@ Once we have created the cluster we will create a new stitch application.  There
 
 If you are new to MongoDB Stitch I recommend creating the functions and services manually through this tutorial as it will help you learn the process of creating a stitch application step by step.  You can follow up with the stitch command line tool by exporting your completed application and loading it into GitHub.
 
-### A. Importing the Application from GitHub
+### A. Manually Creating the Application
+Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application." Click the create new application button and give the new stitch application the name "__shipping__" in the pop up window.  Scroll to the bottom of the window and click the create button.
+
+The stitch application console should appear displaying new stitch shipping application window.
+
+### B. Importing the Application from GitHub
 A quick way to get started is to import the application via this GitHub and the stitch command line tool __"stitch-cli"__. Knowledge of how the stitch command line works is important as you can integrate stitch-cli with your CICD (continuous integration and continuous delivery) tools.  This allows you to work in your native development enviroment, commit changes to GitHub and then deploy and test as you would normally through your CICD work flow.
 
 The directions here are terse but complete as I refer you to documenation on setting up the stitch command line interface tool and importing the existing stitch shipping application:
@@ -163,8 +168,5 @@ Example login:
 stitch-cli login --api-key=ytqictxq --private-api-key=8137b118-4a36-4197-a3c7-23b73ba49775
 ```
 
-### B. Manually Creating the Application
-Select "Stitch" from the left hand navigation pane of the Atlas console.  This brings up the stitch console and presents us with a button labled "Create New Stitch Application." Click the create new application button and give the new stitch application the name "__shipping__" in the pop up window.  Scroll to the bottom of the window and click the create button.
 
-The stitch application console should appear displaying new stitch shipping application window.
 
