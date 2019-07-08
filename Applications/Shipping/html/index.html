@@ -77,8 +77,7 @@
       }
       function showQRcode(){
           var sID = document.getElementById('shipment_id').value;
-          var vshow_qr_code = document.getElementById('show_qr_code').checked;
-          if (vshow_qr_code && parseInt(sID) > 0){
+          if (parseInt(sID) > 0){
             editShipment( sID );
           }
       }
