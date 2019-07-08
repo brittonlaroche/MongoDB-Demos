@@ -3,14 +3,15 @@ _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 (Note this tutorial build's on the [Employee Tutorial](../employee))
 
 ## Tutorial Contents 
-(Note: All tutorials are hands on and should take an estimated time of less than 20 minutes)
+(Note: All HR tutorials are hands on and should take an estimated time of less than 20 minutes)
 1. [MongoDB blog tutorial](../blog)
-2. [Atlas Triggers and Functions: HR Employee tutorial](../employee/)
-3. [Stitch Query Anywhere tutorial](../rest)
+2. [Atlas Triggers, Functions & Stitch Query Anywhere: HR Employee tutorial](../employee/)
+3. [Stitch Rest API: HR Employee Tutorial](../rest)
 4. [Embed Atlas Charts in your app tutorial](../charts)
 5. [Embed Google Charts tutorial](../charts-google) 
 6. [Embed an Org Chart tutorial](../charts-org) 
 7. [Host your application tutorial](../hosting) 
+
 
 ### Google charts overview 
 
