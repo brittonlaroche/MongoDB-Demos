@@ -1,9 +1,9 @@
 ## Sample Human Resources Application
-![Applications](img/hr.jpg "HR")   
+![HR Application](img/hr.png "HR")   
 
 [Click here to get started with MongoDB Sample Human Resources Application](../Stitch/employee)
 
 ## Sample Shipping Application
-![Applications](img/shipping.jpg "Shipping")   
+![Shipping Application](img/shipping.jpg "Shipping")   
 
 [Click here to get started with MongoDB Sample Shipping Application](Shipping)
