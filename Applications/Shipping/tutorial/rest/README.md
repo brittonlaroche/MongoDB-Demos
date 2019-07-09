@@ -137,6 +137,8 @@ Next we use postman to test our service.  Add a new tab and select "POST" from t
 
 ![Postman](img/postmanAdd.jpg "postman")
 
+
+Once postman is configured, use the json template below by pasting it in the postman body to add a new shipment. 
 ```js
 { 
 	"shipment_id": 101,
@@ -184,5 +186,7 @@ Next we use postman to test our service.  Add a new tab and select "POST" from t
     ]
 }
 ```
-Once postman is configured, use the json template below by pasting it in the postman body to add a new shipment.  Change the shipment_id, package_id and tag_id to add more shipments.  Note you should create a unique index on shipment_id to avoid duplicates.  You can download [compass](https://www.mongodb.com/products/compass) for an easy gui interface to create the index.
+Change the shipment_id, package_id and tag_id to add more shipments.  Grab the example from the start of the start of the shipping tutorial and insert it too.
+
+Note you should create a unique index on shipment_id to avoid duplicates.  You can download [compass](https://www.mongodb.com/products/compass) for an easy gui interface to create the index.
 
