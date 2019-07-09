@@ -1,4 +1,4 @@
-# Shipping Application
+# Shipping Application - Accessing data through the Rest API
 
 ## Overview
 This shipping application provides to methods of getting data into and out of the MongoDB database.  One is through a REST based API that we will create in this section of the tutorial.  The other method utilizes stitch "Query Anywhere" and allows us to use the stitch browser SDK to query the database directly.  Lets get started with the REST based API.
