@@ -192,7 +192,7 @@ Once postman is configured, use the json template below by pasting it in the pos
 ```
 Change the shipment_id, package_id and tag_id to add more shipments.  Grab the example from the start of the start of the shipping tutorial and insert it too.
 
-Note you should create a unique index on shipment_id to avoid duplicates.  You can download [compass](https://www.mongodb.com/products/compass) for an easy gui interface to create the index.
+Note: you should create a unique index on shipment_id to avoid duplicates.  You can download [compass](https://www.mongodb.com/products/compass) for an easy gui interface to create the index.
 
 After inserting some shipments the return document in postman informs you of a success or an error.  It would be great to see the documents.  Lets test our find function created earlier.
 
