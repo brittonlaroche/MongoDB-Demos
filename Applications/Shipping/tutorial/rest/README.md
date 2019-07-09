@@ -133,6 +133,10 @@ exports = function(payload) {
 The result for the default synchronous behavior would be an empty or undefined return document.  If you are not aware of the  __"async"__ keyword, which is required for database look ups when calling another function, it might take some time to figure out why the return document is always null or undefined.  
 
 ### 5. Test the REST based API add shipment service through postman
+Our first step is to get the new URL for our addShipmentService. In the addShipmentWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
+
+![Webhook URL](../../img/addShipmentWebhook.jpg "Webhook URL")
+
 Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).
 
 In postman create a new collection for MongoDB and add a new post service. 
@@ -197,9 +201,7 @@ Note: you should create a unique index on shipment_id to avoid duplicates.  You 
 After inserting some shipments the return document in postman informs you of a success or an error.  It would be great to see the documents.  Lets test our find function created earlier.
 
 ### 6. Test the search employee REST based API service through postman
-Our first step is to get the new URL for our findShipmentService. In the findShipmentWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
-
-![Webhook URL](img/findShipment.jpg "Webhook URL")
+Our first step, again is to get the new URL for our findShipmentService. In the findShipmentWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
 
 Open postman and add a new tab and select "POST" from the drop list. Paste in the URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Find Employee."
 
