@@ -139,8 +139,6 @@ Our first step is to get the new URL for our addShipmentService. In the addShipm
 
 Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).
 
-In postman create a new collection for MongoDB and add a new post service. 
-
 Add a new tab and select "POST" from the drop list. Paste in the addShipmentWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "AddShipment."   
 
 ![Postman](../../img/postmanAdd2.jpg "postman")
