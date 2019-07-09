@@ -135,7 +135,7 @@ The result for the default synchronous behavior would be an empty or undefined r
 ### 5. Test the REST based API add shipment service through postman
 Next we use postman to test our service.  Add a new tab and select "POST" from the drop list. Paste in the addShipmentWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Add Shipment."   
 
-![Postman](img/postmanAdd.jpg "postman")
+![Postman](../../img/postmanAdd.jpg "postman")
 
 
 Once postman is configured, use the json template below by pasting it in the postman body to add a new shipment. 
