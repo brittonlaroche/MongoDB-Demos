@@ -133,9 +133,13 @@ exports = function(payload) {
 The result for the default synchronous behavior would be an empty or undefined return document.  If you are not aware of the  __"async"__ keyword, which is required for database look ups when calling another function, it might take some time to figure out why the return document is always null or undefined.  
 
 ### 5. Test the REST based API add shipment service through postman
-Next we use postman to test our service.  Add a new tab and select "POST" from the drop list. Paste in the addShipmentWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Add Shipment."   
+Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).
 
-![Postman](../../img/postmanAdd.jpg "postman")
+In postman create a new collection for MongoDB and add a new post service. 
+
+Add a new tab and select "POST" from the drop list. Paste in the addShipmentWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "AddShipment."   
+
+![Postman](../../img/postmanAdd2.jpg "postman")
 
 
 Once postman is configured, use the json template below by pasting it in the postman body to add a new shipment. 
@@ -190,3 +194,19 @@ Change the shipment_id, package_id and tag_id to add more shipments.  Grab the e
 
 Note you should create a unique index on shipment_id to avoid duplicates.  You can download [compass](https://www.mongodb.com/products/compass) for an easy gui interface to create the index.
 
+After inserting some shipments the return document in postman informs you of a success or an error.  It would be great to see the documents.  Lets test our find function created earlier.
+
+### 6. Test the search employee REST based API service through postman
+Our first step is to get the new URL for our findShipmentService. In the findShipmentWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
+
+![Webhook URL](img/findShipment.jpg "Webhook URL")
+
+Open postman and add a new tab and select "POST" from the drop list. Paste in the URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Find Employee."
+
+Use something like the following search document to find your employee.  Replace "Bob" with the first name you used in setting up your shipment data. Hit send and you should get your employee document back. Change first_name to "shipment_id" and play around with your data.  Or look for a tag id neste din the packages array.
+
+``` { "first_name": "Bob"}```
+
+``` { "packages.tag_id": "MLPD912391"}```
+
+![Postman](img/postman.jpg "postman")
