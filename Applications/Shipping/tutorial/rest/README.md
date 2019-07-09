@@ -58,7 +58,7 @@ Select "Services" from the left navigation panel in the Stitch Console.  Click t
 Create the __"findShipmentWebhook"__   
 Next we add an incoming webhook.  The prompt screen should appear after saving the service.  Click the "Add Incoming Webhook" button. In the add webhook screen give the webhook a name __"findShipmentWebhook"__ and move the slider to "Respond with Result."  For now we will turn off validation. Click the save button.  
 
-![Webhook](img/findEmployee3.jpg "Webhook")
+![Webhook](../../img/findShipmentWebhook.jpg "Webhook")
 
 After saving the findShipmentWebhook the function editor is now present.  Cut and paste the code below and click "Save."
 
