@@ -26,7 +26,7 @@ Think of all these objects as building blocks.  You can use them in unique ways,
 
 ![Building blocks](img/buildingBlocks3.png "Build anything")  
 
-Once you learn the basics of the docuemnt model and how the objects work together you will quickly relize you can build anything.  This sipping application is eerily similar to the [HR Application](../../Stitch/rest/README.md) in many respects.
+Once you learn the basics of the docuemnt model and how the objects work together you will quickly relize you can build anything.  This shipping application is eerily similar to the [HR Application](../../Stitch/rest/README.md) in many respects, as many of the same concepts and objects were used to create the HR application.
 
 ### Functions
 __findShipment__: finds a specific shipping document based on a search document   
