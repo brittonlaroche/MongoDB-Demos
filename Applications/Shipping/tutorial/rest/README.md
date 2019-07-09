@@ -154,7 +154,7 @@ Once postman is configured, use the json template below by pasting it in the pos
 	"plan": [
         {
             "order": "1",
-			"flight": "123",
+            "flight": "123",
             "from": "DFW",
             "to": "DEN",
             "date": "07/25/2019"
