@@ -24,7 +24,7 @@ All of the major components of the shipping application have been captured in th
 
 Think of all these objects as building blocks.  You can use them in unique ways, connect them together and build anything. Today we will use them to build a complete shipping application in the cloud with database as a service.  All of these triggers and functions will run serverless, no maintenance no fuss and with near limitless scale.
 
-![Building blocks](img/blocks.png "Build anything")  
+![Building blocks](img/buildingBlocks.png "Build anything")  
 
 ### Collections
 __shipment__: contains the full shipping document that acts as a bill of lading.   
