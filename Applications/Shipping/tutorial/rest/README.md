@@ -80,4 +80,4 @@ exports = async function(payload) {
 };
 ```
 
-Notice that in our webhook function we take in the payload body, which should be a search document, and call our find shipment function created earlier.
+Notice that in our webhook function we take in the payload body, which should be a search document, and call our find shipment function created earlier.  Its a clean and easy way to reuse code.  If we need to alter the find logic we can do so in one function and all the services using the find function receive the alteration.
