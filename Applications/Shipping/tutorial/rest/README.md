@@ -25,6 +25,20 @@ log into the atlas console https://cloud.mongodb.com and click the "Stitch" menu
 Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name __"findShipment"__ and click "Save."  This will bring up the function editor, cut and paste the code below and click "Save."
 ```js
 exports = async function( aSearchDoc ){
+  /*
+    Accessing application's values:
+    var x = context.values.get("value_name");
+
+    Accessing a mongodb service:
+    var collection = context.services.get("mongodb-atlas").db("dbname").collection("coll_name");
+    var doc = collection.findOne({owner_id: context.user.id});
+
+    To call other named functions:
+    var result = context.functions.execute("function_name", arg1, arg2);
+
+    Try running in the console below.
+  */
+  
   console.log(JSON.stringify("Function findShipment called ... executing..." ));
   var shipment = context.services.get("mongodb-atlas").db("ship").collection("shipment");
   var doc = shipment.findOne(aSearchDoc);
