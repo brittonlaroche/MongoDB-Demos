@@ -14,8 +14,7 @@ The diagram below shows how a third party shipping provider can interact with us
 We will focus on creating the findShipmentService, the addShipmentService, and the updatePackageService.  These services will have correespond webhooks that allow the third party shipping providers to access their data in our system.
 
 ### Prerequisites
-[Postman](https://www.getpostman.com/downloads/) or curl   
-
+[Postman](https://www.getpostman.com/downloads/) or curl.  You will need a method of making a post with a json document.   
 
 ### 1. Create a stitch function to query shipment data
 log into the atlas console https://cloud.mongodb.com and click the "Stitch" menu item on the left. Select your stitch application "__shipping__." Select "functions" from the menu item on the left and create a new function named: __findShipment__   
@@ -80,4 +79,111 @@ exports = async function(payload) {
 };
 ```
 
-Notice that in our webhook function we take in the payload body, which should be a search document, and call our find shipment function created earlier.  Its a clean and easy way to reuse code.  If we need to alter the find logic we can do so in one function and all the services using the find function receive the alteration.
+Notice that in our webhook function we take in the payload body, which should be a search document, and call our find shipment function created earlier.  Its a clean and easy way to reuse code.  If we need to alter the find logic we can do so in one function and all the services using the find function receive the alteration.  This ties together many concepts as findShipmentWebhook function calls the findShipment function asynchronously and awaits the result.  This is not the default behavior, to get the function to run asynchronously we have to add the following __"async"__ keyword to the function declaration.
+
+We will test this function later with postman.  We dont have any data to query.  Lets add some shipment data!
+
+### 3. Create a webhook to call the function add shipment data
+Repeat steps 2 and 3 above above to create a new __"addShipmentService"__ and a new __"addShipmentWebhook"__,  in the webhook function editor cut and paste the code below.  
+
+1. Create a new HTTP Service named: __addShipmentService__   
+2. Create a new Webhook named: __addShipmentWebhook__   
+
+After the webhook is created paste the following script into the __addShipmentWebhook__ function editor and click save. 
+
+```js
+exports = async function(payload) {
+  var shipment = context.services.get("mongodb-atlas").db("ship").collection("shipment");
+  console.log("Executing addShipmentWebhook");
+  var queryArg = payload.query.arg || '';
+  var body = {};
+  var result = { "status": "Unknown: Payload body may be empty"};
+  
+  if (payload.body) {
+    console.log(JSON.stringify(payload.body));
+    body = EJSON.parse(payload.body.text());
+    console.log(JSON.stringify(body));
+    var nDate = new Date();
+    //check the shipment_id
+    if ( body.shipment_id ) {
+        console.log("inserting shipment collection");
+        result = await shipment.insertOne(body);
+        console.log("after update");
+    } else {
+      result = { "status": "Error: shipment_id is not present"};
+      return result;
+    }
+  }
+  return  result;
+};
+```
+
+The function above checks the payload body and for the presence of an shipment_id.  If either is missing it will return a document with a status of error or unknown.  If it is successful in creating the shipment, it will return the newly created document object_id.  If it encounters an error like a duplicate key it will return that error inofrmation in the result document.
+
+```
+exports = async function(payload) {
+```
+
+The standard is not to run in async mode.
+
+```
+exports = function(payload) {
+```
+
+The result for the default synchronous behavior would be an empty or undefined return document.  If you are not aware of the  __"async"__ keyword, which is required for database look ups when calling another function, it might take some time to figure out why the return document is always null or undefined.  
+
+### 5. Test the REST based API add shipment service through postman
+Next we use postman to test our service.  Add a new tab and select "POST" from the drop list. Paste in the addShipmentWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "Add Shipment."   
+
+![Postman](img/postmanAdd.jpg "postman")
+
+Once postman is configured, use the json template below by pasting it in the postman body to add a new shipment.  Change the shipment_id, package_id and tag_id to add more shipments.  Note you should create a unique index on shipment_id to avoid duplicates.  You can download [compass](https://www.mongodb.com/products/compass) for an easy gui interface to create the index.
+
+```js
+{ 
+	"shipment_id": 101,
+	"customer_id": "A1AWW111978",
+	"first_name": "Peter",
+	"last_name": "Martin",
+	"contact_phone": "19725058132",
+	"contact_email": "PeterMartin@merk.com",
+	"address": "1642 Smart Street, Frisco TX 75034",
+	"description": "5x8x5 Cargo hold. 1 Box of pharma equipment",
+	"ship_date": "07/25/2019",
+	"last_modified": "07/25/2019",
+	"plan": [
+        {
+            "order": "1",
+			"flight": "123",
+            "from": "DFW",
+            "to": "DEN",
+            "date": "07/25/2019"
+        },
+        {
+            "order": "2",
+            "flight": "227",
+            "from": "BOS",
+            "to": "SAN",
+            "date": "07/25/2019"
+        }
+    ],
+    "packages": [
+    	{
+            "package_id": "MLPD912391",
+            "tag_id": "MQPD91234Z1",
+            "type": "UPS",
+            "tracking": "42344456778",
+            "description": "2x2x2 corrigated box",
+            "weight": "45 lbs",
+            "last_event": "UPS Drop ship at airport",
+            "location": "DFW",
+            "last_modified": {
+		        "$date": {
+		            "$numberLong": "1564091863001"
+		        }
+		    }
+        }
+    ]
+}
+```
+
