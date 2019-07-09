@@ -13,16 +13,12 @@ exports = async function(payload) {
     //check the employee_id
     if ( body.shipment_id ) {
         console.log("inserting shipment collection");
-        shipment.insertOne(body);
+        result = await shipment.insertOne(body);
         console.log("after update");
     } else {
       result = { "status": "Error: shipment_id is not present"};
       return result;
     }
-
-    // Let's return the document we find after creating the employee 
-    var searchDoc = { "shipment_id": parseInt(body.shipment_id)};
-    result = await context.functions.execute("findShipment", searchDoc);
   }
   return  result;
 };
