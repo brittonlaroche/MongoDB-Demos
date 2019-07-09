@@ -54,7 +54,7 @@ Notice that we made this function async in the declaration.  This will allow the
 Create the __"findShipmentService"__    
 Select "Services" from the left navigation panel in the Stitch Console.  Click the "Add a Service" button. In the add a service dialog select the "HTTP" button and give the service a name __"findShipmentService"__ and click the "Add Service" button.   
 
-![Console](img/findEmployee2.jpg "Console")
+![Console](../../img/findShipmentService.jpg "Console")
 Create the __"findShipmentWebhook"__   
 Next we add an incoming webhook.  The prompt screen should appear after saving the service.  Click the "Add Incoming Webhook" button. In the add webhook screen give the webhook a name __"findShipmentWebhook"__ and move the slider to "Respond with Result."  For now we will turn off validation. Click the save button.  
 
