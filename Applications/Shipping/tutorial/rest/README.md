@@ -18,9 +18,9 @@ We will focus on creating the findShipmentService, the addShipmentService, and t
 
 
 ### 1. Create a stitch function to query shipment data
-log into the atlas console https://cloud.mongodb.com and click the "Stitch" menu item on the left. Select your stitch application "HumanResources." Select "functions" from the menu item on the left and create a new function named: __findShipment__   
+log into the atlas console https://cloud.mongodb.com and click the "Stitch" menu item on the left. Select your stitch application "__shipping__." Select "functions" from the menu item on the left and create a new function named: __findShipment__   
 
-![Console](img/findShipment.jpg "Console")
+![Console](../../img/findShipment.jpg "Console")
 
 Select "Functions" from the left navigation panel in the stitch console. Click the "Create New Function" button in the upper right corner.  Give the function a name __"findShipment"__ and click "Save."  This will bring up the function editor, cut and paste the code below and click "Save."
 ```js
