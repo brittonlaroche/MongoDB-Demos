@@ -135,7 +135,7 @@ The result for the default synchronous behavior would be an empty or undefined r
 ### 5. Test the REST based API add shipment service through postman
 Our first step is to get the new URL for our addShipmentService. In the addShipmentWebhook console select the "Settings" tab and click the "Copy" button for the webhook URL.
 
-![Webhook URL](../../img/addShipmentWebhook.jpg "Webhook URL")
+![Webhook URL](../../img/addShipmentWebhook2.jpg "Webhook URL")
 
 Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).
 
