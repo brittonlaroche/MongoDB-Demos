@@ -204,6 +204,9 @@ stitch-cli import  --app-id=shipping-ekqoy --path=./MongoDB-Demos-master/Applica
 ←[0;0mImporting app...←[0m
 ←[0;0mDone.←[0m
 ←[0;0mSuccessfully imported 'shipping-vibtf'←[0m
+
+stitch-cli logout
+
 ```
 
 If you named your cluster anything other than the default __"Cluster0"__ then you will need to modify a json document to reflect your cluster name. The document is located in your directory here: /MongoDB-Demos-master/Applications/Shipping/exportedservices/mongodb-atlas/config.json
