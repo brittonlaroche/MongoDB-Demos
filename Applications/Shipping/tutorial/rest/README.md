@@ -221,7 +221,9 @@ Use something like the following search document to find your employee.  Replace
 ![Postman](../../img/postmanFindShipment.jpg "postman")
 
 ## 6. Add an updatePackageService
-Our shipment document has package information.  This shipment document has a good deal of information on the packages.  But with out realizing it we have already started using the [extended reference](https://www.mongodb.com/blog/post/building-with-patterns-the-extended-reference-pattern) design pattern.  Lets take a look at the document we expect in the shipping document and a guess at what our 3rd party shipper will provide.  Its possible they could rent a certain amount of square feet and esitmate a certian number of packages in the shipping document, but we wont know what they are until they arrive.  We must integrate these packages with the Pronto tag_id that will be placed on each package so that it can be scanned with the same scanners used to track passanger luggage.
+Our shipment document has package information.  This shipment document has a good deal of information on the packages.  But with out realizing it we have already started using the [extended reference](https://www.mongodb.com/blog/post/building-with-patterns-the-extended-reference-pattern) design pattern.  We have used that pattern by taking the required fields for the package and inserting them into the shipment document.  This allows us to quickly gather information on the shipment and all the packages in one document.
+
+Lets take a look at the document we expect in the shipping document and a guess at what our 3rd party shipper will provide.  Its possible they could rent a certain amount of square feet and esitmate a certian number of packages in the shipping document, but we wont know what they are until they arrive.  We must integrate these packages with the Pronto tag_id that will be placed on each package so that it can be scanned with the same scanners used to track passanger luggage.
 
 ```
     "packages": [
@@ -370,7 +372,7 @@ We have made many checks to validate that we have required fields in our json do
 This same updatePackageWebhook can be called from 3rd party providers and from the bag scanners as the packages are loaded on to and off of the plane.  The scanner may provide the required information and the last event with location information, but it may not have any information on the tracking number for example. Additional information may be provided in the json document that we don't track so we store the total body of the document as well.
 
 
-The next question is, how do we update the shipping document with the changes to the package document we just recived in the package collection?  The answer is through an atlas trigger.
+The next question is, how do we update the shipping document with the changes to the package document we just received in the package collection?  The answer is through an atlas trigger.
 
 ## Next Steps
 The next step is to insert the display the shipping document in an html application.  The html file will get data through the stitch browser SDK and utilize the query anywhere functionality.  Please click the link here [Query Anywhere, Tiggers and Functions](../queryAnywhere/README.md) to continue building the shipping application.  
