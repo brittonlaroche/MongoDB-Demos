@@ -4,10 +4,10 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 ## Tutorial Contents 
 (Note: All HR tutorials are hands on and should take an estimated time of less than 20 minutes)
 1. [Overview](../../)
-2. [Accesing shipment data through a REST based API](../rest/)
-3. [Query Anywhere, Tiggers and Functions](../queryAnywhere)
-4. [Importing from GitHub: Stitch Command Line tool](../cli)
-5. [Host your application tutorial](../hosting)   
+2. [Accesing shipment data through a REST based API](../rest/README.md)
+3. [Query Anywhere, Tiggers and Functions](../queryAnywhere/README.md)
+4. [Importing from GitHub: Stitch Command Line tool](../cli/README.md)
+5. [Host your application tutorial](../hosting/README.md)  
 
 ## Overview
 __Note:__ only follow this section if you plan on importing the application rather than learning all the steps to build it.  __Please click the link here__ [Shipping REST API](../rest/README.md) to continue following the flow of the tutorial.  
