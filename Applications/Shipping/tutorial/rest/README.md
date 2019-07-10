@@ -363,7 +363,12 @@ exports = async function(payload) {
 };
 ```
 
-We have made many checks to validate that we have required fields in our json document provided to the updatePackageWebhook function.  We have also taken great care to look up the existing package document and compare it to what we have been provided.  This same updatePackageWebhook can be called from 3rd party providers and from the bag scanners as the packages are loaded on to and off of the plane.  The scanner may provide the required information and the last event with location information, but it may not have any information on the tracking number for example. Additional information may be provided in the json document that we don't track so we store the total body of the document as well.
+We have made many checks to validate that we have required fields in our json document provided to the updatePackageWebhook function.  We have also taken great care to look up the existing package document and compare it to what we have been provided before we do the update.  If the new document is missing information for a partilcuar field and we are going to update that field in the package document we set it to the old value.
+
+![bag scanner](../../img/bagscanner.jpg "bag scanner")
+
+This same updatePackageWebhook can be called from 3rd party providers and from the bag scanners as the packages are loaded on to and off of the plane.  The scanner may provide the required information and the last event with location information, but it may not have any information on the tracking number for example. Additional information may be provided in the json document that we don't track so we store the total body of the document as well.
+
 
 The next question is, how do we update the shipping document with the changes to the package document we just recived in the package collection?  The answer is through an atlas trigger.
 
