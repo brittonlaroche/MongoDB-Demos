@@ -3,7 +3,7 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 
 ## Tutorial Contents 
 (Note: All HR tutorials are hands on and should take an estimated time of less than 20 minutes)
-1. [Overview](README.md)
+1. [Overview](README.MD)
 2. [Accesing shipment data through a REST based API](tutorial/rest/)
 3. [Query Anywhere, Tiggers and Functions](tutorial/queryAnywhere)
 4. [Importing from GitHub: Stitch Command Line tool](tutorial/cli)
