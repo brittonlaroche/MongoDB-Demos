@@ -1,4 +1,4 @@
-## Importing the Application from GitHub
+## Importing the shipping Application from GitHub
 _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 
 ## Tutorial Contents 
