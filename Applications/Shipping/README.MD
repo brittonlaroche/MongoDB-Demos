@@ -38,27 +38,27 @@ Think of all these objects as building blocks.  You can use them in unique ways,
 
 Once you learn the basics of the docuemnt model and how the objects work together you will quickly relize you can build anything.  This shipping application is extremely similar to the [HR Application](../../Stitch/rest/README.md) in many respects, as many of the same concepts and objects were used to create the HR application.
 
-### Functions
+### Functions:
 __findShipment__: finds a specific shipping document based on a search document   
 __findPackage__: finds a specific package document based on a search document   
 __fncPackageUpdate__: a function that updates the checkpoint and shipping collection   
 
-### Triggers
+### Triggers:
 __trgPackageCheckpoint__: a trigger that watches the package collection and calls the __fncPackageUpdate__ function   
 
-### Services
+### Services:
 __findShipmentService__: A REST based service that calls the __findShipment__ function and returns the shipment document   
 __findPackageService__: A REST based service that calls the __findPackage__ function and returns a specific package document
 __addShipmentService__: A REST based service that allows a full shipping document to be inserted into MongoDB   
 __updatePackageService__: A REST based service that can be called from multiple sources including a package scanner to update package events, checkpoints and location information.   
 
-### Collections
+### Collections:
 __shipment__: contains the full shipping document that acts as a bill of lading.   
 __package__: conatins the package information, its last update and curent location   
 __checkpoint__: contains a history of the package and the time for each checkpoint it passed through   
 __codes__: a special collection containing codes for insuring certain fields use required values
 
-### Indexes
+### Indexes:
 We need one unique index on the shipment id to avoid creating duplicates.
 
 ## Shipping Document
