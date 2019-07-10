@@ -220,5 +220,8 @@ Use something like the following search document to find your employee.  Replace
 
 ![Postman](../../img/postmanFindShipment.jpg "postman")
 
+## 7. Add an updatePackageService
+Our shipment document has package information.  This shipment
+
 ## Next Steps
 The next step is to insert the display the shipping document in an html application.  The html file will get data through the stitch browser SDK and utilize the query anywhere functionality.  Please click the link here [Query Anywhere, Tiggers and Functions](../queryAnywhere/README.md) to continue building the shipping application.  
