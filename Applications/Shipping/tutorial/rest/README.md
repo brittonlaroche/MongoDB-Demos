@@ -365,7 +365,7 @@ exports = async function(payload) {
 };
 ```
 
-We have made many checks to validate that we have required fields in our json document provided to the updatePackageWebhook function.  We have also taken great care to look up the existing package document and compare it to what we have been provided before we do the update.  If the new document is missing information for a partilcuar field and we are going to update that field in the package document we set it to the old value.
+We have made many checks to validate that we have required fields in our json document provided to the updatePackageWebhook function.  We have also taken great care to look up the existing package document and compare it to what we have been provided before we do the update.  If the new document is missing information for a partilcuar field and we are going to update that field in the package document we, set it to the old value.
 
 ![bag scanner](../../img/bagscanner.jpg "bag scanner")
 
