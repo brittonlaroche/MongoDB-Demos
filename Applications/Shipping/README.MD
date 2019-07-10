@@ -11,6 +11,7 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 
 
 ## Overview 
+![Pronto](html/logo.png "Pronto")  
 
 In this 60 minute tutorial we are going to create a shipping application that utilizines a living shipping document that tracks changes to packages as they are transported over time.  To accomplish this we will modify the results of our [MongoDB blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/) to create a new shipping html file by adding additional fields and using an "upsert" (update / insert) into a new __"Ship"__ database with a __shipment, package and checkpoint__ collection. We will add a trigger to update the shipment bill of lading and insert the full document to a checkpoint collection when changes are made to the package collection.  We will add some additional functions and enable a REST based API through a serverless framework to communicate with external shipping companies, cutomers and baggage and package handlers.
 
