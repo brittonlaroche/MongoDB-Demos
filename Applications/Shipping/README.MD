@@ -1,5 +1,5 @@
 # Shipping Application
-_Soltion Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
+_Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 
 ## Tutorial Contents 
 (Note: All HR tutorials are hands on and should take an estimated time of less than 20 minutes)
