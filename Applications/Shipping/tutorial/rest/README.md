@@ -58,7 +58,7 @@ exports = async function( aSearchDoc ){
 
 Notice that we made this function async in the declaration.  This will allow the calling function to await a database response while this function does the work to find the shipment specified.  The shipment search criteria is specified in the search document passed in as an argument.
 
-### 2. Create a webhook to call the function to query shipment data
+### 2. Create a webhook to call the function to find shipment data
 Create the __"findShipmentService"__    
 Select "Services" from the left navigation panel in the Stitch Console.  Click the "Add a Service" button. In the add a service dialog select the "HTTP" button and give the service a name __"findShipmentService"__ and click the "Add Service" button.   
 
@@ -92,7 +92,7 @@ Notice that in our webhook function we take in the payload body, which should be
 
 We will test this function later with postman.  We dont have any data to query.  Lets add some shipment data!
 
-### 3. Create a webhook to call the function add shipment data
+### 3. Create a webhook to add shipment data
 Repeat steps 2 and 3 above above to create a new __"addShipmentService"__ and a new __"addShipmentWebhook"__,  in the webhook function editor cut and paste the code below.  
 
 1. Create a new HTTP Service named: __addShipmentService__   
