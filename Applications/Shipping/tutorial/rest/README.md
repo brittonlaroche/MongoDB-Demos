@@ -3,11 +3,12 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 
 ## Tutorial Contents 
 (Note: All HR tutorials are hands on and should take an estimated time of less than 20 minutes)
-1. [Overview](../../README.md)
+1. [Overview](../../)
 2. [Accesing shipment data through a REST based API](../rest/)
 3. [Query Anywhere, Tiggers and Functions](../queryAnywhere)
 4. [Importing from GitHub: Stitch Command Line tool](../cli)
-5. [Host your application tutorial](../hosting) 
+5. [Host your application tutorial](../hosting)  
+
 ## Overview
 This shipping application provides to methods of getting data into and out of the MongoDB database.  One is through a REST based API that we will create in this section of the tutorial.  The other method utilizes stitch "Query Anywhere" and allows us to use the stitch browser SDK to query the database directly.  Lets get started with the REST based API.
 
