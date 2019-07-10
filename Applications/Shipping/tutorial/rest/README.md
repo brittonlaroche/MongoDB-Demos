@@ -209,4 +209,4 @@ Use something like the following search document to find your employee.  Replace
 
 ``` { "packages.tag_id": "MQPD91234Z1"}```
 
-![Postman](img/postmanFindShipment.jpg "postman")
+![Postman](../..img/postmanFindShipment.jpg "postman")
