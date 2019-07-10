@@ -207,6 +207,6 @@ Use something like the following search document to find your employee.  Replace
 
 ``` { "first_name": "Bob"}```
 
-``` { "packages.tag_id": "MLPD912391"}```
+``` { "packages.tag_id": "MQPD91234Z1"}```
 
-![Postman](img/postman.jpg "postman")
+![Postman](img/postmanFindShipment.jpg "postman")
