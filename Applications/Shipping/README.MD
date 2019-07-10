@@ -6,7 +6,7 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 1. [Overview](README.md)
 2. [Accesing shipment data through a REST based API](tutorial/rest/)
 3. [Query Anywhere, Tiggers and Functions](tutorial/queryAnywhere)
-4. [Stitch Command Line tool](tutorial/cli)
+4. [Importing from GitHub: Stitch Command Line tool](tutorial/cli)
 5. [Host your application tutorial](../../Stitch/hosting) 
 
 
