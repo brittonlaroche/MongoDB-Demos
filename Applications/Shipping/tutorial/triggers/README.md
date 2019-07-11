@@ -24,4 +24,4 @@ We will also update a checkpoint collection to implement the versioning design p
 Again, thinking of these objects as a set of building blocks the solution is easy to visualize.  We will insert data through the REST API into the database where the collection is being watched by a trigger in stitch.  The trigger will fire executing logic to update two other collections.  The whole design in building blocks looks like the following.
 
 
-![Diagram](../../img/triggerblocks2.jpg "Diagram")
+![Diagram](../../img/triggerblocks3.jpg "Diagram")
