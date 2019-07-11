@@ -33,7 +33,7 @@ Next we want to link a new function so click the "+ New Function" in the select 
 ![Diagram](../../img/packageUpdateTrigger.jpg "Diagram")
 
 ## 2. Write the package update function 
-We just created the fucntion in the previous step.  Select the __"Functions"__ menu item in the left navigation pane of the stitch console.  A screen appears listing the functions for the stitch application
+We just created the fucntion in the previous step.  Select the __"Functions"__ menu item in the left navigation pane of the stitch console.  A screen appears listing the functions for the stitch functions. Select 
 
 
 ```js
@@ -110,8 +110,58 @@ exports = function(changeEvent) {
 
 };
 ```
+__Important note__: Stitch functions are typically based off of an earlier code branch while development coninues on teh core database and may not have all of the current mongodb functions that are avilable via command line and the driver when a new version of teh database is released.  To see what functions are supported and which ones are being developed follow the link here: https://docs.mongodb.com/stitch/mongodb/mongodb-service-limitations/
+
+In this example we do not have access to an easy to use function for updateing arrays.  The function is arrayFilers.
+
+```
+The following update command options are not supported:
+
+bypassDocumentValidation
+collation
+arrayFilters
+```
+
+To handle the update to the shipment collection we pull the package and add it back to the array by using the array operators __$pull__ and __$addToSet__
+
+```js
+  shipment.updateOne(
+  	{ shipment_id: parseInt(fullDocument.shipment_id) },
+  	{ $pull: { "packages": { package_id: fullDocument.package_id } }	}
+  );
+  
+  console.log("Shipment ... $addToSet..." );
+  shipment.updateOne(
+  	{ shipment_id: parseInt(fullDocument.shipment_id) },
+  	{ $addToSet: { "packages": { 
+  	  package_id: fullDocument.package_id, 
+  	  tag_id: fullDocument.tag_id, 
+  	  type: fullDocument.type, 
+  	  tracking: fullDocument.tracking, 
+  	  description: fullDocument.description, 
+  	  last_event: fullDocument.last_event, 
+  	  location: fullDocument.location, 
+  	  last_modified: fullDocument.last_modified, 
+  	  fullDocument } } }
+  );
+```
+
+To handle the versioning of the package document we simple insert it into the checkpoint collection.  First we remove the ```_id``` field as there is a default unique index placed on that field.  We could only insert the package once into the checkpoint collection if we did not remove the ```_id```  field.  Upon insert into the checkpoint collection a new ```_id``` is generated.  To maintain the relationship we add the old ```_id``` as __parent_id.
+
+```js
+  //track all changes to the package in the checkpoint collection
+  fullCopy.parent_id = fullDocument._id;
+  delete fullCopy._id;
+  checkpoint.insertOne(fullCopy);
+```
+
+These sublte nuances are important in the package function and are explained here so that you are aware of why the function was written this way.
 
 Again, thinking of these objects as a set of building blocks, the solution is easy to visualize.  We will insert data through the REST API into the database where the collection is being watched by a trigger in stitch.  The trigger will fire a function with logic to update two other collections the shipment collectoion and the checkpoint collection.  The whole design in building blocks looks like the following.
 
 
 ![Diagram](../../img/triggerblocks4.jpg "Diagram")
+
+## Next Steps
+
+
