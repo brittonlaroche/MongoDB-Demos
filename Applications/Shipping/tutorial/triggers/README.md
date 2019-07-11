@@ -110,9 +110,9 @@ exports = function(changeEvent) {
 
 };
 ```
-__Important note__: Stitch functions are typically based off of an earlier code branch while development coninues on teh core database and may not have all of the current mongodb functions that are avilable via command line and the driver when a new version of teh database is released.  To see what functions are supported and which ones are being developed follow the link here: https://docs.mongodb.com/stitch/mongodb/mongodb-service-limitations/
+__Important note__: Stitch functions are typically based off of an earlier code branch while development coninues on the core database. As such the stitch query language and functions may not have all of the current mongodb functions that are avilable via command line and the through the MongoDB driver when a new version of the database is released.  To see what functions are supported and which ones are being developed follow the link here: https://docs.mongodb.com/stitch/mongodb/mongodb-service-limitations/
 
-In this example we do not have access to an easy to use function for updateing arrays.  The function is arrayFilers.
+In this example we do not have access to an easy to use function for updating arrays, known as arrayFilers. 
 
 ```
 The following update command options are not supported:
@@ -159,9 +159,11 @@ These sublte nuances are important in the package function and are explained her
 
 Again, thinking of these objects as a set of building blocks, the solution is easy to visualize.  We will insert data through the REST API into the database where the collection is being watched by a trigger in stitch.  The trigger will fire a function with logic to update two other collections the shipment collectoion and the checkpoint collection.  The whole design in building blocks looks like the following.
 
-
 ![Diagram](../../img/triggerblocks4.jpg "Diagram")
 
-## Next Steps
 
+Insert a few packages to a shipment in the package collection and some updates through postman.  Observe the changes in the database by using postman to find the shipment or by using compass or the Atlas data explorer.  What would really be great is to have a hosted web interface that showed us our shipments and packages.  We could share that interface along with our REST API to our third party shipping companies too.  Lets build that next using [Query Anywhere](../queryAnywhere/README.md)!
+
+## Next Steps
+Build an HTML page that shows shipping and package information.  Allow users to both read and write data through the HTML page through the use of the Stitch browser SDK and [Query Anywhere](../queryAnywhere/README.md)!
 
