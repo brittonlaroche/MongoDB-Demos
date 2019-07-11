@@ -13,7 +13,7 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 ## Overview 
 ![Pronto](html/logo.png "Pronto")  
 
-We've been hired by a ficticous airline called "Pronto" to build a shipping application.  Pronto has a global fleet of passanger jetliners and makes multiple trips between major cities every day.  Pronto relaized that it could make use of its extra large cargo holds to take on shipping additional cargo from third party shippers and companies that need to make timely deliveries. Pronto ran the numbers and now realize that leasing this excess cargo space could increase regional profits by over 5 million dollars a month.
+We've been hired by a ficticous airline company called "Pronto" to build a shipping application.  Pronto has a global fleet of passanger jetliners and makes multiple trips between major cities every day.  Pronto relaized that it could make use of its extra large cargo holds to take on shipping additional cargo from third party shippers and companies that need to make timely deliveries. Pronto ran the numbers and now realize that leasing this excess cargo space could increase regional profits by over 5 million dollars a month.
 
 You have been tasked to create a minimum viable product (MVP), a basic protype, of the airline shipping application. They wish to test both the functionality and performance of the application.  The functionality includes tracking packages and providing shipment updates in real time to their third party shippers.
 
