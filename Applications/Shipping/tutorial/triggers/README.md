@@ -18,10 +18,14 @@ We need to keep changes made to the package collection in sync with the shipping
 
 We will also update a checkpoint collection to implement the versioning design pattern.  We will keep a version of each docuemnt as it passes through each checkpoint.  Notice that the diagram above shows the Atlas trigger and fucntion executing in the stitch serverless framework.  The execution of the code in the trigger takes place outside of Atlas and will not impact database performance. 
 
-## 1. Create the 
+## 1. Create the Package Trigger
 
+__trgPackageCheckpoint__   
+__fncPackageUpdate__   
 
-Again, thinking of these objects as a set of building blocks the solution is easy to visualize.  We will insert data through the REST API into the database where the collection is being watched by a trigger in stitch.  The trigger will fire executing logic to update two other collections.  The whole design in building blocks looks like the following.
+![Diagram](../../img/packageUpdateTrigger.jpg "Diagram")
+
+Again, thinking of these objects as a set of building blocks, the solution is easy to visualize.  We will insert data through the REST API into the database where the collection is being watched by a trigger in stitch.  The trigger will fire a function with logic to update two other collections the shipment collectoion and the checkpoint collection.  The whole design in building blocks looks like the following.
 
 
 ![Diagram](../../img/triggerblocks3.jpg "Diagram")
