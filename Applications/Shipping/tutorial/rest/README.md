@@ -229,7 +229,7 @@ Lets take a look at the document we expect in the shipping document and a guess 
 ```
     "packages": [
     	{
-	    "shipment_id": "100",
+	    "shipment_id": "101",
             "package_id": "MLPD912391",
             "tag_id": "MQPD91234Z1",
             "type": "UPS",
@@ -372,8 +372,49 @@ We have made many checks to validate that we have required fields in our json do
 
 This same updatePackageWebhook can be called from 3rd party providers and from the bag scanners as the packages are loaded on to and off of the plane.  The scanner may provide the required information and the last event with location information, but it may not have any information on the tracking number for example. Additional information may be provided in the json document that we don't track so we store the total body of the document as well.
 
+Use postman to add and update the following package into the package collection through the __updatePackageWebhook__ and verify the changes through compass or the Atlas data explorer.
 
-The next question is, how do we update the shipping document with the changes to the package document we just received in the package collection?  The answer is through Atlas [Tiggers and Functions](../triggers/README.md).
+```
+    	{
+	    "shipment_id": "101",
+            "package_id": "MLPD912392",
+            "tag_id": "MQPD91234Z2",
+            "type": "UPS",
+            "tracking": "42344456779",
+            "description": "2x2x2 corrigated box",
+            "weight": "45 lbs",
+            "last_event": "UPS Drop ship at airport",
+            "location": "DFW",
+            "last_modified": "07/25/2019"
+        }
+```
+Lets update that package as it comes from the drop ship area to the luggage racks on the vehicles to be loaded on the plane.
+
+```
+{ 
+	"shipment_id": 101,
+	"package_id": "MLPD912392",
+	"tag_id": "MQPD91234Z2",
+	"last_event": "Ran over by forklift.  Checking on insurance",
+	"location": "BOS"
+}
+```
+
+Maybe that gets followed by the next update
+
+```
+{ 
+	"shipment_id": 101,
+	"package_id": "MLPD912392",
+	"tag_id": "MQPD91234Z2",
+	"last_event": "Loaded on plane",
+	"location": "BOS"
+}
+```
+
+It would be nice to see the history of the package over time so we could pinpoint when and where the package was lost or damaged.  As its stands now we are only updating the package in teh package collection and it gets overwritten with each new update.
+
+The next question is, how do we update the shipping document with the changes to the package document we just received in the package collection?  How do we track chnages to that package over time.  The answer is through Atlas [Tiggers and Functions](../triggers/README.md).
 
 ## Next Steps
 Please click the link here [Tiggers and Functions](../triggers/README.md) to continue building the shipping application.  
