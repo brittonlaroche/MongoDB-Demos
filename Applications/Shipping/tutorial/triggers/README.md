@@ -146,7 +146,7 @@ To handle the update to the shipment collection we pull the package and add it b
   );
 ```
 
-To handle the versioning of the package document we simple insert it into the checkpoint collection.  First we remove the ```_id``` field as there is a default unique index placed on that field.  We could only insert the package once into the checkpoint collection if we did not remove the ```_id```  field.  Upon insert into the checkpoint collection a new ```_id``` is generated.  To maintain the relationship we add the old ```_id``` as __parent_id.
+To handle the versioning of the package document we simple insert it into the checkpoint collection.  First we remove the ```_id``` field as there is a default unique index placed on that field.  We could only insert the package once into the checkpoint collection if we did not remove the ```_id```  field.  Upon insert into the checkpoint collection mongodb detects that the ```_id``` field is not present and a new ```_id``` is generated.  To maintain the relationship we add the old ```_id``` as __parent_id.
 
 ```js
   //track all changes to the package in the checkpoint collection
