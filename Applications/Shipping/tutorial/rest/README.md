@@ -248,9 +248,9 @@ Packages can be added and updated at any point in time during the journey.  To k
 
 For now lets create the updatePackageService.  Repeat steps 2 and 3 above to create the  __"updatePackageService"__  and __"updatePackageWebhook"__
 
-1. Create the __updatePackageService__  use the name __updatePackageService__ but follow the same settings for the addShipmentService in step 3 above.   
+1. Create the __updatePackageService__  use the name __updatePackageService__ but follow the same settings for the addShipmentService in step 2 above.   
 
-2. Create the __updatePackageWebhook__ follow the same steps and settings listed in step 4.  When you get to the webhook function editor paste in the following code.
+2. Create the __updatePackageWebhook__ follow the same steps and settings listed in step 3.  When you get to the webhook function editor paste in the following code.
 
 ```js
 exports = async function(payload) {
