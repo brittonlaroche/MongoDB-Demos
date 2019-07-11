@@ -28,4 +28,4 @@ __fncPackageUpdate__
 Again, thinking of these objects as a set of building blocks, the solution is easy to visualize.  We will insert data through the REST API into the database where the collection is being watched by a trigger in stitch.  The trigger will fire a function with logic to update two other collections the shipment collectoion and the checkpoint collection.  The whole design in building blocks looks like the following.
 
 
-![Diagram](../../img/triggerblocks3.jpg "Diagram")
+![Diagram](../../img/triggerblocks4.jpg "Diagram")
