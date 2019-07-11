@@ -1,4 +1,4 @@
-# Shipping: Triggers
+# Shipping: Triggers and Functions
 _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 
 ## Tutorial Contents 
