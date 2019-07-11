@@ -373,7 +373,7 @@ We have made many checks to validate that we have required fields in our json do
 This same updatePackageWebhook can be called from 3rd party providers and from the bag scanners as the packages are loaded on to and off of the plane.  The scanner may provide the required information and the last event with location information, but it may not have any information on the tracking number for example. Additional information may be provided in the json document that we don't track so we store the total body of the document as well.
 
 
-The next question is, how do we update the shipping document with the changes to the package document we just received in the package collection?  The answer is through an atlas trigger.
+The next question is, how do we update the shipping document with the changes to the package document we just received in the package collection?  The answer is through Atlas [Tiggers and Functions](../triggers/README.md).
 
 ## Next Steps
-The next step is to insert the display the shipping document in an html application.  The html file will get data through the stitch browser SDK and utilize the query anywhere functionality.  Please click the link here [Query Anywhere, Tiggers and Functions](../queryAnywhere/README.md) to continue building the shipping application.  
+Please click the link here [Tiggers and Functions](../triggers/README.md) to continue building the shipping application.  
