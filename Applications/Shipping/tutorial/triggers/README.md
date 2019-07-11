@@ -16,7 +16,7 @@ We need to keep changes made to the package collection in sync with the shipping
 
 ![Diagram](../../img/packageTrigger3.png "Diagram")
 
-We will also update a checkpoint collection to implement the versioning design pattern.  We will keep a version of each docuemnt as it passes through each checkpoint.  Notice that the diagram above shows the Atlas trigger and fucntion executing in the stitch serverless framework.  The execution of the code in the trigger takes place outside of Atlas and will not impact database performance. 
+We will also update a checkpoint collection to implement the versioning design pattern.  We will keep a version of each document as it passes through each checkpoint.  Notice that the diagram above shows the Atlas trigger and fucntion executing in the stitch serverless framework.  The execution of the code in the trigger takes place outside of Atlas and will not impact database performance. 
 
 ## 1. Create the package trigger
 We will create and atlas trigger __trgPackageCheckpoint__  that will call a function __fncPackageUpdate__   to update the shipment and checkpoint collections everytime the package collection is updated.
@@ -28,11 +28,13 @@ collection name: __package__
 
 Start by clicking the "triggers" menu item on the left hand navigation pane and then press the "create new trigger" button.  The trigger creation windw appears.  We need to configure the trigger with the following features, the name is __trgPackageCheckpoint__. Next we insure that the trigger is enabled and event ordering is turned on, these are the defaults.  We select mongodb-atlas as our linked cluster, datbase name is __ship__, collection name we are watching is __package__.  We want to capture the __Full Document__ make sure that slider is moved to the right and green.  We also want to capture information for any insert, update, delete or replace so make sure all those boxes are checked.
 
-Next we want to link a new function so clisk the "+ New Function" in the select list and give the function name __fncPackageUpdate__.  A default function template is generated.  Click save. All that remains is writing the code for that function to update the checkpoint and shipment collections.
+Next we want to link a new function so click the "+ New Function" in the select list and give the function name __fncPackageUpdate__.  A default function template is generated.  Click save. All that remains is writing the code for that function to update the checkpoint and shipment collections.
 
 ![Diagram](../../img/packageUpdateTrigger.jpg "Diagram")
 
 ## 2. Write the package update function 
+We just created the fucntion in the previous step.  Select the __"Functions"__ menu item in the left navigation pane of the stitch console.  A screen appears listing the functions for the stitch application
+
 
 ```js
 exports = function(changeEvent) {
