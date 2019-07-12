@@ -163,7 +163,7 @@ Create new function called fncPlanUpdate to update the shipment plan.  Select th
 
 Name the function __fncPlanUpdate__ and flip the slider to run as system.  
 
-![Plan Function](../../img/triggerblocks5.jpg "Plan Function")
+![Plan Function](../../img/fncPlanUpdate.jpg "Plan Function")
 
 Save the function and paste the following code in the function editor.
 ```js
