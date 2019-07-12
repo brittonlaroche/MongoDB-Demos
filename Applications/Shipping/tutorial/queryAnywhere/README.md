@@ -376,7 +376,7 @@ __MongoDB Query Language Example:__
 
 __Remote function call example:__
 ```js 
-await client.callFunction("fncPlanUpdate", [planDoc]).then(editShipment( vSID.value ));
+await client.callFunction("fncPlanUpdate", [planDoc]);
 ```
 
 __REST based API example:__
