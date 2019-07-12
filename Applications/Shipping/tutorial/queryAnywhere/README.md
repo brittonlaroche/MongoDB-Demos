@@ -15,8 +15,16 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 Each module in this shipping tutorial builds on the last.  In this section we will cover QueryAnywhere through the Stitch browser SDK.  We will use Mongo Query Language (MQL) directly against the database.  We will use the browser SDK to remotley call functions we created in the earlier sections. We will also show how to make a REST API call through javascript.  The functions and rest calls have been created in sections 2 [Accesing shipment data through a REST based API](../rest/README.md) and 3 [Triggers and Functions](../triggers/README.md).
 
 This section of the tutorial assumes you have completed the previous sections.
+### 1. Applying Rules
+Before a client application can access a collection via the stitch browser SDK access to the underlying collections must be granted to the stitch application through the rules interface.
 
-### 1. Create an API key
+We need to grant access to the following collections in the __ship__ database:   
+__codes__
+__checkpoint__
+__package__
+__shipment__
+
+### 2. Create an API key
 We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
 
 ![users](../../img/users5.jpg "users")
@@ -29,7 +37,7 @@ For now we will generate an API Key.  Select the __"API Keys"__ option and click
 
 Type in a name for the API Key, something like "BackOffice" or "WebAccess" and click save.  A private key will be displayed.  Copy that key and paste it into a text editor of your choice.  Then create the api key.  We will use that key to access the database through the stitch browser SDK.
 
-### 2. Create the browser client application
+### 3. Create the browser client application
 You will need a text editor for this section. If you do not have a text editor we recommend downloading a free text editor from one of the following sites (VS Code is best for Developers):
 
 [Notepad ++](https://notepad-plus-plus.org/download)   
@@ -66,7 +74,7 @@ Save the index.html and double click it.  You should see something like this:
 
 You might not have as many shipment records but you should have one or two from the previous examples.  If you are continually stuck with the loading page, you need to check your API key and APP-ID values and settings.  Check the console log.  In chrome the browser console is located under the menu item hamburger drop list --> More Tools --> Developer tools. 
 
-### 3. Digging into QueryAnywhere
+### 4. Digging into QueryAnywhere
 If this section consfuses you at any point, the best way to learn QueryAnywhere from scratch is to work through the blog tutorial.  Start with the [back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/) and finish with the [front end web client](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/).  This QueryAnywhere tutorial's index.html evolved directly from the blog tutorial.  All that has changed is some additional fields, some dynamic html tables, a few image files, and a slick CSS style sheet.  We also added in a remote function call and the ability to make a REST API call.  Other than that its just the basic blog tutorial.
 
 The rest of this tutorial will focus on explaining how the index.html works.  Lets start at the top.
@@ -175,7 +183,7 @@ Part of the html table is a column labeled "edit" which allows us to edit the pl
 
 The editShipment function has created the html tables that allow us to edit the plan and the packages directly.  
 
-### 2. Adding data driven drop lists
+### 5. Adding data driven drop lists
 In the future we would like to add a notification to FedEx or UPS at each step of the shipment process.  In order to handle this effectively in trigger code we need to enforce the correct package type is provided. For example we may wish to enforce the code as an upper case "FEDEX" to insure our trigger has one value to check against before sending a REST API to FedEx updating the tracking number location.
 
 ![Document as app](../../img/dataDrivenDroplist.jpg "document")
