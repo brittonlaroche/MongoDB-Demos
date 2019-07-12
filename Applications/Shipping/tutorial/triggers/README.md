@@ -202,7 +202,7 @@ Notice this function also run asynchronously as it can be called from another re
 
 Again, thinking of these objects as a set of building blocks, the solution is easy to visualize.  We will insert data through the REST API into the database where the collection is being watched by a trigger in stitch.  The trigger will fire a function with logic to update two other collections the shipment collectoion and the checkpoint collection.  The whole design in building blocks looks like the following.
 
-![Diagram](../../img/triggerblocks4.jpg "Diagram")
+![Diagram](../../img/triggerblocks6.jpg "Diagram")
 
 
 Insert a few packages to a shipment in the package collection and some updates through postman.  Observe the changes in the database by using postman to find the shipment or by using compass or the Atlas data explorer.  What would really be great is to have a hosted web interface that showed us our shipments and packages.  We could share that interface along with our REST API to our third party shipping companies too.  Lets build that next using [Query Anywhere](../queryAnywhere/README.md)!
