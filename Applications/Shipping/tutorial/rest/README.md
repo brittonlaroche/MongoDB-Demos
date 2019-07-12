@@ -419,7 +419,7 @@ Maybe that gets followed by the next update
 
 It would be nice to see the history of the package over time so we could pinpoint when and where the package was lost or damaged.  As its stands now we are only updating the package in the package collection and it gets overwritten with each new update.
 
-The next question is, how do we update the shipping document with the changes to the package document we just received in the package collection?  How do we track chnages to that package over time.  The answer is through Atlas [Tiggers and Functions](../triggers/README.md).
+The next question is, how do we update the shipping document with the changes to the package document we just received in the package collection?  How do we track changes to that package over time.  The answer is provided in the next section through Atlas [Tiggers and Functions](../triggers/README.md).
 
 ## Next Steps
 Please click the link here [Triggers and Functions](../triggers/README.md) to continue building the shipping application.  
