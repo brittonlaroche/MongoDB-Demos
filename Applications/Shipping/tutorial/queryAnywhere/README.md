@@ -28,10 +28,6 @@ Select the __"Rules"__ menu item from the left hand navigation pane in the stitc
 
 Enter __ship__ for the database name and __codes__ for the collection.  Select __"No template"__ and click save.  Repeat the process for the rest of the collections 
 
-__checkpoint__   
-__package__   
-__shipment__ 
-
 ![rules](../../img/rules.jpg "rules")
 
 We can edit the rules generated at a future point in time to limit what data we will have access to through and API Key.  Generating an API Key creates a default user to go with the key.
