@@ -165,7 +165,7 @@ The code above perfoms a find on the shipment collection with the search documen
         }
 ```
 
-Part of the html table is a column labeled "edit" which allows us to edit the plan and packages in the shipment.  Clicking the edit icon shows us this information.
+Part of the html table is a column labeled "edit" which allows us to edit the plan and packages in the shipment.  Clicking the edit icon shows us this detailed shipping information.  In effect we have wrapped a gui around our shipping document.  The nested plan and package arrays have been turned into html tables with rows and columns.
 
 
 
