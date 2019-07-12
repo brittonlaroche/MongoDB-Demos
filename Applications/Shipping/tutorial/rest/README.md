@@ -206,6 +206,9 @@ Change the shipment_id, package_id and tag_id to add more shipments.  Grab the e
 
 Note: you should create a unique index on shipment_id to avoid duplicates.  You can download [compass](https://www.mongodb.com/products/compass) for an easy gui interface to create the index.
 
+
+![Create Index](../../img/createIndex.jpg "Create Index")
+
 After inserting some shipments the return document in postman informs you of a success or an error.  It would be great to see the documents.  Lets test our find function created earlier.
 
 ### 5. Test the search employee REST based API service through postman
