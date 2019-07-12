@@ -174,3 +174,10 @@ Part of the html table is a column labeled "edit" which allows us to edit the pl
 ![Document as app](../../img/prontoPlanPackages.jpg "document")
 
 The editShipment function has created the html tables that allow us to edit the plan and the packages directly.  
+
+### 2. Adding data driven drop lists
+In the future we would like to add a notification to FedEx or UPS at each step of the shipment process.  In order to handle this effectively in trigger code we need to enforce the correct package type is provided. For example we may wish to enforce the code as an upper case "FEDEX" to insure our trigger has one value to check against before sending a REST API to FedEx updating the tracking number location.
+
+![Document as app](../../img/dataDrivenDroplist.jpg "document")
+
+
