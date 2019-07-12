@@ -347,3 +347,45 @@ The meat of the function that allows us to reuse the same REST API call to updat
           }
         });
 ```
+
+## 8. The power of the stitch browser SDK
+
+The stitch browser SDK allows us to access the database and execute the full power of the mongo quert language (MQL) ins addition it allows us to execute serverless stitch functions and get results.  It also allows us to use the REST API through java script.  With these tools we can accomplish a great deal through a client application.
+
+__MongoDB Query Language Example:__
+```js
+        db.collection('shipment').updateOne(
+          {shipment_id: parseInt(sID.value)},
+          {$set: {
+            owner_id: client.auth.user.id,
+            shipment_id: parseInt(sID.value),
+            description: desc.value,
+            customer_id: cID.value,
+            first_name: cFname.value,
+            last_name: cLname.value,
+            contact_phone: cPhone.value,
+            contact_email: cEmail.value,
+            //ship_date: new Date(sShipDate.value),
+            ship_date: sShipDate.value,
+            last_modified: nDate
+            }
+          },
+          {upsert: true}
+        )
+```
+
+__Remote function call example:__
+```js 
+await client.callFunction("fncPlanUpdate", [planDoc]).then(editShipment( vSID.value ));
+```
+
+__REST based API example:__
+```js
+        const response = await fetch(vurl, {
+          method: 'POST',
+          body: JSON.stringify(packageDoc), // string or object
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+```
