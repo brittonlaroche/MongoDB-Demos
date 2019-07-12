@@ -19,6 +19,7 @@ This section of the tutorial assumes you have completed the previous sections.
 Before a client application can access a collection via the stitch browser SDK access to the underlying collections must be granted to the stitch application through the rules interface. 
 
 We need to grant access to the following collections in the __ship__ database:   
+
 __codes__   
 __checkpoint__   
 __package__   
