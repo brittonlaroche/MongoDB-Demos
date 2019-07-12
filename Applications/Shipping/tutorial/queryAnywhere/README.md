@@ -124,7 +124,7 @@ After connecting to the database the first function called is displayShipments. 
           .then(displayShipments)
 ```
 
-The first part of the display shipments builds a search document based on values in the input elements.  For example if we are looking for a particular customer id the following code finds the input value and creates a search document.
+The first part of the display shipments function builds a search document based on values in the input elements.  For example if we are looking for a particular customer id the following code finds the input value and creates a search document.
 
 ```js
         var sCust = document.getElementById('s_customer_id'); 
