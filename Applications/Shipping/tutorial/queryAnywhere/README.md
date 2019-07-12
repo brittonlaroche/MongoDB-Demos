@@ -113,7 +113,8 @@ The section above includes the stitch browser SDK.  All of the functions that al
 
 Notice that if any error is encountered with the log in the error should be logged in the browser console.  In chrome the browser console is located under the menu item hamburger drop list --> More Tools --> Developer tools. 
 
-The database connection to our shipping application is defined in the follwoing code:
+The database connection to our shipping application is defined in the follwoing code:   
+
 ``` const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('ship');``` 
 
 After connecting to the database the first function called is displayShipments. Notice the ".then" after connecting to the database.  The ".then" means the application waits for the connection to be complete and executes after the connection is succeful.
