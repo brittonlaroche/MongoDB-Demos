@@ -114,9 +114,11 @@ The first part of the display shipments builds a search document based on values
         }
 ```
 
-The search document is placed into the find function as part of the mongo query language.
-``` db.collection('shipment').find(searchDoc, {limit: 1000}).asArray()```
-The code above perfoms a find on the shipment collection with the search document and limits the results to 1000. It then loops through the documents as an array and builds an html table to contain them.
+The search document is placed into the find function as part of the mongo query language.   
+
+``` db.collection('shipment').find(searchDoc, {limit: 1000}).asArray()```   
+
+The code above perfoms a find on the shipment collection with the search document and limits the results to 1000. It then loops through the documents as an array and builds an html table to contain them.  This is query anywhere in action as we have turned our browser into a client application that can execute the mongo query language against the atlas database.
 
 ```js
       function displayShipments() {
@@ -162,6 +164,8 @@ The code above perfoms a find on the shipment collection with the search documen
           });
         }
 ```
+
+Part of the html table is a column labeled "edit" which allows us to edit the plan and packages in the shipment.  Clicking the edit icon shows us this information.
 
 
 
