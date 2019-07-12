@@ -42,7 +42,7 @@ Navigate to the top section ofthis git hub or (right click "open in new tab") th
 
 Press the green box "Clone or Download" and select "Donwload Zip File" if you have not already.  Extract the zip file and navigate to the (unzip path)MongoDB-Demos/Applications/Shipping/html directory.  Here you will find the html file CSS file and images for our sample shipping application.  Alternatively you can view and copy the html and css files from (right click "open in new tab") [here](https://github.com/brittonlaroche/MongoDB-Demos/tree/master/Applications/Shipping/html).
 
-Open the index.html file in the editor and replace 'your-app-id' with the application id of your shipping application and the 'your-api-Key' with the api key we just generated.  The APP-ID is located in the upper left of the stitch console as seen below, clcik the copy bbuton to load it in your clip board for a quick paste.
+Open the index.html file in the editor and replace 'your-app-id' with the application id of your shipping application and the 'your-api-Key' with the api key we just generated.  The APP-ID is located in the upper left of the stitch console as seen below, click the copy button to load it in your clip board for a quick paste.
 
 ![Web](../../img/appid.jpg "Web")
 
@@ -57,6 +57,8 @@ should look like
       const credential = new stitch.UserApiKeyCredential("y2yhO49BDf4zvQVnt5GEC0Ge90VJVsByuSGVVJAvUr4Z9tZjWvJ2iZiL8OhKKY9M");
       const client = stitch.Stitch.initializeDefaultAppClient('shipping-wkfpx');
 ```
+
+Pasting the API key directly into the html is a bad idea.  There are a number of ways to properly manage and API Key and this is not one of them.  We highly recommend hidding and accessing this key according to best practices.  Unfortunatley we dont have access to any of those methods in this tutorial.  Just make a mental note that long term the API Key needs to be managed outside of the html source code and according to your organizations best practices.
 
 Save the index.html and double click it.  You should see something like this:   
 
