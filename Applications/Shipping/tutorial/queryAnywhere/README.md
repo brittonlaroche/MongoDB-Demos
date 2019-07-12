@@ -325,3 +325,15 @@ We can call the same REST API call we created earlier through the browser applic
       }
 
 ```
+
+The meat of the function is in this tiny section of code that allows us to define the body as application json and stringify the package document we created.
+
+```js
+        const response = await fetch(vurl, {
+          method: 'POST',
+          body: JSON.stringify(packageDoc), // string or object
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+```
