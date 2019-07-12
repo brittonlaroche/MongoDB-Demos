@@ -215,4 +215,6 @@ This query wont return any values until we populate the documents in the codes c
 {"CODE_TYPE":"PACKAGE_TYPE","VALUE":"OTHER","DESCRIPTION":"Other Package Delivery Company"}
 {"CODE_TYPE":"PACKAGE_TYPE","VALUE":"Luggage","DESCRIPTION":"Passanger luggage"}
 {"CODE_TYPE":"PACKAGE_TYPE","VALUE":"DIRECT SHIP","DESCRIPTION":"Direct Ship Packages and Lugage"}
-```
+```   
+
+![Compass](../../img/compassCodeTypes.jpg "Compass")
