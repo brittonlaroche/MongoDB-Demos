@@ -180,7 +180,7 @@ In the future we would like to add a notification to FedEx or UPS at each step o
 
 ![Document as app](../../img/dataDrivenDroplist.jpg "document")
 
-To handle this functionality the index.html file has the following function.
+To handle the creation of a drop list of packagetypes in the index.html file we have the following function.
 
 ```js
       function displayPkgTypeDropList() {
@@ -207,5 +207,12 @@ The function is querying the codes collection for a list of package types and bu
       db.collection('codes').find(searchDoc, {limit: 1000}).asArray()
 ```
 
-This query wont return any values until we populate the documents in the codes collection.  We can do this through compass or we can create a REST Service and a Webhook and pass in the douments to populate the codes collection.
+This query wont return any values until we populate the documents in the codes collection.  We can do this through a tool like compass or we can create a REST Service and a Webhook and pass in the douments to populate the codes collection.
 
+```
+{"CODE_TYPE":"PACKAGE_TYPE","VALUE":"FEDEX","DESCRIPTION":"FedEX Package"}
+{"CODE_TYPE":"PACKAGE_TYPE","VALUE":"UPS","DESCRIPTION":"UPS Package"}
+{"CODE_TYPE":"PACKAGE_TYPE","VALUE":"OTHER","DESCRIPTION":"Other Package Delivery Company"}
+{"CODE_TYPE":"PACKAGE_TYPE","VALUE":"Luggage","DESCRIPTION":"Passanger luggage"}
+{"CODE_TYPE":"PACKAGE_TYPE","VALUE":"DIRECT SHIP","DESCRIPTION":"Direct Ship Packages and Lugage"}
+```
