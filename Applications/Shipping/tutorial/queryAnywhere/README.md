@@ -38,9 +38,14 @@ You will need a text editor for this section. If you do not have a text editor w
 
 The MongoDB stitch browser client sdk documentation is in this link here [MongoDB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html)  At the time of the writing of this tutorial we are on sdk version 4.4.0 
 
-Navigate to the top section ofthis git hub or right click "open in new tab" the link [MongoDB-Demos](https://github.com/brittonlaroche/MongoDB-Demos).  
+Navigate to the top section ofthis git hub or (right click "open in new tab") the link [MongoDB-Demos](https://github.com/brittonlaroche/MongoDB-Demos).  
 
-Press the green box "Clone or Download" and select "Donwload Zip File" if you have not already.  Extract the zip file and navigate to the (unzip path)MongoDB-Demos/Applications/Shipping/html directory.  Here you will find the html file CSS file and images for our sample shipping application.  Alternatively you can view and copy the html and css files from [here](https://github.com/brittonlaroche/MongoDB-Demos/tree/master/Applications/Shipping/html).
+Press the green box "Clone or Download" and select "Donwload Zip File" if you have not already.  Extract the zip file and navigate to the (unzip path)MongoDB-Demos/Applications/Shipping/html directory.  Here you will find the html file CSS file and images for our sample shipping application.  Alternatively you can view and copy the html and css files from (right click "open in new tab") [here](https://github.com/brittonlaroche/MongoDB-Demos/tree/master/Applications/Shipping/html).
+
+Open the index.html file in the editor and replace 'your-app-id' with the application id of your shipping application and the 'your-api-Key' with the api key we just generated.  The APP-ID is located in the upper left of teh stitch console as seen below, clcik the copy bbuton to load it in your clip board for a quick paste.
+
+![users](../../img/appid.jpg "users")
+
 
 
 
