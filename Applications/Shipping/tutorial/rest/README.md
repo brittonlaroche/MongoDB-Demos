@@ -417,4 +417,4 @@ It would be nice to see the history of the package over time so we could pinpoin
 The next question is, how do we update the shipping document with the changes to the package document we just received in the package collection?  How do we track chnages to that package over time.  The answer is through Atlas [Tiggers and Functions](../triggers/README.md).
 
 ## Next Steps
-Please click the link here [Tiggers and Functions](../triggers/README.md) to continue building the shipping application.  
+Please click the link here [Triggers and Functions](../triggers/README.md) to continue building the shipping application.  
