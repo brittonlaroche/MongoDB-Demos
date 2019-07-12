@@ -33,8 +33,7 @@ Next we want to link a new function so click the "+ New Function" in the select 
 ![Diagram](../../img/packageUpdateTrigger.jpg "Diagram")
 
 ## 2. Write the package update function 
-We just created the fucntion in the previous step.  Select the __"Functions"__ menu item in the left navigation pane of the stitch console.  A screen appears listing the functions for the stitch functions. Select 
-
+We just created the fucntion in the previous step.  Select the __"Functions"__ menu item in the left navigation pane of the stitch console.  A screen appears listing the functions for the stitch functions. Select fncPackageUpdate and copy / paste the following code over the default code in the function editor.
 
 ```js
 exports = function(changeEvent) {
@@ -156,6 +155,50 @@ To handle the versioning of the package document we simple insert it into the ch
 ```
 
 These sublte nuances are important in the package function and are explained here so that you are aware of why the function was written this way.
+
+## 2. Write the plan update function 
+We have two arrays in the shipment document one for plans and one for packages.  We create the package function update as part of a trigger.  Now we will create the plan function update as a standalone function.
+
+Create new function called fncPlanUpdate to update the shipment plan.  Select the __"Functions"__ menu item in the left navigation pane of the stitch console.  A screen appears listing the functions for the stitch functions. Press the __"Create New Function"__ Button in the upper right.
+
+Name the function __fncPlanUpdate__ and flip the slider to run as system.  
+
+![Plan Function](../../img/triggerblocks5.jpg "Plan Function")
+
+Save the function and paste the following code in the function editor.
+```js
+exports = async function(argPlanDoc){
+  console.log("Function fncPlanUpdate called ... executing..." );
+  var shipment = context.services.get("mongodb-atlas").db("ship").collection("shipment");
+  var nDate = new Date();
+  if (argPlanDoc){
+    //update the shipping document with the new plan information
+    console.log("Shipment plan updateOne ... executing..." );
+    shipment.updateOne(
+    	{ shipment_id: parseInt(argPlanDoc.shipment_id) },
+    	{ $pull: { "plan": { order: argPlanDoc.order } }	}
+    );
+    console.log("Shipment plan ... $addToSet..." );
+    shipment.updateOne(
+    	{ shipment_id: parseInt(argPlanDoc.shipment_id) },
+    	{ $addToSet: { "plan": { 
+    	  order: argPlanDoc.order, 
+    	  flight: argPlanDoc.flight, 
+    	  from: argPlanDoc.from, 
+    	  to: argPlanDoc.to,
+    	  date: argPlanDoc.date,
+    	  last_modified: nDate} } }
+    );
+  } else {
+    return {"Status": "Error Plan document is empty"};
+  }
+    return {"Success": "Updated Plan"};
+};
+
+```
+Notice this function also run asynchronously as it can be called from another resource that will wait for a response. 
+
+## 3. Concepts are important
 
 Again, thinking of these objects as a set of building blocks, the solution is easy to visualize.  We will insert data through the REST API into the database where the collection is being watched by a trigger in stitch.  The trigger will fire a function with logic to update two other collections the shipment collectoion and the checkpoint collection.  The whole design in building blocks looks like the following.
 
