@@ -16,7 +16,8 @@ Each module in this shipping tutorial builds on the last.  In this section we wi
 
 This section of the tutorial assumes you have completed the previous sections.
 
-We begin by adding a bit of security and creating an apikey and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
+### 1. Create an API key
+We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
 
 ![users](../../img/users5.jpg "users")
 
@@ -27,6 +28,19 @@ For now we will generate an API Key.  Select the __"API Keys"__ option and click
 ![users](../../img/users3.jpg "users")
 
 Type in a name for the API Key, something like "BackOffice" or "WebAccess" and click save.  A private key will be displayed.  Copy that key and paste it into a text editor of your choice.  Then create the api key.  We will use that key to access the database through the stitch browser SDK.
+
+### 2. Create the browser client application
+You will need a text editor for this section. If you do not have a text editor we recommend downloading a free text editor from one of the following sites (VS Code is best for Developers):
+
+[Notepad ++](https://notepad-plus-plus.org/download)   
+[Brackets](http://brackets.io/)   
+[VS Code](https://code.visualstudio.com/)   
+
+The MongoDB stitch browser client sdk documentation is in this link here [MongoDB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html)  At the time of the writing of this tutorial we are on sdk version 4.4.0 
+
+Navigate to the top section ofthis git hub or right click "open in new tab" the link [MongoDB-Demos](https://github.com/brittonlaroche/MongoDB-Demos).  
+
+Press the green box "Clone or Download" and select "Donwload Zip File" if you have not already.  Extract the zip file and navigate to the (unzip path)MongoDB-Demos/Applications/Shipping/html directory.  Here you will find the html file CSS file and images for our sample shipping application.  Alternatively you can view and copy the html and css files from [here](https://github.com/brittonlaroche/MongoDB-Demos/tree/master/Applications/Shipping/html).
 
 
 
