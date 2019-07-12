@@ -58,12 +58,44 @@ should look like
       const client = stitch.Stitch.initializeDefaultAppClient('shipping-wkfpx');
 ```
 
-Save the index.html and double click it.  You should see something like this:
+Save the index.html and double click it.  You should see something like this:   
+
 ![users](../../img/prontoWebApp.jpg "users")
 
 You might not have as many shipment records but you should have one or two from the previous examples.  If you are continually stuck with the loading page, you need to check your API key and APP-ID values and settings.
 
 ### 3. Digging into QueryAnywhere
+If this section consfuses you at any point, the best way to learn QueryAnywhere from scratch is to work through the blog tutorial.  Start with the [back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/) and finish with the [front end web client](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/)
+
+The rest of this tutorial will focus on explaining how the index.html works.  Lets start at the top.
+
+```js
+<html>
+  <head>
+    ...
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
+    ...
+```
+The section above includes the stitch browser SDK.  All of the functions that allow us to query mongoDB directly and update data are contained in this java script file.  The next section below shows how we authenticate to the database using the API key and app id credentials.
+
+```js
+    <script>
+      const credential = new stitch.UserApiKeyCredential('your-api-key');
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('ship');
+      function displayShipmentsOnLoad() {
+        client.auth
+          .loginWithCredential(credential)
+          .then(displayShipments)
+          .catch(console.error);
+      }
+```
+
+
+Notice that if any error is encountered with the log in the error should be logged in the browser console.  In chrome the browser console is located under the menu item hamburger drop list --> More Tools --> Developer tools. 
+
+After connecting to the database defined in the ``` const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('ship');``` the next function called is displayShipments.
+
 
 
 
