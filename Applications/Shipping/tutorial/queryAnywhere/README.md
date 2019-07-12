@@ -65,7 +65,7 @@ Save the index.html and double click it.  You should see something like this:
 You might not have as many shipment records but you should have one or two from the previous examples.  If you are continually stuck with the loading page, you need to check your API key and APP-ID values and settings.
 
 ### 3. Digging into QueryAnywhere
-If this section consfuses you at any point, the best way to learn QueryAnywhere from scratch is to work through the blog tutorial.  Start with the [back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/) and finish with the [front end web client](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/)
+If this section consfuses you at any point, the best way to learn QueryAnywhere from scratch is to work through the blog tutorial.  Start with the [back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/) and finish with the [front end web client](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/).  This index.html evolved directly from the blog tutorial.  All that has changed is some additional fields, some dynamic html tables, a few image files, and a slick CSS style sheet.  We also added in a remote function call and the ability to make a REST API call.  Other than that its just the basic blog tutorial.
 
 The rest of this tutorial will focus on explaining how the index.html works.  Lets start at the top.
 
@@ -95,6 +95,65 @@ The section above includes the stitch browser SDK.  All of the functions that al
 Notice that if any error is encountered with the log in the error should be logged in the browser console.  In chrome the browser console is located under the menu item hamburger drop list --> More Tools --> Developer tools. 
 
 After connecting to the database defined in the ``` const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('ship');``` the next function called is displayShipments.
+
+The first part of the display shipments builds a search document based on values in the input elements.  For example if we are looking for a particular customer id the following code finds the input value and creates a search document.
+
+```js
+        var sCust = document.getElementById('s_customer_id'); 
+            ...
+        if ( sCust.value != "") {
+          searchDoc = {customer_id: sCust.value}; 
+        }
+```
+
+The search document is placed into the find function as part of the mongo query language.
+``` db.collection('shipment').find(searchDoc, {limit: 1000}).asArray()```
+The code above perfoms a find on the shipment collection with the search document and limits the results to 1000. It then loops through the documents as an array and builds an html table to contain them.
+
+```js
+      function displayShipments() {
+        var searchDoc = {};
+        var sShip = document.getElementById('s_shipment_id'); 
+        var sCust = document.getElementById('s_customer_id'); 
+        var sPhone = document.getElementById('s_contact_phone');
+        var sPkg = document.getElementById('s_package_id');
+        var sShip = document.getElementById('s_shipment_id'); 
+        if ( sCust.value != "") {
+          searchDoc = {customer_id: sCust.value}; 
+        }
+        if ( sPhone.value != "") {
+          searchDoc = {contact_phone: sPhone.value}; 
+        }
+        if ( sPkg.value != "") {
+          searchDoc = { "packages.package_id": sPkg.value}; 
+        }
+        if ( parseInt(sShip.value) > 0) {
+          searchDoc = {shipment_id: parseInt(sShip.value)}; 
+        }
+        const tStrt = "<div><table class=\"blueTable\"><th>Shipment ID</th><th>Customer ID</th><th>Name</th>" +
+          "<th>Conact Phone</th><th>Email</th><th>Ship Date</th><th>Description</th><th>last_modified</th><th>Edit</th>";
+          db.collection('shipment').find(searchDoc, {limit: 1000}).asArray()
+            .then(docs => {
+              const html = docs.map(c => "<tr>" +
+                "<td>[" + c.shipment_id +  "]</td>" +
+                "<td>" + c.customer_id +  "</td>" +
+                "<td>" + c.first_name + " " + c.last_name + "</td>" +
+                "<td>" + c.contact_phone + "</td>" + 
+                "<td>" + c.contact_email + "</td>" +
+                "<td>" + c.ship_date + "</td>" +
+                "<td>" + c.description + "</td>" +
+                "<td>" + c.last_modified + "</td>" +
+                "<td> " + 
+                "<button type=\"checkbox\" class=\"blueTable\"" +
+                "onClick=\"editShipment(" + c.shipment_id +")\">" +
+                "<i class=\"material-icons\" style=\"font-size:18px\">" +
+                "mode_edit</i></button>" + 
+                "</td>" +
+                "</tr>").join("");
+              document.getElementById("shipments").innerHTML = tStrt + html + "</table></div>";
+          });
+        }
+```
 
 
 
