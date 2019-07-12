@@ -16,8 +16,11 @@ Each module in this shipping tutorial builds on the last.  In this section we wi
 
 This section of the tutorial assumes you have completed the previous sections.
 
-We begin by adding a bit of security and creating an apikey and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.
+We begin by adding a bit of security and creating an apikey and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top ofthe users window.  We are presented with a list of options as seen below.
 
 ![users](../../img/users5.jpg "users")
 
+Third party providers such as facebook and google provide an excellent way for customers to access data and will be covered at a point in the future.  For now explore the custom option as you can see how to integrate with a Single Sign On (SSO) provider like AWS cognito, or something you are using in house through Java Web Tokens (JWT) as this eliminates the headache of user management for your application.
+
+For now we will generate an API KEY.
 
