@@ -62,7 +62,7 @@ Save the index.html and double click it.  You should see something like this:
 
 ![users](../../img/prontoWebApp.jpg "users")
 
-You might not have as many shipment records but you should have one or two from the previous examples.  If you are continually stuck with the loading page, you need to check your API key and APP-ID values and settings.
+You might not have as many shipment records but you should have one or two from the previous examples.  If you are continually stuck with the loading page, you need to check your API key and APP-ID values and settings.  Check the console log.  In chrome the browser console is located under the menu item hamburger drop list --> More Tools --> Developer tools. 
 
 ### 3. Digging into QueryAnywhere
 If this section consfuses you at any point, the best way to learn QueryAnywhere from scratch is to work through the blog tutorial.  Start with the [back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/) and finish with the [front end web client](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/).  This index.html evolved directly from the blog tutorial.  All that has changed is some additional fields, some dynamic html tables, a few image files, and a slick CSS style sheet.  We also added in a remote function call and the ability to make a REST API call.  Other than that its just the basic blog tutorial.
