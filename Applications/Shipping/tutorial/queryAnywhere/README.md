@@ -16,13 +16,23 @@ Each module in this shipping tutorial builds on the last.  In this section we wi
 
 This section of the tutorial assumes you have completed the previous sections.
 ### 1. Applying Rules
-Before a client application can access a collection via the stitch browser SDK access to the underlying collections must be granted to the stitch application through the rules interface.
+Before a client application can access a collection via the stitch browser SDK access to the underlying collections must be granted to the stitch application through the rules interface. 
 
 We need to grant access to the following collections in the __ship__ database:   
 __codes__   
 __checkpoint__   
 __package__   
 __shipment__   
+
+Select the __"Rules"__ menu item from the left hand navigation pane in the stitch console window.  Click the __mongodb-atlas__ icon button __...__ and select "Add Database Collection" 
+
+Enter __ship__ for the database name and __codes__ for the collection.  Select __"No template"__ and click save.  Repeat the process for the rest of the collections 
+
+__checkpoint__   
+__package__   
+__shipment__ 
+
+![rules](../../img/rules.jpg "rules")
 
 ### 2. Create an API key
 We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
@@ -326,7 +336,7 @@ We can call the same REST API call we created earlier through the browser applic
 
 ```
 
-The meat of the function that allows us to reuse the same REST API call to updat ethe package is in this tiny section of code that allows us to define the body as application json and stringify the package document we created.
+The meat of the function that allows us to reuse the same REST API call to update the package is in this tiny section of code that allows us to define the body as application json and stringify the package document we created.
 
 ```js
         const response = await fetch(vurl, {
