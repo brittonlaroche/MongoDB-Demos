@@ -18,6 +18,6 @@ This section of the tutorial assumes you have completed the previous sections.
 
 We begin by adding a bit of security and creating an apikey and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.
 
-![users](../../img/users.jpg "users")
+![users](../../img/users5.jpg "users")
 
 
