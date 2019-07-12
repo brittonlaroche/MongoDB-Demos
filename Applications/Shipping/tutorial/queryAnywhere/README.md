@@ -226,3 +226,102 @@ This query wont return any values until we populate the documents in the codes c
 ```   
 
 ![Compass](../../img/compassCodeTypes.jpg "Compass")
+
+
+## 6. Updating plan information
+The client browser SDK allows for remote function calls.
+
+```js
+      async function updatePlan() {
+        var vorder = document.getElementById('plan_order');
+        var vSID = document.getElementById('shipment_id');
+        var vflight = document.getElementById('plan_flight');
+        var vfrom = document.getElementById('plan_from');
+        var vto = document.getElementById('plan_to');
+        var vdate = document.getElementById('plan_date');
+        var planDoc = {};
+        //here we will execute a remote function
+        //all logoc for handeling updates will be there
+        if (vorder.value == ""){
+          alert("Order is required. 1 is for first flight, 2 for second flight etc..");
+          return;
+        }
+        if (vflight.value == ""){
+          alert("Flight number is required.");
+          return;
+        }
+        if (vdate.value == ""){
+          alert("Flight departure date is required.");
+          return;
+        }
+        planDoc.shipment_id = vSID.value;
+        planDoc.order = vorder.value;
+        planDoc.flight = vflight.value;
+        planDoc.from = vfrom.value;
+        planDoc.to = vto.value;
+        planDoc.date = vdate.value;
+        await client.callFunction("fncPlanUpdate", [planDoc]).then(editShipment( vSID.value ));
+      }
+
+```
+
+## 7. Updating package information
+We can call the same REST API call we created earlier through the browser application
+
+```js
+      async function updatePackage() {
+        // we could write our own update using query anywhere like the shipment example or we can call
+        // a rest API.  This example uses the rest API
+        var vshipment_id = document.getElementById('shipment_id');
+        var vpackage_id = document.getElementById('pkg_package_id');
+        var vpkg_tag_id = document.getElementById('pkg_tag_id');
+        var vpkg_type = document.getElementById('dl_pkg_type');
+        var vpkg_tracking = document.getElementById('pkg_tracking');
+        var vpkg_description = document.getElementById('pkg_description');
+        var vpkg_last_event = document.getElementById('pkg_last_event');
+        var vpkg_location = document.getElementById('pkg_location');
+        var packageDoc = {};
+        var vurl = "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/shipping-wkfkx/service/updatePackageService/incoming_webhook/updatePackageWebhook";
+        if (parseInt(vshipment_id.value) < 1) {
+          alert("Shipment ID is required");
+          return;
+        }
+        //capture the user input but dont use blank fields
+        if (vpackage_id.value != "") {
+          packageDoc = {shipment_id: parseInt(vshipment_id.value), package_id: vpackage_id.value}
+          packageDoc.owner_id = client.auth.user.id;
+          if ( vpkg_tag_id.value != "" ) {
+            packageDoc.tag_id = vpkg_tag_id.value;
+          }
+          if ( vpkg_type.value != "" ) {
+            packageDoc.type = vpkg_type.value;
+          }
+          if ( vpkg_tracking.value != "" ) {
+            packageDoc.tracking = vpkg_tracking.value;
+          }
+          if ( vpkg_description.value != "" ) {
+            packageDoc.description = vpkg_description.value;
+          }
+          if ( vpkg_last_event.value != "" ) {
+            packageDoc.last_event = vpkg_last_event.value;
+          }
+          if ( pkg_location.value != "" ) {
+            packageDoc.location = vpkg_location.value;
+          }
+        } else {
+          alert("Package ID is required");
+          return;
+        }
+        const response = await fetch(vurl, {
+          method: 'POST',
+          body: JSON.stringify(packageDoc), // string or object
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const myJson = await response.json(); //extract JSON from the http response
+        // do something with myJson
+        editShipment(vshipment_id.value);
+      }
+
+```
