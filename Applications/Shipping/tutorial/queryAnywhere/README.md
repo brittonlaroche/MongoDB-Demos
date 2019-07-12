@@ -44,7 +44,7 @@ Press the green box "Clone or Download" and select "Donwload Zip File" if you ha
 
 Open the index.html file in the editor and replace 'your-app-id' with the application id of your shipping application and the 'your-api-Key' with the api key we just generated.  The APP-ID is located in the upper left of the stitch console as seen below, clcik the copy bbuton to load it in your clip board for a quick paste.
 
-![users](../../img/appid.jpg "users")
+![Web](../../img/appid.jpg "Web")
 
 ```js
       const credential = new stitch.UserApiKeyCredential('your-api-key');
@@ -167,6 +167,6 @@ The code above perfoms a find on the shipment collection with the search documen
 
 Part of the html table is a column labeled "edit" which allows us to edit the plan and packages in the shipment.  Clicking the edit icon shows us this detailed shipping information.  In effect we have wrapped a gui around our shipping document.  The nested plan and package arrays have been turned into html tables with rows and columns.
 
-
+![Document as app](../../img/protonPlanPackages.jpg "document")
 
 
