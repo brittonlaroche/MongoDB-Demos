@@ -19,10 +19,10 @@ This section of the tutorial assumes you have completed the previous sections.
 Before a client application can access a collection via the stitch browser SDK access to the underlying collections must be granted to the stitch application through the rules interface.
 
 We need to grant access to the following collections in the __ship__ database:   
-__codes__
-__checkpoint__
-__package__
-__shipment__
+__codes__   
+__checkpoint__   
+__package__   
+__shipment__   
 
 ### 2. Create an API key
 We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
