@@ -180,4 +180,32 @@ In the future we would like to add a notification to FedEx or UPS at each step o
 
 ![Document as app](../../img/dataDrivenDroplist.jpg "document")
 
+To handle this functionality the index.html file has the following function.
+
+```js
+      function displayPkgTypeDropList() {
+          var searchDoc = {CODE_TYPE: "PACKAGE_TYPE"};
+		  db.collection('codes').find(searchDoc, {limit: 1000}).asArray()
+			  .then(docs => {
+				const html = docs.map(c =>
+				"<option value=\"" +
+				c.VALUE + "\"" +
+				">" +
+				c.VALUE +
+				"</option>").join("");
+				document.getElementById("pkg_types").innerHTML = "<fieldset>" +
+                    "<select class=\"select\" id=\"dl_pkg_type\">" +
+                    "<option value=\"\">Select Package Type</option> " + html +
+                    "</select></fieldset>";
+		  });
+      }
+```
+The function is querying the codes collection for a list of package types and builds a dynamic select list.
+
+```js
+      var searchDoc = {CODE_TYPE: "PACKAGE_TYPE"};
+      db.collection('codes').find(searchDoc, {limit: 1000}).asArray()
+```
+
+This query wont return any values until we populate the documents in the codes collection.  We can do this through compass or we can create a REST Service and a Webhook and pass in the douments to populate the codes collection.
 
