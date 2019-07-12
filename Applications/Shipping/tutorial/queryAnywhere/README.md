@@ -326,7 +326,7 @@ We can call the same REST API call we created earlier through the browser applic
 
 ```
 
-The meat of the function is in this tiny section of code that allows us to define the body as application json and stringify the package document we created.
+The meat of the function that allows us to reuse the same REST API call to updat ethe package is in this tiny section of code that allows us to define the body as application json and stringify the package document we created.
 
 ```js
         const response = await fetch(vurl, {
