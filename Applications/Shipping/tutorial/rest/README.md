@@ -371,7 +371,7 @@ exports = async function(payload) {
 
 We have made many checks to validate that we have required fields in our json document provided to the updatePackageWebhook function.  We have also taken great care to look up the existing package document and compare it to what we have been provided before we do the update.  If the new document is missing information for a particular field we set the field to the old value.  
 
-__Design Note__ we chose this approach to show how it is possible to get both the new and old value to a document, as many developers working with relational databases are used to this approach.  It is also possible to break this one update function into 3 seperate functions: addPackage, updatePackage and updatePackageLocation.  Each function would be responsible for updating and inserting the required fields plus only the additional fields needed for its function. 
+__Design Note:__ we chose this approach to show how it is possible to get both the new and old value to a document, as many developers working with relational databases are used to this approach.  It is also possible to break this one update function into 3 seperate functions: addPackage, updatePackage and updatePackageLocation.  Each function would be responsible for updating and inserting the required fields plus only the additional fields needed for its function. 
 
 ![bag scanner](../../img/bagscanner.jpg "bag scanner")
 
