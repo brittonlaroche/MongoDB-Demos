@@ -22,7 +22,7 @@ In this section we will cover the Stitch query anywhere functionality through a 
 Examples include payroll processors, health care providers and mobile devices that allow employees to keep up to date on their payment and benefits data. This stitch layer is serverless and no setup or configuration of additional servers are required.
 
 ### Prerequisites
-1. [Postman](https://www.getpostman.com/downloads/) or curl   
+1. [Postman](https://www.getpostman.com/downloads/) or curl.  If postman is not available you can use our own [postrapper](../tools/html/postrapper.html). Right click (open in new tab) the [postrapper](../tools/html/postrapper.html) link,  copy the raw contents of the file to a text editor and save it as postrapper.html.  Double click the postrapper.html file to open it.  It will behave very much like postman.   
 2. Create an [Atlas cluster](https://docs.atlas.mongodb.com/getting-started/)   
 3. Create a Stitch Application: If you have not creatd the "HumanResources" application, log into [Atlas](cloud.mongodb.com) select "Stitch" on the left navigation pane and create a new application.
 4. Not required, but nice to have: [employee.html](../employee/employee.html). Copy and paste code into a text editor, change 'your-app_id' to the APP ID of your stitch application, and save as employee.html. Double click employee.html to bring up in a browser.
