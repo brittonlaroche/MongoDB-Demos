@@ -24,7 +24,7 @@ The diagram below shows how a third party shipping provider can interact with us
 We will focus on creating the findShipmentService, the addShipmentService, and the updatePackageService.  These services will have correespond webhooks that allow the third party shipping providers to access their data in our system.
 
 ### Prerequisites
-[Postman](https://www.getpostman.com/downloads/) or curl.  You will need a method of making a post with a json document. If postman is not available you can use our own [postrapper](../../html/postrapper.html). Right click (open in new tab) the [postrapper](../../html/postrapper.html) link,  copy the raw contents of the file to a text editor and save it as postrapper.html.  Double click the potsrapper.html file to open it.  It will behave very much like postman.
+[Postman](https://www.getpostman.com/downloads/) or curl.  You will need a method of making a post with a json document. If postman is not available you can use our own [postrapper](../../html/postrapper.html). Right click (open in new tab) the [postrapper](../../html/postrapper.html) link,  copy the raw contents of the file to a text editor and save it as postrapper.html.  Double click the postrapper.html file to open it.  It will behave very much like postman.
 
 ### 1. Create a stitch function to query shipment data
 log into the atlas console https://cloud.mongodb.com and click the "Stitch" menu item on the left. Select your stitch application "__shipping__." Select "functions" from the menu item on the left and create a new function named: __findShipment__   
@@ -147,7 +147,7 @@ Our first step is to get the new URL for our addShipmentService. In the addShipm
 
 ![Webhook URL](../../img/addShipmentWebhook3.jpg "Webhook URL")
 
-Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).  If postman is not available you can use our own [postrapper](../../html/postrapper.html). Right click (open in new tab) the [postrapper](../../html/postrapper.html) link,  copy the raw contents of the file to a text editor and save it as postrapper.html.  Double click the potsrapper.html file to open it.  It will behave very much like postman.
+Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).  If postman is not available you can use our own [postrapper](../../html/postrapper.html). Right click (open in new tab) the [postrapper](../../html/postrapper.html) link,  copy the raw contents of the file to a text editor and save it as postrapper.html.  Double click the postrapper.html file to open it.  It will behave very much like postman.
 
 Add a new tab and select "POST" from the drop list. Paste in the addShipmentWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "AddShipment."   
 
