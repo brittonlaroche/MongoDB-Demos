@@ -92,7 +92,7 @@ exports({"customer.email": "div@me.it"})
 
 ## ![10](../img/10.png) Create a trigger to capture changes to sales data
 
-## ![11](../img/4.png) Modify the trigger to capture marketing data
+## ![11](../img/11.png) Modify the trigger to capture marketing data
 
 ## ![12](../img/12.png) Create chart data
 
