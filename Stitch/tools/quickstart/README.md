@@ -37,7 +37,7 @@ After the sample data is loaded, we will want to see the data and explore the do
 
 ![Collections](../img/collections.jpg "Collections") 
 
-Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a down arrow will appear, pressing the button will expand the document and show all the values in nested arrays.
+Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a __">"__ arrow will appear in the upper left, pressing the button will expand the document and show all the values in nested arrays.
 
 ## 2 Query the Sample data
 We can create a simple query to pull back sales data for the store located in austin with the following document query:   
@@ -49,4 +49,8 @@ Type this in query in the filter section and press the __"Find"__ button.
 ![Query data](../img/find.jpg "Find") 
 
 
+We can do a more advanced find.  Suppose you were asked to generate a report on customers who were of retirement age to offer a promotion and a special discount on their next purchase.  The customer is an object embeded in the sales document and we need to refrence the age demographic value.  A simple nested query with dot notaion will allow us to get all the customers greater than or equal to 65 years of age.
 
+``` 
+{"customer.age":  {$gte: 65}}
+```  
