@@ -28,8 +28,15 @@ This will bring up window promptin you to build your first cluster.  Click the _
 Cluster0" is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
 ## 2 Load Sample Data
-Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.
+Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.  
 
 ![Load Sample Data](../img/loadSampleData.jpg "Load Sample Data")   
+On the main screen for the __"Cluster0"__ home page you will notice four buttons, "Connect", "Metrics", "Collections" and "..." Click the button labeled __"..."__ to see a menu list of items.  Select the menu item __"Load Sample Dataset"__
+
+After the sample data is loaded, we will want to see the data and explore the document datamodel.  Lets click the "Collections" button and explore the databases and collections we just loaded.
+
+![Collections](../img/collections.jpg "Collections")   
+
+
 
 
