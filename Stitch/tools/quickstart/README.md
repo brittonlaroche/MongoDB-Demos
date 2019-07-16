@@ -30,4 +30,6 @@ Cluster0" is the default name and works well for importing data and projects lat
 ## 2 Load Sample Data
 Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.
 
+![Load Sample Data](../img/loadSampleData.jpg "Load Sample Data")   
+
 
