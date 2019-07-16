@@ -88,7 +88,7 @@ exports({"customer.email": "div@me.it"})
 
 ## ![8](../img/8.png) Create a user with an API key
 
-## ![9](../img/9.png) Create a web application to select customers for a marketing promotion
+## ![9](../img/9.png) Create a web application for a marketing promotion
 
 ## ![10](../img/10.png) Create a trigger to capture changes to sales data
 
