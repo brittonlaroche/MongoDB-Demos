@@ -35,7 +35,11 @@ On the main screen for the __"Cluster0"__ home page you will notice four buttons
 
 After the sample data is loaded, we will want to see the data and explore the document datamodel.  Lets click the "Collections" button and explore the databases and collections we just loaded.
 
-![Collections](../img/collections.jpg "Collections")   
+![Collections](../img/collections.jpg "Collections") 
+
+Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a down arrow will appear, pressing the button will expand the document and show all the values in nested arrays.
+
+## 2 Query the Sample data
 
 
 
