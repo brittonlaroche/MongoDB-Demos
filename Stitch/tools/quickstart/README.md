@@ -28,7 +28,7 @@ This will bring up window promptin you to build your first cluster.  Click the _
 Cluster0" is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
 ## 2. Load Sample Data
-Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.  
+![3](../img/2.png)Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.  
 
 ![Load Sample Data](../img/loadSampleData.jpg "Load Sample Data")   
 On the main screen for the __"Cluster0"__ home page you will notice four buttons, "Connect", "Metrics", "Collections" and "..." Click the button labeled __"..."__ to see a menu list of items.  Select the menu item __"Load Sample Dataset"__
@@ -40,7 +40,7 @@ After the sample data is loaded, we will want to see the data and explore the do
 Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a __">"__ arrow will appear in the upper left, pressing the button will expand the document and show all the values in nested arrays.
 
 ## 3. Query the Sample data
-We can create a simple query to pull back sales data for the store located in austin with the following document query:   
+![3](../img/3.png)We can create a simple query to pull back sales data for the store located in austin with the following document query:   
 
 ```{"storeLocation": "Austin"}```   
 
@@ -56,7 +56,7 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 ```  
 
 ## 4. Create a Stitch Application   
-
+![4](../img/4.png)
 
 ## 5. Create a Stitch function to query customer data  
 
