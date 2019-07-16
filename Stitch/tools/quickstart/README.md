@@ -60,6 +60,16 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 
 ## 5. Create a Stitch function to query customer data  
 
-## 6. Create a Stitch service to expose the function as a REST API
+## 6. Create a Stitch service to expose the search function as a REST API
 
-## 7. Create a webpage to show the document from teh search service
+## 7. Create a webpage to show the document from the search service
+
+## 8. Create a user with an API key
+
+## 9. Create a web application to select customers for a marketing promotion
+
+## 10. Create a trigger to capture changes to sales data
+
+## 11. Modify the trigger to capture marketing data
+
+
