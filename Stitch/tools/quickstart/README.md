@@ -41,8 +41,8 @@ After the sample data is loaded, we will want to see the data and explore the do
 
 Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a __">"__ arrow will appear in the upper left, pressing the button will expand the document and show all the values in nested arrays.
 
-## 3. ![3](../img/3.png)  Query the Sample data
-![3](../img/3.png)   
+## ![3](../img/3.png)  Query the Sample data
+
 We can create a simple query to pull back sales data for the store located in austin with the following document query:   
 
 ```{"storeLocation": "Austin"}```   
@@ -61,7 +61,7 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 ## ![4](../img/4.png) Create a Stitch Application   
 
 
-## 5. Create a Stitch function to query customer data  
+## ![5](../img/5.png) Create a Stitch function to query customer data  
 
 
 ```js
@@ -82,16 +82,18 @@ exports = async function( aSearchDoc ){
 exports({"customer.email": "div@me.it"})
 ```
 
-## 6. Create a Stitch service to expose the search function as a REST API
+## ![6](../img/6.png) Create a Stitch service to expose the search function as a REST API
 
-## 7. Create a webpage to show the document from the search service
+## ![7](../img/7.png) Create a webpage to show the document from the search service
 
-## 8. Create a user with an API key
+## ![8](../img/8.png) Create a user with an API key
 
-## 9. Create a web application to select customers for a marketing promotion
+## ![9](../img/9.png) Create a web application to select customers for a marketing promotion
 
-## 10. Create a trigger to capture changes to sales data
+## ![10](../img/10.png) Create a trigger to capture changes to sales data
 
-## 11. Modify the trigger to capture marketing data
+## ![11](../img/4.png) Modify the trigger to capture marketing data
+
+## ![12](../img/12.png) Create chart data
 
 
