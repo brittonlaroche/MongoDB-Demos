@@ -8,7 +8,7 @@ Our lab is designed to teach Atlas and Stitch as quickly as possible with no dep
 The diagram above shows us all the objects we will be creating in this quick tutorial and how they interact.
 
 ## 1. Create your first Atlas cluster
-Open a modern browser and go to https://cloud.mongodb.com.  Register for an atlas account by clicking the __"get started free"__ button.
+![1](../img/1.png)Open a modern browser and go to https://cloud.mongodb.com.  Register for an atlas account by clicking the __"get started free"__ button.
 
 ![Get Started](../img/register1.jpg "Get started")
 
