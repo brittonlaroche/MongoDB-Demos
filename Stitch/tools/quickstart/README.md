@@ -74,6 +74,11 @@ exports = async function( aSearchDoc ){
   return doc;
 };
 ```
+
+```js
+exports({"customer.email": "div@me.it"})
+```
+
 ## 6. Create a Stitch service to expose the search function as a REST API
 
 ## 7. Create a webpage to show the document from the search service
