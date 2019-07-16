@@ -54,3 +54,5 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 ``` 
 {"customer.age":  {$gte: 65}}
 ```  
+
+## 3 Query through the REST API
