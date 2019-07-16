@@ -60,6 +60,20 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 
 ## 5. Create a Stitch function to query customer data  
 
+
+```js
+exports = async function( aSearchDoc ){
+
+  console.log("Function findCustomer called ... executing..." );
+  var sales = context.services.get("mongodb-atlas").db("sample_supplies").collection("sales");
+  console.log("Function findCustomer Search document");
+  console.log(JSON.stringify(aSearchDoc));
+  var doc = await sales.findOne(aSearchDoc);
+  console.log("return document");
+  console.log(JSON.stringify(doc));
+  return doc;
+};
+```
 ## 6. Create a Stitch service to expose the search function as a REST API
 
 ## 7. Create a webpage to show the document from the search service
