@@ -83,6 +83,8 @@ exports = async function( aSearchDoc ){
 ```js
 exports({"customer.email": "div@me.it"})
 ```
+![Function](../img/function3.jpg)
+
 
 ## ![6](../img/6.png) Create a Stitch service to expose the search function as a REST API
 
