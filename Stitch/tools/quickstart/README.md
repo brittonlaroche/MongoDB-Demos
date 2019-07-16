@@ -16,16 +16,16 @@ Click the __"get started free"__ button.  Theis will bering up a screen for you 
 
 ![Create free your account](../img/register2.jpg "Create your free account")   
 
-Fill in your personal information.  Feel free to use your work or personal email address, either is fine as this is your personal "free for life" development environment.  Agree to the terms of service and click the __"get started free"__ button.  This will bring up window promptin you to build your first cluster.  Click the __"build your first cluster"__ button.  When prompted select "Learning MongoDB" as to the reason you are interested in Atlas.
+Fill in your personal information.  Feel free to use your work or personal email address, either is fine as this is your personal "free for life" development environment.  Agree to the terms of service and click the __"get started free"__ button.  
 
 
 ![build your cluster](../img/register3.jpg "build your first cluster")   
 
-After clicking the Click the __"build your first cluster"__ button, you will be prompted to name your cluster.  "Cluster0" is the default name and works well for importing data and projects later.
+This will bring up window promptin you to build your first cluster.  Click the __"build your first cluster"__ button.  When prompted select "Learning MongoDB" as to the reason you are interested in Atlas. After clicking the Click the __"build your first cluster"__ button, you will be prompted to name your cluster.  "
 
 ![Name your cluster](../img/register4.jpg "Name your cluster")   
 
-Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
+Cluster0" is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
 ## 2 Load Sample Data
 Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.
