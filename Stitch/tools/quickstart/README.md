@@ -59,7 +59,9 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 ```  
 
 ## ![4](../img/4.png) Create a Stitch Application   
-![Application](../img/application.png)
+![Application](../img/stitch1.jpg)
+
+![Application](../img/stitch2.jpg)
 
 ## ![5](../img/5.png) Create a Stitch function to query customer data  
 ![Function](../img/function1.jpg)
