@@ -7,7 +7,7 @@ Our lab is designed to teach Atlas and Stitch as quickly as possible with no dep
 
 The diagram above shows us all the objects we will be creating in this quick tutorial and how they interact.
 
-## 1 Create your first Atlas cluster
+## 1. Create your first Atlas cluster
 Open a modern browser and go to https://cloud.mongodb.com.  Register for an atlas account by clicking the __"get started free"__ button.
 
 ![Get Started](../img/register1.jpg "Get started")
@@ -27,7 +27,7 @@ This will bring up window promptin you to build your first cluster.  Click the _
 
 Cluster0" is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
-## 2 Load Sample Data
+## 2. Load Sample Data
 Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.  
 
 ![Load Sample Data](../img/loadSampleData.jpg "Load Sample Data")   
@@ -39,7 +39,7 @@ After the sample data is loaded, we will want to see the data and explore the do
 
 Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a __">"__ arrow will appear in the upper left, pressing the button will expand the document and show all the values in nested arrays.
 
-## 2 Query the Sample data
+## 3. Query the Sample data
 We can create a simple query to pull back sales data for the store located in austin with the following document query:   
 
 ```{"storeLocation": "Austin"}```   
@@ -55,4 +55,11 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 {"customer.age":  {$gte: 65}}
 ```  
 
-## 3 Access data through the REST API
+## 4. Create a Stitch Application   
+
+
+## 5. Create a Stitch function to query customer data  
+
+## 6. Create a Stitch service to expose the function as a REST API
+
+## 7. Create a webpage to show the document from teh search service
