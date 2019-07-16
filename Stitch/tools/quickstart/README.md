@@ -40,7 +40,13 @@ After the sample data is loaded, we will want to see the data and explore the do
 Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a down arrow will appear, pressing the button will expand the document and show all the values in nested arrays.
 
 ## 2 Query the Sample data
+We can create a simple query to pull back sales data for the store located in austin with the following document query:   
 
+```{"storeLocation": "Austin"}```   
+
+Type this in query in the filter section and press the __"Find"__ button.
+
+![Query data](../img/find.jpg "Find") 
 
 
 
