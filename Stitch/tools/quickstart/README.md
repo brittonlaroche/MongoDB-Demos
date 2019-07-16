@@ -59,10 +59,10 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 ```  
 
 ## ![4](../img/4.png) Create a Stitch Application   
-
+![Application](../img/application.png)
 
 ## ![5](../img/5.png) Create a Stitch function to query customer data  
-
+![Function](../img/function1.jpg)
 
 ```js
 exports = async function( aSearchDoc ){
@@ -77,12 +77,15 @@ exports = async function( aSearchDoc ){
   return doc;
 };
 ```
-
+![Function](../img/function2.jpg)
 ```js
 exports({"customer.email": "div@me.it"})
 ```
 
 ## ![6](../img/6.png) Create a Stitch service to expose the search function as a REST API
+
+![Service](../img/service.jpg)
+
 
 ## ![7](../img/7.png) Create a webpage to show the document from the search service
 
