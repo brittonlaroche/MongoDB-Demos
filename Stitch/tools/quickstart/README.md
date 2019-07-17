@@ -35,7 +35,7 @@ Once we have our cluster created the next step is to load data and explore the d
 ![Load Sample Data](../img/loadSampleData.jpg "Load Sample Data")   
 On the main screen for the __"Cluster0"__ home page you will notice four buttons, "Connect", "Metrics", "Collections" and  three dots "..." Click the button labeled with three dots __"..."__ to see a menu list of items.  Select the menu item __"Load Sample Dataset"__
 
-After the sample data is loaded, we will want to see the data and explore the document datamodel.  Lets click the "Collections" button and explore the databases and collections we just loaded.
+After the sample data is loaded, we will want to see the data and explore the document datamodel.  Lets click the __"Collections"__ button and explore the databases and collections we just loaded.
 
 ![Collections](../img/collections.jpg "Collections") 
 
@@ -68,7 +68,6 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 
 ```js
 exports = async function( aSearchDoc ){
-
   console.log("Function findCustomer called ... executing..." );
   var sales = context.services.get("mongodb-atlas").db("sample_supplies").collection("sales");
   console.log("Function findCustomer Search document");
@@ -108,7 +107,6 @@ exports = async function(payload) {
       console.log(JSON.stringify(body));
       result = await context.functions.execute("findCustomer", body);
     }
-    
     return  result;
 };
 ```
