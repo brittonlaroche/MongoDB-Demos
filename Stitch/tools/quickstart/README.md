@@ -119,6 +119,68 @@ exports = async function(payload) {
 
 ![webhook](../img/webhook3.jpg)
 
+```js
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Postrapper</title>
+    <!-- When you need to test a json body in a REST API call, but don't have access to postman. -->
+    <!-- Britton LaRoche's Postrapper can get you the results you need!  -->
+    <!-- Let's use Bootstrap improve the default look a bit -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+  </head>
+  <style>
+    div {
+      margin-left: 40px;
+    }
+    table td {
+      padding: 5px;
+    }
+  </style>
+  <body>
+    <div>
+      <h2>Postrapper</h2>
+      <p>
+        This simple page demonstrates json REST based API calls
+      </p>
+      <form>
+        <table>
+          <tr><td style="padding: 10">URL:</td><td><input style="min-width: 1000px;" type="text" id="input_url" name="input_url"/></td></tr>
+          <tr><td> VERB:</td><td> <input type="text" id="input_verb" name="input_verb" value="POST" /></td></tr>
+          <tr><td> Input Document:</td><td> <textarea class="form-control" id="input_json" rows="5"></textarea></td></tr>
+          <tr><td> Results: </td><td> <textarea class="form-control" id="results" rows="10"></textarea></td></tr>
+        </table>
+      </form>
+      <br>
+      <button type="submit" onclick="sendJson()">Send</button>
+    </div>
+    <script>
+      const sendJson = async () => {
+        var txt = "";
+        var httpVerb = document.getElementById("input_verb").value;
+        var webhook_url = document.getElementById("input_url").value;
+        var inputDoc = document.getElementById("input_json").value; 
+        console.log(webhook_url);
+        const response = await fetch(webhook_url, {
+          method: httpVerb,
+          body: inputDoc, // string or object
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const myJson = await response.json(); //extract JSON from the http response
+        console.log(myJson);
+        document.getElementById("results").innerHTML = JSON.stringify(myJson, undefined, 2);
+      };
+    </script>
+  </body>
+</html>
+```
+![webhook](../img/postwrapper.jpg)
 ## ![8](../img/8b.png) Create a user with an API key
 
 ## ![9](../img/9b.png) Create a web application for a marketing promotion
