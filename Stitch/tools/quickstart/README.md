@@ -26,7 +26,7 @@ This will bring up window promptin you to build your first cluster.  Click the _
 
 ![Name your cluster](../img/register4.jpg "Name your cluster")   
 
-Cluster0" is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
+__"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
 ## ![2](../img/2.png) Load Sample Data
 
