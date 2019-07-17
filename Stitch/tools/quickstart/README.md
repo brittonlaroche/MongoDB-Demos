@@ -122,6 +122,6 @@ exports = async function(payload) {
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
-## ![12](../img/12b.png) Create chart data
+## ![12](../img/12b.png) Create an Atlas Chart
 
 
