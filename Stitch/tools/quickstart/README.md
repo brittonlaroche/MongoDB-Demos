@@ -28,7 +28,7 @@ This will bring up window promptin you to build your first cluster.  Click the _
 
 __"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
-## ![2](../img/2.png) Load Sample Data
+## ![2](../img/2b.png) Load Sample Data
 
 Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.  
 
@@ -41,7 +41,7 @@ After the sample data is loaded, we will want to see the data and explore the do
 
 Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a __">"__ arrow will appear in the upper left, pressing the button will expand the document and show all the values in nested arrays.
 
-## ![3](../img/3.png)  Query the Sample data
+## ![3](../img/3b.png)  Query the Sample data
 
 We can create a simple query to pull back sales data for the store located in austin with the following document query:   
 
@@ -58,12 +58,12 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 {"customer.age":  {$gte: 65}}
 ```  
 
-## ![4](../img/4.png) Create a Stitch Application   
+## ![4](../img/4b.png) Create a Stitch Application   
 ![Application](../img/stitch1.jpg)
 
 ![Application](../img/stitch2.jpg)
 
-## ![5](../img/5.png) Create a Stitch function to query customer data  
+## ![5](../img/5b.png) Create a Stitch function to query customer data  
 ![Function](../img/function1.jpg)
 
 ```js
@@ -86,7 +86,7 @@ exports({"customer.email": "div@me.it"})
 ![Function](../img/function3.jpg)
 
 
-## ![6](../img/6.png) Create a Stitch service to expose the search function as a REST API
+## ![6](../img/6b.png) Create a Stitch service to expose the search function as a REST API
 
 ![Service](../img/service.jpg)
 
@@ -112,16 +112,16 @@ exports = async function(payload) {
 };
 ```
 
-## ![7](../img/7.png) Create a webpage to show the document from the search service
+## ![7](../img/7b.png) Create a webpage to show the document from the search service
 
-## ![8](../img/8.png) Create a user with an API key
+## ![8](../img/8b.png) Create a user with an API key
 
-## ![9](../img/9.png) Create a web application for a marketing promotion
+## ![9](../img/9b.png) Create a web application for a marketing promotion
 
-## ![10](../img/10.png) Create a trigger to capture changes to sales data
+## ![10](../img/10b.png) Create a trigger to capture changes to sales data
 
-## ![11](../img/11.png) Modify the trigger to capture marketing data
+## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
-## ![12](../img/12.png) Create chart data
+## ![12](../img/12b.png) Create chart data
 
 
