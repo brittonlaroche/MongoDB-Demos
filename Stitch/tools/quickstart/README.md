@@ -180,7 +180,7 @@ exports = async function(payload) {
   </body>
 </html>
 ```
-![Postrapper](../img/postrapper.jpg)
+![Postrapper](../img/postrapper2.jpg)
 ## ![8](../img/8b.png) Create a user with an API key
 
 ## ![9](../img/9b.png) Create a web application for a marketing promotion
