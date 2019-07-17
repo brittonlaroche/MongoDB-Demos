@@ -190,7 +190,9 @@ exports = async function(payload) {
 </html>
 ```
 
-![webhook](../img/webhook3.jpg)
+![webhook](../img/webhook3.jpg)   
+
+```{"customer.email": "div@me.it"}```   
 
 ## ![8](../img/8b.png) Create a user with an API key
 
