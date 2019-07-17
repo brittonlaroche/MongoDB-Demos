@@ -13,7 +13,7 @@ Open a modern browser and go to https://cloud.mongodb.com.  Register for an atla
 
 ![Get Started](../img/register1.jpg "Get started")
 
-Click the __"get started free"__ button.  Theis will bering up a screen for you to enter your personal information.
+Click the __"get started free"__ button.  This will bring up a screen for you to enter your personal information.
 
 ![Create free your account](../img/register2.jpg "Create your free account")   
 
@@ -90,6 +90,7 @@ exports({"customer.email": "div@me.it"})
 
 ![Service](../img/service.jpg)
 
+![webhook](../img/webhook1.jpg)
 
 ```js
 // This function is the webhook's request handler.
@@ -111,6 +112,8 @@ exports = async function(payload) {
     return  result;
 };
 ```
+
+![webhook](../img/webhook2.jpg)
 
 ## ![7](../img/7b.png) Create a webpage to show the document from the search service
 
