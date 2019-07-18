@@ -2,7 +2,7 @@
 _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 
 ## Tutorial Contents 
-(Note: All HR tutorials are hands on and should take an estimated time of less than 20 minutes)
+(Note: All this prototype tutoril is hands on and should take an estimated time of less than 60 minutes)
 1. [Overview](.)
 2. [Accesing shipment data through a REST based API](tutorial/rest/README.md)
 3. [Tiggers and Functions](tutorial/triggers/README.md)
