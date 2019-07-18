@@ -25,7 +25,7 @@ To open the hosting configuration page, click "Hosting" in the left-hand navigat
 
 ![Hosting](../../../../Stitch/hosting/img/hosting1.jpg)
 
-On the Hosting configuration page, click Enable Hosting. Stitch will begin provisioning hosting for your application.  You can no access your defaul index page by typing inthe following url into your browser:
+On the Hosting configuration page, click Enable Hosting. Stitch will begin provisioning hosting for your application.  You can now access your default index page by typing inthe following url into your browser:
 
  ```<your-app-id>.mongodbstitch.com```
  
