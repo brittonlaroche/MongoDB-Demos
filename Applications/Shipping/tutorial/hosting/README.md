@@ -12,7 +12,7 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 6. [Host your application tutorial](../hosting/README.md)  
 
 
-Follow instructions for the [HR Hosting tutorial](../../../../Stitch/hosting/README.md).  
+We will be following instructions similar to the [HR Hosting tutorial](../../../../Stitch/hosting/README.md).  
 
 ### Hosting Overview
 Stitch Hosting allows you to host, manage, and serve your application’s static media and document files. You can use Hosting to store individual pieces of content or to upload and serve your entire client application. Stitch hosts your application’s content behind a unique domain name. By default, Stitch uses domains of the following form: ```<Your App ID>.mongodbstitch.com```. You can configure Stitch to host content at a custom domain name that you own in addition to the default hosting domain.
