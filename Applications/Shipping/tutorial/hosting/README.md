@@ -37,20 +37,19 @@ Press the button labeled __"upload your files"__ and select all the html files y
 
 We will upload the files in this [html directory](../../html/)
 
-__drop-down-arrow.png__
-__index.html__
-__loading.gif__
-__logo.png__
-__postrapper.html__
-__ship.css__
+__drop-down-arrow.png__   
+__index.html__   
+__loading.gif__   
+__logo.png__   
+__postrapper.html__   
+__ship.css__   
 
-Click the image files and right click save as.  Edit the text files (html and css) and cut paste the contents then save the file with the coorect name.  Alternatively you can download the project as a zip file and navigate to (extract path)/MongoDB-Demos/Applications/Shipping/html/
+Click the image files and right click save as.  Edit the text files (html and css) and cut paste the contents then save the file with the correct name.  Alternatively you can download the project as a zip file and navigate to (extract path)/MongoDB-Demos/Applications/Shipping/html/
 
 You can now access them at <your-app-id>..mongodbstitch.com!  For example try   
   
  ```<your-app-id>.mongodbstitch.com/blog.html```
  
-Lets have fun and delete the old index file by selecting the "..." menu item in the list of files.  Next lets replace the old index by renaming __employeeOrgChart.html__ or one of your other files to index.html.  
 
 ![Hosting](../../../../Stitch/hosting/img/hosting3.jpg)
 
