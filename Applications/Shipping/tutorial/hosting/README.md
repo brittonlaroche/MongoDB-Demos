@@ -12,6 +12,6 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 6. [Host your application tutorial](../hosting/README.md)  
 
 
-Follow instructions for the [HR tutorial](../../../Stitch/hosting/README.md).  
+Follow instructions for the [HR Hosting tutorial](../../../../Stitch/hosting/README.md).  
 
 We will upload the files in this [html directory](../../html/)
