@@ -206,6 +206,9 @@ For now we will generate an API Key.  Select the __"API Keys"__ option and click
 Type in a name for the API Key, something like "BackOffice" or "WebAccess" and click save.  A private key will be displayed.  Copy that key and paste it into a text editor of your choice.  Then create the api key.  We will use that key to access the database through the stitch browser SDK.
 
 ## ![9](../img/9b.png) Create a web application for a marketing promotion
+The best getting started guide with teh browser client SDK is [the blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/).  It consists of two main parts, the [Blog Tutorial back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/), and the [Blog Tutorial Front end](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/).
+
+We will offer a condensed version of the blog tutorial with a couple of new concepts.  It is highly recommended to complete the blog tutorial when you have time.
 
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
 
