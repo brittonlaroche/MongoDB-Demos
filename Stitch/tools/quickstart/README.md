@@ -215,7 +215,7 @@ We will be using the [Mongo DB Stitch Browser SDK](https://docs.mongodb.com/stit
 ![Rules 3](../img/rules3.jpg)
 ![Rules 3](../img/rules4.jpg)
 
-Copy the code from the [QueryAnywhere.html](../htmlQueryAnywhere.html) file.  Right click and select "open file in new tab" the [QueryAnywhere.html](../htmlQueryAnywhere.html) link click the view raw file button select all the text and paste it in a text editor.  Save the file as QueryAnywhere.html
+Copy the code from the [QueryAnywhere.html](../html/QueryAnywhere.html) file.  Right click and select "open file in new tab" the [QueryAnywhere.html](../html/QueryAnywhere.html) link click the view raw file button select all the text and paste it in a text editor.  Save the file as QueryAnywhere.html
 
 Replace your your-api-key with the private api key you generated in step 8. You may have to repeat step 8 if you forgot to copy the private API key.  Replace your-app-id with the stitch APP-ID located in the upper left of the stitch console.
 ```js
