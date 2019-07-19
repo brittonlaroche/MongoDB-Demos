@@ -230,8 +230,11 @@ Example
 
 Double click the file and you should see someting very similar to the following image.
 
-![Rules 1](../img/QueryAnywhere.jpg)
+![Query Anywhere](../img/QueryAnywhere.jpg)
 
+```js
+<script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.5.0/stitch.js"></script>
+```
 
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
 
