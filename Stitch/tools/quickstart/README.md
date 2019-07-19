@@ -206,9 +206,27 @@ For now we will generate an API Key.  Select the __"API Keys"__ option and click
 Type in a name for the API Key, something like "BackOffice" or "WebAccess" and click save.  A private key will be displayed.  Copy that key and paste it into a text editor of your choice.  Then create the api key.  We will use that key to access the database through the stitch browser SDK.
 
 ## ![9](../img/9b.png) Create a web application for a marketing promotion
-The best getting started guide with teh browser client SDK is [the blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/).  It consists of two main parts, the [Blog Tutorial back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/), and the [Blog Tutorial Front end](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/).  We will offer a condensed version of the blog tutorial with a couple of new concepts.  It is highly recommended to complete the blog tutorial when you have time.
+The best getting started guide with the browser client SDK is [the blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/).  It consists of two main parts, the [Blog Tutorial back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/), and the [Blog Tutorial Front end](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/).  We will offer a condensed version of the blog tutorial with a couple of new concepts.  It is highly recommended to complete the blog tutorial when you have time.
 
 We will be using the [Mongo DB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html) to create a web based application that turns the browser into a fully functional stitch client.  The client will be able to execute the MongoDb Query Language (MQL) directly from the browser.  This will help us build an application to select specific customers for a promotional offering.
+
+![Rules 1](../img/rules1.jpg)
+![Rules 2](../img/rules2.jpg)
+![Rules 3](../img/rules3.jpg)
+![Rules 3](../img/rules4.jpg)
+
+Replace your your-api-key with the private api key you generated in step 8. You may have to repeat step 8 if you forgot to copy the private API key.  Replace your-app-id with the stitch APP-ID located in the upper left of the stitch console.
+```js
+      const credential = new stitch.UserApiKeyCredential("your-api-key");
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+```
+Example
+```js
+      const credential = new stitch.UserApiKeyCredential("1kJ3BEMz4LGyvKGhcxqyWi8wAUnFJ8y3O6clY6WAQLIv8D45xM9Az9rVPEjribVZ");
+      const client = stitch.Stitch.initializeDefaultAppClient('sales-oxwdn');
+```
+![Rules 1](../img/QueryAnywhere.jpg)
+
 
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
 
