@@ -15,8 +15,8 @@
        * (dont paste your API key in your code its easily obtained by the browser view source)
        * API key is pasted here for a simple prototype example with out key management 
        */       
-      const credential = new stitch.UserApiKeyCredential("1kJ3BEMz4LGyvKGhcxqyWi8wAUnFJ8y3O6clY6WAQLIv8D45xM9Az9rVPEjribVZ");
-      const client = stitch.Stitch.initializeDefaultAppClient('sales-oxwdn');
+      const credential = new stitch.UserApiKeyCredential("your-api-key");
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
       const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('sample_supplies');
       function displayCustomersOnLoad() {
         client.auth
