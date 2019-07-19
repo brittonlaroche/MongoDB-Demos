@@ -15,8 +15,8 @@
        * (dont paste your API key in your code its easily obtained by the browser view source)
        * API key is pasted here for a simple prototype example with out key management 
        */       
-      const credential = new stitch.UserApiKeyCredential("your-api-key");
-      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+      const credential = new stitch.UserApiKeyCredential("1kJ3BEMz4LGyvKGhcxqyWi8wAUnFJ8y3O6clY6WAQLIv8D45xM9Az9rVPEjribVZ");
+      const client = stitch.Stitch.initializeDefaultAppClient('sales-oxwdn');
       const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('sample_supplies');
       function displayCustomersOnLoad() {
         client.auth
@@ -50,17 +50,17 @@
           .then(docs => {
             const html = docs.map(c => "<tr>" +
                 "<td>" + c.storeLocation +  "</td>" +
-                "<td>" + c.purchaseMethod +  "</td>" +
+                "<td>" + c.purchaseMethod +  "</td>" + 
                 "<td>" + c.customer.age + "</td>" +
-                "<td>" + c.customer.gender + "</td>" + 
-                "<td>" + c.customer.email + "</td>" +
-                "<td>" + c.saleDate + "</td>" +
+                "<td>" + c.customer.gender + "</td>" +  
+                "<td>" + c.customer.email + "</td>" + 
+                "<td>" + c.saleDate + "</td>" + 
                 "<td> " + 
-                "<button type=\"checkbox\" class=\"blueTable\"" +
-                "onClick=\"editCustomer(\'" + c.customer.email +"\')\">" +
-                "<i class=\"material-icons\" style=\"font-size:18px\">" +
+                "<button type=\"checkbox\" class=\"blueTable\"" + 
+                "onClick=\"editCustomer(\'" + c.customer.email +"\')\">" + 
+                "<i class=\"material-icons\" style=\"font-size:18px\">" + 
                 "mode_edit</i></button>" + 
-                "</td>" +
+                "</td>" + 
                 "</tr>").join("");
             document.getElementById("customers").innerHTML = tStrt + html + "</table></div>";
           });
@@ -108,7 +108,7 @@
   </head>
   <style>
     div {
-      margin-left: 40px;
+      margin-left: 30px;
     }
     table td {
       padding: 5px;
@@ -128,8 +128,8 @@
       </table>
       <br>
       <button type="submit" onclick="displayCustomers()">Search</button>
-      <h3>Results</h3>
-      <div id="customers"></div>
+      <h3>Results</h3> 
     </div>
+    <div id="customers" style="margin-right: 60px;"></div>
   </body>
 </html>
