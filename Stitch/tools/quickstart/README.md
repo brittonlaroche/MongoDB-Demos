@@ -2,8 +2,8 @@
 
 ## Contents
 [1. Create your first Atlas cluster](#-create-your-first-atlas-cluster)   
-[2. Load Sample Data](#-load-sample-data)
-[3. Query the Sample data](#--query-the-sample-data)
+[2. Load Sample Data](#-load-sample-data)   
+[3. Query the Sample data](#--query-the-sample-data)   
 [4. Create a Stitch Application](#-create-a-stitch-application)     
 [5. Create a Stitch function to query customer data](#-create-a-stitch-function-to-query-customer-data)  
 [6. Create a Stitch service to expose the search function as a REST API](#-create-a-stitch-service-to-expose-the-search-function-as-a-rest-api)   
