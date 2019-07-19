@@ -236,6 +236,22 @@ Double click the file and you should see someting very similar to the following 
 <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.5.0/stitch.js"></script>
 ```
 
+```js
+    <script>
+       /* NOTE: handle your API key with another method than what is provided in this example
+       * (dont paste your API key in your code its easily obtained by the browser view source)
+       * API key is pasted here for a simple prototype example with out key management
+       */
+      const credential = new stitch.UserApiKeyCredential("1kJ3BEMz4LGyvKGhcxqyWi8wAUnFJ8y3O6clY6WAQLIv8D45xM9Az9rVPEjribVZ");
+      const client = stitch.Stitch.initializeDefaultAppClient('sales-oxwdn');
+      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('sample_supplies');
+      function displayCustomersOnLoad() {
+        client.auth
+          .loginWithCredential(credential)
+          .then(displayCustomers)
+          .catch(console.error);
+      }
+  ```
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
