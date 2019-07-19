@@ -13,8 +13,8 @@
 [10. Create a trigger to capture changes to sales data](#-create-a-trigger-to-capture-changes-to-sales-data)   
 [11. Modify the trigger to capture marketing data](#-modify-the-trigger-to-capture-marketing-data)   
 [12. Create an Atlas Chart](#-create-an-atlas-chart)   
-[13. Host your application]()   
-[14. Stitch Command Line - CICD Integration]()   
+[13. Host your application](#-host-your-application)   
+[14. Stitch Command Line - CICD Integration](#-stitch-command-line---cicd-integration)   
 
 # Overview
 Our lab is designed to teach Atlas and Stitch as quickly as possible with no dependencies.  You will only need a browser and a text editor. We will create a free tier Atlas cluster, load in some sample data and explore document data model.  We will learn some basic queries against the document datamodel.  Next we will create our first stitch application and query the database.  We will enable the Stitch serverlss REST API to access and update data.  We will create a stitch trigger and finally a QueryAnywhere browser SDK application.
