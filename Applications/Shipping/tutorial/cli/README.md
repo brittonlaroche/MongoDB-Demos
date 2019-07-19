@@ -71,7 +71,7 @@ stitch-cli logout
 
 ```
 
-If you named your cluster anything other than the default __"Cluster0"__ then you will need to modify a json document to reflect your cluster name. The document is located in your directory here: /MongoDB-Demos-master/Applications/Shipping/exportedservices/mongodb-atlas/config.json
+If you named your cluster anything other than the default __"Cluster0"__ then you will need to modify a json document to reflect your cluster name. The document is located in your directory here: /MongoDB-Demos-master/Applications/Shipping/exported/services/mongodb-atlas/config.json
 
 If you named your cluster "DevCluster" for example you would change the __"clusterName":__ field from __"Cluster0"__ to __"DevCluster"__.  An example has been provided below.
 
