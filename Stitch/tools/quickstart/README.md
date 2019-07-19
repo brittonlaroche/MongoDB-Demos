@@ -210,6 +210,8 @@ The best getting started guide with teh browser client SDK is [the blog tutorial
 
 We will offer a condensed version of the blog tutorial with a couple of new concepts.  It is highly recommended to complete the blog tutorial when you have time.
 
+We will be using the [Mongo DB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html) to create a web based application that turns the browser into a fully functional stitch client.  The client will be able to execute the MongoDb Query Language (MQL) directly from the browser.
+
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
