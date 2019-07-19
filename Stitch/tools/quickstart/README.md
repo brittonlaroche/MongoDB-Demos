@@ -2,19 +2,19 @@
 
 ## Contents
 [1. Create your first Atlas cluster](#-create-your-first-atlas-cluster)   
-2. Load Sample Data   
-3. Query the Sample data   
-4. Create a Stitch Application      
-5. Create a Stitch function to query customer data    
-6. Create a Stitch service to expose the search function as a REST API   
-7. Create a webpage to show the document from the search service   
-8. Create a user with an API key   
-9. Create a web application for a marketing promotion   
-10. Create a trigger to capture changes to sales data   
-11. Modify the trigger to capture marketing data   
-12. Create an Atlas Chart   
-13. Host your application   
-14. Stitch Command Line - CICD Integration   
+[2. Load Sample Data](#-load-sample-data)
+[3. Query the Sample data](#--query-the-sample-data)
+[4. Create a Stitch Application](#-create-a-stitch-application)     
+[5. Create a Stitch function to query customer data](#-create-a-stitch-function-to-query-customer-data)  
+[6. Create a Stitch service to expose the search function as a REST API](#-create-a-stitch-service-to-expose-the-search-function-as-a-rest-api)   
+[7. Create a webpage to show the document from the search service](#-create-a-webpage-to-show-the-document-from-the-search-service)   
+[8. Create a user with an API key](#-create-a-user-with-an-api-key)   
+[9. Create a web application for a marketing promotion](#-create-a-web-application-for-a-marketing-promotion)   
+[10. Create a trigger to capture changes to sales data](#-create-a-trigger-to-capture-changes-to-sales-data)   
+[11. Modify the trigger to capture marketing data](#-modify-the-trigger-to-capture-marketing-data)   
+[12. Create an Atlas Chart](#-create-an-atlas-chart)   
+[13. Host your application]()   
+[14. Stitch Command Line - CICD Integration]()   
 
 # Overview
 Our lab is designed to teach Atlas and Stitch as quickly as possible with no dependencies.  You will only need a browser and a text editor. We will create a free tier Atlas cluster, load in some sample data and explore document data model.  We will learn some basic queries against the document datamodel.  Next we will create our first stitch application and query the database.  We will enable the Stitch serverlss REST API to access and update data.  We will create a stitch trigger and finally a QueryAnywhere browser SDK application.
@@ -273,5 +273,9 @@ Double click the file and you should see someting very similar to the following 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
 ## ![12](../img/12b.png) Create an Atlas Chart
+
+## ![13](../img/13b.png) Host your application
+
+## ![14](../img/14b.png) Stitch Command Line - CICD Integration
 
 
