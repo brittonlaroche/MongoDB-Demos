@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Promotional Offering</title>
+    <!-- Let's use Bootstrap improve the default look a bit -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.5.0/stitch.js"></script>
+    <script>
+       /* NOTE: handle your API key with another method than what is provided in this example 
+       * (dont paste your API key in your code its easily obtained by the browser view source)
+       * API key is pasted here for a simple prototype example with out key management 
+       */       
+      const credential = new stitch.UserApiKeyCredential("your-api-key");
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('sample_supplies');
+      function displayCustomersOnLoad() {
+        client.auth
+          .loginWithCredential(credential)
+          .then(displayCustomers)
+          .catch(console.error);
+      }
+      async function displayCustomers() {
+        const vEmail = document.getElementById("customer_email").value;
+        const vStoreLocation = document.getElementById("store_location").value;
+        const vAge = document.getElementById("customer_age").value;
+        var searchDoc = {};
+        //Create the search doc off of the specified criteria
+        if (vStoreLocation != "") {
+          searchDoc = {"storeLocation": vStoreLocation};
+        }
+        if (vAge != "") {
+          searchDoc = {"customer.age": {$gte: parseInt(vAge)}};
+        }
+        if (vAge != "" && vStoreLocation != "") {
+          searchDoc = {"customer.age": {$gte: parseInt(vAge)},"storeLocation": vStoreLocation};
+        }
+        if (vEmail != "") {
+          searchDoc = {"customer.email": vEmail};
+        }
+        const tStrt = "<div><table class=\"table table-hover\"><tr><th>Store Location</th><th>Purchase Method</th><th>Age</th>" +
+          "<th>Gender</th><th>Email</th><th>Sale Date</th><th>Edit</th></tr>";
+        db.collection("sales")
+          .find(searchDoc, {limit: 25})
+          .toArray()
+          .then(docs => {
+            const html = docs.map(c => "<tr>" +
+                "<td>" + c.storeLocation +  "</td>" +
+                "<td>" + c.purchaseMethod +  "</td>" +
+                "<td>" + c.customer.age + "</td>" +
+                "<td>" + c.customer.gender + "</td>" + 
+                "<td>" + c.customer.email + "</td>" +
+                "<td>" + c.saleDate + "</td>" +
+                "<td> " + 
+                "<button type=\"checkbox\" class=\"blueTable\"" +
+                "onClick=\"editCustomer(\'" + c.customer.email +"\')\">" +
+                "<i class=\"material-icons\" style=\"font-size:18px\">" +
+                "mode_edit</i></button>" + 
+                "</td>" +
+                "</tr>").join("");
+            document.getElementById("customers").innerHTML = tStrt + html + "</table></div>";
+          });
+      }
+      async function editCustomer(aEmail) {
+        //build the html for dynamically displaying additional fields to edit
+        editSearchDoc = {"customer.email": aEmail};
+        db.collection('sales').find(editSearchDoc, {limit: 1}).asArray()
+          .then(docs => {
+            var vGender  = docs.map(s => s.customer.gender);
+            var vAge  = docs.map(s => s.customer.age);
+            var vEmail  = docs.map(s => s.customer.email);
+            var vSatisfaction  = docs.map(s => s.customer.satisfaction);
+            var vStoreLocation = docs.map(s => s.storeLocation);
+            var vPurchaseMethod = docs.map(s => s.purchaseMethod);
+            var vPromoCode = docs.map(s => s.promoCode);
+            html = "<h3>Customer Details</h3>" + 
+            "<table style=\"padding: 30px\">" +
+            "<tr><td>Store Location:  </td><td>" + vStoreLocation + "</td></tr>" +
+            "<tr><td>Age:  </td><td>" + vAge + "</td></tr>" +
+            "<tr><td>Gender:  </td><td>" + vGender + "</td></tr>" +
+            "<tr><td>Email:  </td><td>" + vEmail + "</td></tr>" +
+            "<tr><td>Satisfaction:  </td><td>" + vSatisfaction + "</td></tr>" +
+            "<tr><td>Purchase Method:  </td><td>" + vPurchaseMethod + "</td></tr>" +
+            "<tr><td>Promo Code:  </td><td><input id=\"promo_code\" value=\"" + vPromoCode + "\"></td></tr></table>" +
+            "<button type=\"submit\" id=\"contact-submit\" onClick=\"updateCustomer(\'" + vEmail +"\')\">Update Customer</button>";
+            document.getElementById("customers").innerHTML = html;
+          });
+      }
+      async function updateCustomer(aEmail){
+        var vPromoCode = document.getElementById("promo_code").value;
+        var nDate = new Date();
+        db.collection('sales').updateOne(
+          {"customer.email": aEmail},
+          {$set: {
+            owner_id: client.auth.user.id,
+            promoCode: vPromoCode,
+            last_modified: nDate
+            }
+          }
+        )
+        .then(displayCustomers);
+      }
+    </script>
+  </head>
+  <style>
+    div {
+      margin-left: 40px;
+    }
+    table td {
+      padding: 5px;
+    }
+  </style>
+   <body onload="displayCustomersOnLoad()">
+    <div>
+      <h2>Promotional Offering</h2>
+      <p>
+        This simple page demonstrates MongoDB QueryAnywhere functionality in a web browser.
+      </p>
+      <h3>Search</h3>
+      <table>
+        <tr><td> Customer Email:</td><td> <input type="text" id="customer_email" name="customer_email"/></td></tr>
+        <tr><td> Store Location:</td><td> <input type="text" id="store_location" name="store location"/></td></tr>
+        <tr><td> Greater Than Age:</td><td> <input type="text" id="customer_age" name="customer_age"/></td></tr>
+      </table>
+      <br>
+      <button type="submit" onclick="displayCustomers()">Search</button>
+      <h3>Results</h3>
+      <div id="customers"></div>
+    </div>
+  </body>
+</html>
