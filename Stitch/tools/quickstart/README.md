@@ -269,8 +269,15 @@ Double click the file and you should see someting very similar to the following 
       }
   ```
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
+Create a new trigger by selecting __"Triggers"__ on the left navigation pane in the stitch console. 
 
 ![Query Anywhere](../img/trigger1.jpg)
+
+Save the trigger then open the open the newly created function by selecting __"Functions"__ from the left navigation pane in the stitch console.   
+
+![Query Anywhere](../img/trigger2.jpg)
+
+Cut and paste the following code in te the function editor.  Save the function and then deploy the changes.
 ```js
 exports = function(changeEvent) {
   
@@ -287,11 +294,14 @@ exports = function(changeEvent) {
   //track all changes to the sales document in the history collection
   fullCopy.parent_id = fullDocument._id;
   delete fullCopy._id;
-  checkpoint.insertOne(fullCopy);
+  history.insertOne(fullCopy);
 
 };
 ```
-![Query Anywhere](../img/trigger2.jpg)
+
+Use the QueryAnywhere.html app to select a customer and update the Promo Code field.  Use the data explorer to see the change in the database.  A new history collection with the sales document is added.  Notice the promo code value and last modified time as well as the parent_id field.  
+
+Use the QueryAnywhere.html app to update the Promo Code field to a new value for the same customer.  View the history collection again and you can now see the history of changes to the sales document.  We have implemented document versioning through a trigger.
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
