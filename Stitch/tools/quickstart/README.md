@@ -306,6 +306,45 @@ Use the QueryAnywhere.html app to update the Promo Code field to a new value for
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
+Edit the function __"fncSalesHistoryMarket"__ and add the logic to update a new marketing collection that has a single document to show just the customer's current promotion.  Copy and paste the code below, save the fucntion and deploy the changes. 
+
+```js
+exports = function(changeEvent) {
+  
+  var sales = context.services.get("mongodb-atlas").db("sample_supplies").collection("sales");
+  var history = context.services.get("mongodb-atlas").db("sample_supplies").collection("history");
+  var market = context.services.get("mongodb-atlas").db("sample_supplies").collection("market");
+  var fullDocument = changeEvent.fullDocument;
+  var fullCopy = fullDocument;
+  var nDate = new Date();
+  
+  //update the shipping document with the new package information
+  console.log("fncSalesHistoryMarket ... executing..." );
+  console.log("fullDocument");
+  console.log(JSON.stringify(fullDocument));
+
+  //track all changes to the sales document in the history collection
+  fullCopy.parent_id = fullDocument._id;
+  delete fullCopy._id;
+  history.insertOne(fullCopy);
+  
+  market.updateOne(
+      { email: fullDocument.customer.email },
+      {$set: {
+          age: fullDocument.customer.age,
+          gender: fullDocument.customer.gender,
+          promoCode: fullDocument.promoCode,
+          storeLocation: fullDocument.storeLocation,
+          purchaseMethod: fullDocument.purchaseMethod,
+          last_modified: nDate
+          },
+      },
+      {upsert: true}
+    );
+
+};
+```
+
 ## ![12](../img/12b.png) Create an Atlas chart 
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
