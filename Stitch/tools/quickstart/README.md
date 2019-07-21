@@ -13,7 +13,7 @@
 [10. Create a trigger to capture changes to sales data](#-create-a-trigger-to-capture-changes-to-sales-data)   
 [11. Modify the trigger to capture marketing data](#-modify-the-trigger-to-capture-marketing-data)   
 [12. Create an Atlas Chart](#-create-an-atlas-chart)   
-[13. Embed the Atlas chart in your application](#-create-an-atlas-chart)   
+[13. Embed the Atlas chart in your application](#-embed-the-atlas-chart-in-your-application)   
 [14. Host your application](#-host-your-application)   
 [15. Stitch Command Line - CICD Integration](#-stitch-command-line---cicd-integration)   
 
