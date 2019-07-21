@@ -345,6 +345,12 @@ exports = function(changeEvent) {
 };
 ```
 
+Update the QueryAnywhere.html promotion app with a new promo code and view the changes in the new market collection app.
+
+![Query Anywhere](../img/trigger5.jpg)
+
+This exersize shows how a single trigger can update multiple collections.  The history collection with versioning shows changes to a docuemnt over time but is expensive in size as the number of documents will grow very large.  The market collection shows how a single small document can constructed and accessed to get the current promotion code in a flat document structure.  Triggers have the power to perform versioning and transform the document structure based on your application needs.
+
 ## ![12](../img/12b.png) Create an Atlas chart 
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
