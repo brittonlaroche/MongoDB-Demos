@@ -270,6 +270,7 @@ Double click the file and you should see someting very similar to the following 
   ```
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
 
+![Query Anywhere](../img/trigger1.jpg)
 ```js
 exports = function(changeEvent) {
   
@@ -290,7 +291,7 @@ exports = function(changeEvent) {
 
 };
 ```
-
+![Query Anywhere](../img/trigger2.jpg)
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
