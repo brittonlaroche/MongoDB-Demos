@@ -305,10 +305,12 @@ Use the QueryAnywhere.html app to update the Promo Code field to a new value for
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
-## ![12](../img/12b.png) Create an Atlas Chart
+## ![12](../img/12b.png) Create an Atlas chart 
 
-## ![13](../img/13b.png) Host your application
+## ![13](../img/13b.png) Embed the Atlas chart in your application
 
-## ![14](../img/14b.png) Stitch Command Line - CICD Integration
+## ![14](../img/14b.png) Host your application
+
+## ![15](../img/15b.png) Stitch Command Line - CICD Integration
 
 
