@@ -304,6 +304,8 @@ Use the QueryAnywhere.html app to select a customer and update the Promo Code fi
 
 Use the QueryAnywhere.html app to update the Promo Code field to a new value for the same customer.  View the history collection again and you can now see the history of changes to the sales document.  We have implemented [document versioning](https://www.mongodb.com/blog/post/building-with-patterns-the-document-versioning-pattern) through a trigger.  This is part of [building MongoDB Applications with design patterns](https://www.mongodb.com/blog/post/building-with-patterns-a-summary)
 
+![Query Anywhere](../img/trigger3.jpg)
+
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
 Edit the function __"fncSalesHistoryMarket"__ and add the logic to update a new marketing collection that has a single document to show just the customer's current promotion.  Copy and paste the code below, save the fucntion and deploy the changes. 
