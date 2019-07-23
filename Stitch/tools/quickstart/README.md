@@ -382,14 +382,28 @@ Type in a name for the API Key, something like "BackOffice" or "WebAccess" and c
 
 We will be using the [Mongo DB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html) to create a web based application that turns the browser into a fully functional stitch client.  The client will be able to execute the MongoDb Query Language (MQL) directly from the browser.  This will help us build an application to select specific customers for a promotional offering.
 
+Beofre we can access any data with the stitch browser SDK we must allow stitch to access our collections.  We do this by establishing rules.  Click the __"Rules"__ menu item from the left hand navigation pane on the stitch console.  This displays the rules we have defined.  
 ![Rules 1](../img/rules1.jpg)
-![Rules 2](../img/rules2.jpg)
+There are two ways to add rules for a collection.  One is by selecting the __"..."__ button to the right of the "mongodb-atlas" tree item.  The other is by clickin the __"Add Collection"__ button.   
+
+![Rules 2](../img/rules2.jpg)   
+
+Adding a new collection requires us to specify the database name, the collection name and pick a template.  Templates allow us to define who has access to the data in a predefined way that gives us an example to follow.  This is the place to talk about rules in depth, but as we have a limited time and a lot to cover we will simply state that the templates are only a starting point.  With rules you have the ability to filter and redact data, to remove all but the last 4 digits of a social security or credit card number for example.  Only the owner of the data could see the full account number, the CSR could only see the last 4 digits.  There is a lot to explore here.  For now we simply select "No Template" as we wish to allow anyone to see the data.
+
 ![Rules 3](../img/rules3.jpg)
+
+We are now in the rules editor and we wish to allow reads and writes to all the fields.  We have to check the boxes __"Read"__ and __"Write"__ to allow our application access to the sales data.  Click the save button once the cahnges are made.   
+
 ![Rules 4](../img/rules4.jpg)
 
-Copy the code from the [QueryAnywhere.html](../html/QueryAnywhere.html) file.  Right click and select "open file in new tab" the [QueryAnywhere.html](../html/QueryAnywhere.html) link click the view raw file button select all the text and paste it in a text editor.  Save the file as QueryAnywhere.html
+When we deploy our changes the rules we have specified are displayed for us in json format.
 
-Replace your your-api-key with the private api key you generated in step 8. You may have to repeat step 8 if you forgot to copy the private API key.  Replace your-app-id with the stitch APP-ID located in the upper left of the stitch console.
+### Our HTML Application
+We have a prebuilt QueryAnywhere.html file that shows us how to use the browser SDK file.
+
+Copy the code from the [QueryAnywhere.html](../html/QueryAnywhere.html) file.  Right click and select "open file in new tab" on the [QueryAnywhere.html](../html/QueryAnywhere.html) link. Click the __"view raw file"__ button and select all the text. Copy it and paste it in your text editor.  Save the file as QueryAnywhere.html
+
+Inside the file we haveto make a few chnags before we can connect. Replace your your-api-key with the private api key you generated in step 8. You may have to repeat step 8 if you forgot to copy the private API key.  Replace your-app-id with the stitch APP-ID located in the upper left of the stitch console.
 ```js
       const credential = new stitch.UserApiKeyCredential("your-api-key");
       const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
@@ -400,13 +414,16 @@ Example
       const client = stitch.Stitch.initializeDefaultAppClient('sales-oxwdn');
 ```
 
-Double click the file and you should see someting very similar to the following image.
+Double click the file, it will open in your browser and you should see someting very similar to the following image.
 
 ![Query Anywhere](../img/QueryAnywhere.jpg)
 
+The ability to connect to the Atlas database and use the Mongo Query Language directly is accomplished by including the browser SDK in the line below (its aready in the file we are just calling your attention to it.
 ```js
 <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.5.0/stitch.js"></script>
 ```
+
+The next section is where we define our API Key Credential and use it to connect to the database.  We also use our API key to establish connection to our stitch application.   
 
 ```js
     <script>
@@ -424,6 +441,9 @@ Double click the file and you should see someting very similar to the following 
           .catch(console.error);
       }
   ```
+
+The body tag of the application calls the __displayCustomersOnLoad__ function shown above.  This function logs in with our credentials and then displays a list of customers.  Take a moment to search the data by filling in the input variables and clicking the __"Search"__ button.
+
 The best getting started guide with the browser client SDK is [the blog tutorial](https://docs.mongodb.com/stitch/tutorials/blog-overview/).  It consists of two main parts, the [Blog tutorial back end](https://docs.mongodb.com/stitch/tutorials/guides/blog-backend/), and the [Blog tutorial front end](https://docs.mongodb.com/stitch/tutorials/guides/blog-web/).  We will offer a condensed version of the blog tutorial with a couple of new concepts.  It is highly recommended to complete the blog tutorial when you have time.
 
 Additional information on the application of rules and third party authentication can be found in the [todo web app tutorial](https://docs.mongodb.com/stitch/tutorials/todo-overview/)   
@@ -437,7 +457,7 @@ Save the trigger then open the open the newly created function by selecting __"F
 
 ![Query Anywhere](../img/trigger2.jpg)
 
-Cut and paste the following code in te the function editor.  Save the function and then deploy the changes.
+Cut and paste the following code in to the function editor.  Save the function and then deploy the changes.
 ```js
 exports = function(changeEvent) {
   
