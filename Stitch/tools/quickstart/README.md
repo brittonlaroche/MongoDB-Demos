@@ -557,13 +557,16 @@ We want to be able to graphically determine if offering a promotional discount t
 
 ![Charts](../img/charts1.jpg)
 
-Add a new data source.
+Add a new data source.   
+
 ![Charts](../img/charts3.jpg)
 
 Select the cluster (we only have one at this time, but we can have more in the future)   
+
 ![Charts](../img/charts4.jpg)
 
 Select the datasource __"Sample_Supplies"__ and then select the __"sales"__ collection to have some familiar data to build a chart against.   
+
 ![Charts](../img/charts5.jpg)
 
 Now we build our chart. We will select a circular chart type.  We name the chart __"Item Quantity by Customer Age."__  Drag customer.age into the __"Label"__ category.  Set the binning on and the numeric value to 25.  This will break the age demographic into groups of 25 years. 
