@@ -47,6 +47,8 @@ This will bring up window promptin you to build your first cluster.  Click the _
 
 __"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
+![end](../img/section-end.png)
+
 ## ![2](../img/2b.png) Load Sample Data
 
 Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.  
@@ -58,7 +60,9 @@ After the sample data is loaded, we will want to see the data and explore the do
 
 ![Collections](../img/collections.jpg "Collections") 
 
-Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a __">"__ arrow will appear in the upper left, pressing the button will expand the document and show all the values in nested arrays.
+Navigate to the __"samples_supplies"__ database namespace and expand the database to see the sales collection.  Click the __"sales"__ collection and the sales data is displayed in document format.  If you hover over the first document a __">"__ arrow will appear in the upper left, pressing the button will expand the document and show all the values in nested arrays.   
+
+![end](../img/section-end.png)
 
 ## ![3](../img/3b.png)  Query the Sample data
 
