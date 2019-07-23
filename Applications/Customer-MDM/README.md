@@ -24,7 +24,7 @@ Additionally Kankata motors has been given the task of removing sesnitive custom
 
 The desire is to have a serveless REST based API layer that will not require maintenance and can scale automatically as demand increases with out maintenance or human intervention.
 
-![Kankata Sedan](img/kankatasedan2.png "Kankata")  
+![Kankata Sedan](img/kankatasedan4.jpg "Kankata")  
 
 Customer data will be loaded into the Customer MDM as new customers come into the website and sign up for promotional offerings.  Customer data will also come into the Customer MDM with nightly batch loads from Kankata financial services for the previous days loan applications.  The two different dealerships also load prospective customers and customer purchase data when a vehicle is taken for a test drive or purchased.  All of these websites and dealerships have a variety of data formats.
 
