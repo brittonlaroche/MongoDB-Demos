@@ -22,7 +22,7 @@ You have been tasked to create a minimum viable product (MVP), a basic protype, 
 
 Additionally Kankata motors has been given the task of removing sensitive customer data from all its related transactional systems. The California Consumer Privacy Act (CCPA) and the Nevada Consumer Privacy Law requires Kankata to remove all customer data from its many transactional systems if a customer "opts out" and does not want their identifiable data inside Kankata.  The intent to change all the systems to identify the customer through a unique token generated in the Customer MDM and use only the token in all the related transactional systems.  When a transactional system needs to display customer information it will request that information via a rest based API to the Customer MDM application.  Should the customer opt out of Kankata then only one system, the customer MDM, will need to remove the customer identifiable data.
 
-The desire is to have a serveless REST based API layer to service the myriad of transactional systems that will not require any maintenance, and can scale automatically as demand increases with out human intervention.
+The desire is to have a serverless REST based API layer to service the myriad of transactional systems that will not require any maintenance, and can scale automatically as demand increases with out human intervention.
 
 ![Kankata Sedan](img/kankatasedan4.jpg "Kankata")  
 
