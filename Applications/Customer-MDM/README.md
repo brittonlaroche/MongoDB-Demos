@@ -16,7 +16,7 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 
 We've been hired by a fictitious auto manufacturing company called "Kankata" to build a customer MDM application prototype.  Kankata has a global market place consisting of automobile dealerships online websites for its customers of its two major brands. Kankata motors sells quality family vehicles, and its high end luxury brand Legacy motors sells high performance extreemly high end luxury vehicles.  Each brand has its own set of dealerships and systems that repersent the customer in a variety of different ways.  Kankata may have the same customer or the same customer household buying both brands and is unaware that these two apparently different customers may be the same individual buying cars for the same household.
 
-You have been tasked to create a minimum viable product (MVP), a basic protype, of a customer MDM application across all dealerships and online sites for both brands Kanakat and Legacy. They wish to test both the functionality and performance of the application.  The functionality includes identifying a single customer from all systems and providing customer updates in real time to their third party dealerships and financing division.
+You have been tasked to create a minimum viable product (MVP), a basic protype, of a customer MDM application across all dealerships and online sites for both Kanakata and Legacy brands. They wish to test both the functionality and performance of the application.  The functionality includes identifying a single customer from all systems and providing customer updates in real time to their third party dealerships and financing division.
 
 ![Legacy](img/legacylogo.png "Legacy")  
 
