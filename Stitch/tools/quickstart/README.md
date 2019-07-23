@@ -1,4 +1,4 @@
-# Atlas and Stitch - Quick Start Hands on Lab
+# Atlas and Stitch - Quick Start Hands on Workshop
 
 ## Contents
 [1. Create your first Atlas cluster](#-create-your-first-atlas-cluster)   
