@@ -20,9 +20,9 @@ You have been tasked to create a minimum viable product (MVP), a basic protype, 
 
 ![Legacy](img/legacylogo.png "Legacy")  
 
-Additionally Kankata motors has been given the task of removing sesnitive customer data from all its transaction systems. The California Consumer Privacy Act (CCPA) and the Nevada Consumer Privacy Law requires Kankata to remove all customer data from its manay transactional systems if a customer does not want their data inside Kankata.  The intent is to identify the customer through a unique token in the Customer MDM and use only the token in all the related transactional systems.  When a transaction system needs to display customer information it will request that information via a webservice that will communicate to the Customer MDM application through a rest API.  Should the customer opt out only one system, the customer MDM will need to remove the customer identifiable data.
+Additionally Kankata motors has been given the task of removing sesnitive customer data from all its transactional systems. The California Consumer Privacy Act (CCPA) and the Nevada Consumer Privacy Law requires Kankata to remove all customer data from its manay transactional systems if a customer does not want their data inside Kankata.  The intent is to identify the customer through a unique token in the Customer MDM and use only the token in all the related transactional systems.  When a transactional system needs to display customer information it will request that information via a rest based API to the Customer MDM application.  Should the customer opt out of Kankata then only one system, the customer MDM, will need to remove the customer identifiable data.
 
-The desire is to have a serveless REST based API layer that will not require maintenance and can scale automatically as demand increases with out maintenance or human intervention.
+The desire is to have a serveless REST based API layer to service the myriad of transactional systems that will not require any maintenance, and can scale automatically as demand increases with out human intervention.
 
 ![Kankata Sedan](img/kankatasedan4.jpg "Kankata")  
 
