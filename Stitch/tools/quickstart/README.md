@@ -1,4 +1,5 @@
 # Atlas and Stitch - Quick Start Hands on Workshop
+_Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 
 ## Contents
 [1. Create your first Atlas cluster](#-create-your-first-atlas-cluster)   
