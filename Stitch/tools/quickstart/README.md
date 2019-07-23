@@ -134,6 +134,8 @@ Lets create a new function that takes a search document.  Select __"Functions"__
 
 ![Function](../img/function1.jpg)
 
+
+Click the save button and the function editor appears. It seems hard to beleive but three lines of code allows us to write our document search function. Cut and paste the code below and click save.
 ```js
 exports = async function( aSearchDoc ){
   var sales = context.services.get("mongodb-atlas").db("sample_supplies").collection("sales");
