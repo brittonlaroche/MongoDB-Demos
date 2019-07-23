@@ -84,6 +84,9 @@ We can do a more advanced find.  We have been asked to generate a report on cust
 ```  
 After looking at the data Denver has been selected to test the theory that offering a discount on supplies will create an incentive for people who have retrired to greatly increase the number of items they purchase.   
 
+![end](../img/section-end.png)
+
+
 ## ![4](../img/4b.png) Create a Stitch Application   
 Our next step is to create an application to query the sales data and offer promotional discounts to customers who live in Denver and are of retirement age.  We will begin by creating our stitch application.  This task is accomplished by selecting __"Stitch"__ from the left hand navigation menu of the cluster we just created.
 
@@ -94,6 +97,9 @@ We click the large green button labeled __"Create new Application"__ and give th
 ![Application](../img/stitch2.jpg)
 
 Click the little green __"Create"__ button in the lower right hand of the popup window.  The stitch application console will appear as soon as the application has been created and linked with the cluster. 
+
+![end](../img/section-end.png)
+
 
 ## ![5](../img/5b.png) Create stitch functions to query customer data
 There are some basic ways to query data via the stitch REST based API.  One is through a GET with a query parameter. Another method is through a POST by passing in a searhc document.  We will cover both methods.
@@ -178,6 +184,9 @@ We are no longer limited to searching for any one particular field.  Lets find a
 exports({"customer.age": 65, "customer.gender": "F", "storeLocation": "Denver"})
 ```
 
+![end](../img/section-end.png)
+
+
 ## ![6](../img/6b.png) Create a Stitch service to expose the search function as a REST API
 The functions we created are useful but in order to build an application we need to expose these functions.  There are a number of ways to expose the functions.  One possible way is through the stitch SDK.  We can creat an application that authenticates through the stitch SDK and then executes our fucntions remotely.  Another way to expose these functions is through an HTTP Service.
 
@@ -261,6 +270,9 @@ exports = async function(payload) {
 ![webhook](../img/webhook2.jpg)
 
 We have created two functions and exposed them as servcies, it is now time to test the services we created.
+
+![end](../img/section-end.png)
+
 
 ## ![7](../img/7b.png) Create a webpage to show the document from the search service
 Its important to be able to test our services and the return documents. In this section we will create a small HTTP app similiar to POSTMAN. We will call our application "Postrapper." We do this because most modern office sites often have security policies in place that block ports or require access to https via a broswer proxy.  Its simple to create an application that uses https through the browser and its a great learning opportunity for the use of a REST based API.
@@ -369,6 +381,9 @@ __Note:__ If you are experiencing trouble you can view the console log in the br
 
 Our test has been successful.  Lets create an application using the broswer SDK that provides the search capability we need and formats the results as rows and columns so we can quickly inspect the results of many documents at once.  To do this properly we need to create a user or some form of authentication.
 
+![end](../img/section-end.png)
+
+
 ## ![8](../img/8b.png) Create a user with an API key
 We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
 
@@ -381,6 +396,9 @@ For now we will generate an API Key.  Select the __"API Keys"__ option and click
 ![users](../img/users3.jpg "users")
 
 Type in a name for the API Key, something like "BackOffice" or "WebAccess" and click save.  A private key will be displayed.  Copy that key and paste it into a text editor of your choice.  Then create the api key.  We will use that key to access the database through the stitch browser SDK.
+
+![end](../img/section-end.png)
+
 
 ## ![9](../img/9b.png) Create a web application for a marketing promotion
 
@@ -452,6 +470,9 @@ The best getting started guide with the browser client SDK is [the blog tutorial
 
 Additional information on the application of rules and third party authentication can be found in the [todo web app tutorial](https://docs.mongodb.com/stitch/tutorials/todo-overview/)   
 
+![end](../img/section-end.png)
+
+
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
 Create a new trigger by selecting __"Triggers"__ on the left navigation pane in the stitch console. 
 
@@ -488,6 +509,9 @@ Use the QueryAnywhere.html app to select a customer and update the Promo Code fi
 Use the QueryAnywhere.html app to update the Promo Code field to a new value for the same customer.  View the history collection again and you can now see the history of changes to the sales document.  We have implemented [document versioning](https://www.mongodb.com/blog/post/building-with-patterns-the-document-versioning-pattern) through a trigger.  This is part of [building MongoDB Applications with design patterns](https://www.mongodb.com/blog/post/building-with-patterns-a-summary)
 
 ![Query Anywhere](../img/trigger3.jpg)
+
+![end](../img/section-end.png)
+
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
@@ -556,6 +580,9 @@ While we don't have the time to create this in the lab you can, create a new HTT
 ...
 ```
 
+![end](../img/section-end.png)
+
+
 ## ![12](../img/12b.png) Create an Atlas chart 
 We want to be able to graphically determine if offering a promotional discount to senior citizens in the Denver store actually increases the number of items they buy.  Do they indeed stock pile office supplies when they are on sale? Our job is to graphically represent the current number of items purchased by each age demographic. Select Charts from the left hand navigation panel of the Atlas Cluster and enable charts.      
 
@@ -580,6 +607,9 @@ Next we expand the items array and select __"quantity"__, and drag the field int
 ![Charts](../img/charts11.jpg)
 
 We now have our chart and we see that the Age 50-75 demographic represents a healthy portion of all items sold.  
+
+![end](../img/section-end.png)
+
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
 Embedding Atlas charts is relatively easy.  The only challenge is in setting up the proper security.  More information on embedding charts with security can be found [here.](https://docs.mongodb.com/charts/saas/embedding-charts/) For our purposes we want to see the chart embeded in our application with out specifying a new key. 
@@ -619,12 +649,18 @@ You can place the chart anywhere.  After I copied the iframe chart reference I p
 ```
 ![Charts](../img/embedchart6.jpg)
 
+![end](../img/section-end.png)
+
+
 ## ![14](../img/14b.png) Host your application
 ![Hosting](../img/hosting1.jpg)
 ![Hosting](../img/hosting2.jpg)
 ![Hosting](../img/hosting3.jpg)
 ![Hosting](../img/hosting4.jpg)
 ![Hosting](../img/hosting5.jpg)
+
+
+![end](../img/section-end.png)
 
 
 ## ![15](../img/15b.png) Stitch Command Line - CICD Integration
