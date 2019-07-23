@@ -1,5 +1,5 @@
 ## Sample Human Resources Application
-[Click here to get started with MongoDB Sample Human Resources Application](../Stitch/employee)![HR Application](img/hr.png "HR")
+[Click here](../Stitch/employee) to get started with MongoDB Sample Human Resources Application ![HR Application](img/hr.png "HR")
 
 ## Sample Shipping Application
 ![Shipping Application](img/shipping.jpg "Shipping")   
