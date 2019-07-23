@@ -578,6 +578,11 @@ Next we expand the items array and select __"quantity"__, and drag the field int
 We now have our chart and we see that the Age 50-75 demographic represents a healthy portion of all items sold.  
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
+![Charts](../img/embedchart1.jpg)
+![Charts](../img/embedchart2.jpg)
+![Charts](../img/embedchart3.jpg)
+![Charts](../img/embedchart4.jpg)
+![Charts](../img/embedchart5.jpg)
 
 ## ![14](../img/14b.png) Host your application
 
