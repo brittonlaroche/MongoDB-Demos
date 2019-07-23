@@ -487,7 +487,7 @@ Use the QueryAnywhere.html app to update the Promo Code field to a new value for
 
 ## ![11](../img/11b.png) Modify the trigger to capture marketing data
 
-Edit the function __"fncSalesHistoryMarket"__ and add the logic to update a new marketing collection that has a single document to show just the customer's current promotion.  Copy and paste the code below, save the fucntion and deploy the changes. 
+Edit the function __"fncSalesHistoryMarket"__ and add the logic to update a new marketing collection that has a single document to show only the customer's current promotion.  Copy and paste the code below, save the fucntion and deploy the changes. 
 
 ```js
 exports = function(changeEvent) {
@@ -531,6 +531,26 @@ Update the QueryAnywhere.html promotion app with a new promo code and view the c
 ![Query Anywhere](../img/trigger5.jpg)
 
 This exersize shows how a single trigger can update multiple collections.  The history collection with versioning shows changes to a document over time, but might be expensive in size, as the number of documents inserted in the collection could grow very large.  The market collection shows how a single small document can constructed and accessed to get the current promotion code in a flat document structure.  Triggers have the power to perform versioning and transform the document structure based on your application needs.
+
+
+### Bonus
+While we don't have the time to create this in the lab you can, create a new HTTP Service __"outgoingHttpService"__ and return here to add a call to the service.  Modify the trigger to send a message with the full document from the trigger to an external source.  This completes the loop and allows you to pass information from the trigger to another external service.
+
+```js
+...
+    
+    const http = context.services.get("outgoingHttpService");
+    http.post({
+      "encodeBodyAsJSON": true,
+      "url": "https://jsonplaceholder.typicode.com/posts",
+      "headers": { "Content-Type": ["application/json"] },
+      "body": fullDocument
+    })
+    .then((data) => {
+      console.log("Successfully sent the post request!", JSON.stringify(data));
+    });
+...
+```
 
 ## ![12](../img/12b.png) Create an Atlas chart 
 We want to be able to graphically determine if offering a promotional discount to senior citizens in the Denver store actually increases the number of items they buy.  Do they indeed stock pile office supplies when they are on sale? Our job is to graphically represent the current number of items purchased by each age demographic. Select Charts from the left hand navigation panel of the Atlas Cluster and enable charts.      
