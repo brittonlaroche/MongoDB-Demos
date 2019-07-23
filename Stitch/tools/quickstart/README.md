@@ -128,7 +128,8 @@ click the run button and view the returned document in the __"results"__ tab.
 ### Search Document
 Our first function took in an email address and returned a matching sales document.  This is a great first step.  Now we have to write a new function for every possible argument or combination of arguments.  Perhaps we want to know all purchases that were online in denver.  We now have to wriet a function that takes in the __"purchaseMethod"__ and __"storeLocation"__.  What about store location and age?  It quickly beomes apparent that we need away to pass in multiple arguments and conduct a query based on them.  How do we do this?  We use a search document.
 
-Lets create a new function that takes a search document.  Select __"Functions"__ from the left hand navigation menu of the stitch console and click the __"Create New Function"__ button.  Name the function __"findCustomer"__  
+Lets create a new function that takes a search document.  Select __"Functions"__ from the left hand navigation menu of the stitch console and click the __"Create New Function"__ button.  Name the function __"findCustomer"__   
+
 ![Function](../img/function1.jpg)
 
 ```js
@@ -337,7 +338,7 @@ What we need is to be able to handle both a GET request with a query parameter (
   </body>
 </html>
 ```
-Cut and paste the code above into your text editor and save the file as postrapper.html.  Double click the file to open it in your browser.  Then copy and paste the webhook url from the webhook settings as seen below.
+Cut and paste the code above into your text editor and save the file as [postrapper.html](../html/postrapper.html).  Double click the file to open it in your browser.  Then copy and paste the webhook url from the webhook settings as seen below.
 
 ![webhook](../img/webhook3.jpg)   
 
