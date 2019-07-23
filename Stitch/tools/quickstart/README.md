@@ -578,9 +578,11 @@ Next we expand the items array and select __"quantity"__, and drag the field int
 We now have our chart and we see that the Age 50-75 demographic represents a healthy portion of all items sold.  
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
-Embedding Atlas charts is relatively easy.  The only challenge is in setting up the proper security.  More information on embedding charts with security can be found [here.](https://docs.mongodb.com/charts/saas/embedding-charts/) For our purposes we want to see the chart embeded in our application with out specifying a new key. The process begins by selecting __"Charts"__ from the left navigation pane of the cluster consloe window.  If you need to navigate out of the stitch console window to get back to the cluster window an easy way to do that is to simply open a new browser tab and navigate to https://cloud.mongodb.com. Because your current tab is already authenticated the new tab automatically opens to the cluster console. 
+Embedding Atlas charts is relatively easy.  The only challenge is in setting up the proper security.  More information on embedding charts with security can be found [here.](https://docs.mongodb.com/charts/saas/embedding-charts/) For our purposes we want to see the chart embeded in our application with out specifying a new key. 
 
-Select __"Charts"__ from the cluster console left hand navigation menu.  When teh chart browser is open, select your dashboard.  In the upper right hand corner of your chart you will notice three horizontal dots __"..."__.  Click the dots to reveal drop down menu and select __"Embed Chart"__.
+The process begins by selecting __"Charts"__ from the left navigation pane of the cluster consloe window.  If you need to navigate out of the stitch console window to get back to the cluster window an easy way to do that is to simply open a new browser tab and navigate to https://cloud.mongodb.com. Because your current tab is already authenticated the new tab automatically opens to the cluster console. 
+
+Select __"Charts"__ from the cluster console left hand navigation menu.  When the chart browser is open, select your dashboard.  In the upper right hand corner of your chart you will notice three horizontal dots __"..."__.  Click the dots to reveal drop down menu and select __"Embed Chart"__.
 
 ![Charts](../img/embedchart1.jpg)
 
@@ -614,6 +616,12 @@ You can place the chart anywhere.  After I copied the iframe chart reference I p
 ![Charts](../img/embedchart6.jpg)
 
 ## ![14](../img/14b.png) Host your application
+![Hosting](../img/hosting1.jpg)
+![Hosting](../img/hosting2.jpg)
+![Hosting](../img/hosting3.jpg)
+![Hosting](../img/hosting4.jpg)
+![Hosting](../img/hosting5.jpg)
+
 
 ## ![15](../img/15b.png) Stitch Command Line - CICD Integration
 
