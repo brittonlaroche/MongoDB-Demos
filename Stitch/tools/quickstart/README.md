@@ -62,30 +62,39 @@ Navigate to the __"samples_supplies"__ database namespace and expand the databas
 
 We can create a simple query to pull back sales data for the store located in austin with the following document query:   
 
-```{"storeLocation": "Denver"}```   
+```{"storeLocation": "Austin"}```   
 
 Type this in query in the filter section and press the __"Find"__ button.
 
 ![Query data](../img/find.jpg "Find") 
 
+We can try other locations as well.   
+```{"storeLocation": "Denver"}```   
 
-We can do a more advanced find.  Suppose you were asked to generate a report on customers who were of retirement age to offer a promotion and a special discount on their next purchase.  The customer is an object embeded in the sales document and we need to refrence the age demographic value.  A simple nested query with dot notaion will allow us to get all the customers greater than or equal to 65 years of age.
+We can do a more advanced find.  We have been asked to generate a report on customers who were of retirement age to offer a promotion and a special discount on their next purchase.  The customer is an object embeded in the sales document and we need to refrence the age demographic value.  A simple nested query with dot notaion will allow us to get all the customers greater than or equal to 65 years of age.   
 
 ``` 
 {"customer.age":  {$gte: 65}}
 ```  
+After looking at the data Denver has been selected to test the theory that offering a discount on supplies will create an incentive for people who have retrired to greatly increase the number of items they purchase.   
 
 ## ![4](../img/4b.png) Create a Stitch Application   
+Our next step is to create an application to query the sales data and offer promotional discounts to customers who live in Denver and are of retirement age.  We will begin by creating our stitch application.  This task is accomplished by selecting __"Stitch"__ from the left hand navigation menu of the cluster we just created.
+
 ![Application](../img/stitch1.jpg)
 
+We click the large green button labeled __"Create new Stitch Application"__ and give the application a name.  In this case we will name our application __"sales"__   
 ![Application](../img/stitch2.jpg)
 
 ## ![5](../img/5b.png) Create a stitch functions to query customer data
 There are some basic ways to query data via the stitch REST based API.  One is through a GET with a query parameter. Another method is through a POST by passing in a searhc document.  We will cover both methods.
 
 ### Query Parameters
-Lets begin with building a function that takes a query parameter:   
+Lets begin with building a function that takes a query parameter.  From the left hand navigation menu of the Stitch console select __"Functions"__  click the __"Create New Function"__ button and give the new function an name of __"findCustomerByEmail"__.  Make sur ethe function runs as system to bypass rules as we have not set up any rules at this point in the workshop.  
+
 ![Function](../img/function0.jpg)
+
+Click the save button and you will be preseneted with the function editor.  Cut and paste the code below.
 
 ```js
 exports = async function(arg){
