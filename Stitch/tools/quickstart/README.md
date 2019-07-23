@@ -200,7 +200,7 @@ The url would use the format:
 <webhook url>?arg1=div%40me.it
 ```
 
-To get the webhook url go back to the getCustomerByEmailService edit the webhook and select the settings tab.  Click the copy button for the webhook url and click paste.  We will do more on testing the service in the next section.
+To get the webhook url go back to the getCustomerByEmailService edit the webhook and select the settings tab.  Click the copy button for the webhook url and click paste in the browser, add in the argument and URL encoded email address, then hit enter.  We will do more on testing the service in the next section. We will create a purpose built HTML application using javacript to test our services.
 
 ### getCustomerService
 We are now ready to create a flexible search based on any number of parameters passed in a json document.  The process for creating the service is the same.  Select __"Services"__ from the left hand navigation menu of the stitch console.  We will now be presented with a list of services and we can see our __"getCustomerByEmailService"__ listed.  Press the green button labaled __"Add a Service"__ and the add service window is back.  We will select __"HTTP"__ and give our new service the name __"getCustomerService"__.  Click the __"Add Service"__ button to bring up the webhook editor.
