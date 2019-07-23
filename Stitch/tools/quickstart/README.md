@@ -80,7 +80,14 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 
 ![Application](../img/stitch2.jpg)
 
-## ![5](../img/5b.png) Create a Stitch function to query any customer data by email 
+## ![5](../img/5b.png) Create a stitch functions to query customer data
+There are some basic ways to query data via the stitch REST based API.  One is through a GET with a query parameter. Another method is through a POST by passing in a searhc document.  We will cover both methods.
+
+### Query Parameters
+Lets begin with building a function that takes a query parameter:   
+![Function](../img/function0.jpg)
+
+```js
 exports = async function(arg){
 
     var collection = context.services
@@ -91,10 +98,22 @@ exports = async function(arg){
     }
     return doc;
 }
+```
+exports("div@me.it")
 
+### Search Document
 
-## ![6](../img/6b.png) Create a Stitch function to query any customer data via a search document 
+Now we build a function that takes a search document:   
 ![Function](../img/function1.jpg)
+
+```js
+exports = async function( aSearchDoc ){
+  var sales = context.services.get("mongodb-atlas").db("sample_supplies").collection("sales");
+  var doc = await sales.findOne(aSearchDoc);
+  return doc;
+};
+```
+The above 3 lines of code a quite terse.  Sometimes it helps to do a bit of debugging.  Logging data to the console is helpful.  In order to log the conetents of a document we have a helper function __"JSON.stringify"__ an example of logging the documents passed into and out of the search function is provided below.
 
 ```js
 exports = async function( aSearchDoc ){
@@ -114,8 +133,8 @@ exports({"customer.email": "div@me.it"})
 ```
 ![Function](../img/function3.jpg)
 
-We can do anything now.  Lets find a customer by store location age and gender.
-![Function](../img/function2.jpg)
+We are no longer limited to searching for any particular field.  Lets find a customer by store location age and gender.
+
 ```js
 exports({"customer.age": "65", "customer.gender": "F", "storeLocation": "Denver"})
 ```
