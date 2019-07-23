@@ -90,7 +90,7 @@ We click the large green button labeled __"Create new Stitch Application"__ and 
 There are some basic ways to query data via the stitch REST based API.  One is through a GET with a query parameter. Another method is through a POST by passing in a searhc document.  We will cover both methods.
 
 ### Query Parameters
-Lets begin with building a function that takes a query parameter.  From the left hand navigation menu of the Stitch console select __"Functions"__  click the __"Create New Function"__ button and give the new function an name of __"findCustomerByEmail"__.  Make sur ethe function runs as system to bypass rules as we have not set up any rules at this point in the workshop.  
+Lets begin with building a function that takes a query parameter.  From the left hand navigation menu of the Stitch console select __"Functions"__  click the __"Create New Function"__ button and give the new function an name of __"findCustomerByEmail"__.  Make sure the function runs as system to bypass rules as we have not set up any rules at this point in the workshop.  
 
 ![Function](../img/function0.jpg)
 
@@ -101,14 +101,20 @@ exports = async function(arg){
 
     var collection = context.services
         .get("mongodb-atlas").db("sample_supplies").collection("sales");
-    var doc = await collection.findOne({email: arg});
+    var doc = await collection.findOne({ "customer.email": arg});
     if (typeof doc == "undefined") {
         return `No customers with email ${arg} were found.`;
     }
     return doc;
 }
 ```
-exports("div@me.it")
+
+![Function](../img/function01.jpg)
+
+
+Click on the console tab and type in the following email parameter to find a sales document with a customer email.
+```exports('div@me.it')```   
+click the run button and view the results in the results tab.
 
 ### Search Document
 
