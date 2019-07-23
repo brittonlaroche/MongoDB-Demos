@@ -135,7 +135,7 @@ Lets create a new function that takes a search document.  Select __"Functions"__
 ![Function](../img/function1.jpg)
 
 
-Click the save button and the function editor appears. It seems hard to beleive but three lines of code allows us to write our document search function. Cut and paste the code below and click save.
+Click the save button and the function editor appears. It seems hard to beleive but three lines of code allows us to write our document search function. Cut and paste the code below, click save and deploy the changes.
 ```js
 exports = async function( aSearchDoc ){
   var sales = context.services.get("mongodb-atlas").db("sample_supplies").collection("sales");
@@ -158,9 +158,14 @@ exports = async function( aSearchDoc ){
 };
 ```
 ![Function](../img/function2.jpg)
+
+Now lets test the function by passing in a search document.  Click the console tab at the bottom left.  At the bottom of the console after the comment section is a method called export.  Cut and paste the following export function below that passes in a search document.
 ```js
 exports({"customer.email": "div@me.it"})
 ```
+
+Press the Run button in the upper right and view the returned document in the results tab.
+
 ![Function](../img/function3.jpg)
 
 We are no longer limited to searching for any one particular field.  Lets find a customer by store location age and gender.
