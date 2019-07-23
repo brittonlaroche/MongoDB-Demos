@@ -80,7 +80,20 @@ We can do a more advanced find.  Suppose you were asked to generate a report on 
 
 ![Application](../img/stitch2.jpg)
 
-## ![5](../img/5b.png) Create a Stitch function to query customer data  
+## ![5](../img/5b.png) Create a Stitch function to query any customer data by email 
+exports = async function(arg){
+
+    var collection = context.services
+        .get("mongodb-atlas").db("sample_supplies").collection("sales");
+    var doc = await collection.findOne({email: arg});
+    if (typeof doc == "undefined") {
+        return `No customers with email ${arg} were found.`;
+    }
+    return doc;
+}
+
+
+## ![6](../img/6b.png) Create a Stitch function to query any customer data via a search document 
 ![Function](../img/function1.jpg)
 
 ```js
@@ -101,6 +114,11 @@ exports({"customer.email": "div@me.it"})
 ```
 ![Function](../img/function3.jpg)
 
+We can do anything now.  Lets find a customer by store location age and gender.
+![Function](../img/function2.jpg)
+```js
+exports({"customer.age": "65", "customer.gender": "F", "storeLocation": "Denver"})
+```
 
 ## ![6](../img/6b.png) Create a Stitch service to expose the search function as a REST API
 
