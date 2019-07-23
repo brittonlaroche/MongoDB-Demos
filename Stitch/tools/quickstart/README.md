@@ -83,8 +83,11 @@ Our next step is to create an application to query the sales data and offer prom
 
 ![Application](../img/stitch1.jpg)
 
-We click the large green button labeled __"Create new Stitch Application"__ and give the application a name.  In this case we will name our application __"sales"__   
+We click the large green button labeled __"Create new Application"__ and give the application a name.  In this case we will name our application __"sales"__   
+
 ![Application](../img/stitch2.jpg)
+
+The stitch application console will appear as soon as the application has been created and linked with the cluster. 
 
 ## ![5](../img/5b.png) Create a stitch functions to query customer data
 There are some basic ways to query data via the stitch REST based API.  One is through a GET with a query parameter. Another method is through a POST by passing in a searhc document.  We will cover both methods.
@@ -135,7 +138,7 @@ exports = async function( aSearchDoc ){
   return doc;
 };
 ```
-The above 3 lines of code a quite terse but extremely powerful.  Sometimes it helps to do a bit of debugging.  Logging data to the console is helpful.  In order to log the conetents of a document we have a helper function __"JSON.stringify"__ an example of logging the documents passed into and out of the search function is provided below.
+The above 3 lines of code a quite terse but extremely powerful.  Sometimes it helps to do a bit of debugging.  Logging data to the console is helpful.  In order to log the conetents of a document we have a helper function __"JSON.stringify"__ an example of logging the documents passed into and out of the search function is provided below.  If you would like to add in some logging to our search function cut and paste the code below into the __"findCustomer"__ function.
 
 ```js
 exports = async function( aSearchDoc ){
