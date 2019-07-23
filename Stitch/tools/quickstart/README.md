@@ -108,13 +108,19 @@ exports = async function(arg){
     return doc;
 }
 ```
+Notice two important key words; __"async"__ and __"await"__ these keywords are not the default.  You have to specify this function is aync and tell it to await the result from the findOne query to return a document.  
 
 ![Function](../img/function01.jpg)
 
 
 Click on the console tab and type in the following email parameter to find a sales document with a customer email.
+
+![Function](../img/function02.jpg)
+
 ```exports('div@me.it')```   
 click the run button and view the results in the results tab.
+
+
 
 ### Search Document
 
