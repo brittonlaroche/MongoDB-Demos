@@ -118,13 +118,14 @@ Click on the console tab and type in the following email parameter to find a sal
 ![Function](../img/function02.jpg)
 
 ```exports('div@me.it')```   
-click the run button and view the results in the results tab.
+click the run button and view the returned document in the __"results"__ tab.
 
 
 
 ### Search Document
+Our first function took in an email address and returned a matching sales document.  This is a great first step.  Now we have to write a new function for every possible argument or combination of arguments.  Perhaps we want to know all purchases that were online in denver.  We now have to wriet a function that takes in the __"purchaseMethod"__ and __"storeLocation"__.  What about store location and age?  It quickly beomes apparent that we need away to pass in multiple arguments and conduct a query based on them.  How do we do this?  We use a search document.
 
-Now we build a function that takes a search document:   
+Lets create a new function that takes a search document.  Select __"Functions"__ from the left hand navigation menu of the stitch console and click the __"Create New Function"__ button.  Name the function __"findCustomer"__  
 ![Function](../img/function1.jpg)
 
 ```js
@@ -134,7 +135,7 @@ exports = async function( aSearchDoc ){
   return doc;
 };
 ```
-The above 3 lines of code a quite terse.  Sometimes it helps to do a bit of debugging.  Logging data to the console is helpful.  In order to log the conetents of a document we have a helper function __"JSON.stringify"__ an example of logging the documents passed into and out of the search function is provided below.
+The above 3 lines of code a quite terse but extremely powerful.  Sometimes it helps to do a bit of debugging.  Logging data to the console is helpful.  In order to log the conetents of a document we have a helper function __"JSON.stringify"__ an example of logging the documents passed into and out of the search function is provided below.
 
 ```js
 exports = async function( aSearchDoc ){
