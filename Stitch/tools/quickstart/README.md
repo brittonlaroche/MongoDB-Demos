@@ -369,7 +369,7 @@ Select the datasource __"Sample_Supplies"__ and then select the __"sales"__ coll
 
 Now we build our chart. We will select a circular chart type.  We name the chart __"Item Quantity by Customer Age."__  Drag customer.age into the __"Label"__ category.  Set the binning on and the numeric value to 25.  This will break the age demographic into groups of 25 years. 
 
-Next we expand the items array and select __"quantity"__, and drag the field into the __"Arc"__ category of the graph. Be sure to unwind teh array and sum the quantity for each item.
+Next we expand the items array and select __"quantity"__, and drag the field into the __"Arc"__ category of the graph. Be sure to unwind the array and sum the quantity for each item.
 
 ![Charts](../img/charts11.jpg)
 
