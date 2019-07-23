@@ -62,7 +62,7 @@ Navigate to the __"samples_supplies"__ database namespace and expand the databas
 
 We can create a simple query to pull back sales data for the store located in austin with the following document query:   
 
-```{"storeLocation": "Austin"}```   
+```{"storeLocation": "Denver"}```   
 
 Type this in query in the filter section and press the __"Find"__ button.
 
