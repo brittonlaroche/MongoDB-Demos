@@ -190,11 +190,29 @@ exports = function(payload) {
 
 };
 ```
+We have created our first service and webhook!  This service is limited to one thing and one thing only, it will search for a customer by email and return the document.  Its a good start but it is limited to one argument and extending it will take considerable time to handle more arguments.  Lets move on to the flexibility provided by passing in a json document with any number of search parameters.
 
 ### getCustomerService
+We are now ready to create a flexible search based on any number of parameters passed in a json document.  The process for creating the service is the same.  Select __"Services"__ from the left hand navigation menu of the stitch console.  We will now be presented with a list of services and we can see our __"getCustomerByEmailService"__ listed.  Press the green button labaled __"Add a Service"__ and the add service window is back.  We will select __"HTTP"__ and give our new service the name __"getCustomerService"__.  Click the __"Add Service"__ button to bring up the webhook editor.
 ![Service](../img/service.jpg)
 
+Give the webhook a name of __"getCustomerWebhook"__ and be sure to move the slider for __"Respond With Result"__ as we are returning a json document. Be wure to select __"POST"__ as the HTTP method.  Again we will select __"Do Not Validate"__.  Press the __"Save"__ button.
+
 ![Webhook](../img/webhook1.jpg)
+
+The webhook function editor will appear and we will call the __"findCustomer"__ function we created earlier by passing in the json document that is part of the body of the HTTP request.  We need to parse the body to get the json document.  We use the following code to accomplish the parsing of the json document.
+
+```
+body = EJSON.parse(payload.body.text());
+```
+
+We then pass the body as the search document argument with the following code   
+
+```
+result = await context.functions.execute("findCustomer", body);
+```
+
+Cut and paste the following code into the webhook function editor and click __"Save"__.
 
 ```js
 // This function is the webhook's request handler.
@@ -217,6 +235,8 @@ exports = async function(payload) {
 ```
 
 ![webhook](../img/webhook2.jpg)
+
+We have created two functions and exposed them as servcies, it is now time to test the services we created.
 
 ## ![7](../img/7b.png) Create a webpage to show the document from the search service
 
