@@ -354,6 +354,26 @@ Update the QueryAnywhere.html promotion app with a new promo code and view the c
 This exersize shows how a single trigger can update multiple collections.  The history collection with versioning shows changes to a document over time, but might be expensive in size, as the number of documents inserted in the collection could grow very large.  The market collection shows how a single small document can constructed and accessed to get the current promotion code in a flat document structure.  Triggers have the power to perform versioning and transform the document structure based on your application needs.
 
 ## ![12](../img/12b.png) Create an Atlas chart 
+We want to be able to graphically determine if offering a promotional discount to senior citizens in the Denver store actually increases the number of items they buy.  Do they indeed stock pile office supplies when they are on sale? Our job is to graphically represent the current number of items purchased by each age demographic. Select Charts from the left hand navigation panel of the Atlas Cluster and enable charts.      
+
+![Charts](../img/charts1.jpg)
+
+Add a new data source.
+![Charts](../img/charts3.jpg)
+
+Select the cluster (we only have one at this time, but we can have more in the future)   
+![Charts](../img/charts4.jpg)
+
+Select the datasource __"Sample_Supplies"__ and then select the __"sales"__ collection to have some familiar data to build a chart against.   
+![Charts](../img/charts5.jpg)
+
+Now we build our chart. We will select a circular chart type.  We name the chart __"Item Quantity by Customer Age."__  Drag customer.age into the __"Label"__ category.  Set the binning on and the numeric value to 25.  This will break the age demographic into groups of 25 years. 
+
+Next we expand the items array and select __"quantity"__, and drag the field into the __"Arc"__ category of the graph. Be sure to unwind teh array and sum the quantity for each item.
+
+![Charts](../img/charts11.jpg)
+
+We now have our chart and we see that the Age 50-75 demographic represendts a healthy portion of all items sold.  
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
 
