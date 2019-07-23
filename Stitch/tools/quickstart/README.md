@@ -578,12 +578,27 @@ Next we expand the items array and select __"quantity"__, and drag the field int
 We now have our chart and we see that the Age 50-75 demographic represents a healthy portion of all items sold.  
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
+Embedding Atlas charts is relatively easy.  The only challenge is in setting up the proper security.  More information on embedding charts with security can be found [here.](https://docs.mongodb.com/charts/saas/embedding-charts/) For our purposes we want to see the chart embeded in our application with out specifying a new key. The process begins by selecting __"Charts"__ from the left navigation pane of the cluster consloe window.  If you need to navigate out of the stitch console window to get back to the cluster window an easy way to do that is to simply open a new browser tab and navigate to https://cloud.mongodb.com. Because your current tab is already authenticated the new tab automatically opens to the cluster console. 
+
+Select __"Charts"__ from the cluster console left hand navigation menu.  When teh chart browser is open, select your dashboard.  In the upper right hand corner of your chart you will notice three horizontal dots __"..."__.  Click the dots to reveal drop down menu and select __"Embed Chart"__.
+
 ![Charts](../img/embedchart1.jpg)
-![Charts](../img/embedchart2.jpg)
+
+A popup notifies us theta we need to enable embedding options for this chart.  Click the "Enable embedding options" link.   
+
+![Charts](../img/embedchart2.jpg)   
+
+We are presented with the embedding options popup. Here we select __"Unauthenticated or Verified signature"__.  To learn more about __verified Signatures__ click [here](https://docs.mongodb.com/charts/saas/embedding-charts/)   
+
 ![Charts](../img/embedchart3.jpg)
+
+We click the go back button and we are presented with an option to copy the text of an iframe we can embed in our application.   
+
 ![Charts](../img/embedchart4.jpg)
 
-You can place the chart anywhere.  After I copied the iframe chart refrence I placed it right above the end of the </div> tag before the customers __"Customers"__ <div> tag near in the QueryAnywhere.html file. 
+Click the __"Copy Icon"__ to copy the iframe text.
+
+You can place the chart anywhere.  After I copied the iframe chart reference I placed it right above the end of the first </div> tag before the customers __"Customers"__ <div> tag near in the QueryAnywhere.html file. Example below.
 
 ```js
 ...
