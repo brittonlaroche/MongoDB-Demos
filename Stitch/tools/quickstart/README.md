@@ -192,6 +192,16 @@ exports = function(payload) {
 ```
 We have created our first service and webhook!  This service is limited to one thing and one thing only, it will search for a customer by email and return the document.  Its a good start but it is limited to one argument and extending it will take considerable time to handle more arguments.  Lets move on to the flexibility provided by passing in a json document with any number of search parameters.
 
+We can test the webhook from a broswer using the webhook url and set arg1 equal to an email adress.  Rememebr we have to url encode the @ symbol as %40.  If we want to search for the email "div@me.it" we would pass that argument as "div%40me.it" 
+
+The url would use the format:
+
+```
+<webhook url>?arg1=div%40me.it
+```
+
+To get the webhook url go back to the getCustomerByEmailService edit the webhook and select the settings tab.  Click the copy button for the webhook url and click paste.  We will do more on testing the service in the next section.
+
 ### getCustomerService
 We are now ready to create a flexible search based on any number of parameters passed in a json document.  The process for creating the service is the same.  Select __"Services"__ from the left hand navigation menu of the stitch console.  We will now be presented with a list of services and we can see our __"getCustomerByEmailService"__ listed.  Press the green button labaled __"Add a Service"__ and the add service window is back.  We will select __"HTTP"__ and give our new service the name __"getCustomerService"__.  Click the __"Add Service"__ button to bring up the webhook editor.
 ![Service](../img/service.jpg)
@@ -279,9 +289,10 @@ We have created two functions and exposed them as servcies, it is now time to te
       <p>
         This simple page demonstrates json REST based API calls
       </p>
+
       <form>
         <table>
-          <tr><td style="padding: 10">URL:</td><td><input style="min-width: 1000px;" type="text" id="input_url" name="input_url"/></td></tr>
+          <tr><td style="padding: 10">URL:</td><td> <input style="min-width: 1000px;" type="text" id="input_url" name="input_url"/></td></tr>
           <tr><td> VERB:</td><td> <input type="text" id="input_verb" name="input_verb" value="POST" /></td></tr>
           <tr><td> Input Document:</td><td> <textarea class="form-control" id="input_json" rows="5"></textarea></td></tr>
           <tr><td> Results: </td><td> <textarea class="form-control" id="results" rows="10"></textarea></td></tr>
@@ -290,20 +301,31 @@ We have created two functions and exposed them as servcies, it is now time to te
       <br>
       <button type="submit" onclick="sendJson()">Send</button>
     </div>
+
     <script>
       const sendJson = async () => {
         var txt = "";
         var httpVerb = document.getElementById("input_verb").value;
         var webhook_url = document.getElementById("input_url").value;
-        var inputDoc = document.getElementById("input_json").value; 
+        var inputDoc = document.getElementById("input_json").value;
+        var response = "";
+
         console.log(webhook_url);
-        const response = await fetch(webhook_url, {
-          method: httpVerb,
-          body: inputDoc, // string or object
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
+        //Check to see if we have an input document or not
+        if (inputDoc != "") {
+          response = await fetch(webhook_url, {
+            method: httpVerb,
+            body: inputDoc, // string or object
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+        } else {
+          response = await fetch(webhook_url, {
+            method: httpVerb
+          });
+        }
+
         const myJson = await response.json(); //extract JSON from the http response
         console.log(myJson);
         document.getElementById("results").innerHTML = JSON.stringify(myJson, undefined, 2);
