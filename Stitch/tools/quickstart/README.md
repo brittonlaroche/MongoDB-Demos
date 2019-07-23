@@ -87,7 +87,7 @@ We click the large green button labeled __"Create new Application"__ and give th
 
 ![Application](../img/stitch2.jpg)
 
-The stitch application console will appear as soon as the application has been created and linked with the cluster. 
+Click the little green __"Create"__ button in the lower right hand of the popup window.  The stitch application console will appear as soon as the application has been created and linked with the cluster. 
 
 ## ![5](../img/5b.png) Create a stitch functions to query customer data
 There are some basic ways to query data via the stitch REST based API.  One is through a GET with a query parameter. Another method is through a POST by passing in a searhc document.  We will cover both methods.
@@ -161,14 +161,25 @@ exports({"customer.email": "div@me.it"})
 We are no longer limited to searching for any particular field.  Lets find a customer by store location age and gender.
 
 ```js
-exports({"customer.age": "65", "customer.gender": "F", "storeLocation": "Denver"})
+exports({"customer.age": 65, "customer.gender": "F", "storeLocation": "Denver"})
 ```
 
 ## ![6](../img/6b.png) Create a Stitch service to expose the search function as a REST API
 
+We will now create two HTTP services for our find customer fucntions.   
+
+1. Our __getCustomerByEmailService__ will use a GET request with a query parameter.
+2. Our __getCustomerService__ will use a POST request with a json document body.
+
+### getCustomerByEmailService
+![Service](../img/service0.jpg)
+
+![Webhook](../img/webhook0.jpg)
+
+### getCustomerService
 ![Service](../img/service.jpg)
 
-![webhook](../img/webhook1.jpg)
+![Webhook](../img/webhook1.jpg)
 
 ```js
 // This function is the webhook's request handler.
@@ -291,7 +302,7 @@ We will be using the [Mongo DB Stitch Browser SDK](https://docs.mongodb.com/stit
 ![Rules 1](../img/rules1.jpg)
 ![Rules 2](../img/rules2.jpg)
 ![Rules 3](../img/rules3.jpg)
-![Rules 3](../img/rules4.jpg)
+![Rules 4](../img/rules4.jpg)
 
 Copy the code from the [QueryAnywhere.html](../html/QueryAnywhere.html) file.  Right click and select "open file in new tab" the [QueryAnywhere.html](../html/QueryAnywhere.html) link click the view raw file button select all the text and paste it in a text editor.  Save the file as QueryAnywhere.html
 
