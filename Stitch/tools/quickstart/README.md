@@ -174,16 +174,19 @@ We will now create two HTTP services for our find customer functions.
 
 ### getCustomerByEmailService
 
-Lets begin by creating a service. Select __"Services"__ from the left hand navigation menu in the stitch console.
+Lets begin by creating the get customer by email service. Select __"Services"__ from the left hand navigation menu in the stitch console. Since this is our fisrt service we are presented with a green button prompting us to add a new service.  Click the __"Add a Service"__ button.  And we are presented with a screen that shows a number of options.  We have native integration with GitHub, Twilio, AWS and HTTP services.  Select __"HTTP"__ and give the service the name __"getCustomerByEmailService"__
 ![Service](../img/service0.jpg)
+
+Click the __"Add Service Button"__ and the webhook screen will appear.  The webhook is responsible for executing stitch serverless functions and providing an external URL to expose our service.  We will give the webhook the name __"getCustomerByEmailWebhook"__.  We will be sure to move the slider to __"Respond With Result"__ and run the webhook as system as we have not created any users at this point in our workshop.  We will select the "GET" method and we will not require validation.  Click the __"Save"__ button to save our work.
 
 ![Webhook](../img/webhook0.jpg)
 
+We are now presented with the webhook function editor.  We will call our __"findCustomerByEmail"__ function that we created in the previous step.  Cut and paste the code below and click __"Save"__
 ```js
 exports = function(payload) {
 
     var queryArg = payload.query.arg1 || '';
-    return context.functions.execute("getCustomerByEmail", queryArg);
+    return context.functions.execute("findCustomerByEmail", queryArg);
 
 };
 ```
