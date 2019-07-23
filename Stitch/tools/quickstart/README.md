@@ -138,7 +138,7 @@ exports = async function( aSearchDoc ){
   return doc;
 };
 ```
-The above 3 lines of code a quite terse but extremely powerful.  Sometimes it helps to do a bit of debugging.  Logging data to the console is helpful.  In order to log the conetents of a document we have a helper function __"JSON.stringify"__ an example of logging the documents passed into and out of the search function is provided below.  If you would like to add in some logging to our search function cut and paste the code below into the __"findCustomer"__ function.
+The above 3 lines of code a quite terse but extremely powerful.  Sometimes it helps to do a bit of debugging.  Logging data to the console is helpful.  In order to log the contents of a document we have a helper function __"JSON.stringify"__. An example of logging the documents passed into and out of the search function is provided below.  If you would like to add some logging to our search function cut and paste the code below into the __"findCustomer"__ function.
 
 ```js
 exports = async function( aSearchDoc ){
@@ -158,23 +158,35 @@ exports({"customer.email": "div@me.it"})
 ```
 ![Function](../img/function3.jpg)
 
-We are no longer limited to searching for any particular field.  Lets find a customer by store location age and gender.
+We are no longer limited to searching for any one particular field.  Lets find a customer by store location age and gender.
 
 ```js
 exports({"customer.age": 65, "customer.gender": "F", "storeLocation": "Denver"})
 ```
 
 ## ![6](../img/6b.png) Create a Stitch service to expose the search function as a REST API
+The functions we created are useful but in order to build an application we need to expose these functions.  There are a number of ways to expose the functions.  One possible way is through the stitch SDK.  We can creat an application that authenticates through the stitch SDK and then executes our fucntions remotely.  Another way to expose these functions is through an HTTP Service.
 
-We will now create two HTTP services for our find customer fucntions.   
+We will now create two HTTP services for our find customer functions.   
 
 1. Our __getCustomerByEmailService__ will use a GET request with a query parameter.
 2. Our __getCustomerService__ will use a POST request with a json document body.
 
 ### getCustomerByEmailService
+
+Lets begin by creating a service. Select __"Services"__ from the left hand navigation menu in the stitch console.
 ![Service](../img/service0.jpg)
 
 ![Webhook](../img/webhook0.jpg)
+
+```js
+exports = function(payload) {
+
+    var queryArg = payload.query.arg1 || '';
+    return context.functions.execute("getCustomerByEmail", queryArg);
+
+};
+```
 
 ### getCustomerService
 ![Service](../img/service.jpg)
