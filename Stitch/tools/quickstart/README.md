@@ -5,7 +5,7 @@
 [2. Load Sample Data](#-load-sample-data)   
 [3. Query the Sample data](#--query-the-sample-data)   
 [4. Create a Stitch Application](#-create-a-stitch-application)     
-[5. Create a Stitch function to query customer data](#-create-a-stitch-function-to-query-customer-data)  
+[5. Create Stitch functions to query customer data](#-create-stitch-functions-to-query-customer-data)  
 [6. Create a Stitch service to expose the search function as a REST API](#-create-a-stitch-service-to-expose-the-search-function-as-a-rest-api)   
 [7. Create a webpage to show the document from the search service](#-create-a-webpage-to-show-the-document-from-the-search-service)   
 [8. Create a user with an API key](#-create-a-user-with-an-api-key)   
@@ -89,7 +89,7 @@ We click the large green button labeled __"Create new Application"__ and give th
 
 Click the little green __"Create"__ button in the lower right hand of the popup window.  The stitch application console will appear as soon as the application has been created and linked with the cluster. 
 
-## ![5](../img/5b.png) Create a stitch functions to query customer data
+## ![5](../img/5b.png) Create stitch functions to query customer data
 There are some basic ways to query data via the stitch REST based API.  One is through a GET with a query parameter. Another method is through a POST by passing in a searhc document.  We will cover both methods.
 
 ### Query Parameters
