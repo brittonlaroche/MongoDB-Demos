@@ -582,7 +582,21 @@ We now have our chart and we see that the Age 50-75 demographic represents a hea
 ![Charts](../img/embedchart2.jpg)
 ![Charts](../img/embedchart3.jpg)
 ![Charts](../img/embedchart4.jpg)
-![Charts](../img/embedchart5.jpg)
+
+You can place the chart anywhere.  After I copied the iframe chart refrence I placed it right above the end of the </div> tag before the customers __"Customers"__ <div> tag near in the QueryAnywhere.html file. 
+
+```js
+...
+   <body onload="displayCustomersOnLoad()">
+    ...
+        <h3>Results</h3>
+        <iframe width="640" height="480" src="your-chart-url"></iframe>
+    </div>
+    <div id="customers" style="margin-right: 60px;"></div>
+  </body>
+...
+```
+![Charts](../img/embedchart6.jpg)
 
 ## ![14](../img/14b.png) Host your application
 
