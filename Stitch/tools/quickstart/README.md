@@ -249,7 +249,7 @@ exports = async function(payload) {
 We have created two functions and exposed them as servcies, it is now time to test the services we created.
 
 ## ![7](../img/7b.png) Create a webpage to show the document from the search service
-Its important to be able to test our services and the return documents. In this section we will create a small HTTP app similiar to POSTMAN. We will call our application "Postrapper." We do this because most customer sites often have security policies in place that block ports or require access to https via a broswer proxy.  Its simple to creat and application that uses https through the browser and its a great learning opportunity on the use of a REST based API.
+Its important to be able to test our services and the return documents. In this section we will create a small HTTP app similiar to POSTMAN. We will call our application "Postrapper." We do this because most modern office sites often have security policies in place that block ports or require access to https via a broswer proxy.  Its simple to create an application that uses https through the browser and its a great learning opportunity for the use of a REST based API.
 
 It is quite simple to create a fetch request that passes in a json document as an argument to a POST method of an HTTP request.  The sntax is below.
 
@@ -262,11 +262,7 @@ It is quite simple to create a fetch request that passes in a json document as a
           }
 ```
 
-What we need is to be able to handle both a get request with a query parameter and no json body, and a POST request with a json body.  We will build a simple html and javascript application that checks to see if we have an input json document, uses the correct HTTP method verb and makes teh request to the right url.
-
-
-
-
+What we need is to be able to handle both a GET request with a query parameter (no json body), and a POST request with a json body.  We will build a simple html and javascript application that checks to see if we have an input json document, uses the correct HTTP method (verb) and makes the request to the right url.
 
 ```js
 <!DOCTYPE html>
@@ -355,6 +351,7 @@ Try the following complex query and view the result.
 
 ```{"customer.age": 65, "customer.gender": "F", "storeLocation": "Denver"}```
 
+Our test has been successful.  Lets create an application using the broswer SDK that provides the search capability we need and formats the results as rows and columns so we can quickly inspect the results of many documents at once.  To do this properly we need to create a user or some form of authentication.
 
 ## ![8](../img/8b.png) Create a user with an API key
 We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
