@@ -11,4 +11,4 @@
 ## Sample Customer MDM Application
 ![Customer MDM Application](img/customermdm.jpg "Customer MDM")   
 
-[Click here to get started with MongoDB Sample Customer MDM Application](Customer MDM)
+[Click here to get started with MongoDB Sample Customer MDM Application](Customer-MDM)
