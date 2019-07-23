@@ -111,7 +111,7 @@ exports = async function(arg){
     return doc;
 }
 ```
-Notice two important key words; __"async"__ and __"await"__ these keywords are not the default.  You have to specify this function is aync and tell it to await the result from the findOne query to return a document.  
+Notice two important key words; __"async"__ and __"await"__ these keywords are not the default.  You have to specify this function is async and tell it to await the result from the findOne query to return a document.  
 
 ![Function](../img/function01.jpg)
 
@@ -520,7 +520,7 @@ Next we expand the items array and select __"quantity"__, and drag the field int
 
 ![Charts](../img/charts11.jpg)
 
-We now have our chart and we see that the Age 50-75 demographic represendts a healthy portion of all items sold.  
+We now have our chart and we see that the Age 50-75 demographic represents a healthy portion of all items sold.  
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
 
