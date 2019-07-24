@@ -440,7 +440,7 @@ Double click the file, it will open in your browser and you should see someting 
 
 ![Query Anywhere](../img/QueryAnywhere.jpg)
 
-The ability to connect to the Atlas database and use the Mongo Query Language directly is accomplished by including the browser SDK in the line below (its aready in the file we are just calling your attention to it.
+The ability to connect to the Atlas database and use the Mongo Query Language directly is accomplished by including the browser SDK in the line below (its aready in the file we are just calling your attention to it.)
 ```js
 <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.5.0/stitch.js"></script>
 ```
