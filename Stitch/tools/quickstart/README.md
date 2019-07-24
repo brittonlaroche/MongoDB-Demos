@@ -20,6 +20,8 @@ _Solution Architect Contributing Members_: [Felix Reichenbach](mailto:felix.reic
 [15. Stitch Command Line - CICD Integration](#-stitch-command-line---cicd-integration)   
 
 # Overview
+Stitch provides Serverless compute functionality much like AWS labmda. In fact AWS Lambda can utilize the Stitch SDK to communicate directly with Atlas.  Stitch provides greater control over the connections to the database and reduces the number of concurrent connections required by Lambda.  Stitch serverless compute functionality can be accesed through and SDK or a REST based API. Additionaly you can write application code in JavaScript to run on Stitch serverless compute.  You can write an entire serveless application and access MongoDB through datbase as a service on Atlas.  This workshop will have your execute your code and host your entire application and data in the cloud.
+
 Our lab is designed to teach Atlas and Stitch as quickly as possible with no dependencies.  You will only need a browser and a text editor. We will create a free tier Atlas cluster, load in some sample data and explore document data model.  We will learn some basic queries against the document datamodel.  Next we will create our first stitch application and query the database.  We will enable the Stitch serverlss REST API to access and update data.  We will create a stitch trigger and finally a QueryAnywhere browser SDK application.
 
 ![Diagram](../img/workshop8.png "Diagram")
