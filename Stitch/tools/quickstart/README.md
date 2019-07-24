@@ -686,5 +686,15 @@ https://<your-app-id>.mongodbstitch.com/QueryAnywhere.html
 
 
 ## ![15](../img/15b.png) Stitch Command Line - CICD Integration
+A common queston we are asked by developers while going through the workshop is "Do we have to use the stitch console?" The answer is no.  You can write your own code in the editor of your choice and check that code into GitHub or whatever your source code control repository is. 
 
+The next question we are asked is "How do we build a test environment?" A variation of this question is "Is there a local version of Stitch we can downlaod for testing purposes?" The basic question is if we need to deploy our changes into a testing environment how does all of this stuff fit together?
+
+The answer is a combination of source code control (we do have services built in for GitHub) and integration into your existing CICD infrastructure whether that is Jenkins or Maven Build Scripts or whatever your CICD platform is the whole process including stitch can be scripted and woven into your standard process.
+
+The stitch command line tool provides the ability to integrate your CICD with Stitch.  Atlas has a Rest Based API that you can use to build a new test environment.  Stitch has a stitch-cli interface that allows you to access your changes from GitHub and deploy them into your new test environment.
+
+GitHub service inetgration documentation is [here](https://docs.mongodb.com/stitch/services/github/) with code snippits [here](https://docs.mongodb.com/stitch/services/snippets/github-snippets/)
+
+The stitch-cli is documented [here](https://docs.mongodb.com/stitch/import-export/create-stitch-app/) a blog is [here](https://www.mongodb.com/blog/post/mongodb-stitch-command-line-interface) and a simple working example of importing a stitch app from GitHub is [here](https://github.com/brittonlaroche/MongoDB-Demos/blob/master/Applications/Shipping/tutorial/cli/README.md)
 
