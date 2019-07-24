@@ -11,7 +11,7 @@ _Solution Architect Contributing Members_: [Felix Reichenbach](mailto:felix.reic
 [6. Create a Stitch service to expose the search function as a REST API](#-create-a-stitch-service-to-expose-the-search-function-as-a-rest-api)   
 [7. Create a webpage to show the document from the search service](#-create-a-webpage-to-show-the-document-from-the-search-service)   
 [8. Create a user with an API key](#-create-a-user-with-an-api-key)   
-[9. Create a web application for a marketing promotion](#-create-a-web-application-for-a-marketing-promotion)   
+[9. Create a QueryAnywhere web application for a marketing promotion](#-create-a-queryanywhere-web-application-for-a-marketing-promotion)   
 [10. Create a trigger to capture changes to sales data](#-create-a-trigger-to-capture-changes-to-sales-data)   
 [11. Modify the trigger to capture marketing data](#-modify-the-trigger-to-capture-marketing-data)   
 [12. Create an Atlas Chart](#-create-an-atlas-chart)   
@@ -400,7 +400,7 @@ Type in a name for the API Key, something like "BackOffice" or "WebAccess" and c
 ![end](../img/section-end.png)
 
 
-## ![9](../img/9b.png) Create a web application for a marketing promotion
+## ![9](../img/9b.png) Create a QueryAnywhere web application for a marketing promotion
 
 We will be using the [Mongo DB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html) to create a web based application that turns the browser into a fully functional stitch client.  The client will be able to execute the MongoDb Query Language (MQL) directly from the browser.  This will help us build an application to select specific customers for a promotional offering.
 
