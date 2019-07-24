@@ -287,7 +287,7 @@ Once you complete the Stitch Query anwhere tutorial, create a new HTTP Service _
     const http = context.services.get("myPayrollHttpService");
     http.post({
       "encodeBodyAsJSON": true,
-      "url": "https://postman-echo.com/post",
+      "url": "https://jsonplaceholder.typicode.com/posts",
       "headers": { "Content-Type": ["application/json"] },
       "body": fullDocument
     })
