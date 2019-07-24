@@ -653,12 +653,34 @@ You can place the chart anywhere.  After I copied the iframe chart reference I p
 
 
 ## ![14](../img/14b.png) Host your application
-![Hosting](../img/hosting1.jpg)
+Hosting your application on mongodbstitch.com is very straight forward. This enables the QueryAnywhere application that we just created to be accesed by anyone with a browser anywhere in the world. Once your application is hosted it can be reached at "<your-app-id>.mongodb.stitch.com"  The default name can be changed by changing the url to use a custom name of your choosing.  Information and full documentation on MongoDB hosting is [here.](https://docs.mongodb.com/stitch/hosting/)
+
+We start the hosting process by clicking on the __"Hosting"__ menu item on the left navigation pane of the stitch console.  We are presented with a screen asking us to enable hosting. 
+
+![Hosting](../img/hosting1.jpg)   
+
+Click the __"Enable Hosting"__ button.
+
 ![Hosting](../img/hosting2.jpg)
+
+We are prompted to upload files. Click the __"Upload Files"__ button.   
+
 ![Hosting](../img/hosting3.jpg)
+
+Select the __QueryAnywhere.html__ and __postrapper.html__ files for upload.  We can see the files upload.
+
 ![Hosting](../img/hosting4.jpg)
+
+Deploy the changes.
+
 ![Hosting](../img/hosting5.jpg)
 
+If necessary we can select the __Actions__ drop list and select __Flush CDN Cache__ to clear out the cache.  Uploading the same file twice after making changes may require us to flush the cache to see the changes.
+
+We can now refrence our application through the following url:
+```
+https://<your-app-id>.mongodbstitch.com/QueryAnywhere.html
+```
 
 ![end](../img/section-end.png)
 
