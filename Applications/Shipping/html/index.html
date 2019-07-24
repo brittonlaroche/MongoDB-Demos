@@ -8,8 +8,8 @@
        * (dont paste your API key in your code its easily obtained by the browser view source)
        * API key is pasted here for a simple prototype example with out key management 
        */       
-      const credential = new stitch.UserApiKeyCredential('your-api-key');
-      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+      const credential = new stitch.UserApiKeyCredential("y2yhO49BDf4zvQVnt5GEC0Ge90VJVsByuSGVVJAvUr4Z9tZjWvJ2iZiL8OhKKY0M");
+      const client = stitch.Stitch.initializeDefaultAppClient('shipping-wkfkx');
       const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('ship');
       function displayShipmentsOnLoad() {
         client.auth
@@ -25,13 +25,13 @@
         var sPkg = document.getElementById('s_package_id');
         var sShip = document.getElementById('s_shipment_id'); 
         if ( sCust.value != "") {
-          searchDoc = {customer_id: sCust.value}; 
+          searchDoc = {customer_id: { $regex: new RegExp(sCust.value)}}; 
         }
         if ( sPhone.value != "") {
-          searchDoc = {contact_phone: sPhone.value}; 
+          searchDoc = {contact_phone: { $regex: new RegExp(sPhone.value) }}; 
         }
         if ( sPkg.value != "") {
-          searchDoc = { "packages.package_id": sPkg.value}; 
+          searchDoc = { "packages.package_id": { $regex: new RegExp(sPkg.value)}}; 
         }
         if ( parseInt(sShip.value) > 0) {
           searchDoc = {shipment_id: parseInt(sShip.value)}; 
