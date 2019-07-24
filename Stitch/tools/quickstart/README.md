@@ -377,7 +377,7 @@ Try the following complex query and view the result.
 
 ```{"customer.age": 65, "customer.gender": "F", "storeLocation": "Denver"}```
 
-__Note:__ If you are experiencing trouble you can view the console log in the browser.  In chrome select the "Hamburger" menu item (three verticle dots) then select the menu item __"More Tools"__ --> __Developer Tools"__ and click the console tab.
+__Note:__ If you are experiencing trouble you can view the console log in the browser.  In chrome select the "Hamburger" menu item (three verticle dots) then select the menu item __"More Tools"__ --> __"Developer Tools"__ and it will bring up the developer tools pane at the bottom of the chrome broswer, click the console tab.
 
 Our test has been successful.  Lets create an application using the broswer SDK that provides the search capability we need and formats the results as rows and columns so we can quickly inspect the results of many documents at once.  To do this properly we need to create a user or some form of authentication.
 
