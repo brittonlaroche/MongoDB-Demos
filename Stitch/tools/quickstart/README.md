@@ -698,3 +698,14 @@ GitHub service inetgration documentation is [here](https://docs.mongodb.com/stit
 
 The stitch-cli is documented [here](https://docs.mongodb.com/stitch/import-export/create-stitch-app/) a blog is [here](https://www.mongodb.com/blog/post/mongodb-stitch-command-line-interface) and a simple working example of importing a stitch app from GitHub is [here](https://github.com/brittonlaroche/MongoDB-Demos/blob/master/Applications/Shipping/tutorial/cli/README.md)
 
+Atlas rest API documentation is [here](https://docs.atlas.mongodb.com/api/)
+
+To be clear the process is as follows:
+
+1. Develop or change software (you did this in your own environment today).
+2. Check in to GitHub or sourcecode control.
+3. Integrate [Atlas rest API](https://docs.atlas.mongodb.com/api/) with build process to create or update new Atlas test database environment.
+4. Obtain the latest changes from GitHub or source control and Import them via the stitch-cli into the new Atlas test databse environment.
+5. Commence testing against the new test database and stitch environment
+
+Steps 3 and 4 are typically scripted with the CICD build process making calls to Atlas and the stitch-cli.
