@@ -688,7 +688,7 @@ https://<your-app-id>.mongodbstitch.com/QueryAnywhere.html
 ## ![15](../img/15b.png) Stitch Command Line - CICD Integration
 A common queston we are asked by developers while going through the workshop is "Do we have to use the stitch console?" The answer is no.  You can write your own code in the editor of your choice and check that code into GitHub or whatever your source code control repository is. 
 
-The next question we are asked is "How do we build a test environment?" A variation of this question is "Is there a local version of Stitch we can downlaod for testing purposes?" The basic question is if we need to deploy our changes into a testing environment how does all of this stuff fit together?
+The next question we are asked is "How do we build a test environment?" A variation of this question is "Is there a local version of Stitch we can download for testing purposes?" The basic question is "if we need to deploy our changes into a testing environment how does all of this stuff fit together?"
 
 The answer is a combination of source code control (we do have services built in for GitHub) and integration into your existing CICD infrastructure whether that is Jenkins or Maven Build Scripts or whatever your CICD platform is the whole process including stitch can be scripted and woven into your standard process.
 
