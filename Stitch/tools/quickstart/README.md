@@ -1,4 +1,4 @@
-# Atlas and Stitch - Quick Start Workshop
+# Atlas and Stitch - Quick Start Hands on Lab
 _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 _Solution Architect Contributing Members_: [Felix Reichenbach](mailto:felix.reichenbach@mongodb.com), [Brian Leonard](mailto:brian.leonard@mongodb.com), [Matt Kalan](mailto:matt.kalan@mongodb.com), [Ryan Vander Zanden](mailto:rvz@mongodb.com), [James Osgood](mailto:james.osgood@mongodb.com), [Blaine Mincey](mailto:blaine.mincey@mongodb.com)
 
