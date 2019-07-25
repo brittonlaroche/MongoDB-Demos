@@ -367,6 +367,8 @@ What we need is to be able to handle both a GET request with a query parameter (
 ```
 Cut and paste the code above into your text editor and save the file as [postrapper.html](../html/postrapper.html).  Double click the file to open it in your browser.  Then copy and paste the webhook url from the webhook settings as seen below.
 
+Alternatively you can copy the source by clicking the [postrapper.html link here](../html/postrapper.html) and copying the contents to save in your sext editor as postrapper.html. 
+
 ![webhook](../img/webhook3.jpg)   
 
 Perform a search for the email below by cutting and pasting the seacrh document into the input section and pressing the __"Send"__ button.
