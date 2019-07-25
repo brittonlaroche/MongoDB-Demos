@@ -9,7 +9,7 @@ _Solution Architect Contributing Members_: [Felix Reichenbach](mailto:felix.reic
 [4. Create a Stitch Application](#-create-a-stitch-application)     
 [5. Create Stitch functions to query customer data](#-create-stitch-functions-to-query-customer-data)  
 [6. Create a Stitch service to expose the search function as a REST API](#-create-a-stitch-service-to-expose-the-search-function-as-a-rest-api)   
-[7. Create a webpage to show the document from the search service](#-create-a-webpage-to-show-the-document-from-the-search-service)   
+[7. Test the REST API](#-test-the-rest-api)   
 [8. Create a user with an API key](#-create-a-user-with-an-api-key)   
 [9. Create a QueryAnywhere web application for a marketing promotion](#-create-a-queryanywhere-web-application-for-a-marketing-promotion)   
 [10. Create a trigger to capture changes to sales data](#-create-a-trigger-to-capture-changes-to-sales-data)   
@@ -276,7 +276,7 @@ We have created two functions and exposed them as servcies, it is now time to te
 ![end](../img/section-end.png)
 
 
-## ![7](../img/7b.png) Create a webpage to show the document from the search service
+## ![7](../img/7b.png) Test the REST API
 Its important to be able to test our services and the return documents. In this section we will create a small HTTP app similiar to POSTMAN. We will call our application "Postrapper." We do this because most modern office sites often have security policies in place that block ports or require access to https via a broswer proxy.  Its simple to create an application that uses https through the browser and its a great learning opportunity for the use of a REST based API.
 
 It is quite simple to create a fetch request that passes in a json document as an argument to a POST method of an HTTP request.  The sntax is below.
