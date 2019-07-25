@@ -271,7 +271,7 @@ exports = async function(payload) {
 
 ![webhook](../img/webhook2.jpg)
 
-We have created two functions and exposed them as servcies, it is now time to test the services we created.
+We have created two functions and exposed them as REST based Services, it is now time to test the services we created.
 
 ![end](../img/section-end.png)
 
