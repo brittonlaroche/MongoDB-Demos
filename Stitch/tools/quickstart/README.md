@@ -416,7 +416,7 @@ Adding a new collection requires us to specify the database name, the collection
 
 ![Rules 3](../img/rules3.jpg)
 
-We are now in the rules editor and we wish to allow reads and writes to all the fields.  We have to check the boxes __"Read"__ and __"Write"__ to allow our application access to the sales data.  Click the save button once the cahnges are made.   
+We are now in the rules editor and we wish to allow reads and writes to all the fields.  We have to check the boxes __"Read"__ and __"Write"__ to allow our application access to the sales data.  Click the save button once the changes are made.   
 
 ![Rules 4](../img/rules4.jpg)
 
