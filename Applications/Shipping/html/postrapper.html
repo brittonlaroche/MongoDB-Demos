@@ -44,16 +44,23 @@
         var httpVerb = document.getElementById("input_verb").value;
         var webhook_url = document.getElementById("input_url").value;
         var inputDoc = document.getElementById("input_json").value;
-      
-        console.log(webhook_url);
+        var response = "";
 
-        const response = await fetch(webhook_url, {
-          method: httpVerb,
-          body: inputDoc, // string or object
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
+        console.log(webhook_url);
+        //Check to see if we have an input document or not
+        if (inputDoc != "") {
+          response = await fetch(webhook_url, {
+            method: httpVerb,
+            body: inputDoc, // string or object
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+        } else {
+          response = await fetch(webhook_url, {
+            method: httpVerb
+          });
+        }
 
         const myJson = await response.json(); //extract JSON from the http response
         console.log(myJson);
