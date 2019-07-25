@@ -147,11 +147,13 @@ Our first step is to get the new URL for our addShipmentService. In the addShipm
 
 ![Webhook URL](../../img/addShipmentWebhook3.jpg "Webhook URL")
 
-Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).  If postman is not available you can use our own [postrapper](../../html/postrapper.html). Right click (open in new tab) the [postrapper](../../html/postrapper.html) link,  copy the raw contents of the file to a text editor and save it as postrapper.html.  Double click the postrapper.html file to open it.  It will behave very much like postman.
+Next we use postman to test our service. If you do not have Postman you can get Postman for free here [Postman Downloads](https://www.getpostman.com/downloads/).  
+
+If postman is not available you can use our own [postrapper](../../html/postrapper.html). Right click (open in new tab) the [postrapper](../../html/postrapper.html) link,  copy the raw contents of the file to a text editor and save it as postrapper.html.  Double click the postrapper.html file to open it.  It will behave very much like postman.
 
 ![Postrapper](../../../../Stitch/tools/img/postrapper2.jpg)
 
-Add a new tab and select "POST" from the drop list. Paste in the addShipmentWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "AddShipment."   
+If you do have Postman and wish to use it, add a new tab and select "POST" from the drop list. Paste in the addShipmentWebhook URL.  Select the "Body" tab, and be sure to select RAW JSON(application/json). Click the save button and name it "AddShipment."   
 
 ![Postman](../../img/postmanAdd2.jpg "postman")
 
