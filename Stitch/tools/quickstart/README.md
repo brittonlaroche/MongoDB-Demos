@@ -406,7 +406,7 @@ Type in a name for the API Key, something like "BackOffice" or "WebAccess" and c
 
 We will be using the [Mongo DB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html) to create a web based application that turns the browser into a fully functional stitch client.  The client will be able to execute the MongoDb Query Language (MQL) directly from the browser.  This will help us build an application to select specific customers for a promotional offering.
 
-Beofre we can access any data with the stitch browser SDK we must allow stitch to access our collections.  We do this by establishing rules.  Click the __"Rules"__ menu item from the left hand navigation pane on the stitch console.  This displays the rules we have defined.  
+Before we can access any data with the stitch browser SDK we must allow stitch to access our collections.  We do this by establishing rules.  Click the __"Rules"__ menu item from the left hand navigation pane on the stitch console.  This displays the rules we have defined.  
 ![Rules 1](../img/rules1.jpg)
 There are two ways to add rules for a collection.  One is by selecting the __"..."__ button to the right of the "mongodb-atlas" tree item.  The other is by clickin the __"Add Collection"__ button.   
 
