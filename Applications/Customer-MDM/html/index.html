@@ -107,7 +107,7 @@
           },
           {upsert: true}
         )
-        .then(displayShipments);
+        .then(displayCustomers);
       }
      
     </script>
@@ -116,24 +116,24 @@
     <table><tr><td>
         <div id="contact" class="container">
             <img src="logo.png">
-            <h3>Shipment Information</h3>
-            Find Shipment:
+            <h3>Customer Information</h3>
+            Find Customer:
             <fieldset><input type="text" placeholder="Customer ID:" id="s_customer_id"></fieldset>
             <fieldset><input type="text" placeholder="Contact Phone:" id="s_contact_phone"></fieldset>
             <fieldset><input type="text" placeholder="First Name:" id="s_fname"></fieldset>
             <fieldset><input type="text" placeholder="Last Name:" id="s_lname"></fieldset>
             <fieldset><input type="text" placeholder="Gender:" id="s_gender"></fieldset>
             <button type="submit" id="contact-submit" onClick="displayCustomers()">Search</button>
-            Add Shipment:
-            <fieldset><input type="text" placeholder="Shipment ID:" id="shipment_id"></fieldset>
-            <fieldset><input type="text" placeholder="Shipment Description:" id="description"></fieldset>
+            Add Customer:
+            <fieldset><input type="text" placeholder="Customer ID:" id="shipment_id"></fieldset>
+            <fieldset><input type="text" placeholder="Customer Description:" id="description"></fieldset>
             <fieldset><input type="text" placeholder="Customer ID:" id="customer_id"></fieldset>
             <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
             <fieldset><input type="text" placeholder="Last Name:" id="last_name"></fieldset>
             <fieldset><input type="text" placeholder="Contact Phone:" id="contact_phone"></fieldset>
             <fieldset><input type="text" placeholder="Contact Email:" id="contact_email"></fieldset>
             <fieldset><input type="text" placeholder="Ship Date (MM/DD/YYYY):" id="ship_date"></fieldset>
-            <button type="submit" id="contact-submit" onClick="addShipment()">Update</button>
+            <button type="submit" id="contact-submit" onClick="addCustomer()">Update</button>
             <br><hr><br>Show QR Code:   <input type="checkbox" id="show_qr_code" onClick="showQRcode()">
         </div>
     </td>
