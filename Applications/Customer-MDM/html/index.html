@@ -84,16 +84,19 @@
         const cID = document.getElementById('customer_id');
         const cFname = document.getElementById('first_name');
         const cLname = document.getElementById('last_name');
+        const cGender = document.getElementById('gender');
+        const cDob = document.getElementById('dob');
         const cPhone = document.getElementById('contact_phone');
         const cEmail = document.getElementById('contact_email');
-        const sShipDate = document.getElementById('ship_date');
         var nDate = new Date();
         db.collection('master').updateOne(
-          {_id: cID.value},
+          {_id: new stitch.BSON.ObjectId(cID.value)},
           {$set: {
             owner_id: client.auth.user.id,
             "master.first_name": cFname.value,
             "master.last_name": cLname.value,
+            "master.gender": cGender.value,
+            "master.dob": cDob.value,
             "master.phone": cPhone.value,
             "master.email": cEmail.value,
             last_modified: nDate
@@ -118,10 +121,14 @@
             <fieldset><input type="text" placeholder="Last Name:" id="s_lname"></fieldset>
             <fieldset><input type="text" placeholder="Gender:" id="s_gender"></fieldset>
             <button type="submit" id="contact-submit" onClick="displayCustomers()">Search</button>
+            <hr>
+            <br>
             Add Customer:
             <fieldset><input type="text" placeholder="Customer ID:" id="customer_id"></fieldset>
             <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
             <fieldset><input type="text" placeholder="Last Name:" id="last_name"></fieldset>
+            <fieldset><input type="text" placeholder="Gender:" id="gender"></fieldset>
+            <fieldset><input type="text" placeholder="DOB:" id="dob"></fieldset>
             <fieldset><input type="text" placeholder="Contact Phone:" id="contact_phone"></fieldset>
             <fieldset><input type="text" placeholder="Contact Email:" id="contact_email"></fieldset>
             <button type="submit" id="contact-submit" onClick="addCustomer()">Update</button>
