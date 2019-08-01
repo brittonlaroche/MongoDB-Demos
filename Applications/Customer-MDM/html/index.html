@@ -1,145 +1,248 @@
+
+
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="./customer.css">
-    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script>
-      /* NOTE: handle your API key with another method than what is provided in this example 
-       * (dont paste your API key in your code its easily obtained by the browser view source)
-       * API key is pasted here for a simple prototype example with out key management 
-       */       
-      const credential = new stitch.UserApiKeyCredential("pC4Zh114GuVouc9DDBGO0UeZlIpo7UppPuzQJwBfThapugCViKBs0I4xFdUIBwbc");
-      const client = stitch.Stitch.initializeDefaultAppClient('customer-rytyl');
-      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('single');
-      function displayCustomersOnLoad() {
-        client.auth
-          .loginWithCredential(credential)
-          .then(displayCustomers)
-          .catch(console.error);
-      }
-      function displayCustomers() {
-        var searchDoc = {};
-        var sCust = document.getElementById('s_customer_id'); 
-        var sPhone = document.getElementById('s_contact_phone');
-        var sFname = document.getElementById('s_fname');
-        var sLname = document.getElementById('s_lname'); 
-        var sGender = document.getElementById('s_gender'); 
-        if ( sGender.value != "") {
-          searchDoc = {"master.gender": sGender.value }; 
+    <head>
+      <title>Customer MDM</title>
+      <link rel="stylesheet" type="text/css" href="./customer.css">
+      <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script>
+        /* NOTE: handle your API key with another method than what is provided in this example 
+         * (dont paste your API key in your code its easily obtained by the browser view source)
+         * API key is pasted here for a simple prototype example with out key management 
+         */       
+        const credential = new stitch.UserApiKeyCredential("pC4Zh114GuVouc9DDBGO0UeZlIpo7UppPuzQJwBfThapugCViKBs0I4xFdUIBwbc");
+        const client = stitch.Stitch.initializeDefaultAppClient('customer-rytyl');
+        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('single');
+        function displayCustomersOnLoad() {
+          client.auth
+            .loginWithCredential(credential)
+            .then(displayCustomers)
+            .catch(console.error);
         }
-        if ( sPhone.value != "") {
-          searchDoc = {"master.phone": { $regex: new RegExp(sPhone.value) }}; 
+        function displayCustomers() {
+          var searchDoc = {};
+          var sCust = document.getElementById('s_customer_id'); 
+          var sPhone = document.getElementById('s_contact_phone');
+          var sFname = document.getElementById('s_fname');
+          var sLname = document.getElementById('s_lname'); 
+          var sGender = document.getElementById('s_gender'); 
+          if ( sGender.value != "") {
+            searchDoc = {"master.gender": sGender.value }; 
+          }
+          if ( sPhone.value != "") {
+            searchDoc = {"master.phone": { $regex: new RegExp(sPhone.value) }}; 
+          }
+          if ( sFname.value != "") {
+            searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value) }}; 
+          }
+          if ( sLname.value != "") {
+            searchDoc = {"master.last_name": { $regex: new RegExp(sLname.value) }}; 
+          }
+          if ( sFname.value != "" && sLname.value != "") {
+            searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value)}, "master.last_name": { $regex: new RegExp(sLname.value) }}; 
+          }
+          if ( sCust.value != "") {
+            searchDoc = {_id: new stitch.BSON.ObjectId(sCust.value)}; 
+          }
+          const tStrt = "<div><table class=\"blueTable\"><tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th>" +
+            "<th>Conact Phone</th><th>Email</th><th>Last Modified</th><th>Edit</th></tr>";
+            db.collection('master').find(searchDoc, {limit: 30}).asArray()
+              .then(docs => {
+                const html = docs.map(c => "<tr>" +
+                  "<td>" + c._id +  "</td>" +
+                  "<td>" + c.master.first_name + " " + c.master.last_name + "</td>" +
+                  "<td>" + c.master.gender + "</td>" + 
+                  "<td>" + c.master.dob + "</td>" +
+                  "<td>" + c.master.phone + "</td>" + 
+                  "<td>" + c.master.email + "</td>" +
+                  "<td>" + c.last_modified + "</td>" +
+                  "<td>" +
+                  "<button type=\"checkbox\" class=\"blueTable\"" +
+                  "onClick=\"editCustomer(\'" + c._id +"\')\">" +
+                  "<i class=\"material-icons\" style=\"font-size:18px\">" +
+                  "mode_edit</i></button>" + 
+                  "</td>" +
+                  "</tr>").join("");
+                document.getElementById("customers").innerHTML = tStrt + html + "</table></div>";
+            });
+          }
+        function padDigits(number, digits) {
+          return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
         }
-        if ( sFname.value != "") {
-          searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value) }}; 
+        function checkDate(argDate){
+          if (argDate) {
+            return argDate.toLocaleDateString();
+          } else {
+            return "";
+          }
         }
-        if ( sLname.value != "") {
-          searchDoc = {"master.last_name": { $regex: new RegExp(sLname.value) }}; 
-        }
-        if ( sFname.value != "" && sLname.value != "") {
-          searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value)}, "master.last_name": { $regex: new RegExp(sLname.value) }}; 
-        }
-        if ( sCust.value != "") {
-          searchDoc = {_id: { $regex: new RegExp(sCust.value)}}; 
-        }
-        const tStrt = "<div><table class=\"blueTable\"><tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th>" +
-          "<th>Conact Phone</th><th>Email</th><th>last_modified</th><th>Edit</th></tr>";
-          db.collection('master').find(searchDoc, {limit: 30}).asArray()
-            .then(docs => {
-              const html = docs.map(c => "<tr>" +
-                "<td>" + c._id +  "</td>" +
-                "<td>" + c.master.first_name + " " + c.master.last_name + "</td>" +
-                "<td>" + c.master.gender + "</td>" + 
-                "<td>" + c.master.dob + "</td>" +
-                "<td>" + c.master.phone + "</td>" + 
-                "<td>" + c.master.email + "</td>" +
-                "<td>" + c.last_modified + "</td>" +
-                "<td>" +
-                "<button type=\"checkbox\" class=\"blueTable\"" +
-                "onClick=\"editCustomer(\'" + c._id +"\')\">" +
-                "<i class=\"material-icons\" style=\"font-size:18px\">" +
-                "mode_edit</i></button>" + 
-                "</td>" +
-                "</tr>").join("");
-              document.getElementById("customers").innerHTML = tStrt + html + "</table></div>";
+        function editCustomer(aCID){
+          //build the html for dynamically displaying additional fields to edit
+          editSearchDoc = {_id: new stitch.BSON.ObjectID(aCID)};
+          db.collection('master').find(editSearchDoc, {limit: 1}).asArray()
+          .then(docs => {
+            var vfname  = docs.map(c => c.master.first_name);
+            var vmname  = docs.map(c => c.master.middle_name);
+            var vlname  = docs.map(c => c.master.last_name);
+            var vGender  = docs.map(c => c.master.gender);
+            var vDob  = docs.map(c => c.master.dob);
+            var vPhone  = docs.map(c => c.master.phone);
+            var vEmail  = docs.map(c => c.master.email);
+            var vLastModified  = docs.map(c => c.last_modified);
+            var vAddrHtml = "<table class=\"blueTable\"><tr><th>Street</th><th>City</th><th>State</th><th>Zip</th><tr>";
+            var vSourceHtml = "<table class=\"blueTable\"><tr><th>ID</th><th>Name</th>" 
+              + "<th>Gender</th><th>DOB</th><th>Phone</th><th>Email</th>" 
+              + "<th>Street</th><th>City</th><th>State</th><th>Zip</th><tr>";
+            var html = "";
+            var i = 0;
+            //Get the adress information
+            docs.map(c => {
+              if (c.master.address) {
+                c.master.address.forEach( function(myDoc) {
+                  vAddrHtml = vAddrHtml + "<tr><td><input id=\"street\" value=\"" + myDoc.street + "\"></td>" +
+                  "<td><input id=\"city\" value=\""+ myDoc.city + "\"></td>" +
+                  "<td><input id=\"state\" value=\""+ myDoc.state + "\"></td>" +
+                  "<td><input id=\"zip\" value=\""+ myDoc.zip + "\"></td></tr>"
+                  ;
+                });
+              }
+            });
+            //get the source information
+            docs.map(c => {
+              if (c.sources) {
+                c.sources.forEach( function(myDoc) {
+                  vSourceHtml = vSourceHtml + "<tr><td>" + myDoc._id + "</td>" +
+                  "<td>" + myDoc.first_name + " " +
+                  " " + myDoc.middle_name + " " +
+                  " " + myDoc.last_name + "</td>" +
+                  "<td>" + myDoc.gender + "</td>" +
+                  "<td>" + myDoc.dob + "</td>" +
+                  "<td>" + myDoc.phone + "</td>" +
+                  "<td>" + myDoc.email + "</td>" +
+                  "<td>" + myDoc.address.street + "</td>" +
+                  "<td>" + myDoc.address.city + "</td>" +
+                  "<td>" + myDoc.address.state + "</td>" +
+                  "<td>" + myDoc.address.zip + "</td></tr>"
+                  ;
+                });
+              }
+            });
+            document.getElementById("customer_id").value = aCID;
+            document.getElementById("first_name").value = vfname;
+            document.getElementById("middle_name").value = vmname;
+            document.getElementById("last_name").value = vlname;
+            document.getElementById("gender").value = vGender;
+            document.getElementById("dob").value = vDob;
+            document.getElementById("contact_phone").value = vPhone;
+            document.getElementById("contact_email").value = vEmail;
+            html = "<h3>Customer Details</h3>" + 
+              "<table style=\"padding: 30px\">" +
+              "<tr><td>Customer ID:  </td><td>" + aCID + "</td></tr>" +
+              "<tr><td>First Name:  </td><td>" + vfname + "</td></tr>" +
+              "<tr><td>Middle Name:  </td><td>" + vmname + "</td></tr>" +
+              "<tr><td>Last Name:  </td><td>" + vlname + "</td></tr>" +
+              "<tr><td>Contact Phone:  </td><td>" + vPhone + "</td></tr>" +
+              "<tr><td>Contact Email:  </td><td>" + vEmail + "</td></tr>" +
+              "<tr><td>Last Modified:  </td><td>" + vLastModified + "</td></tr></table>" +
+              "<h3>Master Address</h3>" + 
+              vAddrHtml + "</table>" +
+              "<br><hr><br><button type=\"submit\" id=\"contact-submit\" onClick=\"updateAddress()\">Update Address</button>" +
+              "<h3>Source Information</h3>" + 
+              vSourceHtml + "</table>" + 
+              "<br><hr><br><button type=\"submit\" id=\"contact-submit\" onClick=\"displayCustomers()\">Return to List</button>";
+              document.getElementById("customers").innerHTML = html;
           });
         }
-      function padDigits(number, digits) {
-        return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
-      }
-      function checkDate(argDate){
-        if (argDate) {
-          return argDate.toLocaleDateString();
-        } else {
-          return "";
+        function formatDate(argdate){
+          var date = argdate.getFullYear()+'-'+padDigits((argdate.getMonth()+1),2) +'-'+padDigits(argdate.getDate(),2);
+          var time = padDigits(argdate.getHours(),2) + ":" + padDigits(argdate.getMinutes(),2) + ":" + padDigits(argdate.getSeconds(),2);
+          var dateTime = date+' '+time;
+          return dateTime;
         }
-      }
-      function formatDate(argdate){
-        var date = argdate.getFullYear()+'-'+padDigits((argdate.getMonth()+1),2) +'-'+padDigits(argdate.getDate(),2);
-        var time = padDigits(argdate.getHours(),2) + ":" + padDigits(argdate.getMinutes(),2) + ":" + padDigits(argdate.getSeconds(),2);
-        var dateTime = date+' '+time;
-        return dateTime;
-      }
-      function addCustomer() {
-        const cID = document.getElementById('customer_id');
-        const cFname = document.getElementById('first_name');
-        const cLname = document.getElementById('last_name');
-        const cGender = document.getElementById('gender');
-        const cDob = document.getElementById('dob');
-        const cPhone = document.getElementById('contact_phone');
-        const cEmail = document.getElementById('contact_email');
-        var nDate = new Date();
-        db.collection('master').updateOne(
-          {_id: new stitch.BSON.ObjectId(cID.value)},
-          {$set: {
-            owner_id: client.auth.user.id,
-            "master.first_name": cFname.value,
-            "master.last_name": cLname.value,
-            "master.gender": cGender.value,
-            "master.dob": cDob.value,
-            "master.phone": cPhone.value,
-            "master.email": cEmail.value,
-            last_modified: nDate
+        function addCustomer() {
+          const cID = document.getElementById('customer_id');
+          const cFname = document.getElementById('first_name');
+          const cMname = document.getElementById('middle_name');
+          const cLname = document.getElementById('last_name');
+          const cGender = document.getElementById('gender');
+          const cDob = document.getElementById('dob');
+          const cPhone = document.getElementById('contact_phone');
+          const cEmail = document.getElementById('contact_email');
+          var nDate = new Date();
+          db.collection('master').updateOne(
+            {_id: new stitch.BSON.ObjectId(cID.value)},
+            {$set: {
+              owner_id: client.auth.user.id,
+              "master.first_name": cFname.value,
+              "master.middle_name": cMname.value,
+              "master.last_name": cLname.value,
+              "master.gender": cGender.value,
+              "master.dob": cDob.value,
+              "master.phone": cPhone.value,
+              "master.email": cEmail.value,
+              last_modified: nDate
+              }
+            },
+            {upsert: true}
+          )
+          .then(displayCustomers);
+        }
+        async function updateAddress() {
+          const cID = document.getElementById('customer_id');
+          const cStreet = document.getElementById('street');
+          const cCity = document.getElementById('city');
+          const cState = document.getElementById('state');
+          const cZip = document.getElementById('zip');
+          var nDate = new Date();
+          await db.collection('master').updateOne(
+            {_id: new stitch.BSON.ObjectId(cID.value)},
+            {$set: {
+              owner_id: client.auth.user.id,
+              "master.address.0.street": cStreet.value,
+              "master.address.0.city": cCity.value,
+              "master.address.0.state": cState.value,
+              "master.address.0.zip": cZip.value,
+              last_modified: nDate
+              }
             }
-          },
-          {upsert: true}
-        )
-        .then(displayCustomers);
-      }
-     
-    </script>
-  </head>
-  <body onload="displayCustomersOnLoad()">
-    <table><tr><td>
-        <div id="contact" class="container">
-            <img src="logo.png">
-            <h3>Customer Information</h3>
-            Find Customer:
-            <fieldset><input type="text" placeholder="Customer ID:" id="s_customer_id"></fieldset>
-            <fieldset><input type="text" placeholder="Contact Phone:" id="s_contact_phone"></fieldset>
-            <fieldset><input type="text" placeholder="First Name:" id="s_fname"></fieldset>
-            <fieldset><input type="text" placeholder="Last Name:" id="s_lname"></fieldset>
-            <fieldset><input type="text" placeholder="Gender:" id="s_gender"></fieldset>
-            <button type="submit" id="contact-submit" onClick="displayCustomers()">Search</button>
-            <hr>
-            <br>
-            Add Customer:
-            <fieldset><input type="text" placeholder="Customer ID:" id="customer_id"></fieldset>
-            <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
-            <fieldset><input type="text" placeholder="Last Name:" id="last_name"></fieldset>
-            <fieldset><input type="text" placeholder="Gender:" id="gender"></fieldset>
-            <fieldset><input type="text" placeholder="DOB:" id="dob"></fieldset>
-            <fieldset><input type="text" placeholder="Contact Phone:" id="contact_phone"></fieldset>
-            <fieldset><input type="text" placeholder="Contact Email:" id="contact_email"></fieldset>
-            <button type="submit" id="contact-submit" onClick="addCustomer()">Update</button>
-        </div>
-    </td>
-    <td>
-    <div id="contact">
-        <div id="customers">Loading...<br><img src="loading.gif"></div>
-    </div>
-    </td>
-    </tr>
-    </table>
-</body>
-</html>
+          )
+          .then(displayCustomers);
+        }
+      </script>
+    </head>
+    <body onload="displayCustomersOnLoad()">
+      <table><tr><td>
+          <div id="contact" class="container">
+              <img src="logo.png">
+              <h3>Customer Information</h3>
+              Find Customer:
+              <fieldset><input type="text" placeholder="Customer ID:" id="s_customer_id"></fieldset>
+              <fieldset><input type="text" placeholder="Contact Phone:" id="s_contact_phone"></fieldset>
+              <fieldset><input type="text" placeholder="First Name:" id="s_fname"></fieldset>
+              <fieldset><input type="text" placeholder="Last Name:" id="s_lname"></fieldset>
+              <fieldset><input type="text" placeholder="Gender:" id="s_gender"></fieldset>
+              <button type="submit" id="contact-submit" onClick="displayCustomers()">Search</button>
+              <hr>
+              <br>
+              Add Customer:
+              <fieldset><input type="text" placeholder="Customer ID:" id="customer_id"></fieldset>
+              <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
+              <fieldset><input type="text" placeholder="Middle Name:" id="middle_name"></fieldset>
+              <fieldset><input type="text" placeholder="Last Name:" id="last_name"></fieldset>
+              <fieldset><input type="text" placeholder="Gender:" id="gender"></fieldset>
+              <fieldset><input type="text" placeholder="DOB:" id="dob"></fieldset>
+              <fieldset><input type="text" placeholder="Contact Phone:" id="contact_phone"></fieldset>
+              <fieldset><input type="text" placeholder="Contact Email:" id="contact_email"></fieldset>
+              <button type="submit" id="contact-submit" onClick="addCustomer()">Update</button>
+          </div>
+      </td>
+      <td>
+      <div id="contact">
+          <div id="customers">Loading...<br><img src="loading.gif"></div>
+      </div>
+      </td>
+      </tr>
+      </table>
+  </body>
+  </html>
