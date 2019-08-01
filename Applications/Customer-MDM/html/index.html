@@ -81,8 +81,7 @@
         return dateTime;
       }
       function addCustomer() {
-        const cID = document.getElementById('_id');
-        const desc = document.getElementById('description');
+        const cID = document.getElementById('customer_id');
         const cFname = document.getElementById('first_name');
         const cLname = document.getElementById('last_name');
         const cPhone = document.getElementById('contact_phone');
@@ -90,18 +89,13 @@
         const sShipDate = document.getElementById('ship_date');
         var nDate = new Date();
         db.collection('master').updateOne(
-          {_id: objectId(sID.value)},
+          {_id: cID.value},
           {$set: {
             owner_id: client.auth.user.id,
-            shipment_id: parseInt(sID.value),
-            description: desc.value,
-            customer_id: cID.value,
-            first_name: cFname.value,
-            last_name: cLname.value,
-            contact_phone: cPhone.value,
-            contact_email: cEmail.value,
-            //ship_date: new Date(sShipDate.value),
-            ship_date: sShipDate.value,
+            "master.first_name": cFname.value,
+            "master.last_name": cLname.value,
+            "master.phone": cPhone.value,
+            "master.email": cEmail.value,
             last_modified: nDate
             }
           },
@@ -125,16 +119,12 @@
             <fieldset><input type="text" placeholder="Gender:" id="s_gender"></fieldset>
             <button type="submit" id="contact-submit" onClick="displayCustomers()">Search</button>
             Add Customer:
-            <fieldset><input type="text" placeholder="Customer ID:" id="shipment_id"></fieldset>
-            <fieldset><input type="text" placeholder="Customer Description:" id="description"></fieldset>
             <fieldset><input type="text" placeholder="Customer ID:" id="customer_id"></fieldset>
             <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
             <fieldset><input type="text" placeholder="Last Name:" id="last_name"></fieldset>
             <fieldset><input type="text" placeholder="Contact Phone:" id="contact_phone"></fieldset>
             <fieldset><input type="text" placeholder="Contact Email:" id="contact_email"></fieldset>
-            <fieldset><input type="text" placeholder="Ship Date (MM/DD/YYYY):" id="ship_date"></fieldset>
             <button type="submit" id="contact-submit" onClick="addCustomer()">Update</button>
-            <br><hr><br>Show QR Code:   <input type="checkbox" id="show_qr_code" onClick="showQRcode()">
         </div>
     </td>
     <td>
