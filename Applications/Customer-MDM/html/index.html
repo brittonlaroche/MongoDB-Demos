@@ -1,0 +1,148 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./customer.css">
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+      /* NOTE: handle your API key with another method than what is provided in this example 
+       * (dont paste your API key in your code its easily obtained by the browser view source)
+       * API key is pasted here for a simple prototype example with out key management 
+       */       
+      const credential = new stitch.UserApiKeyCredential("pC4Zh114GuVouc9DDBGO0UeZlIpo7UppPuzQJwBfThapugCViKBs0I4xFdUIBwbc");
+      const client = stitch.Stitch.initializeDefaultAppClient('customer-rytyl');
+      const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('single');
+      function displayCustomersOnLoad() {
+        client.auth
+          .loginWithCredential(credential)
+          .then(displayCustomers)
+          .catch(console.error);
+      }
+      function displayCustomers() {
+        var searchDoc = {};
+        var sCust = document.getElementById('s_customer_id'); 
+        var sPhone = document.getElementById('s_contact_phone');
+        var sFname = document.getElementById('s_fname');
+        var sLname = document.getElementById('s_lname'); 
+        var sGender = document.getElementById('s_gender'); 
+        if ( sGender.value != "") {
+          searchDoc = {"master.gender": sGender.value }; 
+        }
+        if ( sPhone.value != "") {
+          searchDoc = {"master.phone": { $regex: new RegExp(sPhone.value) }}; 
+        }
+        if ( sFname.value != "") {
+          searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value) }}; 
+        }
+        if ( sLname.value != "") {
+          searchDoc = {"master.last_name": { $regex: new RegExp(sLname.value) }}; 
+        }
+        if ( sFname.value != "" && sLname.value != "") {
+          searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value)}, "master.last_name": { $regex: new RegExp(sLname.value) }}; 
+        }
+        if ( sCust.value != "") {
+          searchDoc = {_id: { $regex: new RegExp(sCust.value)}}; 
+        }
+        const tStrt = "<div><table class=\"blueTable\"><tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th>" +
+          "<th>Conact Phone</th><th>Email</th><th>last_modified</th><th>Edit</th></tr>";
+          db.collection('master').find(searchDoc, {limit: 30}).asArray()
+            .then(docs => {
+              const html = docs.map(c => "<tr>" +
+                "<td>" + c._id +  "</td>" +
+                "<td>" + c.master.first_name + " " + c.master.last_name + "</td>" +
+                "<td>" + c.master.gender + "</td>" + 
+                "<td>" + c.master.dob + "</td>" +
+                "<td>" + c.master.phone + "</td>" + 
+                "<td>" + c.master.email + "</td>" +
+                "<td>" + c.last_modified + "</td>" +
+                "<td>" +
+                "<button type=\"checkbox\" class=\"blueTable\"" +
+                "onClick=\"editCustomer(\'" + c._id +"\')\">" +
+                "<i class=\"material-icons\" style=\"font-size:18px\">" +
+                "mode_edit</i></button>" + 
+                "</td>" +
+                "</tr>").join("");
+              document.getElementById("customers").innerHTML = tStrt + html + "</table></div>";
+          });
+        }
+      function padDigits(number, digits) {
+        return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
+      }
+      function checkDate(argDate){
+        if (argDate) {
+          return argDate.toLocaleDateString();
+        } else {
+          return "";
+        }
+      }
+      function formatDate(argdate){
+        var date = argdate.getFullYear()+'-'+padDigits((argdate.getMonth()+1),2) +'-'+padDigits(argdate.getDate(),2);
+        var time = padDigits(argdate.getHours(),2) + ":" + padDigits(argdate.getMinutes(),2) + ":" + padDigits(argdate.getSeconds(),2);
+        var dateTime = date+' '+time;
+        return dateTime;
+      }
+      function addCustomer() {
+        const cID = document.getElementById('_id');
+        const desc = document.getElementById('description');
+        const cFname = document.getElementById('first_name');
+        const cLname = document.getElementById('last_name');
+        const cPhone = document.getElementById('contact_phone');
+        const cEmail = document.getElementById('contact_email');
+        const sShipDate = document.getElementById('ship_date');
+        var nDate = new Date();
+        db.collection('master').updateOne(
+          {_id: objectId(sID.value)},
+          {$set: {
+            owner_id: client.auth.user.id,
+            shipment_id: parseInt(sID.value),
+            description: desc.value,
+            customer_id: cID.value,
+            first_name: cFname.value,
+            last_name: cLname.value,
+            contact_phone: cPhone.value,
+            contact_email: cEmail.value,
+            //ship_date: new Date(sShipDate.value),
+            ship_date: sShipDate.value,
+            last_modified: nDate
+            }
+          },
+          {upsert: true}
+        )
+        .then(displayShipments);
+      }
+     
+    </script>
+  </head>
+  <body onload="displayCustomersOnLoad()">
+    <table><tr><td>
+        <div id="contact" class="container">
+            <img src="logo.png">
+            <h3>Shipment Information</h3>
+            Find Shipment:
+            <fieldset><input type="text" placeholder="Customer ID:" id="s_customer_id"></fieldset>
+            <fieldset><input type="text" placeholder="Contact Phone:" id="s_contact_phone"></fieldset>
+            <fieldset><input type="text" placeholder="First Name:" id="s_fname"></fieldset>
+            <fieldset><input type="text" placeholder="Last Name:" id="s_lname"></fieldset>
+            <fieldset><input type="text" placeholder="Gender:" id="s_gender"></fieldset>
+            <button type="submit" id="contact-submit" onClick="displayCustomers()">Search</button>
+            Add Shipment:
+            <fieldset><input type="text" placeholder="Shipment ID:" id="shipment_id"></fieldset>
+            <fieldset><input type="text" placeholder="Shipment Description:" id="description"></fieldset>
+            <fieldset><input type="text" placeholder="Customer ID:" id="customer_id"></fieldset>
+            <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
+            <fieldset><input type="text" placeholder="Last Name:" id="last_name"></fieldset>
+            <fieldset><input type="text" placeholder="Contact Phone:" id="contact_phone"></fieldset>
+            <fieldset><input type="text" placeholder="Contact Email:" id="contact_email"></fieldset>
+            <fieldset><input type="text" placeholder="Ship Date (MM/DD/YYYY):" id="ship_date"></fieldset>
+            <button type="submit" id="contact-submit" onClick="addShipment()">Update</button>
+            <br><hr><br>Show QR Code:   <input type="checkbox" id="show_qr_code" onClick="showQRcode()">
+        </div>
+    </td>
+    <td>
+    <div id="contact">
+        <div id="customers">Loading...<br><img src="loading.gif"></div>
+    </div>
+    </td>
+    </tr>
+    </table>
+</body>
+</html>
