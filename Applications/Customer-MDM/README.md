@@ -121,3 +121,23 @@ The entire project will be created and hosted in the cloud.  All of the function
 
 
 ## ![2](../../Stitch/tools/img/2b.png) Accessing customer data through a REST based API
+Lets begin by inserting some source data in real time through a REST based API.
+
+```js
+    {
+      "_id": "B-0422755",
+      "first_name": "ANITA",
+      "middle_name": "MARION",
+      "last_name": "COLE",
+      "gender": "FEMALE",
+      "dob": "1980-02-09",
+      "address": {
+        "street": "4620 FRANKLIN STREET",
+        "city": "SANTA ROSA",
+        "state": "CA",
+        "zip": "95409"
+      },
+      "phone": "+14823008925",
+      "email": "ox@tjwq.com"
+    }
+```
