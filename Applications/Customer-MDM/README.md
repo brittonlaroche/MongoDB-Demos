@@ -32,7 +32,7 @@ Our job is to ingest data from all these sources and both preserve a record of t
 
 ## Sample Customer Document
 
-```json
+```js
 {
   "master": {
     "first_name": "CRYSTAL",
