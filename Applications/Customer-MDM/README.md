@@ -121,23 +121,27 @@ The entire project will be created and hosted in the cloud.  All of the function
 
 
 ## ![2](../../Stitch/tools/img/2b.png) Accessing customer data through a REST based API
-Lets begin by inserting some source data in real time through a REST based API.
+Lets begin by inserting some source data in real time through a REST based API.  Lets assume System B is Katana's online service.  When a user logs in and designs the car they wish to purcahse online, by selecting the model number, color, engine size etc... they are given the opportunity of registering their customer information and saving the selection in their profile.  When they save their customer profile the Katana online service sends a json document through a REST API represnting the customer profile information.
+
+Below is an example of this csutomer profile json document.
 
 ```js
     {
-      "_id": "B-0422755",
-      "first_name": "ANITA",
-      "middle_name": "MARION",
+      "_id": "B-04227551",
+      "first_name": "MARION",
+      "middle_name": "ANITA",
       "last_name": "COLE",
       "gender": "FEMALE",
-      "dob": "1980-02-09",
+      "dob": "1980-02-08",
       "address": {
         "street": "4620 FRANKLIN STREET",
         "city": "SANTA ROSA",
         "state": "CA",
         "zip": "95409"
       },
-      "phone": "+14823008925",
+      "phone": "+14823008921",
       "email": "ox@tjwq.com"
     }
 ```
+
+Due to the CCPA Katana wishes to store this document in their MongoDB Customer MDM.  Our first step is to create an HTTP service and a webhook that exposes this service through a url.  
