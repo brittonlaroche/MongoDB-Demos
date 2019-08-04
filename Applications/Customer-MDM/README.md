@@ -31,7 +31,7 @@ Customer data will be loaded into the Customer MDM as new customers come into th
 Our job is to ingest data from all these sources and both preserve a record of the data as it exists in each of these systems as well as a master copy that reconciles the customer into a single view and golden source of truth across all of the systems.
 
 ## Data Flow
-A basic data flow diagram was put together to solve the MDM problem.  The dealerships used a legacy system (source system A) which would require a nightly batch process and an ETL program to load data into mongo.  The Katana and Legacy online services (source systems B and C) have the ability to use a REST API and send JSON documents in real time.
+A basic data flow diagram was put together to solve the MDM problem.  The dealerships used a legacy system (source system A) which requires a nightly batch process and an ETL program to load data into MongoDB.  The Katana and Legacy online services (source systems B and C) have the ability to use a REST API and send JSON documents in real time.
 
 ![DFD](img/dataflowdiagram.jpg "Data Flow Diagram")  
 
