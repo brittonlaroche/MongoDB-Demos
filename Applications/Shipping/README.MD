@@ -4,7 +4,7 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 ## Tutorial Contents 
 (Note: This prototype tutorial is hands on and should take an estimated time of less than 60 minutes)
 1. [Overview](.)
-2. [Accesing shipment data through a REST based API](tutorial/rest/README.md)
+2. [Accessing shipment data through a REST based API](tutorial/rest/README.md)
 3. [Tiggers and Functions](tutorial/triggers/README.md)
 4. [QueryAnywhere](tutorial/queryAnywhere/README.md)
 5. [Importing from GitHub: Stitch Command Line tool](tutorial/cli/README.md)
