@@ -12,10 +12,10 @@ _Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 5. [Importing from GitHub: Stitch Command Line tool](README.md)
 6. [Host your application tutorial](README.md)  
 
-## Overview 
-![Katana](img/katanalogo.png "Katana")  
-
+## ![1](../../Stitch/tools/img/1b.png) Overview 
 We've been hired by a fictitious auto manufacturing company called "Katana" to build a customer MDM application prototype.  Katana has a global market place consisting of automobile dealerships, online websites, and financial services for its customers of its two major brands. __"Katana"__ motors sells quality family vehicles, and its high end luxury brand __"Legacy"__ sells high performance extreemly high end luxury vehicles.  Each brand has its own set of dealerships and systems that repersent the customer in a variety of different ways.  Katana may have the same customer or the same customer household buying both brands and is unaware that these two apparently different customers may be the same individual buying cars for the same household.
+
+![Katana](img/katanalogo.png "Katana")  
 
 You have been tasked to create a minimum viable product (MVP), a basic protype, of a customer MDM application across all dealerships and online sites for both Kanakata and Legacy brands. They wish to test both the functionality and performance of the application.  The functionality includes identifying a single customer from all systems and providing customer updates in real time to their third party dealerships and financing division.
 
@@ -120,5 +120,4 @@ We will create some additional components as well.  We will create a REST API se
 The entire project will be created and hosted in the cloud.  All of the functions, triggers and procedures will run in Stitch as serverless compute.  The data will reside in Atlas and be accessed via database as a service.
 
 
-## Next Steps
-Continue to the next section to begin the process of [Accesing customer data through a REST based API](README.md)
+## ![2](../../Stitch/tools/img/2b.png) Accesing customer data through a REST based API
