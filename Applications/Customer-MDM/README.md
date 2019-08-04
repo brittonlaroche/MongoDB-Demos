@@ -33,7 +33,7 @@ Our job is to ingest data from all these sources and both preserve a record of t
 ## Data Flow
 A basic data flow diagram was put together to solve the MDM problem.  The dealerships used a legacy system (source system A) which would require a nightly batch process and an ETL program to load data into mongo.  The Katana and Legacy online services (source systems B and C) have the ability to use a REST API and send JSON documents in real time.
 
-![DFD](img/kankatasedan4.jpg "Data Flow Diagram")  
+![DFD](img/dataflowdiagram.jpg "Data Flow Diagram")  
 
 MongoDB has three colections to manage the customer data.  As data comes in from the various sources they are loaded into a __"source"__ collection.  A grouping function is used to group customer data together in documents based on specified rules and criteria found in the source documents.  Once grouped together a new document is inserted into the __"group"__ collection.  A final process runs to pick which fields of the grouped source documents will be used in the master record.  The final master record is inserted into the master collection.
 
