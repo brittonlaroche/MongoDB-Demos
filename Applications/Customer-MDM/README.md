@@ -6,7 +6,7 @@ _Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 ## Tutorial Contents 
 (Note: This prototype tutorial is hands on and should take an estimated time of less than 60 minutes)
 1. [Overview](.)
-2. [Accesing customer data through a REST based API](README.md)
+2. [Accessing customer data through a REST based API](README.md)
 3. [QueryAnywhere](README.md)
 4. [Tiggers and Functions](README.md)
 5. [Importing from GitHub: Stitch Command Line tool](README.md)
