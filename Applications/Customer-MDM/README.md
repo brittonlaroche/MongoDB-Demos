@@ -57,7 +57,7 @@ Lets take a look at one of the documents produced from this process.  The master
       }
     ],
     "phone": "+13976946512",
-    "email": "kezzo@myant.d"
+    "email": "kezzo@myant.com"
   },
   "sources": [
     {
