@@ -6,8 +6,8 @@ _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.co
 (Note: This prototype tutorial is hands on and should take an estimated time of less than 60 minutes)
 1. [Overview](.)
 2. [Accesing customer data through a REST based API](README.md)
-3. [Tiggers and Functions](README.md)
-4. [QueryAnywhere](README.md)
+3. [QueryAnywhere](README.md)
+4. [Tiggers and Functions](README.md)
 5. [Importing from GitHub: Stitch Command Line tool](README.md)
 6. [Host your application tutorial](README.md)  
 
