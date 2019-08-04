@@ -118,3 +118,7 @@ This hands on lab will cover the entire process (except the ETL process) in the 
 We will create some additional components as well.  We will create a REST API service that will allow the master document to be queried and updated, with new source data merged and split as needed.  We will create a web based browser that uses the stitch SDK to create a broswer client with the full capabilities of stitch QueryAnywhere to access and manage the customer master data.
 
 The entire project will be created and hosted in the cloud.  All of the functions, triggers and procedures will run in Stitch as serverless compute.  The data will reside in Atlas and be accessed via database as a service.
+
+
+## Next Steps
+Continue to the next section to begin the process of [Accesing customer data through a REST based API](README.md)
