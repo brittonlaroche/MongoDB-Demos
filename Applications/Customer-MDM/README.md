@@ -6,7 +6,7 @@ _Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 ## Tutorial Contents 
 (Note: This prototype lab is hands on and should take an estimated time of less than 120 minutes)
 1. [Overview](#-overview)
-2. [Accessing customer data through a REST based API](#-accesing-customer-data-through-a-rest-based-api)
+2. [Accessing customer data through a REST based API](#-accessing-customer-data-through-a-rest-based-api)
 3. [QueryAnywhere](README.md)
 4. [Tiggers and Functions](README.md)
 5. [Importing from GitHub: Stitch Command Line tool](README.md)
@@ -120,4 +120,4 @@ We will create some additional components as well.  We will create a REST API se
 The entire project will be created and hosted in the cloud.  All of the functions, triggers and procedures will run in Stitch as serverless compute.  The data will reside in Atlas and be accessed via database as a service.
 
 
-## ![2](../../Stitch/tools/img/2b.png) Accesing customer data through a REST based API
+## ![2](../../Stitch/tools/img/2b.png) Accessing customer data through a REST based API
