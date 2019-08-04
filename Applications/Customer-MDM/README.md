@@ -1,6 +1,7 @@
 
 # Customer MDM Application
 _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
+_Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)   
 
 ## Tutorial Contents 
 (Note: This prototype tutorial is hands on and should take an estimated time of less than 60 minutes)
