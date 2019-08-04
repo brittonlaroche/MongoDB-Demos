@@ -29,3 +29,77 @@ The desire is to have a serverless REST based API layer to service the myriad of
 Customer data will be loaded into the Customer MDM as new customers come into the website and sign up for promotional offerings.  Customer data will also come into the Customer MDM with nightly batch loads from Katana financial services for the previous days loan applications.  The two different dealerships also load prospective customers and customer purchase data when a vehicle is taken for a test drive or purchased.  All of these websites and dealerships have a variety of data formats.
 
 Our job is to ingest data from all these sources and both preserve a record of the data as it exists in each of these systems as well as a master copy that reconciles the customer into a single view and golden source of truth across all of the systems.
+
+## Sample Customer Document
+
+```json
+{
+  "master": {
+    "first_name": "CRYSTAL",
+    "middle_name": "RACHAEL",
+    "last_name": "POSEY",
+    "gender": "FEMALE",
+    "dob": "1977-04-02",
+    "address": [
+      {
+        "street": "5438 LINCOLN DRIVE",
+        "city": "PASADENA",
+        "state": "CA",
+        "zip": "91106"
+      }
+    ],
+    "phone": "+13976946512",
+    "email": "kezzo@myant.d"
+  },
+  "sources": [
+    {
+      "_id": "A-0015041",
+      "first_name": "CRYSTAL",
+      "middle_name": "RACHAEL",
+      "last_name": "POSEY",
+      "gender": "FEMALE",
+      "dob": "1977-04-02",
+      "address": {
+        "street": "5438 LINCOLN DRIVE",
+        "city": "PASADENA",
+        "state": "CA",
+        "zip": "91106"
+      },
+      "phone": "+13976946512",
+      "email": "kezzom@gmail.com"
+    },
+    {
+      "_id": "B-0316609",
+      "first_name": "CRYSTAL",
+      "middle_name": "RACHAEL",
+      "last_name": "POSEY",
+      "gender": "FEMALE",
+      "dob": "1977-04-02",
+      "address": {
+        "street": "5438 LINCOLN DRIVE",
+        "city": "PASADENA",
+        "state": "CA",
+        "zip": "91106"
+      },
+      "phone": "+13976946512",
+      "email": "kezzo@myant.com"
+    },
+    {
+      "_id": "C-0716405",
+      "first_name": "CRYSTAL",
+      "middle_name": "RACHAEL",
+      "last_name": "POSEY",
+      "gender": "FEMALE",
+      "dob": "1977-04-02",
+      "address": {
+      "street": "5348 LINCOLN DRIVE",
+      "city": "PASADENA",
+      "state": "CA",
+      "zip": "91106"
+      },
+      "phone": "+13976946512",
+      "email": "kezzo@yahoo.com"
+    }
+  ]
+}
+```
