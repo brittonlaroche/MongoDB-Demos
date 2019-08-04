@@ -74,7 +74,7 @@ Our job is to ingest data from all these sources and both preserve a record of t
       "middle_name": "RACHAEL",
       "last_name": "POSEY",
       "gender": "FEMALE",
-      "dob": "1977-04-02",
+      "dob": "1977-02-04",
       "address": {
         "street": "5438 LINCOLN DRIVE",
         "city": "PASADENA",
