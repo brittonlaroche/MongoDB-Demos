@@ -60,7 +60,7 @@ Our job is to ingest data from all these sources and both preserve a record of t
       "gender": "FEMALE",
       "dob": "1977-04-02",
       "address": {
-        "street": "5438 LINCOLN DRIVE",
+        "street": "1432 PALOMA DRIVE, APT. 421",
         "city": "PASADENA",
         "state": "CA",
         "zip": "91106"
