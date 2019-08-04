@@ -35,9 +35,10 @@ A basic data flow diagram was put together to solve the MDM problem.  The dealer
 
 ![DFD](img/dataflowdiagram.jpg "Data Flow Diagram")  
 
-MongoDB has three colections to manage the customer data.  As data comes in from the various sources they are loaded into a __"source"__ collection.  A grouping function is used to group customer data together in documents based on specified rules and criteria found in the source documents.  Once grouped together a new document is inserted into the __"group"__ collection.  A final process runs to pick which fields of the grouped source documents will be used in the master record.  The final master record is inserted into the master collection.
+MongoDB has three colections to manage the customer data.  As data comes in from the various sources they are loaded into a __"source"__ collection.  A grouping function is used to group customer data together in documents based on specified rules and criteria found in the source documents.  Once grouped together a new document is inserted into the __"group"__ collection.  A final process runs to pick which fields of the grouped source documents will be used in the master record.  The final master record is inserted into the __"master"__ collection.
 
 ## Sample Customer Document
+Lets take a look at one of the documents produced from this process.  The master docuemnt has all the information relevant to the customer.  The master object has the fields that were selected from all the source systems.  Each of the source systems are listed in an array with the data as it currently is in each of the source systems.  We notice a few descrepancies between each of the systems. The email and physical addresses are different in some cases, and it looks like one system transposed the day and month of the customers birth date.
 
 ```js
 {
@@ -110,3 +111,7 @@ MongoDB has three colections to manage the customer data.  As data comes in from
   ]
 }
 ```
+
+This tutorial will cover the entire process (except the ETL process) in the data flow diagram. We will create the REST API that allows the source data to be inserted from the micro services. We will create the basics of the grouping and mastering functions. 
+
+We will create some additional components as well.  We will create a REST API service that will allow the master document to be queried and updated, with new source data merged and split as needed.  We will create a web based browser that uses the stitch SDK to create a broswer client with the full capabilities of stitch QueryAnywhere to access and manage the customer master data.
