@@ -148,6 +148,8 @@ Below is an example of this csutomer profile json document.
 
 Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the id value and car selections in System B.  Our first step is to create a stitch HTTP service to recieve this data and store it in MongoDB.  To do create the Stitch service we must begin by creating a Stitch application.  To create a stitch application we need to have an Atlas cluster.  Lets begin by creating an atlas cluster.
 
+![end](../../Stitch/tools/img/section-end.png)
+
 ## ![2](../../Stitch/tools/img/2b.png) Create the Atlas cluster
 
 Open a modern browser (like google chrome) and go to https://cloud.mongodb.com.  Register for an atlas account by clicking the __"get started free"__ button.
@@ -166,7 +168,9 @@ This will bring up window promptin you to build your first cluster.  Click the _
 
 ![Name your cluster](../../Stitch/tools/img/register4.jpg "Name your cluster")   
 
-__"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
+__"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.   
+
+![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![3](../../Stitch/tools/img/3b.png) Create the Stitch Application
 
@@ -177,6 +181,8 @@ Next we will create our fist Stitch application. This task is accomplished by se
 We click the large green button labeled __"Create new Application"__ and give the application a name.  In this case we will name our application __"customer"__   
 
 Click the little green __"Create"__ button in the lower right hand of the popup window.  The stitch application console will appear as soon as the application has been created and linked with the cluster. 
+
+![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![4](../../Stitch/tools/img/4b.png) Accessing customer data through a REST based API
 
