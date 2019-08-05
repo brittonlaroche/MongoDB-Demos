@@ -167,8 +167,7 @@ This will bring up window promptin you to build your first cluster.  Click the _
 
 __"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
-Next we will create our fist Stitch application.  
-This task is accomplished by selecting __"Stitch"__ from the left hand navigation menu of the cluster we just created.
+Next we will create our fist Stitch application. This task is accomplished by selecting __"Stitch"__ from the left hand navigation menu of the cluster we just created.
 
 ![Application](img/createstitchapp.jpg)
 
