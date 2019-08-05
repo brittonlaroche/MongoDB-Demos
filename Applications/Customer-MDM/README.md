@@ -6,8 +6,8 @@ _Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 ## Tutorial Contents 
 (Note: This prototype lab is hands on and should take an estimated time of less than 120 minutes)
 1. [Overview](#-overview)
-2. 
-3.
+2. [Create the Atlas Cluster](#-create-the-atlas-cluster)
+3. [Create the Stitch Application](#-create-the-stitch-application)
 3. [Accessing customer data through a REST based API](#-accessing-customer-data-through-a-rest-based-api)
 4. [QueryAnywhere](README.md)
 5. [Tiggers and Functions](README.md)
