@@ -1,6 +1,8 @@
 # Shipping Application
 _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 
+![Shipping](../img/shipping.jpg)
+
 ## Tutorial Contents 
 (Note: This prototype tutorial is hands on and should take an estimated time of less than 60 minutes)
 1. [Overview](.)
