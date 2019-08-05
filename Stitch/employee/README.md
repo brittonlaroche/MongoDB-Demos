@@ -2,6 +2,8 @@
 _SA Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
 (Note: This tutorial builds upon concepts learned in the official [MongoDB blog](https://docs.mongodb.com/stitch/tutorials/blog-overview/) tutorial.)
 
+![HR App](../../Applications/img/hr.png)
+
 ## Tutorial Contents 
 (Note: All HR tutorials are hands on and should take an estimated time of less than 20 minutes)
 1. [MongoDB blog tutorial](../blog)
