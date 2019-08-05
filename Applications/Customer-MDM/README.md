@@ -6,11 +6,13 @@ _Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 ## Tutorial Contents 
 (Note: This prototype lab is hands on and should take an estimated time of less than 120 minutes)
 1. [Overview](#-overview)
-2. [Accessing customer data through a REST based API](#-accessing-customer-data-through-a-rest-based-api)
-3. [QueryAnywhere](README.md)
-4. [Tiggers and Functions](README.md)
-5. [Importing from GitHub: Stitch Command Line tool](README.md)
-6. [Host your application tutorial](README.md)  
+2. 
+3.
+3. [Accessing customer data through a REST based API](#-accessing-customer-data-through-a-rest-based-api)
+4. [QueryAnywhere](README.md)
+5. [Tiggers and Functions](README.md)
+6. [Importing from GitHub: Stitch Command Line tool](README.md)
+7. [Host your application tutorial](README.md)  
 
 ## ![1](../../Stitch/tools/img/1b.png) Overview 
 We've been hired by a fictitious auto manufacturing company called "Katana" to build a customer MDM application prototype.  Katana has a global market place consisting of automobile dealerships, online websites, and financial services for its customers of its two major brands. __"Katana"__ motors sells quality family vehicles, and its high end luxury brand __"Legacy"__ sells high performance extreemly high end luxury vehicles.  Each brand has its own set of dealerships and systems that repersent the customer in a variety of different ways.  Katana may have the same customer or the same customer household buying both brands and is unaware that these two apparently different customers may be the same individual buying cars for the same household.
@@ -119,9 +121,9 @@ We will create some additional components as well.  We will create a REST API se
 
 The entire project will be created and hosted in the cloud.  All of the functions, triggers and procedures will run in Stitch as serverless compute.  The data will reside in Atlas and be accessed via database as a service.  The power behind this solution offers an auto scalable maintenace free implementation of a Customer MDM.
 
+Where do we begin?
 
-## ![2](../../Stitch/tools/img/2b.png) Accessing customer data through a REST based API
-Lets begin by inserting some source data in real time through a REST based API.  Lets assume System B is Katana's online service.  When a user designs the car they wish to purchase on Katana's online website, by selecting the model number, color, engine size etc... they are given the opportunity of registering their customer information and saving the selection in their profile.  When they save their customer profile the Katana online service sends a json document through a REST API represnting the customer profile information to MongoDB stitch.
+Lets assume System B is Katana's online service.  When a user designs the car they wish to purchase on Katana's online website, by selecting the model number, color, engine size etc... they are given the opportunity of registering their customer information and saving the selection in their profile.  When they save their customer profile the Katana online service sends a json document through a REST API represnting the customer profile information to MongoDB stitch.
 
 Below is an example of this csutomer profile json document.
 
@@ -146,7 +148,7 @@ Below is an example of this csutomer profile json document.
 
 Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the id value and car selections in System B.  Our first step is to create a stitch HTTP service to recieve this data and store it in MongoDB.  To do create the Stitch service we must begin by creating a Stitch application.  To create a stitch application we need to have an Atlas cluster.  Lets begin by creating an atlas cluster.
 
-### Create your first Atlas cluster
+## ![2](../../Stitch/tools/img/2b.png) Create the Atlas cluster
 
 Open a modern browser (like google chrome) and go to https://cloud.mongodb.com.  Register for an atlas account by clicking the __"get started free"__ button.
 
@@ -158,7 +160,6 @@ Click the __"get started free"__ button.  This will bring up a screen for you to
 
 Fill in your personal information.  Feel free to use your work or personal email address, either is fine as this is your personal "free for life" development environment.  Agree to the terms of service and click the __"get started free"__ button.  
 
-
 ![build your cluster](../../Stitch/tools/img/register3.jpg "build your first cluster")   
 
 This will bring up window promptin you to build your first cluster.  Click the __"build your first cluster"__ button.  When prompted select "Learning MongoDB" as to the reason you are interested in Atlas. After clicking the Click the __"build your first cluster"__ button, you will be prompted to name your cluster.  "
@@ -166,6 +167,8 @@ This will bring up window promptin you to build your first cluster.  Click the _
 ![Name your cluster](../../Stitch/tools/img/register4.jpg "Name your cluster")   
 
 __"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
+
+## ![3](../../Stitch/tools/img/3b.png) Create the Stitch Application
 
 Next we will create our fist Stitch application. This task is accomplished by selecting __"Stitch"__ from the left hand navigation menu of the cluster we just created.
 
@@ -175,5 +178,6 @@ We click the large green button labeled __"Create new Application"__ and give th
 
 Click the little green __"Create"__ button in the lower right hand of the popup window.  The stitch application console will appear as soon as the application has been created and linked with the cluster. 
 
+## ![4](../../Stitch/tools/img/4b.png) Accessing customer data through a REST based API
 
 
