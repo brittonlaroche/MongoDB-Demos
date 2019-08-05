@@ -127,7 +127,7 @@ Where do we begin?
 
 Lets assume System B is Katana's online service.  When a user designs the car they wish to purchase on Katana's online website, by selecting the model number, color, engine size etc... they are given the opportunity of registering their customer information and saving the selection in their profile.  When they save their customer profile the Katana online service sends a json document through a REST API represnting the customer profile information to MongoDB stitch.
 
-Below is an example of this csutomer profile json document.
+Below is an example of this customer profile json document.
 
 ```js
     {
@@ -187,5 +187,32 @@ Click the little green __"Create"__ button in the lower right hand of the popup 
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![4](../../Stitch/tools/img/4b.png) Accessing customer data through a REST based API
+
+When the customer saves their profile the Katana online service sends a json document through a REST API represnting the customer profile information to MongoDB stitch.  We need to create a service that will receive the customer profile as a json document.  
+
+Select the __"Services"__ menu item from the left naviagtion pane of the stitch console.  Click the __"Create New Service"__ button.  Select __"HTTP"__ service and give the service a name of __addCustomerSource__
+
+![Service](img/servicesource1.jpg)
+
+Below is an example of this customer profile json document.
+
+```js
+    {
+      "_id": "B-04227551",
+      "first_name": "MARION",
+      "middle_name": "ANITA",
+      "last_name": "COLE",
+      "gender": "FEMALE",
+      "dob": "1980-02-08",
+      "address": {
+        "street": "4620 FRANKLIN STREET",
+        "city": "SANTA ROSA",
+        "state": "CA",
+        "zip": "95409"
+      },
+      "phone": "+14823008921",
+      "email": "ox@tjwq.com"
+    }
+```
 
 
