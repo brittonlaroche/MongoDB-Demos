@@ -144,4 +144,10 @@ Below is an example of this csutomer profile json document.
     }
 ```
 
-Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the id value and car selections in System B.  Our first step is to create an HTTP service and a webhook that exposes this service through a url.  
+Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the id value and car selections in System B.  Our first step is to create a stitch HTTP service to recieve this data and store it in MongoDB.  To do create the Stitch service we must begin by creating a Stitch application.  To create a stitch application we need to have an Atlas cluster.  Lets begin by creating an atlas cluster.
+
+
+
+
+
+
