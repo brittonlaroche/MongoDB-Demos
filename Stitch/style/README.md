@@ -28,6 +28,12 @@ const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
 
 Now we link the mystyle.css style sheet into the employee.html file right after the "head" tag as seen below:
 
+```
+<link rel="stylesheet" type="text/css" href="./mystyle.css">
+```
+
+It fits in the html file just below the <head> section as seen below:
+
 ```html
 html>
   <head>
@@ -41,6 +47,8 @@ The style sheet has two main classes we wish to use one is named "contact" and t
 ```js
 <table class=\"blueTable\">
 ```
+
+This makes the table use the bluetable class defined in the style sheet.  Its sets the font and background colors to make an eye pleasing table.
 
 It looks like this when finished:
 
@@ -73,7 +81,18 @@ We take the old input section and wrap it in a new div tag with an id of "contac
 <div id="contact" class="container">
 ```
 
-Then we replace the old input table with fieldset tags around our input variables.
+Then we replace the old input table with fieldset tags around our input variables.  We will have to contact container sections.  One for the input and one for the table.  
+
+```html
+<div id="contact" class="container">
+	input data
+</div>
+
+<div id="contact" class="container">
+	table data
+</div>
+```
+The top input section will look like the following:
 
 ```html
 <body onload="displayEmployeesOnLoad()">
