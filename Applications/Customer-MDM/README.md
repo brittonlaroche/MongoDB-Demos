@@ -146,7 +146,26 @@ Below is an example of this csutomer profile json document.
 
 Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the id value and car selections in System B.  Our first step is to create a stitch HTTP service to recieve this data and store it in MongoDB.  To do create the Stitch service we must begin by creating a Stitch application.  To create a stitch application we need to have an Atlas cluster.  Lets begin by creating an atlas cluster.
 
+### Create your first Atlas cluster
 
+Open a modern browser (like google chrome) and go to https://cloud.mongodb.com.  Register for an atlas account by clicking the __"get started free"__ button.
+
+![Get Started](../../Stitch/tools/img/register1.jpg "Get started")
+
+Click the __"get started free"__ button.  This will bring up a screen for you to enter your personal information.
+
+![Create free your account](../../Stitch/tools/img/register2.jpg "Create your free account")   
+
+Fill in your personal information.  Feel free to use your work or personal email address, either is fine as this is your personal "free for life" development environment.  Agree to the terms of service and click the __"get started free"__ button.  
+
+
+![build your cluster](../../Stitch/tools/img/register3.jpg "build your first cluster")   
+
+This will bring up window promptin you to build your first cluster.  Click the __"build your first cluster"__ button.  When prompted select "Learning MongoDB" as to the reason you are interested in Atlas. After clicking the Click the __"build your first cluster"__ button, you will be prompted to name your cluster.  "
+
+![Name your cluster](../../Stitch/tools/img/register4.jpg "Name your cluster")   
+
+__"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.
 
 
 
