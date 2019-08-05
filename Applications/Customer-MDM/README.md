@@ -194,6 +194,35 @@ Select the __"Services"__ menu item from the left naviagtion pane of the stitch 
 
 ![Service](img/servicesource1.jpg)
 
+Click the add service button.  This will present the webhook editor.
+
+```js
+exports = async function(payload) {
+  var source = context.services.get("mongodb-atlas").db("single").collection("source");
+  console.log("Executing addCustomerSourceWebhook");
+  var queryArg = payload.query.arg || '';
+  var body = {};
+  var result = { "status": "Unknown: Payload body may be empty"};
+  
+  if (payload.body) {
+    console.log(JSON.stringify(payload.body));
+    body = EJSON.parse(payload.body.text());
+    console.log(JSON.stringify(body));
+    var nDate = new Date();
+    //check the source_id
+    if ( body._id ) {
+        console.log(" customer source document");
+        result = await source.insertOne(body);
+        console.log("after update");
+    } else {
+      result = { "status": "Error: source _id is not present"};
+      return result;
+    }
+  }
+  return  result;
+};
+```
+
 Below is an example of this customer profile json document.
 
 ```js
