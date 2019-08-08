@@ -42,6 +42,9 @@
         if ( sFname.value != "" && sLname.value != "") {
           searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value)}, "master.last_name": { $regex: new RegExp(sLname.value) }}; 
         }
+        if ( sLname.value != "" && sGender != "") {
+          searchDoc = { "master.last_name": { $regex: new RegExp(sLname.value) },"master.gender": sGender.value }; 
+        }
         if ( sFname.value != "" && sLname.value != "" && sGender != "") {
           searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value)}, "master.last_name": { $regex: new RegExp(sLname.value) },"master.gender": sGender.value }; 
         }
@@ -53,7 +56,7 @@
         }
         const tStrt = "<div><table class=\"blueTable\"><tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th>" +
           "<th>Conact Phone</th><th>Email</th><th>Last Modified</th><th>Edit</th></tr>";
-          db.collection('master').find(searchDoc, {limit: 30}).asArray()
+          db.collection('master').find(searchDoc, {limit: 42}).asArray()
             .then(docs => {
               const html = docs.map(c => "<tr>" +
                 "<td>" + c._id +  "</td>" +
