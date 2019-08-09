@@ -702,6 +702,14 @@ The answer is a combination of source code control (we do have services built in
 The stitch command line tool provides the ability to integrate your CICD with Stitch.  Atlas has a Rest Based API that you can use to build a new test environment.  Stitch has a stitch-cli interface that allows you to access your changes from GitHub and deploy them into your new test environment.
 
 ### Documentation
+There are many ways to deploy with stitch and to integrate Atlas with Devops Please see the following links for detailed instructions
+
+__Atlas Devops__   
+https://www.mongodb.com/what-is-devops   
+https://www.mongodb.com/presentations/devops-with-mongodb   
+
+__Stitch Deployment Options__ https://docs.mongodb.com/stitch/deploy/   
+
 __GitHub:__ GitHub service integration documentation is [here](https://docs.mongodb.com/stitch/services/github/) with code snippits [here](https://docs.mongodb.com/stitch/services/snippets/github-snippets/)
 
 __stitch-cli:__ The stitch-cli is documented [here](https://docs.mongodb.com/stitch/import-export/create-stitch-app/) a blog is [here](https://www.mongodb.com/blog/post/mongodb-stitch-command-line-interface) and a simple working example of importing a stitch app from GitHub is [here](https://github.com/brittonlaroche/MongoDB-Demos/blob/master/Applications/Shipping/tutorial/cli/README.md)
