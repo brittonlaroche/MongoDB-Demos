@@ -9,8 +9,8 @@
        * (dont paste your API key in your code its easily obtained by the browser view source)
        * API key is pasted here for a simple prototype example with out key management 
        */       
-      const credential = new stitch.UserApiKeyCredential("y2yhO49BDf4zvQVnt5GEC0Ge90VJVsByuSGVVJAvUr4Z9tZjWvJ2iZiL8OhKKY0M");
-      const client = stitch.Stitch.initializeDefaultAppClient('shipping-wkfkx');
+      const credential = new stitch.UserApiKeyCredential("your-api-key");
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app_id');
       const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('ship');
       function displayShipmentsOnLoad() {
         client.auth
