@@ -16,12 +16,12 @@ __Note:__ only follow this section if you plan on importing the application rath
 
 There are many ways to deploy with stitch and to integrate Atlas with Devops Please see the following links for detailed instructions
 
-__Atlas Devops__
-https://www.mongodb.com/what-is-devops
-https://www.mongodb.com/presentations/devops-with-mongodb
+__Atlas Devops__   
+https://www.mongodb.com/what-is-devops   
+https://www.mongodb.com/presentations/devops-with-mongodb   
 
-__Stitch Deployment Options__
-https://docs.mongodb.com/stitch/deploy/
+__Stitch Deployment Options__   
+https://docs.mongodb.com/stitch/deploy/   
 
 The following section shows how to import the application via this GitHub and the stitch command line tool __"stitch-cli"__. Knowledge of how the stitch command line works is important as you can integrate stitch-cli with your CICD (continuous integration and continuous delivery) tools.  This allows you to work in your native development enviroment, commit changes to GitHub and then deploy and test as you would normally through your CICD work flow.
 
