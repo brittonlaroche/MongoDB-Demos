@@ -29,31 +29,22 @@
           var sLname = document.getElementById('s_lname'); 
           var sGender = document.getElementById('s_gender'); 
           if ( sGender.value != "") {
-            searchDoc = {"master.gender": sGender.value }; 
+            searchDoc["master.gender"] =  sGender.value; 
           }
           if ( sPhone.value != "") {
-            searchDoc = {"master.phone": { $regex: new RegExp(sPhone.value) }}; 
+            searchDoc["master.phone"] = { $regex: new RegExp(sPhone.value) }; 
           }
           if ( sFname.value != "") {
-            searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value) }}; 
+            searchDoc["master.first_name"] = { $regex: new RegExp(sFname.value)}; 
           }
           if ( sLname.value != "") {
-            searchDoc = {"master.last_name": { $regex: new RegExp(sLname.value) }}; 
-          }
-          if ( sFname.value != "" && sLname.value != "") {
-            searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value)}, "master.last_name": { $regex: new RegExp(sLname.value) }}; 
-          }
-          if ( sLname.value != "" && sGender.value != "") {
-            searchDoc = { "master.last_name": { $regex: new RegExp(sLname.value) }, "master.gender": sGender.value }; 
-          }
-          if ( sFname.value != "" && sLname.value != "" && sGender != "") {
-            searchDoc = {"master.first_name": { $regex: new RegExp(sFname.value)}, "master.last_name": { $regex: new RegExp(sLname.value) },"master.gender": sGender.value }; 
+            searchDoc["master.last_name"] = { $regex: new RegExp(sLname.value)}; 
           }
           if ( sCust.value != "") {
-            searchDoc = {_id: new stitch.BSON.ObjectId(sCust.value)}; 
+            searchDoc._id = new stitch.BSON.ObjectId(sCust.value); 
           }
           if ( sSource.value != "") {
-            searchDoc = {"sources._id": { $regex: new RegExp(sSource.value)}}; 
+            searchDoc["sources._id"] = { $regex: new RegExp(sSource.value)}; 
           }
           //alert(JSON.stringify(searchDoc));
           const tStrt = "<div><table class=\"blueTable\"><tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th>" +
