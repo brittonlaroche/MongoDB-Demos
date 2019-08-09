@@ -1,5 +1,6 @@
 <html>
   <head>
+
     <link rel="stylesheet" type="text/css" href="./ship.css">
     <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,20 +22,31 @@
         var searchDoc = {};
         var sShip = document.getElementById('s_shipment_id'); 
         var sCust = document.getElementById('s_customer_id'); 
+        var sFname = document.getElementById('s_first_name');
+        var sLname = document.getElementById('s_last_name');
         var sPhone = document.getElementById('s_contact_phone');
         var sPkg = document.getElementById('s_package_id');
         var sShip = document.getElementById('s_shipment_id'); 
         if ( sCust.value != "") {
-          searchDoc = {customer_id: { $regex: new RegExp(sCust.value)}}; 
+          searchDoc.customer_id = { $regex: new RegExp(sCust.value)}; 
+        }
+        if ( sFname.value != "") {
+          searchDoc.first_name = { $regex: new RegExp(sFname.value)}; 
+        }
+        if ( sLname.value != "") {
+          searchDoc.Last_name = { $regex: new RegExp(sLname.value)}; 
         }
         if ( sPhone.value != "") {
-          searchDoc = {contact_phone: { $regex: new RegExp(sPhone.value) }}; 
+          searchDoc.contact_phone = { $regex: new RegExp(sPhone.value) }; 
         }
         if ( sPkg.value != "") {
-          searchDoc = { "packages.package_id": { $regex: new RegExp(sPkg.value)}}; 
+          searchDoc["packages.package_id"] = { $regex: new RegExp(sPkg.value)}; 
         }
-        if ( parseInt(sShip.value) > 0) {
+        if ( sShip.value != "" && (parseInt(sShip.value) > 0)) {
           searchDoc = {shipment_id: parseInt(sShip.value)}; 
+        } else if (sShip.value != ""){
+          alert("Shipment ID must be a number greater than zero.");
+          return;
         }
         const tStrt = "<div><table class=\"blueTable\"><th>Shipment ID</th><th>Customer ID</th><th>Name</th>" +
           "<th>Conact Phone</th><th>Email</th><th>Ship Date</th><th>Description</th><th>last_modified</th><th>Edit</th>";
@@ -343,6 +355,8 @@
             Find Shipment:
             <fieldset><input type="text" placeholder="Shipment ID:" id="s_shipment_id"></fieldset>
             <fieldset><input type="text" placeholder="Customer ID:" id="s_customer_id"></fieldset>
+            <fieldset><input type="text" placeholder="First Name:" id="s_first_name"></fieldset>
+            <fieldset><input type="text" placeholder="Last Name:" id="s_last_name"></fieldset>
             <fieldset><input type="text" placeholder="Contact Phone:" id="s_contact_phone"></fieldset>
             <fieldset><input type="text" placeholder="Package ID:" id="s_package_id"></fieldset>
             <button type="submit" id="contact-submit" onClick="displayShipments()">Search</button>
