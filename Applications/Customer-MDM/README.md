@@ -43,7 +43,7 @@ A basic data flow diagram was put together to solve the MDM problem.  The dealer
 MongoDB has three colections to manage the customer data.  As data comes in from the various sources they are loaded into a __"source"__ collection.  A grouping function is used to group customer data together in documents based on specified rules and criteria found in the source documents across all the systems.  Once source data is grouped together, a new document is inserted into the __"group"__ collection.  A final process runs to pick which fields of the grouped source documents will be used in the master record.  The final master record is inserted into the __"master"__ collection.
 
 ## Sample Customer Document
-Lets take a look at one of the documents produced from this process. The master document has all the information relevant to the customer.  The master object has the fields that were selected from all the source systems.  Each of the source systems are listed in an array with the data as it currently is in each of the source systems.  We notice a few descrepancies between each of the systems. The email and physical addresses are different in some cases, her first name was misspelled at the dealership, and it looks like one system transposed the day and month of the her birth date.
+Lets take a look at one of the documents produced from this process. The master document has all the information relevant to the customer.  The master object has the fields that were selected from all the source systems.  Each of the source systems are listed in an array with the data as it currently is in each of the source systems.  We notice a few descrepancies between each of the systems. The email and physical addresses are different in some cases, for example her first name was misspelled at the dealership.
 
 ```js
 {
@@ -87,7 +87,7 @@ Lets take a look at one of the documents produced from this process. The master 
       "middle_name": "RACHAEL",
       "last_name": "POSEY",
       "gender": "FEMALE",
-      "dob": "1977-02-04",
+      "dob": "1977-04-02",
       "address": {
         "street": "5438 LINCOLN DRIVE",
         "city": "PASADENA",
