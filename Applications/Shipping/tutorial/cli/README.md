@@ -15,6 +15,8 @@ __Note:__ only follow this section if you plan on importing the application rath
 
 
 There are many ways to deploy with stitch and to integrate Atlas with Devops Please see the following links for detailed instructions
+__Blog Overview__   
+https://www.mongodb.com/blog/post/mongodb-stitch-command-line-interface
 
 __Atlas Devops__   
 https://www.mongodb.com/what-is-devops   
