@@ -472,3 +472,7 @@ exports = async function(payload) {
     return  result;
 };
 ```
+
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![9](../../Stitch/tools/img/9b.png) QueryAnywhere
