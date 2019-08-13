@@ -269,45 +269,7 @@ Below is an example of this customer profile json document.
 
 ## ![5](../../Stitch/tools/img/5b.png) Matching the proper Master Document
 
-```js
-exports = async function(argSource){
-  var masterDoc = {};
-  var masterDoc2 = {};
-  var fdist = 1;
-  var ldist = 1;
-  var cdist = 1;
-  var master = context.services.get("mongodb-atlas").db("single").collection("master");
-  console.log("findMaster 1");
-  masterDoc = await master.findOne({"sources._id": argSource._id});
-  if (masterDoc){
-    if (masterDoc.master){
-      return masterDoc;
-    } 
-  }
-  console.log("findMaster 2");
-  // Try to find an existing master document. 
-  // Search by the date of birth and compare first and last names
-  var masterDocList = await master.find({"master.dob": argSource.dob}).toArray()
-  .then( docs => {
-      docs.map(c => {
-        if(c.sources){
-          c.sources.forEach( function(testSource){
-            fdist = context.functions.execute("getNormalizedDistance", argSource.first_name,testSource.first_name);
-            ldist = context.functions.execute("getNormalizedDistance", argSource.last_name,testSource.last_name);
-            cdist = (0.5 * fdist) + (0.5 * ldist);
-            //console.log("testSource._id: " + testSource._id + ", ts first_name: " + testSource.first_name + ", ts last_name: " + testSource.last_name + ", cdist: " + cdist);
-            if (cdist < 0.4) {
-              console.log("Found Group Matching Names and DOB: " + JSON.stringify(c));
-              masterDoc2 = c;
-            } 
-          });
-        }
-      });
-  });
-  return masterDoc2;
-};
-```
-
+__getDistance__
 ```js
 exports = function(a,b){
 
@@ -354,7 +316,113 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 };
 ```
 
+__getNormalizedDistance__
+```js
+exports = function(a,b){
+  var result = context.functions.execute("getDistance", a,b);
+  var maxLength = Math.max (a.length, b.length);
+	return result / maxLength;
+};
+```
+
+__findMaster__
+```js
+exports = async function(argSource){
+  var masterDoc = {};
+  var masterDoc2 = {};
+  var fdist = 1;
+  var ldist = 1;
+  var cdist = 1;
+  var master = context.services.get("mongodb-atlas").db("single").collection("master");
+  console.log("findMaster 1");
+  masterDoc = await master.findOne({"sources._id": argSource._id});
+  if (masterDoc){
+    if (masterDoc.master){
+      return masterDoc;
+    } 
+  }
+  console.log("findMaster 2");
+  // Try to find an existing master document. 
+  // Search by the date of birth and compare first and last names
+  var masterDocList = await master.find({"master.dob": argSource.dob}).toArray()
+  .then( docs => {
+      docs.map(c => {
+        if(c.sources){
+          c.sources.forEach( function(testSource){
+            fdist = context.functions.execute("getNormalizedDistance", argSource.first_name,testSource.first_name);
+            ldist = context.functions.execute("getNormalizedDistance", argSource.last_name,testSource.last_name);
+            cdist = (0.5 * fdist) + (0.5 * ldist);
+            //console.log("testSource._id: " + testSource._id + ", ts first_name: " + testSource.first_name + ", ts last_name: " + testSource.last_name + ", cdist: " + cdist);
+            if (cdist < 0.4) {
+              console.log("Found Group Matching Names and DOB: " + JSON.stringify(c));
+              masterDoc2 = c;
+            } 
+          });
+        }
+      });
+  });
+  return masterDoc2;
+};
+```
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![6](../../Stitch/tools/img/5b.png) Creating or updating the master document
+## ![6](../../Stitch/tools/img/6b.png) Creating and updating the master document
+
+__updateMaster__
+```js
+exports = async function(argSource){
+  var result = {};
+  var masterDoc = {};
+  var newMasterDoc = {};
+  var sourceAdressObject = context.functions.execute("addressObject", argSource);
+  var master = context.services.get("mongodb-atlas").db("single").collection("master");
+  var nDate = new Date();
+  console.log("updateMaster source doc: " + JSON.stringify(argSource));
+
+  masterDoc = await context.functions.execute("findMaster", argSource);
+  console.log("updateMaster find master doc: " + JSON.stringify(masterDoc))
+  if(masterDoc.master){
+    /*
+    * we update the existing master doc with the source information
+    * the most recent information is considered to be correct
+    * this keeps data from getting stale
+    */
+    console.log("updating master document");
+    await master.updateOne(
+        { _id: masterDoc._id},
+        { $set: {
+          owner_id: argSource.owner_id,
+          master: argSource,
+          last_modified: nDate
+          }
+        }
+    );
+    if (masterDoc.sources){
+      console.log("master ... $pull..." );
+      await master.updateOne(
+        	{ _id: masterDoc._id },
+        	{ $pull: { "sources": { _id: argSource._id } }	}
+        );
+    }
+    console.log("master ... $addToSet..." );
+    await master.updateOne(
+    	{ _id: masterDoc._id },
+    	{ $addToSet: { "sources": sourceAdressObject  } } 
+    );
+  } else {
+    //we create a new master document
+    newMasterDoc.master = argSource;
+    newMasterDoc["sources"] = [sourceAdressObject];
+    newMasterDoc.last_modified = nDate;
+    console.log("updateMaster newMasterDoc: " + JSON.stringify(newMasterDoc));
+    master.insertOne(newMasterDoc);
+  }
+  result = await context.functions.execute("findMaster", argSource);
+  return result;
+};
+```
+
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![7](../../Stitch/tools/img/7b.png) Creating and updating the master document
