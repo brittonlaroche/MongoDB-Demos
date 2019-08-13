@@ -442,7 +442,7 @@ exports = async function(changeEvent) {
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![8](../../Stitch/tools/img/8b.png) Accessing customer data
+## ![8](../../Stitch/tools/img/8b.png) Accessing customer master data
 
 __findCustomer__
 ```js
