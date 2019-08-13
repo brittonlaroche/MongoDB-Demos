@@ -426,3 +426,15 @@ exports = async function(argSource){
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![7](../../Stitch/tools/img/7b.png) Creating and updating the master document
+
+```js
+exports = async function( aSearchDoc ){
+
+  console.log(JSON.stringify("Function findCustomer called ... executing..." ));
+  var shipment = context.services.get("mongodb-atlas").db("single").collection("master");
+  var doc = shipment.findOne(aSearchDoc);
+  console.log(JSON.stringify("return document" ));
+  console.log(JSON.stringify(doc));
+  return doc;
+};
+```
