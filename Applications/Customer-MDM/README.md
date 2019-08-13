@@ -219,12 +219,12 @@ exports = async function(payload) {
               last_name: body.last_name,
               gender: body.gender,
               dob: body.dob,
-              address: {
+              address: [{
                 street: body.address.street,
                 city: body.address.city,
                 state: body.address.state,
                 zip: body.address.zip
-              },
+              }],
               phone: body.phone,
               email: body.email,
               last_modified: nDate
