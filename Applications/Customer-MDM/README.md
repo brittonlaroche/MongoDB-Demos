@@ -422,11 +422,26 @@ exports = async function(argSource){
   return result;
 };
 ```
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![7](../../Stitch/tools/img/7b.png) The trigger for change
+
+
+__fncCustomerSource__
+```js
+exports = async function(changeEvent) {
+  //We have a new source document
+  console.log("fncCustomerSource");
+  const fullDocument = changeEvent.fullDocument;
+  await context.functions.execute("updateMaster", fullDocument);
+};
+```
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![7](../../Stitch/tools/img/7b.png) Creating and updating the master document
+## ![8](../../Stitch/tools/img/8b.png) Accessing customer data
 
+__findCustomer__
 ```js
 exports = async function( aSearchDoc ){
 
@@ -436,5 +451,24 @@ exports = async function( aSearchDoc ){
   console.log(JSON.stringify("return document" ));
   console.log(JSON.stringify(doc));
   return doc;
+};
+```
+
+__findCustomerWebhook__
+```js
+// This function is the webhook's request handler.
+exports = async function(payload) {
+    // Data can be extracted from the request as follows:
+
+    var body = {};
+    var result = {};
+    if (payload.body) {
+      console.log(JSON.stringify(payload.body));
+      body = EJSON.parse(payload.body.text());
+      console.log(JSON.stringify(body));
+      result = await context.functions.execute("findCustomer", body);
+    }
+    
+    return  result;
 };
 ```
