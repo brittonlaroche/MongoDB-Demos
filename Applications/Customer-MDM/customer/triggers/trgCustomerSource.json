@@ -1,0 +1,21 @@
+{
+    "id": "5d4b42d452cb5115469d38c5",
+    "name": "trgCustomerSource",
+    "type": "DATABASE",
+    "config": {
+        "operation_types": [
+            "INSERT",
+            "UPDATE",
+            "DELETE",
+            "REPLACE"
+        ],
+        "database": "single",
+        "collection": "source",
+        "service_name": "mongodb-atlas",
+        "match": {},
+        "full_document": true,
+        "unordered": false
+    },
+    "function_name": "fncCustomerSource",
+    "disabled": false
+}
