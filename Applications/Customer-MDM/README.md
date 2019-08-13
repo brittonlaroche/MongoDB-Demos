@@ -186,7 +186,7 @@ Click the little green __"Create"__ button in the lower right hand of the popup 
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![4](../../Stitch/tools/img/4b.png) Accessing customer data through a REST based API
+## ![4](../../Stitch/tools/img/4b.png) Adding customer source data through a REST based API
 
 When the customer saves their profile the Katana online service sends a json document through a REST API represnting the customer profile information to MongoDB stitch.  We need to create a service that will receive the customer profile as a json document.  
 
@@ -243,6 +243,8 @@ exports = async function(payload) {
 };
 ```
 
+
+
 Below is an example of this customer profile json document.
 
 ```js
@@ -263,5 +265,96 @@ Below is an example of this customer profile json document.
       "email": "ox@tjwq.com"
     }
 ```
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![5](../../Stitch/tools/img/5b.png) Matching the proper Master Document
+
+```js
+exports = async function(argSource){
+  var masterDoc = {};
+  var masterDoc2 = {};
+  var fdist = 1;
+  var ldist = 1;
+  var cdist = 1;
+  var master = context.services.get("mongodb-atlas").db("single").collection("master");
+  console.log("findMaster 1");
+  masterDoc = await master.findOne({"sources._id": argSource._id});
+  if (masterDoc){
+    if (masterDoc.master){
+      return masterDoc;
+    } 
+  }
+  console.log("findMaster 2");
+  // Try to find an existing master document. 
+  // Search by the date of birth and compare first and last names
+  var masterDocList = await master.find({"master.dob": argSource.dob}).toArray()
+  .then( docs => {
+      docs.map(c => {
+        if(c.sources){
+          c.sources.forEach( function(testSource){
+            fdist = context.functions.execute("getNormalizedDistance", argSource.first_name,testSource.first_name);
+            ldist = context.functions.execute("getNormalizedDistance", argSource.last_name,testSource.last_name);
+            cdist = (0.5 * fdist) + (0.5 * ldist);
+            //console.log("testSource._id: " + testSource._id + ", ts first_name: " + testSource.first_name + ", ts last_name: " + testSource.last_name + ", cdist: " + cdist);
+            if (cdist < 0.4) {
+              console.log("Found Group Matching Names and DOB: " + JSON.stringify(c));
+              masterDoc2 = c;
+            } 
+          });
+        }
+      });
+  });
+  return masterDoc2;
+};
+```
+
+```js
+exports = function(a,b){
+
+  /*
+Copyright (c) 2011 Andrei Mackenzie
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+// Compute the edit distance between the two given strings
+
+  if(a.length == 0) return b.length; 
+  if(b.length == 0) return a.length; 
+
+  var matrix = [];
+
+  // increment along the first column of each row
+  var i;
+  for(i = 0; i <= b.length; i++){
+    matrix[i] = [i];
+  }
+
+  // increment each column in the first row
+  var j;
+  for(j = 0; j <= a.length; j++){
+    matrix[0][j] = j;
+  }
+
+  // Fill in the rest of the matrix
+  for(i = 1; i <= b.length; i++){
+    for(j = 1; j <= a.length; j++){
+      if(b.charAt(i-1) == a.charAt(j-1)){
+        matrix[i][j] = matrix[i-1][j-1];
+      } else {
+        matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, // substitution
+                                Math.min(matrix[i][j-1] + 1, // insertion
+                                         matrix[i-1][j] + 1)); // deletion
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
+};
+```
 
 
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![6](../../Stitch/tools/img/5b.png) Creating or updating the master document
