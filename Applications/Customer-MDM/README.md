@@ -262,7 +262,7 @@ exports = async function(payload) {
 };
 ```
 
-Lets review the code above. We define the database and collection we are using with the following statment.  We connect to the databas named __"single"__ and to the collection named __"Source"__
+Lets review the code above. We define the database and collection we are using with the following statment.  We connect to the database named __"single"__ and to the collection named __"Source"__
 
 ```js
 var source = context.services.get("mongodb-atlas").db("single").collection("source");
@@ -301,6 +301,11 @@ Below is an example of this customer profile json document that will be sent to 
       "email": "ox@tjwq.com"
     }
 ```
+
+We can simulate a REST based API call from the source system B into our newly created webhook.  We can use [postman] or we can use our own postrapper.html file.  If you do not have postman or if your ports have been blocked internally from using it, we have found that our simple [postrapper.html](../html/postrapper.html) file works quite well. 
+
+
+
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![6](../../Stitch/tools/img/6b.png) Matching the proper Master Document
