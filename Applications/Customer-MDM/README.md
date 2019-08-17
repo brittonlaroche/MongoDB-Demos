@@ -262,7 +262,7 @@ exports = async function(payload) {
 };
 ```
 
-Lets review the code above. We define the database and collection we are using with the following statment.  We connect to the database named __"single"__ and to the collection named __"Source"__
+Lets review the code above. We define the database and collection we are using with the following statment.  We connect to the database named __"single"__ and to the collection named __"source"__
 
 ```js
 var source = context.services.get("mongodb-atlas").db("single").collection("source");
@@ -300,13 +300,26 @@ We check for required fields and store then store all the specific fields into t
 );
 ```
 
-Notice two key words: __await__ and __async__.  These key words are important as they tell stitch to wait for a response from the database before sending the results back to the calling application.
+Notice two key words: __await__ and __async__.  These key words are important as they tell stitch to wait for a response from the database before sending the results back to the calling application.  The function is declared as __async__ and the __await__ is used when accessing the database.
 
 Now that we have created our webhook and function we are ready to test it.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![5](../../Stitch/tools/img/5b.png) Testing the Rest based API
+We can simulate a REST based API call from the source system B into our newly created webhook.  We can use [postman](https://www.getpostman.com/downloads/) or we can use our own postrapper.html file.  If you do not have postman or if your ports have been blocked internally from using it, we have found that our simple [postrapper.html](html/postrapper.html) file works quite well. 
+
+Right mouse click the link [postrapper.html](html/postrapper.html) and open in a new tab you can copy and paste the text into a text editor of your choice and save the file as postrapper.html on your local drive.  Open the file in your browser by double clicking and you are ready to begin your test.  
+
+Atlernatively you can use a hosted version of postrapper here:   
+https://customer-rytyl.mongodbstitch.com/postrapper.html
+
+Our first step is to go to the __"Settings"__ tab in the __addCustomerSourceWebhook__ editor.    If the __addCustomerSourceWebhook__ you can open it by selecting __"Services"__ from the left hand navigation menu on the stitch console pane.  It will bring up a list of services.  Select the __addCustomerSource__ service and then the __addCustomerSourceWebhook__ webhook, this will open the function editor. When the function editor is open click the __"Settings"__ tab in the upper left and the webhook settings will be displayed as below.   
+
+![Service](img/servicesource3.jpg)
+
+We look for the __"Webhook URL"__ and click the copy button.  We paste this value into the __"URL"__ input field of the postrapper.html file.  
+
 Below is an example of this customer profile json document that will be sent to us from a source system.
 
 ```js
@@ -327,43 +340,9 @@ Below is an example of this customer profile json document that will be sent to 
       "email": "ox@tjwq.com"
     }
 ```
+Copy the customer source json document above and paste it into the postrapper __"Input Document"__ text area of postrapper and hit send.  You should see something like the following:
 
-We can simulate a REST based API call from the source system B into our newly created webhook.  We can use [postman](https://www.getpostman.com/downloads/) or we can use our own postrapper.html file.  If you do not have postman or if your ports have been blocked internally from using it, we have found that our simple [postrapper.html](html/postrapper.html) file works quite well. 
-
-Right mouse click the link [postrapper.html](html/postrapper.html) and open in a new tab you can copy and paste the text into a text editor of your choice and save the file as postrapper.html on your local drive.  Open the file in your browser by double clicking and you are ready to begin your test.  
-
-Atlernatively you can use a hosted version of postrapper here:   
-https://customer-rytyl.mongodbstitch.com/postrapper.html
-
-The postrapper.html file makes a REST call through javacript and html with the following snippet:
-```js
-const sendJson = async () => {
-        var txt = "";
-        var httpVerb = document.getElementById("input_verb").value;
-        var webhook_url = document.getElementById("input_url").value;
-        var inputDoc = document.getElementById("input_json").value;
-        var response = "";
-        console.log(webhook_url);
-        //Check to see if we have an input document or not
-        if (inputDoc != "") {
-          response = await fetch(webhook_url, {
-            method: httpVerb,
-            body: inputDoc, // string or object
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          });
-        } else {
-          response = await fetch(webhook_url, {
-            method: httpVerb
-          });
-        }
-        const myJson = await response.json(); //extract JSON from the http response
-        console.log(myJson);
-        document.getElementById("results").innerHTML = JSON.stringify(myJson, undefined, 2);
-      };
-
-```
+![Postrapper](img/postrapperAddSource.jpg)
 
 
 
