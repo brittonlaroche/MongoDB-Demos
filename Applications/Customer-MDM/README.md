@@ -204,14 +204,16 @@ Click the add service button.  This will present the webhook editor.
 
 ![Service](img/servicesource2.jpg)
 
-Fill in the appropriate fields.  Name the webhook __addCustomerSource__ and make sure respond with result is set to __"ON"__ we will need the result returned to the calling program to make sure that the REST base API call was successful.  We will be sending a json document in the body of the request so we want this to be an HTTP Method of __POST__.  We have not set up a validation method yet so lets start with __"Do Not Validate"__ for the request valdiation.  There are a number of ways to validate the request using java web tokens, API keys etc... and this should be done before putting any application or service like this into production.
+Fill in the appropriate fields.  Name the webhook __addCustomerSource__ and make sure respond with result is set to __"ON"__. We will need the result of the operation returned to the calling program to make sure that the REST base API call was successful.  We will be sending a json document in the body of the request so we want this to be an HTTP Method of __POST__.  
 
-__addCustomerSource__  
-__Respond with Result "ON"__   
-__HTTP Method: POST__   
-__Request Validation:  Do not validate__  
+We have not set up a validation method yet so lets start with __"Do Not Validate"__ for the request valdiation.  There are a number of ways to validate the request using java web tokens, API keys etc... and this should be done before putting any application or service like this into production.  For now we are building a simple prototype so we will procede with a quick soltion.
 
-Click the save button and the 
+Name: __addCustomerSource__  
+Respond with Result: __"ON"__   
+HTTP Method: __POST__   
+Request Validation:  __Do not validate__  
+
+Click the save button and the function editor for the webhook will appear.  Cut and paste the code below and save the webhook function.
 
 ```js
 exports = async function(payload) {
@@ -260,9 +262,26 @@ exports = async function(payload) {
 };
 ```
 
+Lets review the code above. We define the database and collection we are using with the following statment.  We connect to the databas named __"single"__ and to the collection named __"Source"__
+
+```js
+var source = context.services.get("mongodb-atlas").db("single").collection("source");
+```
+
+Next we parse the payload body,   
+
+```js
+body = EJSON.parse(payload.body.text());
+```
+
+We check for required fields and store all the fields into the database using an upsert defined in the MongoDB query language (MQL).  Now that we have created our webhook and function we are ready to test it.
 
 
-Below is an example of this customer profile json document.
+
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![5](../../Stitch/tools/img/5b.png) Testing the Rest based API
+Below is an example of this customer profile json document that will be sent to us from a source system.
 
 ```js
     {
@@ -282,11 +301,6 @@ Below is an example of this customer profile json document.
       "email": "ox@tjwq.com"
     }
 ```
-
-![end](../../Stitch/tools/img/section-end.png)   
-
-## ![5](../../Stitch/tools/img/5b.png) Testing the Rest based API
-
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![6](../../Stitch/tools/img/6b.png) Matching the proper Master Document
