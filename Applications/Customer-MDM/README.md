@@ -199,7 +199,7 @@ Select the __"Services"__ menu item from the left naviagtion pane of the stitch 
 
 Click the add service button.  This will present the webhook editor.
 
-![Service](img/servicesource1.jpg)
+![Service](img/servicesource2.jpg)
 
 
 ```js
