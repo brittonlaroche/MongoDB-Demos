@@ -346,8 +346,11 @@ Copy the customer source json document above and paste it into the postrapper __
 
 Notice the results information shows the matched count for an update or the infomation on an insert.  Our REST based API call worked!  Lets see the document in the database.  Open another tab and access your cluster through https://cloud.mongodb.com on the cluster information window select "Collections"   
 
+![Collections](img/collections2.jpg)
 
-![Collections](img/collections.jpg)
+Navigate to the __"single"__ database and select the __"source"__ collection to view the document.
+
+![Collections](img/collections3.jpg)
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
