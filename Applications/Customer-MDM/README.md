@@ -75,7 +75,7 @@ Lets take a look at one of the documents produced from this process. The master 
       "middle_name": "RACHAEL",
       "last_name": "POSEY",
       "gender": "FEMALE",
-      "dob": "1977-04-02",
+      "dob": "1977-04-22",
       "address": {
         "street": "1432 PALOMA DRIVE, APT. 421",
         "city": "PASADENA",
@@ -91,7 +91,7 @@ Lets take a look at one of the documents produced from this process. The master 
       "middle_name": "RACHAEL",
       "last_name": "POSEY",
       "gender": "FEMALE",
-      "dob": "1977-04-02",
+      "dob": "1977-04-22",
       "address": {
         "street": "5438 LINCOLN DRIVE",
         "city": "PASADENA",
@@ -103,11 +103,11 @@ Lets take a look at one of the documents produced from this process. The master 
     },
     {
       "_id": "C-07164051",
-      "first_name": "CRYSTAL",
+      "first_name": "CRISTAL",
       "middle_name": "RACHAEL",
       "last_name": "POSEY",
       "gender": "FEMALE",
-      "dob": "1977-04-02",
+      "dob": "1977-04-22",
       "address": {
       "street": "5348 LINCOLN DRIVE",
       "city": "PASADENA",
