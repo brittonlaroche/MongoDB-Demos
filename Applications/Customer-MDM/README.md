@@ -274,9 +274,35 @@ Next we parse the payload body,
 body = EJSON.parse(payload.body.text());
 ```
 
-We check for required fields and store all the fields into the database using an upsert defined in the MongoDB query language (MQL).  Now that we have created our webhook and function we are ready to test it.
+We check for required fields and store then store all the specific fields into the database using an upsert defined in the MongoDB query language (MQL).  
 
+```js
+ result = await source.updateOne(
+  {_id: body._id},
+  {$set: {
+      first_name: body.first_name,
+      middle_name: body.middle_name,
+      last_name: body.last_name,
+      gender: body.gender,
+      dob: body.dob,
+      address: [{
+	street: body.address.street,
+	city: body.address.city,
+	state: body.address.state,
+	zip: body.address.zip
+      }],
+      phone: body.phone,
+      email: body.email,
+      last_modified: nDate
+      }
+  },
+  {upsert: true}
+);
+```
 
+Notice two key words: __await__ and __async__.  These key words are important as they tell stitch to wait for a response from the database before sending the results back to the calling application.
+
+Now that we have created our webhook and function we are ready to test it.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
@@ -303,6 +329,41 @@ Below is an example of this customer profile json document that will be sent to 
 ```
 
 We can simulate a REST based API call from the source system B into our newly created webhook.  We can use [postman] or we can use our own postrapper.html file.  If you do not have postman or if your ports have been blocked internally from using it, we have found that our simple [postrapper.html](html/postrapper.html) file works quite well. 
+
+Right mouse click the link [postrapper.html](html/postrapper.html) and open in a new tab you can copy and paste the text into a text editor of your choice and save the file as postrapper.html on your local drive.  Open the file in your browser by double clicking and you are ready to begin your test.  
+
+Atlernatively you can use a hosted version of postrapper here:   
+https://customer-rytyl.mongodbstitch.com/postrapper.html
+
+The postrapper.html file makes a REST call through javacript and html with the following snippet:
+```js
+const sendJson = async () => {
+        var txt = "";
+        var httpVerb = document.getElementById("input_verb").value;
+        var webhook_url = document.getElementById("input_url").value;
+        var inputDoc = document.getElementById("input_json").value;
+        var response = "";
+        console.log(webhook_url);
+        //Check to see if we have an input document or not
+        if (inputDoc != "") {
+          response = await fetch(webhook_url, {
+            method: httpVerb,
+            body: inputDoc, // string or object
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+        } else {
+          response = await fetch(webhook_url, {
+            method: httpVerb
+          });
+        }
+        const myJson = await response.json(); //extract JSON from the http response
+        console.log(myJson);
+        document.getElementById("results").innerHTML = JSON.stringify(myJson, undefined, 2);
+      };
+
+```
 
 
 
