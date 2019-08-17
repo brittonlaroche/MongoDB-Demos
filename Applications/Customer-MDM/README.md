@@ -33,7 +33,7 @@ Additionally Katana motors has been given the task of removing sensitive custome
 
 The desire is to have a serverless REST based API layer to service the myriad of transactional systems that will not require any maintenance, and can scale automatically as demand increases with out human intervention.
 
-![Katana Sedan](img/kankatasedan4.jpg "Katana")  
+![Customer Single View](../img/diagram.png)
 
 Customer data will be loaded into the Customer MDM as new customers come into the website and sign up for promotional offerings.  Customer data will also come into the Customer MDM with nightly batch loads from Katana financial services for the previous days loan applications.  The two different dealerships also load prospective customers and customer purchase data when a vehicle is taken for a test drive or purchased.  All of these websites and dealerships have a variety of data formats.
 
