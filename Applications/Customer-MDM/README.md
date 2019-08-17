@@ -24,7 +24,7 @@ We've been hired by a fictitious auto manufacturing company called "Katana" to b
 
 ![Katana](img/katanalogo.png "Katana")  
 
-You have been tasked to create a minimum viable product (MVP), a basic protype, of a customer MDM application across all dealerships and online sites for both Kanakata and Legacy brands. They wish to test both the functionality and performance of the application.  The functionality includes identifying a single customer from all systems and providing customer updates in real time to their third party dealerships and financing division.
+You have been tasked to create a minimum viable product (MVP), a basic protype, of a single view for a customer MDM application across all dealerships and online sites for both Kanakata and Legacy brands. They wish to test both the functionality and performance of the application.  The functionality includes identifying a single customer from all systems and providing customer updates in real time to their third party dealerships and financing division.  
 
 ![Legacy](img/legacylogo.png "Legacy")  
 
@@ -151,7 +151,9 @@ Below is an example of this customer profile json document.
     }
 ```
 
-Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the id value and car selections in System B.  Our first step is to create a stitch HTTP service to recieve this data and store it in MongoDB. MongoDB has a servless compute capability to provide a REST based API called stitch. To create the Stitch service, we must begin by creating a Stitch application.  Before creating a stitch application we need to have an Atlas cluster set up to recieve the document.  Lets begin by creating an Atlas cluster.
+Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the customer id value and car selections in System B. All personal data relating to the customer will be stored only in the customer MDM. Anytime system B needs customer information it will make a REST API call to the MDM. When a new customer signs up he or she will enter personal information online and that information will be sent to the customer MDM a unique customer token will be generated and sent back to system B.  This token will be used for all customer transactions in system B, and system B will never store the customer's personal information.
+
+Our first step is to create a stitch HTTP service to recieve the customer source data and store it in MongoDB. MongoDB has a servless compute capability to provide a REST based API called stitch. To create the Stitch service, we must begin by creating a Stitch application.  Before creating a stitch application we need to have an Atlas cluster set up to recieve the document.  Lets begin by creating an Atlas cluster.
 
 ![end](../../Stitch/tools/img/section-end.png)
 
@@ -201,6 +203,12 @@ Click the add service button.  This will present the webhook editor.
 
 ![Service](img/servicesource2.jpg)
 
+Fill in the appropriate fields.  Name the webhook __addCustomerSource__ and make sure respond with result is set to __"ON"__ we will need the result returned to the calling program to make sure that the REST base API call was successful.  We will be sending a json document in the body of the request so we want this to be an HTTP Method of __POST__.  We have not set up a validation method yet so lets start with __"Do Not Validate"__ for the request valdiation.  There are a number of ways to validate the request using java web tokens, API keys etc... and this should be done before putting any application or service like this into production.
+
+__addCustomerSource__  
+Respond with Result "ON"   
+HTTP Method: POST   
+Request Validation:  Do not validate
 
 ```js
 exports = async function(payload) {
