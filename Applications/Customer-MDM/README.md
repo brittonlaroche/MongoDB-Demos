@@ -11,13 +11,14 @@ _Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 2. [Create the Atlas Cluster](#-create-the-atlas-cluster)
 3. [Create the Stitch Application](#-create-the-stitch-application)
 4. [Adding customer source data through a REST based API](#-adding-customer-source-data-through-a-rest-based-api)
-5. [Matching the proper Master document](#-matching-the-proper-master-document)
-6. [Creating and updating the master document](#-creating-and-updating-the-master-document)
-7. [The trigger for change](#-the-trigger-for-change)
-8. [Accessing customer Master data](#-accessing-customer-master-data)
-9. [QueryAnywhere](#-QueryAnywhere)
-10. [Importing from GitHub: Stitch Command Line tool](README.md)
-11. [Host your application tutorial](README.md)  
+5. [Testing the REST based API](#-testing-the-rest-based-api)
+6. [Matching the proper Master document](#-matching-the-proper-master-document)
+7. [Creating and updating the master document](#-creating-and-updating-the-master-document)
+8. [The trigger for change](#-the-trigger-for-change)
+9. [Accessing customer Master data](#-accessing-customer-master-data)
+10. [QueryAnywhere](#-QueryAnywhere)
+11. [Importing from GitHub: Stitch Command Line tool](README.md)
+12. [Host your application tutorial](README.md)  
 
 ## ![1](../../Stitch/tools/img/1b.png) Overview 
 We've been hired by a fictitious auto manufacturing company called "Katana" to build a single view for a customer MDM application prototype.  Katana has a global market place consisting of automobile dealerships, online websites, and financial services for its customers of its two major brands. __"Katana"__ motors sells quality family vehicles, and its high end luxury brand __"Legacy"__ sells high performance extreemly high end luxury vehicles.  Each brand has its own set of dealerships and systems that repersent the customer in a variety of different ways.  Katana may have the same customer or the same customer household buying both brands and is unaware that these two apparently different customers may be the same individual buying cars for the same household.
@@ -206,9 +207,11 @@ Click the add service button.  This will present the webhook editor.
 Fill in the appropriate fields.  Name the webhook __addCustomerSource__ and make sure respond with result is set to __"ON"__ we will need the result returned to the calling program to make sure that the REST base API call was successful.  We will be sending a json document in the body of the request so we want this to be an HTTP Method of __POST__.  We have not set up a validation method yet so lets start with __"Do Not Validate"__ for the request valdiation.  There are a number of ways to validate the request using java web tokens, API keys etc... and this should be done before putting any application or service like this into production.
 
 __addCustomerSource__  
-Respond with Result "ON"   
-HTTP Method: POST   
-Request Validation:  Do not validate
+__Respond with Result "ON"__   
+__HTTP Method: POST__   
+__Request Validation:  Do not validate__  
+
+Click the save button and the 
 
 ```js
 exports = async function(payload) {
@@ -279,9 +282,14 @@ Below is an example of this customer profile json document.
       "email": "ox@tjwq.com"
     }
 ```
+
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![5](../../Stitch/tools/img/5b.png) Matching the proper Master Document
+## ![5](../../Stitch/tools/img/5b.png) Testing the Rest based API
+
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![6](../../Stitch/tools/img/6b.png) Matching the proper Master Document
 
 __getDistance__
 ```js
@@ -381,7 +389,7 @@ exports = async function(argSource){
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![6](../../Stitch/tools/img/6b.png) Creating and updating the master document
+## ![7](../../Stitch/tools/img/7b.png) Creating and updating the master document
 
 __addressObject__
 ```js
@@ -470,7 +478,7 @@ exports = async function(argSource){
 ```
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![7](../../Stitch/tools/img/7b.png) The trigger for change
+## ![8](../../Stitch/tools/img/8b.png) The trigger for change
 
 
 __fncCustomerSource__
@@ -485,7 +493,7 @@ exports = async function(changeEvent) {
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![8](../../Stitch/tools/img/8b.png) Accessing customer master data
+## ![9](../../Stitch/tools/img/9b.png) Accessing customer master data
 
 __findCustomer__
 ```js
@@ -521,4 +529,4 @@ exports = async function(payload) {
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![9](../../Stitch/tools/img/9b.png) QueryAnywhere
+## ![10](../../Stitch/tools/img/10b.png) QueryAnywhere
