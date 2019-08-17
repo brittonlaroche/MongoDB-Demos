@@ -44,7 +44,7 @@ A basic data flow diagram was put together to solve the MDM problem.  The dealer
 
 ![DFD](img/dataflow4.png "Data Flow Diagram")  
 
-MongoDB has three colections to manage the customer data.  As data comes in from the various sources they are loaded into a __"source"__ collection.  A matching function is used to find a matching master customer document based on specified rules and criteria found in the source document. If a match is found the source record is added to the array of source records in the master document and the master data fields are updated based on the latest changes reflected in the source document. If no matching master record is found the source record becomes tehmaster data and a new master record is inserted into the __"master"__ collection.
+MongoDB has three colections to manage the customer data.  As data comes in from the various sources they are loaded into a __"source"__ collection.  A matching function is used to find a matching master customer document based on specified rules and criteria found in the source document. If a match is found the source record is added to the array of source records in the master document and the master data fields are updated based on the latest changes reflected in the source document. If no matching master record is found the source record becomes the master data and a new master record is inserted into the __"master"__ collection.
 
 ## Sample Customer Document
 Lets take a look at one of the documents produced from this process. The master document has all the information relevant to the customer.  The master object has the fields that were selected from all the source systems.  Each of the source systems are listed in an array with the data as it currently is in each of the source systems.  We notice a few descrepancies between each of the systems. The email and physical addresses are different in some cases, for example her first name was misspelled at the dealership.
@@ -509,7 +509,7 @@ exports = async function(argSource){
 
 ![findMaster](img/findMaster.jpg)
 
-Create the __"findMaster"__ function by selecting the __"Functions"__ menu item form the left navigation pane.  Click the __"Create New Function"__ button and name the function __"findMaster"__.  Make certain to run on the __"Run as System"__ toggle so we can access the master collection.  Save the function and copy and paste teh code above into the function editor and then save the changes.
+Create the __"findMaster"__ function by selecting the __"Functions"__ menu item form the left navigation pane.  Click the __"Create New Function"__ button and name the function __"findMaster"__.  Make certain to run on the __"Run as System"__ toggle so we can access the master collection.  Save the function and copy and paste the code above into the function editor and then save the changes.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
