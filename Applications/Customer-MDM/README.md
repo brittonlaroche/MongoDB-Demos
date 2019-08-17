@@ -342,9 +342,12 @@ Below is an example of this customer profile json document that will be sent to 
 ```
 Copy the customer source json document above and paste it into the postrapper __"Input Document"__ text area of postrapper and hit send.  You should see something like the following:
 
-![Postrapper](img/postrapperAddSource.jpg)
+![Postrapper](img/postrapperAddSource2.jpg)
+
+Notice the results information shows the matched count for an update or the infomation on an insert.  Our REST based API call worked!  Lets see the document in the database.  Open another tab and access your cluster through https://cloud.mongodb.com on the cluster information window select "Collections"   
 
 
+![Collections](img/collections.jpg)
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
