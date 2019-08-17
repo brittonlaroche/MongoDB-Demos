@@ -302,7 +302,7 @@ Below is an example of this customer profile json document that will be sent to 
     }
 ```
 
-We can simulate a REST based API call from the source system B into our newly created webhook.  We can use [postman] or we can use our own postrapper.html file.  If you do not have postman or if your ports have been blocked internally from using it, we have found that our simple [postrapper.html](../html/postrapper.html) file works quite well. 
+We can simulate a REST based API call from the source system B into our newly created webhook.  We can use [postman] or we can use our own postrapper.html file.  If you do not have postman or if your ports have been blocked internally from using it, we have found that our simple [postrapper.html](html/postrapper.html) file works quite well. 
 
 
 
