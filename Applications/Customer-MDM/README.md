@@ -357,7 +357,16 @@ Navigate to the __"single"__ database and select the __"source"__ collection to 
 ## ![6](../../Stitch/tools/img/6b.png) Matching the proper Master Document
 Our next step is to master all the source documents together based on a series of rules about customer attributes.  For this prototype we will consider the values of 4 fields: source id, date of birth, first name and last name.
 
-We will use
+To compare these field values between documents we will use the Levenshtein distance.  In information theory, linguistics and computer science, the Levenshtein distance is a string metric for measuring the difference between two sequences. Informally, the Levenshtein distance between two words is the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other. It is named after the Soviet mathematician Vladimir Levenshtein, who considered this distance in 1965.
+
+We will use this implementation of the Levenshtein distance by Andrei Mackenzie written in javascript in 2011.
+https://gist.github.com/andrei-m/982927
+
+Lets begin by creating our own getDistance function in stitch.  From the left hand navigation pane in the Stitch console select __"Functions"__.  When the function editor appears give the function the name __"getDistance"__ and click save.
+
+![getDistance](img/getDistance.jpg)
+
+The function editor appears next, copy and paste the code below and click save.
 
 __getDistance__
 ```js
@@ -406,6 +415,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 };
 ```
 
+The function above will compare two strings and calculate the number of changes needed between them to make them equal.  For example calling getDistance('BOB', 'BIB') would return 1 as we need to change one letter "O" to "I" to go from "BOB" to "BIB".  Calling getDistance('BOB', 'CAT')  would return 3, as all 3 letters are different.  What we need is a ratio of the number of changes to make compared to the total number of letters.
+
+Lets repeat the steps above and create a new function that takes the result and divides it by the maximum number of letters for both strings.
+
 __getNormalizedDistance__
 ```js
 exports = function(a,b){
@@ -414,6 +427,42 @@ exports = function(a,b){
 	return result / maxLength;
 };
 ```
+
+Notice how we call the getDistance function from inside the getNoramlizedDistance function.
+
+Now we will test the functions.  Click the __"Console"__ tab on the bottom left of the function editor for getNormalizedDistance.  We will change the sample __"exports('Hello World')"__ to __"exports('BOB', 'BIB')"__
+
+![getNoramalizedDistance](img/getNormalizedDistance.jpg)
+
+The results should be as follows:   
+
+```js
+
+> ran on Sat Aug 17 2019 16:01:27 GMT-0500 (Central Daylight Time)
+> took 520.675421ms
+> result: 
+{
+  "$numberDouble": "0.3333333333333333"
+}
+> result (JavaScript): 
+EJSON.parse('{"$numberDouble":"0.3333333333333333"}')
+
+```
+
+Lets use this test to determine if we have a matching master document.  The easiest test is to query the master collection for an existing source_id field.  Since this field is expected to be unique its an easy test.
+
+```js
+  masterDoc = await master.findOne({"sources._id": argSource._id});
+  if (masterDoc){
+    if (masterDoc.master){
+      return masterDoc;
+    } 
+  }
+```
+
+The code above queies the master collection for a document with an array of source documents that has a matching source_id value to the argument document's source_id passed in to the function.  If we get a matching document and it has a master object, great we found a match.  We return the document.
+
+If we don't get a match we need to query the master collection for all the documents that match a specific date of birth.  Once we get the array of matching documents back we loop through each document and see if we can find a mathcing first and last name.  The date of birth and name comparison is the second find master query in the function below:
 
 __findMaster__
 ```js
