@@ -209,7 +209,7 @@ Fill in the appropriate fields.  Name the webhook __addCustomerSource__ and make
 We have not set up a validation method yet so lets start with __"Do Not Validate"__ for the request valdiation.  There are a number of ways to validate the request using java web tokens, API keys etc... and this should be done before putting any application or service like this into production.  For now we are building a simple prototype so we will procede with a quick soltion.
 
 Name: __addCustomerSource__  
-Respond with Result: __"ON"__   
+Respond with Result: __ON__   
 HTTP Method: __POST__   
 Request Validation:  __Do not validate__  
 
