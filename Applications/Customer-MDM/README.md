@@ -152,7 +152,7 @@ Below is an example of this customer profile json document.
     }
 ```
 
-Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the customer id value and car selections in System B. All personal data relating to the customer will be stored only in the customer MDM. Anytime system B needs customer information it will make a REST API call to the MDM. When a new customer signs up he or she will enter personal information online and that information will be sent to the customer MDM a unique customer token will be generated and sent back to system B.  This token will be used for all customer transactions in system B, and system B will never store the customer's personal information.
+Due to the CCPA laws, Katana wishes to store this document in their MongoDB Customer MDM and only the customer id value and car selections in System B. All personal data relating to the customer will be stored only in the customer MDM. Anytime system B needs customer information it will make a REST API call to the MDM. When a new customer signs up he or she will enter personal information online and the personal information will be sent to the customer MDM via a REST based API. Upon insert into the MDM database a unique customer token will be generated and sent back to system B.  This token will be used for all customer transactions in system B, and system B will never store the customer's personal information.
 
 Our first step is to create a stitch HTTP service to recieve the customer source data and store it in MongoDB. MongoDB has a servless compute capability to provide a REST based API called stitch. To create the Stitch service, we must begin by creating a Stitch application.  Before creating a stitch application we need to have an Atlas cluster set up to recieve the document.  Lets begin by creating an Atlas cluster.
 
@@ -355,6 +355,9 @@ Navigate to the __"single"__ database and select the __"source"__ collection to 
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![6](../../Stitch/tools/img/6b.png) Matching the proper Master Document
+Our next step is to master all the source documents together based on a series of rules about customer attributes.  For this prototype we will consider the values of 4 fields: source id, date of birth, first name and last name.
+
+We will use
 
 __getDistance__
 ```js
