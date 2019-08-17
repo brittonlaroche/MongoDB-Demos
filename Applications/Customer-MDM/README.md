@@ -417,7 +417,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 The function above will compare two strings and calculate the number of changes needed between them to make them equal.  For example calling getDistance('BOB', 'BIB') would return 1 as we need to change one letter "O" to "I" to go from "BOB" to "BIB".  Calling getDistance('BOB', 'CAT')  would return 3, as all 3 letters are different.  What we need is a ratio of the number of changes to make compared to the total number of letters.
 
-Lets repeat the steps above and create a new function that takes the result and divides it by the maximum number of letters for both strings.
+Lets repeat the steps above and create a new function that takes the result from get distance and divides it by the maximum number of letters for both strings.
 
 __getNormalizedDistance__
 ```js
@@ -432,12 +432,11 @@ Notice how we call the getDistance function from inside the getNoramlizedDistanc
 
 Now we will test the functions.  Click the __"Console"__ tab on the bottom left of the function editor for getNormalizedDistance.  We will change the sample __"exports('Hello World')"__ to __"exports('BOB', 'BIB')"__
 
-![getNoramalizedDistance](img/getNormalizedDistance.jpg)
+![getNormalizedDistance](img/getNormalizedDistance.jpg)
 
 The results should be as follows:   
 
-```js
-
+```
 > ran on Sat Aug 17 2019 16:01:27 GMT-0500 (Central Daylight Time)
 > took 520.675421ms
 > result: 
