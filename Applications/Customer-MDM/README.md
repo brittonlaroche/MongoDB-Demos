@@ -121,6 +121,10 @@ Lets take a look at one of the documents produced from this process. The master 
 }
 ```
 
+The above document can be translated into rows and columns with ease using html, javascript sna stitch QueryAnyWhere functionality.  Below we see this same document represented with rows and columns for the source data.
+
+![QueryAnyWhere](img/KatanaQueryAnywhere.jpg)  
+
 This hands on lab will cover the entire process (except the ETL process) in the data flow diagram. We will create the REST API that allows the source data to be inserted from the micro services. We will create the basics of the grouping and mastering functions. 
 
 We will create some additional components as well.  We will create a REST API service that will allow the master document to be queried and updated, with new source data merged and split as needed.  We will create a web based browser that uses the stitch SDK to create a broswer client with the full capabilities of stitch QueryAnywhere to access and manage the customer master data.
