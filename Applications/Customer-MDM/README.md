@@ -507,6 +507,10 @@ exports = async function(argSource){
 };
 ```
 
+![findMaster](img/findMaster.jpg)
+
+Create the __"findMaster"__ function by selecting the __"Functions"__ menu item form the left navigation pane.  Click the __"Create New Function"__ button and name the function __"findMaster"__.  Make certain to run on the __"Run as System"__ toggle so we can access the master collection.  Save the function and copy and paste teh code above into the function editor and then save the changes.
+
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![7](../../Stitch/tools/img/7b.png) Creating and updating the master document
