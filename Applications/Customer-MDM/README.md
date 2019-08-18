@@ -733,7 +733,7 @@ We need to grant access to the __master__ collection in the __single__ database.
 
 Select the __"Rules"__ menu item from the left hand navigation pane in the stitch console window.  Click the __mongodb-atlas__ icon button __...__ and select "Add Database Collection" 
 
-Enter __ship__ for the database name and __codes__ for the collection.  Select __"No template"__ and click save.  Repeat the process for the rest of the collections 
+Enter __single__ for the database name and __master__ for the collection.  Select __"No template"__ and click save.  
 
 ![rules](../Shipping/img/rules.jpg "rules")
 
