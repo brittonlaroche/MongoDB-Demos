@@ -644,7 +644,7 @@ Now that we have master documents we need to make certain that our findMaster fu
 
 Create the indexes with the following information:
 
-__sources.__id__
+__sources._id__
 ```js
 {
   "sources._id: 1
