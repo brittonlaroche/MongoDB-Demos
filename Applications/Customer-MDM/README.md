@@ -515,6 +515,10 @@ Create the __"findMaster"__ function by selecting the __"Functions"__ menu item 
 
 ## ![7](../../Stitch/tools/img/7b.png) Creating and updating the master document
 
+The master document has one object called master that contains all the information.  It has an array adresses for the customer information.  The array allows the master object to reflect multiple addresses in the source system if desired.  The source object imbeded in the master documents sources array on the other hand has a single object for the address.  This is a design decision made for ease of use.  We can create a function to convert from an array of adresses to a single object.  We simply pick the last address in the array.  Our philosophy is the last update contains the most up to date information.
+
+Create a new function called __addressObject__ in the stitch console and copy past the code below and save it.
+
 __addressObject__
 ```js
 
@@ -523,29 +527,31 @@ exports = function(source){
   //Source has an adress object
   var copy = {};
   var addressCopy = {};
-  copy._id = source._id;
-  copy.first_name = source.first_name;
-  copy.middle_name = source.middle_name;
-  copy.last_name = source.last_name;
-  copy.gender = source.gender;
-  copy.dob = source.dob;
-  copy.phone = source.phone;
-  copy.email = source.email;
-  
-
   if (source) {
+      copy._id = source._id;
+      copy.first_name = source.first_name;
+      copy.middle_name = source.middle_name;
+      copy.last_name = source.last_name;
+      copy.gender = source.gender;
+      copy.dob = source.dob;
+      copy.phone = source.phone;
+      copy.email = source.email;
       if (source.address) {
        source.address.forEach(function(myAddress) {
           addressCopy =  myAddress;
         });
       }
+      copy.address = addressCopy;
   }
-  
-  copy.address = addressCopy;
-  
   return copy;
 };
 ```
+
+We are now ready to design the function to create new master document or update our existing master document based on real time updates from the source systems.  The code below takes the source json document in as an argument processes the document into an object to store in an array.  Next it attempts to find an existing master document.  It makes use of all the functions we created earlier.
+
+If the function finds the master document it updates the master object information to the new data contained in the source document.  Then it updates the array of sources with the source object created from the function above. 
+
+If it does not find a master document the function creates a new document.
 
 __updateMaster__
 ```js
