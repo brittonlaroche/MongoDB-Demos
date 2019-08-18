@@ -722,3 +722,65 @@ exports = async function(payload) {
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![10](../../Stitch/tools/img/10b.png) QueryAnywhere
+In this section we will cover QueryAnywhere through the Stitch browser SDK.  We will use Mongo Query Language (MQL) directly against the database.  
+
+### 1. Applying Rules
+Before a client application can access a collection via the stitch browser SDK access to the underlying collections must be granted to the stitch application through the rules interface. 
+
+We need to grant access to the __master__ collection in the __single__ database.   
+
+   
+
+Select the __"Rules"__ menu item from the left hand navigation pane in the stitch console window.  Click the __mongodb-atlas__ icon button __...__ and select "Add Database Collection" 
+
+Enter __ship__ for the database name and __codes__ for the collection.  Select __"No template"__ and click save.  Repeat the process for the rest of the collections 
+
+![rules](../Shipping/img/rules.jpg "rules")
+
+We can edit the rules generated at a future point in time to limit what data we will have access to through and API Key.  Generating an API Key creates a default user to go with the key.
+
+### 2. Create an API key
+We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
+
+![users](../Shipping/img/users5.jpg "users")
+
+Third party providers such as facebook and google provide an excellent way for customers to access data and will be covered at a point in the future.  For now explore the custom option as you can see how to integrate with a Single Sign On (SSO) provider like AWS cognito, or something you are using in house through Java Web Tokens (JWT) as this eliminates the headache of user management for your application.
+
+For now we will generate an API Key.  Select the __"API Keys"__ option and click the edit button.
+
+![users](../Shipping/img/users3.jpg "users")
+
+Type in a name for the API Key, something like "BackOffice" or "WebAccess" and click save.  A private key will be displayed.  Copy that key and paste it into a text editor of your choice.  Then create the api key.  We will use that key to access the database through the stitch browser SDK.
+
+### 3. Create the browser client application
+You will need a text editor for this section. If you do not have a text editor we recommend downloading a free text editor from one of the following sites (VS Code is best for Developers):
+
+[Notepad ++](https://notepad-plus-plus.org/download)   
+[Brackets](http://brackets.io/)   
+[VS Code](https://code.visualstudio.com/)   
+
+The MongoDB stitch browser client sdk documentation is in this link here [MongoDB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html)  At the time of the writing of this tutorial we are on sdk version 4.4.0 
+
+Navigate to the top section ofthis git hub or (right click "open in new tab") the link [MongoDB-Demos](https://github.com/brittonlaroche/MongoDB-Demos).  
+
+Press the green box "Clone or Download" and select "Donwload Zip File" if you have not already.  Extract the zip file and navigate to the (unzip path)MongoDB-Demos/Applications/Customer/html directory.  Here you will find the html file CSS file and images for our sample shipping application.  Alternatively you can view and copy the html and css files from (right click "open in new tab") [here](https://github.com/brittonlaroche/MongoDB-Demos/tree/master/Applications/Customer-MDM/html).
+
+Open the index.html file in the editor and replace 'your-app-id' with the application id of your shipping application and the 'your-api-Key' with the api key we just generated.  The APP-ID is located in the upper left of the stitch console as seen below, click the copy button to load it in your clip board for a quick paste.
+
+![Web](../Shipping/img/appid.jpg "Web")
+
+```js
+      const credential = new stitch.UserApiKeyCredential('your-api-key');
+      const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+```
+
+should look like 
+
+```js
+      const credential = new stitch.UserApiKeyCredential("y2yhO49BDf4zvQVnt5GEC0Ge90VJVsByuSGVVJAvUr4Z9tZjWvJ2iZiL8OhKKY9M");
+      const client = stitch.Stitch.initializeDefaultAppClient('shipping-wkfpx');
+```
+
+__Important Note:__ Pasting the API key directly into the html source code is a bad idea.  There are a number of ways to properly manage an API Key, and this is not one of them.  We highly recommend hidding and accessing this key according to best practices.  Unfortunately we dont have access to any of these best practice methods in this tutorial.  Just make a mental note that long term the API Key needs to be managed outside of the html source code and according to your organization's best practices.
+
+Save the index.html and double click it.  You should see something like this:   
