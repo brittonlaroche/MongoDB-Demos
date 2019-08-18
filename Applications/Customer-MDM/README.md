@@ -636,7 +636,7 @@ exports({
 
 ![updateMaster](img/updateMaster2.jpg)
 
-Browse for the new master document in the collection explorer of your atlas cluster.
+Click the __"Run"__ button and view the results. Browse for the new master document in the collection explorer of your atlas cluster.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
