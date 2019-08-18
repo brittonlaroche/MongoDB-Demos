@@ -606,6 +606,9 @@ exports = async function(argSource){
   return result;
 };
 ```
+
+![updateMaster](img/updateMaster.jpg)
+
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![8](../../Stitch/tools/img/8b.png) The trigger for change
