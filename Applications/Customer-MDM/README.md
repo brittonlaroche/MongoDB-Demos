@@ -42,7 +42,7 @@ Our job is to ingest data from all these sources and both preserve a record of t
 ## Data Flow
 A basic data flow diagram was put together to solve the MDM problem.  The dealerships used a legacy system (source system A) which requires a nightly batch process and an ETL program to load data into MongoDB.  The Katana and Legacy online services (source systems B and C) have the ability to use a REST API and send JSON documents in real time.
 
-![DFD](img/dataflow4.png "Data Flow Diagram")  
+![DFD](img/dataflow5.png "Data Flow Diagram")  
 
 MongoDB has three colections to manage the customer data.  As data comes in from the various sources they are loaded into a __"source"__ collection.  A matching function is used to find a matching master customer document based on specified rules and criteria found in the source document. If a match is found the source record is added to the array of source records in the master document and the master data fields are updated based on the latest changes reflected in the source document. If no matching master record is found the source record becomes the master data and a new master record is inserted into the __"master"__ collection.
 
