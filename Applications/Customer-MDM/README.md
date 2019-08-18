@@ -665,7 +665,11 @@ __master.dob__
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![8](../../Stitch/tools/img/8b.png) The trigger for change
+As changes occur to the source collection we want a trigger to capture the full document and send it as an argument to the update master function. Lets create the database trigger in stitch.  Select __"Triggers"__ from the left hand stitch navigation console.  Click the __"Create New Trigger"__ button.  Name the trigger __trgCustomerSource__.  Make sure the trigger is enabled and has event ordering turned on.  Select the linked cluster, __"Single"__ database and __"Source"__ collection.  Be sure the toggle for __"Full Document"__ is set to __"ON"__.  In the function drop list select __"New Function"__ and name it __fncCustomerSource__.
 
+![Create Index](img/trigger.jpg)
+
+In the triggers fucntion editor for __fncCustomerSource__ copy and paste the following code and save the function.  
 
 __fncCustomerSource__
 ```js
@@ -676,6 +680,8 @@ exports = async function(changeEvent) {
   await context.functions.execute("updateMaster", fullDocument);
 };
 ```
+
+Our trigger is ready and when the REST based API __addCustomerSource__ we created above is called from the source system teh trigger will fire and update the master record with the latest change.  Now all we need is to create the REST API to find the customer master record.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
