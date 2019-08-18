@@ -123,7 +123,9 @@ Lets take a look at one of the documents produced from this process. The master 
 
 The above document can be translated into rows and columns with ease using html, javascript sna stitch QueryAnyWhere functionality.  Below we see this same document represented with rows and columns for the source data.
 
-![QueryAnyWhere](img/KatanaQueryAnywhere.jpg)  
+![QueryAnyWhere](img/KatanaQueryAnywhere.jpg)   
+The live prototype with 2,000,000 sample records is hosted in Stitch and can be accessed here:   
+https://customer-rytyl.mongodbstitch.com/
 
 This hands on lab will cover the entire process (except the ETL process) in the data flow diagram. We will create the REST API that allows the source data to be inserted from the micro services. We will create the basics of the grouping and mastering functions. 
 
