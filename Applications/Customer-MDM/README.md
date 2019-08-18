@@ -638,6 +638,30 @@ exports({
 
 Click the __"Run"__ button and view the results. Browse for the new master document in the collection explorer of your atlas cluster.
 
+Now that we have master documents we need to make certain that our findMaster function stays efficient when we reach tens to hundreds of millions of documents.  Lets add an index.  In the collections browser, select the __"Indexes"__ tab in the top portion of the interface next to the find and aggregation tabs.  Select it and then click the create index button. 
+
+![Index](img/indexes.jpg)
+
+Create the indexes with the following information:
+
+__sources.__id__
+```js
+{
+  "sources._id: 1
+}
+{ background : true }
+```
+
+__master.dob__
+```js
+{
+  "master.dob: 1
+}
+{ background : true }
+```
+
+![Create Index](img/indexes2.jpg)
+
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![8](../../Stitch/tools/img/8b.png) The trigger for change
