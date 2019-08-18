@@ -609,7 +609,34 @@ exports = async function(argSource){
 };
 ```
 
+Create the __"updateMasterFunction"__ be sure to select __"Run as System"__ save the function and copy / paste the code above into the function editor.
+
 ![updateMaster](img/updateMaster.jpg)
+
+After saving the code we can test the function and create our new master document.  Open the __"Console"__ tab in the lower left and export the function with the source document like so:
+
+```js
+exports({
+      "_id": "B-04227551",
+      "first_name": "MARION",
+      "middle_name": "ANITA",
+      "last_name": "COLE",
+      "gender": "FEMALE",
+      "dob": "1980-02-08",
+      "address": {
+        "street": "4620 FRANKLIN STREET",
+        "city": "SANTA ROSA",
+        "state": "CA",
+        "zip": "95409"
+      },
+      "phone": "+14823008921",
+      "email": "ox@tjwq.com"
+    })
+```
+
+![updateMaster](img/updateMaster2.jpg)
+
+Browse for the new master document in the collection explorer of your atlas cluster.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
