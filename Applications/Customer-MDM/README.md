@@ -17,8 +17,8 @@ _Consulting Engineer_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 8. [The trigger for change](#-the-trigger-for-change)
 9. [Accessing customer Master data](#-accessing-customer-master-data)
 10. [QueryAnywhere](#-QueryAnywhere)
-11. [GitHub and CI/CD Integration](README.md)
-12. [Host your application tutorial](README.md)  
+11. [Host your application tutorial](README.md) 
+12. [GitHub and CI/CD Integration](README.md)
 
 ## ![1](../../Stitch/tools/img/1b.png) Overview 
 We've been hired by a fictitious auto manufacturing company called "Katana" to build a single view for a customer MDM application prototype.  Katana has a global market place consisting of automobile dealerships, online websites, and financial services for its customers of its two major brands. __"Katana"__ motors sells quality family vehicles, and its high end luxury brand __"Legacy"__ sells high performance extreemly high end luxury vehicles.  Each brand has its own set of dealerships and systems that repersent the customer in a variety of different ways.  Katana may have the same customer or the same customer household buying both brands and is unaware that these two apparently different customers may be the same individual buying cars for the same household.
