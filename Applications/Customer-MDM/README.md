@@ -806,7 +806,7 @@ Select the __"Rules"__ menu item from the left hand navigation pane in the stitc
 
 Enter __single__ for the database name and __master__ for the collection.  Select __"No template"__ and click save.  
 
-![rules](img/rules.png "rules")
+![rules](img/rules2.png "rules")
 
 We can edit the rules generated at a future point in time to limit what data we will have access to through and API Key.  Generating an API Key creates a default user to go with the key.
 
