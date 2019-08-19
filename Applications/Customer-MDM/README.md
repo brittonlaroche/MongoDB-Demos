@@ -17,7 +17,7 @@ _Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 8. [The trigger for change](#-the-trigger-for-change)
 9. [Accessing customer Master data](#-accessing-customer-master-data)
 10. [QueryAnywhere](#-QueryAnywhere)
-11. [Importing from GitHub: Stitch Command Line tool](README.md)
+11. [GitHub and CI/CD Integration](README.md)
 12. [Host your application tutorial](README.md)  
 
 ## ![1](../../Stitch/tools/img/1b.png) Overview 
