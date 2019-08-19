@@ -519,6 +519,8 @@ Create the __"findMaster"__ function by selecting the __"Functions"__ menu item 
 
 The master document has one object called master that contains all the information.  It has an array adresses for the customer information.  The array allows the master object to reflect multiple addresses in the source system if desired.  The source object imbeded in the master documents sources array on the other hand has a single object for the address.  This is a design decision made for ease of use.  We can create a function to convert from an array of adresses to a single object.  We simply pick the last address in the array.  Our philosophy is the last update contains the most up to date information.
 
+![Address Object](img/addressObject.jpg)  
+
 Create a new function called __addressObject__ in the stitch console and copy past the code below and save it.
 
 __addressObject__
@@ -548,8 +550,7 @@ exports = function(source){
   return copy;
 };
 ```
-![Address Object](img/addressObject.jpg)   
-
+ 
 We are now ready to design the function to create new master document or update our existing master document based on real time updates from the source systems.  The code below takes the source json document in as an argument processes the document into an object to store in an array.  Next it attempts to find an existing master document.  It makes use of all the functions we created earlier.
 
 If the function finds the master document it updates the master object information to the new data contained in the source document.  Then it updates the array of sources with the source object created from the function above. 
