@@ -771,15 +771,24 @@ We are now ready to test our REST based API through postrapper.html. Click on th
 
 ![Find Customer](img/findCustomer6.jpg)
 
-Once the webhook url has been copied we can open postrapper.html and paste in the value in the __"URL"__ input field.  We can use the following search document or modify it to suit our needs.
+We can simulate a REST based API call from the source system B into our newly created webhook.  We can use [postman](https://www.getpostman.com/downloads/) or we can use our own postrapper.html file.  If you do not have postman or if your ports have been blocked internally from using it, we have found that our simple [postrapper.html](html/postrapper.html) file works quite well. 
 
-![Find Customer](img/findCustomer7.jpg)
+Right mouse click the link [postrapper.html](html/postrapper.html) and open in a new tab you can copy and paste the text into a text editor of your choice and save the file as postrapper.html on your local drive.  Open the file in your browser by double clicking and you are ready to begin your test.  
+
+Atlernatively you can use a hosted version of postrapper here:   
+https://customer-rytyl.mongodbstitch.com/postrapper.html
+
+Once the webhook url has been copied we can open postrapper.html and paste in the value in the __"URL"__ input field.  We can use the following search document or modify it to suit our needs.
 
 ```
 {"master.first_name":"MARION", "master.last_name":"COLE"}
 ```
 
+![Find Customer](img/findCustomer7.jpg)
 
+We have completed our prototype single view application.  We can submit source data through a REST based API, match and merge the source data in a master document, and return the master document to a calling program through a REST based API.  All that is missing is a beatiful web interface.
+
+Next we will develop our web interface utilizing the power of Stitch QueryAnywhere.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
