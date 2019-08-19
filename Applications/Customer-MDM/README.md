@@ -421,7 +421,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 };
 ```
 
-The function above will compare two strings and calculate the number of changes needed between them to make them equal.  For example calling getDistance('BOB', 'BIB') would return 1 as we need to change one letter "O" to "I" to go from "BOB" to "BIB".  Calling getDistance('BOB', 'CAT')  would return 3, as all 3 letters are different.  What we need is a ratio of the number of changes to make compared to the total number of letters.
+The function above will compare two strings and calculate the number of changes needed between them to make them equal.  For example calling getDistance('BOB', 'BIB') would return 1 as we need to change one letter "O" to "I" to go from "BOB" to "BIB".  Calling getDistance('BOB', 'TIM')  would return 3, as all 3 letters are different.  What we need is a ratio of the number of changes to make compared to the total number of letters.
 
 Lets repeat the steps above and create a new function that takes the result from get distance and divides it by the maximum number of letters for both strings.
 
