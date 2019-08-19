@@ -736,9 +736,9 @@ Select the __"Services"__ menu item from the left hand navigation pane of the st
 
 Save the service, and the webhook editor will be presented.  Name the webhook __"findCustomerWebhook"__ make sure we move the slider to __"ON"__ for __"Respond With Result"__ so we can return the master customer document to the calling application. Run the webhook as __"System"__.  The calling program will pass us a search document in the body of the hTTP request, make sure the HTTP Method is __"POST"__ to recieve the document in the body.  As we have not yet set up users, and API keys we will temporaily set the __"Request Validation"__ to do not Validate.  Save the webhook.
 
-[Find Customer](img/findCustomer4.jpg)
+![Find Customer](img/findCustomer4.jpg)
 
-The webhook function editor is present.  Cust and paste the code below and press save.  Deploy the changes.
+The webhook function editor is present.  Cust and paste the code below and press save.  Deploy the changes. 
 
 __findCustomerWebhook__
 ```js
@@ -758,14 +758,28 @@ exports = async function(payload) {
     return  result;
 };
 ```
+![Find Customer](img/findCustomer5.jpg)
 
 Notice that the webhook parses the payload body and then passes in the body (which contains the search document) as an argument to the find customer function we created earlier.
 
 ```js
       result = await context.functions.execute("findCustomer", body);
 ```
-
 After waiting for the resulting master document from the database the function returns the document to the calling application.  The process is complete and we are ready to test.
+
+We are now ready to test our REST based API through postrapper.html. Click on the __"Settings"__ tab of the webhook function editor and copy the webhook url.
+
+![Find Customer](img/findCustomer6.jpg)
+
+Once the webhook url has been copied we can open postrapper.html and paste in the value in the __"URL"__ input field.  We can use the following search document or modify it to suit our needs.
+
+![Find Customer](img/findCustomer7.jpg)
+
+```
+{"master.first_name":"MARION", "master.last_name":"COLE"}
+```
+
+
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
