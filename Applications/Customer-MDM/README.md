@@ -200,7 +200,7 @@ Click the little green __"Create"__ button in the lower right hand of the popup 
 
 ## ![4](../../Stitch/tools/img/4b.png) Adding customer source data through a REST based API
 
-When the customer saves their profile the Katana online service sends a json document through a REST API represnting the customer profile information to MongoDB stitch.  We need to create a service that will receive the customer profile as a json document.  
+When the customer saves their profile the Katana online service sends a json document through a REST API representing the customer profile information to MongoDB stitch.  We need to create a service that will receive the customer profile as a json document.  
 
 Select the __"Services"__ menu item from the left naviagtion pane of the stitch console.  Click the __"Create New Service"__ button.  Select __"HTTP"__ service and give the service a name of __addCustomerSource__
 
