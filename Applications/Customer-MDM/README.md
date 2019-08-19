@@ -548,6 +548,7 @@ exports = function(source){
   return copy;
 };
 ```
+![Address Object](img/addressObject.jpg)   
 
 We are now ready to design the function to create new master document or update our existing master document based on real time updates from the source systems.  The code below takes the source json document in as an argument processes the document into an object to store in an array.  Next it attempts to find an existing master document.  It makes use of all the functions we created earlier.
 
