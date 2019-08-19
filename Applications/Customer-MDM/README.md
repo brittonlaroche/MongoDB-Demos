@@ -693,6 +693,18 @@ The next step is to create the REST API for the source system to find the custom
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![9](../../Stitch/tools/img/9b.png) Accessing customer master data
+We need the ability to find a master record based on any number of criteria.  We begin by writing a sitch function that takes a search document as an argument. For example if we were looking for a customer named "MARION COLE" we could pass in the following search document:
+
+```
+{"master.first_name":"MARION", "master.last_name":"COLE"}
+```
+
+Select __"Functions"__ from the left hand navigation pane of the stitch console. Click the __"Add a New Function"__ button. Give the function a name of __findCustomer__ and make sure it can __"Run as System"__.  
+
+![Find Customer](img/findCustomer.jpg)
+
+Save the function.  Copy and paste the code below into the function editor and press save.
+
 
 __findCustomer__
 ```js
