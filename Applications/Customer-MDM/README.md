@@ -720,7 +720,11 @@ exports = async function( aSearchDoc ){
 ```
 ![Find Customer](img/findCustomer2.jpg)
 
-Once the function is saved, deploy the changes.
+Once the function is saved, deploy the changes.  You can set the function by clicking the __"Console"__ tab in the lower left and clicking the __"Run"__ button with the following export using our search document.
+
+```js
+exports({"master.first_name":"MARION", "master.last_name":"COLE"})
+```
 
 ### Creating a find customer service
 
@@ -730,6 +734,11 @@ Select the __"Services"__ menu item from the left hand navigation pane of the st
 
 ![Find Customer](img/findCustomer3.jpg)
 
+Save the service, and the webhook editor will be presented.  Name the webhook __"findCustomerWebhook"__ make sure we move the slider to __"ON"__ for __"Respond With Result"__ so we can return the master customer document to the calling application. Run the webhook as __"System"__.  The calling program will pass us a search document in the body of the hTTP request, make sure the HTTP Method is __"POST"__ to recieve the document in the body.  As we have not yet set up users, and API keys we will temporaily set the __"Request Validation"__ to do not Validate.  Save the webhook.
+
+[Find Customer](img/findCustomer4.jpg)
+
+The webhook function editor is present.  Cust and paste the code below and press save.  Deploy the changes.
 
 __findCustomerWebhook__
 ```js
@@ -749,6 +758,14 @@ exports = async function(payload) {
     return  result;
 };
 ```
+
+Notice that the webhook parses the payload body and then passes in the body (which contains the search document) as an argument to the find customer function we created earlier.
+
+```js
+      result = await context.functions.execute("findCustomer", body);
+```
+
+After waiting for the resulting master document from the database the function returns the document to the calling application.  The process is complete and we are ready to test.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
