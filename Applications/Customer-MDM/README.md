@@ -718,6 +718,18 @@ exports = async function( aSearchDoc ){
   return doc;
 };
 ```
+![Find Customer](img/findCustomer2.jpg)
+
+Once the function is saved, deploy the changes.
+
+### Creating a find customer service
+
+We want to expose the new find customer function we created as a service.  This will allow our source systems and related micro servcies to query customer master data through a REST based API.
+
+Select the __"Services"__ menu item from the left hand navigation pane of the stitch console.  Make the service an __"HTTP"__ service and name it __"findCustomerService"__
+
+![Find Customer](img/findCustomer3.jpg)
+
 
 __findCustomerWebhook__
 ```js
