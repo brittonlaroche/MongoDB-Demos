@@ -1,7 +1,7 @@
 
 # Customer MDM Single View Application
 _Solution Architect Author_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)   
-_Consulting Engineer Author_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)   
+_Consulting Engineer_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)   
 
 ![Customer MDM](../img/customermdm.jpg)
 
