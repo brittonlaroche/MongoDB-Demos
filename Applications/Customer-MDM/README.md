@@ -436,7 +436,7 @@ exports = function(a,b){
 
 Notice how we call the getDistance function from inside the getNoramlizedDistance function.
 
-Now we will test the functions.  Click the __"Console"__ tab on the bottom left of the function editor for getNormalizedDistance.  We will change the sample __"exports('Hello World')"__ to __"exports('BOB', 'BIB')"__
+Now we will test the functions.  Click the __"Console"__ tab on the bottom left of the function editor for getNormalizedDistance. Lets say we have a customer named Robert who goes by both "ROB" and "BOB".  Lest give this real world example a test.  We will change the sample __"exports('Hello World')"__ to __"exports('BOB', 'ROB')"__
 
 ![getNormalizedDistance](img/getNormalizedDistance.jpg)
 
@@ -453,6 +453,7 @@ The results should be as follows:
 EJSON.parse('{"$numberDouble":"0.3333333333333333"}')
 
 ```
+It appears that 0.33 is a good cutt off point for a match on three letter names.  Perhaps we can set an upper threshold of 0.4 to identify a name as possibly being the same.
 
 Lets use this test to determine if we have a matching master document.  The easiest test is to query the master collection for an existing source_id field.  Since this field is expected to be unique its an easy test.
 
