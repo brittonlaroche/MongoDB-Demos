@@ -681,7 +681,11 @@ exports = async function(changeEvent) {
 };
 ```
 
-Our trigger is ready and when the REST based API __addCustomerSource__ we created above is called from the source system teh trigger will fire and update the master record with the latest change.  Now all we need is to create the REST API to find the customer master record.
+The created trigger is ready and watching for changes. When the REST based API __addCustomerSource__ is called from the source system, the trigger will fire and update the master record with the latest change.  
+
+Additional functions can be developed to inspect the source data and apply rules, before the master record is updated.  This trigger is the hook to call multiple functions for real time updates and processing of data as changes occur in the source systems.
+
+The next step is to create the REST API for the source system to find the customer master record.
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
