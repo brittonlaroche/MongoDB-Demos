@@ -16,8 +16,8 @@ _Consulting Engineer_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 7. [Creating and updating the master document](#-creating-and-updating-the-master-document)
 8. [The trigger for change](#-the-trigger-for-change)
 9. [Accessing customer Master data](#-accessing-customer-master-data)
-10. [QueryAnywhere](#-QueryAnywhere)
-11. [Host your application tutorial](README.md) 
+10. [QueryAnywhere web application](#-QueryAnywhere)
+11. [Host the web application](README.md) 
 12. [GitHub and CI/CD Integration](README.md)
 
 ## ![1](../../Stitch/tools/img/1b.png) Overview 
@@ -178,7 +178,7 @@ Fill in your personal information.  Feel free to use your work or personal email
 
 ![build your cluster](../../Stitch/tools/img/register3.jpg "build your first cluster")   
 
-This will bring up window promptin you to build your first cluster.  Click the __"build your first cluster"__ button.  When prompted select "Learning MongoDB" as to the reason you are interested in Atlas. After clicking the Click the __"build your first cluster"__ button, you will be prompted to name your cluster.  "
+This will bring up a window prompting you to build your first cluster.  Click the __"build your first cluster"__ button.  When prompted select "Learning MongoDB" as to the reason you are interested in Atlas. After clicking the Click the __"build your first cluster"__ button, you will be prompted to name your cluster.  "
 
 ![Name your cluster](../../Stitch/tools/img/register4.jpg "Name your cluster")   
 
@@ -859,3 +859,56 @@ Save the index.html and double click it.  You should see something like this:
 ![QueryAnyWhere](img/KatanaQueryAnywhere.jpg)   
 The live prototype with 2,000,000 sample records is hosted in Stitch and can be accessed here:   
 https://customer-rytyl.mongodbstitch.com/
+
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![11](../../Stitch/tools/img/11b.png) Host the web application
+
+### Hosting Overview
+Stitch Hosting allows you to host, manage, and serve your application’s static media and document files. You can use Hosting to store individual pieces of content or to upload and serve your entire client application. Stitch hosts your application’s content behind a unique domain name. By default, Stitch uses domains of the following form: ```<Your App ID>.mongodbstitch.com```. You can configure Stitch to host content at a custom domain name that you own in addition to the default hosting domain.
+
+For further infromation read the [hosting documentaion](https://docs.mongodb.com/stitch/hosting/) for an overview. Its a two step process to [enable hosting](https://docs.mongodb.com/stitch/hosting/enable-hosting/) and then [upload content](https://docs.mongodb.com/stitch/hosting/upload-content-to-stitch/). 
+
+### 1. Enable hosting
+Navigate to the Hosting Configuration Page:   
+To open the hosting configuration page, click "Hosting" in the left-hand navigation of the Stitch UI.
+
+![Hosting](../../../../Stitch/hosting/img/hosting1.jpg)
+
+On the Hosting configuration page, click Enable Hosting. Stitch will begin provisioning hosting for your application.  You can now access your default index page by typing inthe following url into your browser:
+
+ ```<your-app-id>.mongodbstitch.com```
+ 
+
+### 2. Upload your files
+![Hosting](../../../../Stitch/hosting/img/hosting2.jpg)
+
+Press the button labeled __"upload your files"__ and select all the html files you have been working on.   
+
+We will upload the files in this [html directory](../../html/)
+
+__drop-down-arrow.png__   
+__index.html__   
+__loading.gif__   
+__logo.png__   
+__postrapper.html__   
+__ship.css__   
+
+Click the image files and right click save as.  Edit the text files (html and css) and cut paste the contents then save the file with the correct name.  Alternatively you can download the project as a zip file and navigate to (extract path)/MongoDB-Demos/Applications/Shipping/html/
+
+You can now access them at <your-app-id>..mongodbstitch.com!  For example try   
+  
+ ```<your-app-id>.mongodbstitch.com/blog.html```
+ 
+
+![Hosting](../../../../Stitch/hosting/img/hosting3.jpg)
+
+Lets see your new employee app in action! Type in the default address 
+
+ ```<your-app-id>.mongodbstitch.com```
+
+Notice how you can access the database directly from the web.  __***Note:***__  you may need to select the  __"Actions"__ drop list in the hosting console and "Flush CDN Cache" to view your changes.
+
+
+We will upload the files in this [html directory](../../html/)
+
