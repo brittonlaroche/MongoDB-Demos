@@ -997,7 +997,7 @@ The answer is a combination of source code control (we do have services built in
 The stitch command line tool provides the ability to integrate your CICD with Stitch.  Atlas has a Rest Based API that you can use to build a new test environment.  Stitch has a stitch-cli interface that allows you to access your changes from GitHub and deploy them into your new test environment.   
 
 There are many ways to deploy with stitch and to integrate Atlas with Devops Please see the following links for detailed instructions
-__Stitch command line nlog Overview__   
+__Stitch command line overview (blog)__   
 https://www.mongodb.com/blog/post/mongodb-stitch-command-line-interface
 
 __Atlas Devops__   
