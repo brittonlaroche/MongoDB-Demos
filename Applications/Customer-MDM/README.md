@@ -17,7 +17,7 @@ _Consulting Engineer_: [Andre Spiegel](mailto:andre.spiegel@mongodb.com)
 8. [The trigger for change](#-the-trigger-for-change)
 9. [Accessing customer Master data](#-accessing-customer-master-data)
 10. [QueryAnywhere web application](#-QueryAnywhere)
-11. [Host the web application](README.md) 
+11. [Host the web application](#-host-the-web-application) 
 12. [GitHub and CI/CD Integration](#-github-and-cicd-integration)
 
 ## ![1](../../Stitch/tools/img/1b.png) Overview 
