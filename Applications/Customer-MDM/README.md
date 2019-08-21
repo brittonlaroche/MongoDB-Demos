@@ -873,7 +873,7 @@ For further infromation read the [hosting documentaion](https://docs.mongodb.com
 Navigate to the Hosting Configuration Page:   
 To open the hosting configuration page, click "Hosting" in the left-hand navigation of the Stitch UI.
 
-![Hosting](../../../../Stitch/hosting/img/hosting1.jpg)
+![Hosting](../../Stitch/hosting/img/hosting1.jpg)
 
 On the Hosting configuration page, click Enable Hosting. Stitch will begin provisioning hosting for your application.  You can now access your default index page by typing inthe following url into your browser:
 
@@ -881,7 +881,7 @@ On the Hosting configuration page, click Enable Hosting. Stitch will begin provi
  
 
 ### 2. Upload your files
-![Hosting](../../../../Stitch/hosting/img/hosting2.jpg)
+![Hosting](../../Stitch/hosting/img/hosting2.jpg)
 
 Press the button labeled __"upload your files"__ and select all the html files you have been working on.   
 
@@ -901,7 +901,7 @@ You can now access them at <your-app-id>..mongodbstitch.com!  For example try
  ```<your-app-id>.mongodbstitch.com/blog.html```
  
 
-![Hosting](../../../../Stitch/hosting/img/hosting3.jpg)
+![Hosting](../../Stitch/hosting/img/hosting3.jpg)
 
 Lets see your new employee app in action! Type in the default address 
 
@@ -910,5 +910,5 @@ Lets see your new employee app in action! Type in the default address
 Notice how you can access the database directly from the web.  __***Note:***__  you may need to select the  __"Actions"__ drop list in the hosting console and "Flush CDN Cache" to view your changes.
 
 
-We will upload the files in this [html directory](../../html/)
+We will upload the files in this [html directory](html/)
 
