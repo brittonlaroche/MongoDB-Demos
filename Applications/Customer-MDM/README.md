@@ -147,12 +147,12 @@ Below is an example of this customer profile json document.
       "last_name": "COLE",
       "gender": "FEMALE",
       "dob": "1980-02-08",
-      "address": [{
+      "address": {
         "street": "4620 FRANKLIN STREET",
         "city": "SANTA ROSA",
         "state": "CA",
         "zip": "95409"
-      }],
+      },
       "phone": "+14823008921",
       "email": "ox@tjwq.com"
     }
@@ -291,12 +291,12 @@ We check for required fields and store then store all the specific fields into t
       last_name: body.last_name,
       gender: body.gender,
       dob: body.dob,
-      address: [{
+      address: {
 	street: body.address.street,
 	city: body.address.city,
 	state: body.address.state,
 	zip: body.address.zip
-      }],
+      },
       phone: body.phone,
       email: body.email,
       last_modified: nDate
@@ -336,12 +336,12 @@ Below is an example of this customer profile json document that will be sent to 
       "last_name": "COLE",
       "gender": "FEMALE",
       "dob": "1980-02-08",
-      "address": [{
+      "address": {
         "street": "4620 FRANKLIN STREET",
         "city": "SANTA ROSA",
         "state": "CA",
         "zip": "95409"
-      }],
+      },
       "phone": "+14823008921",
       "email": "ox@tjwq.com"
     }
