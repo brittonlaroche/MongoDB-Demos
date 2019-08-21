@@ -834,9 +834,9 @@ The MongoDB stitch browser client sdk documentation is in this link here [MongoD
 
 Navigate to the top section ofthis git hub or (right click "open in new tab") the link [MongoDB-Demos](https://github.com/brittonlaroche/MongoDB-Demos).  
 
-Press the green box "Clone or Download" and select "Donwload Zip File" if you have not already.  Extract the zip file and navigate to the (unzip path)MongoDB-Demos/Applications/Customer/html directory.  Here you will find the html file CSS file and images for our sample shipping application.  Alternatively you can view and copy the html and css files from (right click "open in new tab") [here](https://github.com/brittonlaroche/MongoDB-Demos/tree/master/Applications/Customer-MDM/html).
+Press the green box "Clone or Download" and select "Donwload Zip File" if you have not already.  Extract the zip file and navigate to the (unzip path)MongoDB-Demos/Applications/Customer/html directory.  Here you will find the html file CSS file and images for our sample customer single view application.  Alternatively you can view and copy the html and css files from (right click "open in new tab") [here](https://github.com/brittonlaroche/MongoDB-Demos/tree/master/Applications/Customer-MDM/html).
 
-Open the index.html file in the editor and replace 'your-app-id' with the application id of your shipping application and the 'your-api-Key' with the api key we just generated.  The APP-ID is located in the upper left of the stitch console as seen below, click the copy button to load it in your clip board for a quick paste.
+Open the index.html file in the editor and replace 'your-app-id' with the application id of your customer single view application and the 'your-api-Key' with the api key we just generated.  The APP-ID is located in the upper left of the stitch console as seen below, click the copy button to load it in your clip board for a quick paste.
 
 ![Web](img/customerAppId.jpg "Web")
 
@@ -985,3 +985,6 @@ Notice how you can access the database directly from the web.  __***Note:***__  
 
 We will upload the files in this [html directory](html/)
 
+![end](../../Stitch/tools/img/section-end.png)   
+
+## ![11](../../Stitch/tools/img/11b.png) Host the web application
