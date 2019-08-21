@@ -968,7 +968,7 @@ __logo.png__
 __postrapper.html__   
 __customer.css__   
 
-Click the image files and right click save as.  Edit the text files (html and css) and cut paste the contents then save the file with the correct name.  Alternatively you can download the project as a zip file and navigate to (extract path)/MongoDB-Demos/Applications/Shipping/html/
+Click the image files and right click save as.  Edit the text files (html and css) and cut paste the contents then save the file with the correct name.  Alternatively you can download the project as a zip file and navigate to (extract path)/MongoDB-Demos/Applications/Customer-MDM/html/
 
 You can now access them at <your-app-id>..mongodbstitch.com!  For example try   
   
@@ -981,7 +981,7 @@ Lets see your new employee app in action! Type in the default address
 
  ```<your-app-id>.mongodbstitch.com```
 
-Notice how you can access the database directly from the web.  __***Note:***__  you may need to select the  __"Actions"__ drop list in the hosting console and "Flush CDN Cache" to view your changes.
+Notice how you can access the database directly from the web.  __***Note:***__  you may need to select the  __"Actions"__ drop list in the hosting console and "Flush CDN Cache" and deploy the changges to view the updates.
 
 We will upload the files in this [html directory](html/)
 
