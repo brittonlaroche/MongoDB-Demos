@@ -849,7 +849,7 @@ should look like
 
 ```js
       const credential = new stitch.UserApiKeyCredential("y2yhO49BDf4zvQVnt5GEC0Ge90VJVsByuSGVVJAvUr4Z9tZjWvJ2iZiL8OhKKY9M");
-      const client = stitch.Stitch.initializeDefaultAppClient('shipping-wkfpx');
+      const client = stitch.Stitch.initializeDefaultAppClient('customer-rytyl');
 ```
 
 __Important Note:__ Pasting the API key directly into the html source code is a bad idea.  There are a number of ways to properly manage an API Key, and this is not one of them.  We highly recommend hidding and accessing this key according to best practices.  Unfortunately we dont have access to any of these best practice methods in this tutorial.  Just make a mental note that long term the API Key needs to be managed outside of the html source code and according to your organization's best practices.
