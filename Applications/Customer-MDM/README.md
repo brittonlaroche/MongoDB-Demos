@@ -860,6 +860,80 @@ Save the index.html and double click it.  You should see something like this:
 The live prototype with 2,000,000 sample records is hosted in Stitch and can be accessed here:   
 https://customer-rytyl.mongodbstitch.com/
 
+The magic happens in this line below.  Here we include the stitch SDK that turns the browser into a Sticth client.  All of the Stitch functions that allow us to connect to the database, query and manipulate data is made available by the source link in the index.html file below.
+```js
+ <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
+```
+Now that w ehave includedthe stitch SDK we can establish a connection to the database and authenticate.  Our example is provided below:
+
+```js
+        const credential = new stitch.UserApiKeyCredential("pC4Zh114GuVouc9DDBGO0UeZlIpo7UppPuzQJwBfThapugCViKBs0I4xFdUIBwbc");
+        const client = stitch.Stitch.initializeDefaultAppClient('customer-rytyl');
+        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('single');
+        function displayCustomersOnLoad() {
+          client.auth
+            .loginWithCredential(credential)
+            .then(displayCustomers)
+            .catch(console.error);
+        }
+	
+```
+Once connected to the datababse we can build our own search document based on user input. We pass that search document to a database find() function.  Then we loop through the results to build a dycnamic html table as seen below:
+
+```js
+        function displayCustomers() {
+          var searchDoc = {};
+          var sCust = document.getElementById('s_customer_id'); 
+          var sSource = document.getElementById('s_source_id'); 
+          var sPhone = document.getElementById('s_contact_phone');
+          var sFname = document.getElementById('s_fname');
+          var sLname = document.getElementById('s_lname'); 
+          var sGender = document.getElementById('s_gender'); 
+          if ( sGender.value != "") {
+            searchDoc["master.gender"] =  sGender.value; 
+          }
+          if ( sPhone.value != "") {
+            searchDoc["master.phone"] = { $regex: new RegExp(sPhone.value) }; 
+          }
+          if ( sFname.value != "") {
+            searchDoc["master.first_name"] = { $regex: new RegExp(sFname.value)}; 
+          }
+          if ( sLname.value != "") {
+            searchDoc["master.last_name"] = { $regex: new RegExp(sLname.value)}; 
+          }
+          if ( sCust.value != "") {
+            searchDoc._id = new stitch.BSON.ObjectId(sCust.value); 
+          }
+          if ( sSource.value != "") {
+            searchDoc["sources._id"] = { $regex: new RegExp(sSource.value)}; 
+          }
+          //alert(JSON.stringify(searchDoc));
+          const tStrt = "<div><table class=\"blueTable\"><tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th>" +
+            "<th>Conact Phone</th><th>Email</th><th>Last Modified</th><th>Edit</th></tr>";
+            db.collection('master').find(searchDoc, {limit: 42}).asArray()
+              .then(docs => {
+                const html = docs.map(c => "<tr>" +
+                  "<td>" + c._id +  "</td>" +
+                  "<td>" + c.master.first_name + " " + c.master.last_name + "</td>" +
+                  "<td>" + c.master.gender + "</td>" + 
+                  "<td>" + c.master.dob + "</td>" +
+                  "<td>" + c.master.phone + "</td>" + 
+                  "<td>" + c.master.email + "</td>" +
+                  "<td>" + formatDate(c.last_modified) + "</td>" +
+                  "<td>" +
+                  "<button type=\"checkbox\" class=\"blueTable\"" +
+                  "onClick=\"editCustomer(\'" + c._id +"\')\">" +
+                  "<i class=\"material-icons\" style=\"font-size:18px\">" +
+                  "mode_edit</i></button>" + 
+                  "</td>" +
+                  "</tr>").join("");
+                document.getElementById("customers").innerHTML = tStrt + html + "</table></div>";
+            });
+          }
+```
+
+The rest of the html file manipulates the results from the database and transforming the various document arrays into rows and columns.  Its allows the user to update the matser document data as well.
+
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![11](../../Stitch/tools/img/11b.png) Host the web application
@@ -892,7 +966,7 @@ __index.html__
 __loading.gif__   
 __logo.png__   
 __postrapper.html__   
-__ship.css__   
+__customer.css__   
 
 Click the image files and right click save as.  Edit the text files (html and css) and cut paste the contents then save the file with the correct name.  Alternatively you can download the project as a zip file and navigate to (extract path)/MongoDB-Demos/Applications/Shipping/html/
 
@@ -908,7 +982,6 @@ Lets see your new employee app in action! Type in the default address
  ```<your-app-id>.mongodbstitch.com```
 
 Notice how you can access the database directly from the web.  __***Note:***__  you may need to select the  __"Actions"__ drop list in the hosting console and "Flush CDN Cache" to view your changes.
-
 
 We will upload the files in this [html directory](html/)
 
