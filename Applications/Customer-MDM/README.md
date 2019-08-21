@@ -838,7 +838,7 @@ Press the green box "Clone or Download" and select "Donwload Zip File" if you ha
 
 Open the index.html file in the editor and replace 'your-app-id' with the application id of your shipping application and the 'your-api-Key' with the api key we just generated.  The APP-ID is located in the upper left of the stitch console as seen below, click the copy button to load it in your clip board for a quick paste.
 
-![Web](../Shipping/img/appid.jpg "Web")
+![Web](img/customerAppId.jpg "Web")
 
 ```js
       const credential = new stitch.UserApiKeyCredential('your-api-key');
