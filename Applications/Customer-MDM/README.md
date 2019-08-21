@@ -987,7 +987,15 @@ We will upload the files in this [html directory](html/)
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
-## ![12](../../Stitch/tools/img/12b.png) Host the web application
+## ![12](../../Stitch/tools/img/12b.png) GitHub and CI/CD Integration
+A common queston we are asked by developers while going through the workshop is "Do we have to use the stitch console?" The answer is no.  You can write your own code in the editor of your choice and check that code into GitHub or whatever your source code control repository is. 
+
+The next question we are asked is "How do we build a test environment?" A variation of this question is "Is there a local version of Stitch we can download for testing purposes?" The basic question is "if we need to deploy our changes into a testing environment how does all of this stuff fit together?"
+
+The answer is a combination of source code control (we do have services built in for GitHub) and integration into your existing CICD infrastructure whether that is Jenkins or Maven Build Scripts or whatever your CICD platform is the whole process including stitch can be scripted and woven into your standard process.
+
+The stitch command line tool provides the ability to integrate your CICD with Stitch.  Atlas has a Rest Based API that you can use to build a new test environment.  Stitch has a stitch-cli interface that allows you to access your changes from GitHub and deploy them into your new test environment.   
+
 There are many ways to deploy with stitch and to integrate Atlas with Devops Please see the following links for detailed instructions
 __Stitch command line nlog Overview__   
 https://www.mongodb.com/blog/post/mongodb-stitch-command-line-interface
@@ -1077,5 +1085,14 @@ If you named your cluster "DevCluster" for example you would change the __"clust
 ```
 Once you save your changes you are ready to try the import again.
 
+### Process overview
+A basic outline of the process is as follows:
 
+1. Develop or change software (Editor and environment of your choice)
+2. Check in to GitHub or sourcecode control.
+3. Integrate [Atlas rest API](https://docs.atlas.mongodb.com/api/) with build process to create or update new Atlas test database environment.
+4. Obtain the latest changes from GitHub or source control and Import them via the stitch-cli into the new Atlas test database environment.
+5. Commence testing against the new test database and stitch environment
+
+Steps 3 and 4 are typically scripted with the CICD build process making calls to Atlas and the stitch-cli.
 
