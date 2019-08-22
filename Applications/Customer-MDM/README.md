@@ -526,7 +526,6 @@ Create a new function called __addressObject__ in the stitch console and copy pa
 
 __addressObject__
 ```js
-
 exports = function(source){
   //Master has an array of adresses
   //Source has an adress object
@@ -542,9 +541,16 @@ exports = function(source){
       copy.phone = source.phone;
       copy.email = source.email;
       if (source.address) {
-       source.address.forEach(function(myAddress) {
-          addressCopy =  myAddress;
-        });
+        if (Array.isArray(source.address)) {
+          source.address.forEach(function(myAddress) {
+            //copy the address for each element
+            //overwrite with the value from the last element
+            addressCopy =  myAddress;
+          });
+        } else {
+            //We have an object just copy it
+            addressCopy = source.address;
+        }
       }
       copy.address = addressCopy;
   }
