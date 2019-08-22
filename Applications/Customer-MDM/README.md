@@ -267,6 +267,7 @@ exports = async function(payload) {
   return  result;
 };
 ```
+Notice two key words: __"await"__ and __"async"__. These key words are important as they tell stitch to wait for a response from the database before sending the results back to the calling application. The function is declared as async and the await is used when accessing the database.
 
 Lets review the code above. We define the database and collection we are using with the following statment.  We connect to the database named __"single"__ and to the collection named __"source"__
 
