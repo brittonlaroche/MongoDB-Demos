@@ -632,12 +632,12 @@ exports({
       "last_name": "COLE",
       "gender": "FEMALE",
       "dob": "1980-02-08",
-      "address": [{
+      "address": {
         "street": "4620 FRANKLIN STREET",
         "city": "SANTA ROSA",
         "state": "CA",
         "zip": "95409"
-      }],
+      },
       "phone": "+14823008921",
       "email": "ox@tjwq.com"
     })
