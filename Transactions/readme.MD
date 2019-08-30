@@ -65,120 +65,162 @@ db.player.insert({"name": "Gilgamesh", "class": "Ranger", "Gold": 100, "Apples":
 db.player.createIndex( { "name": 1 }, { unique: true } );
 ```
 
-### 1. Investigate Session Isolation
-Multiple sessions are a natural part of database activity as multiple users and processes access the same data at the same time.  In this example we create two new sessions s1 and s2. S1 will create a new player that will not be visible to s2 until the transaction has been committed. Here we demonstrate read isolation between sessions until data is commited.
+## Execution
+Run each of the following tests sequentially via the Mongo Shell (note later tests may rely on earlier tests having been first run, so ensure you run the tests in order).
 
-The code below starts a transaction with reads coming from snapshots, and writes with very high durability.
+### TEST 1: Session Isolation
+Multiple sessions are a natural part of database activity as multiple users and processes access the same data at the same time. In this example we create two new sessions _s1_ and _s2_. Session _s1_ will create a new player that will not be visible to session _s2_ until the transaction has been committed. Here we demonstrate read isolation between sessions until data is committed. To provide an isolation level of snapshot with repeatable read from a majority of updated replicas, the following settings are made in the code below on the transaction `s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}})`
+  ```js
+  // Create two sessions, s1 and s2 and start a transaction with s1
+  var s1 = db.getMongo().startSession();
+  var s2 = db.getMongo().startSession();
+  var s1Player = s1.getDatabase('game').getCollection('player');
+  var s2Player = s2.getDatabase('game').getCollection('player');
+  s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}});
+  
+  // Insert player 3, inside a transaction/session1
+  s1Player.insert({"name": "Merlin", "class": "Mage", "Gold": 100, "Apples": 10});
+  
+  // Use session 2 and find the documents from collection and session1
+  s2Player.find();
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 100, "Apples": 10 }
+  // {"name": "Gilgamesh", "class": "Ranger", "Gold": 100, "Apples": 10}
+  
+  // Notice that the insert on session1 is only visible to it.
+  s1Player.find()
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 100, "Apples": 10 }
+  // {"name": "Gilgamesh", "class": "Ranger", "Gold": 100, "Apples": 10}
+  // {"name": "Merlin", "class": "Mage", "Gold": 100, "Apples": 10}"}
+  
+  // Commit & end the session (if not committed within 60 secs transaction will timeout)
+  s1.commitTransaction();
+  
+  // show the documents after committing the transaction
+  s2Player.find();
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 100, "Apples": 10 }
+  // {"name": "Gilgamesh, "class": "Ranger", "Gold": 100, "Apples": 10}
+  // {"name": "Merlin, "class": "Mage", "Gold": 100, "Apples": 10}"}
+  ```
 
-```
-s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}});
-```
+__RESULT 1__: Before the transaction commits, _s2player_ should not see the newly added _Merlin_ record, but after the transaction is committed it should be visible to _s2player_
 
-The write concern 'majority' insures that the data is written to the primary and atleast one secondary in a three node replica set on atlas. That means that you would have to have two out of three servers fail in our cluster before we would lose the data comitted in this transaction.  This transaction insures the "D" for durability in ACID.
+Here the transaction was committed but because the default transaction timeout is 60 seconds, the transaction would be timed-out and automatically aborted if the above code is not executed quickly enough. This is desired behaviour for transactions in the real world to prevent long running transactions from excessively consuming system resources.
 
-There are 3 ways to end the transaction: commit, abort, or time out.  We will cover commits and aborts in the examples below.  A timeout can also occur after 60 seconds when executing the example transactions. Detailed documenation on MongoDB transactions is available here: https://docs.mongodb.com/manual/core/transactions/
 
-```
-// create two sessions, s1 and s2.
-// start a transaction with s1
-// add a new player document using session1 
+### TEST 2: Multiple Document Updates, Atomicity and Session Isolation
+In the game Merlin decides to buy an apple from Zoltar for 2 gold.  This is an exchange of in game currency and items across two player documents. The transaction occurs in session 1 and the updated information is not available in other sessions until the commit is final.  Should an error occur the transaction is rolled back. Here we demonstrate both isolation and the atomicity of the transaction, neither document is actually updated until the changes on both documents are committed.
+  ```js
+  // Start transaction with Merlin buying an apple from Zoltar for 2 gold
+  s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}});
+  s1Player.updateOne({"name": "Zoltar"}, {"$inc": {"Gold": 2, "Apples": -1} });
+  s1Player.updateOne({"name": "Merlin"}, {"$inc": {"Gold": -2, "Apples": 1} });
+  
+  s1Player.find();
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
+  // {"name": "Gilgamesh, "class": "Ranger", "Gold": 100, "Apples": 10}
+  // {"name": "Merlin, "class": "Mage", "Gold": 98, "Apples": 11}"}
+  
+  s2Player.find();
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 100, "Apples": 10 }
+  // {"name": "Gilgamesh, "class": "Ranger", "Gold": 100, "Apples": 10}
+  // {"name": "Merlin, "class": "Mage", "Gold": 100, "Apples": 10}"}
+  
+  s1.commitTransaction();
+  
+  s2Player.find();
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
+  // {"name": "Gilgamesh, "class": "Ranger", "Gold": 100, "Apples": 10}
+  // {"name": "Merlin, "class": "Mage", "Gold": 98, "Apples": 11}"}
+  ```
 
-var s1 = db.getMongo().startSession();
-var s2 = db.getMongo().startSession();
-var s1Player = s1.getDatabase('game').getCollection('player');
-var s2Player = s2.getDatabase('game').getCollection('player');
-s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}});
+__RESULT 2__: Before the transaction commits, _s2player_ should see the older values of _gold_ and _apples_ for both _Zoltar_ and _Merlin_, but after the transaction is committed the new values should be visibile to _s2player_
 
-// insert player 3, inside a transaction/session1
-s1Player.insert({"name": "Merlin", "class": "Mage", "Gold": 100, "Apples": 10});
-// WriteResult({ "nInserted" : 1 })
 
-// Use session 2 and find the documents from collection and session1
-s2Player.find();
-// {"name": "Zoltar", "class": "Mage", "Gold": 100, "Apples": 10 }
-// {"name": "Gilgamesh", "class": "Ranger", "Gold": 100, "Apples": 10}
+### TEST 3: Multiple Document Updates with Atomicity, Consistency with a Rollback
+In this example Zoltar refers a friend. Any friend who successfully creates an account yields a 10 gold reward to the player who referred the friend. Unaware that the name "Merlin" was taken, Zoltar's friend fails to create an account, the transaction is rolled back and Zoltar's player data remains unchanged, he never receives the 10 gold bonus. Here we demonstrate atomicity and consistency as the player data is protected by a rollback when an error occurs.
+  ```js
+  // Start a transaction with Zoltar refers a friend and gets 10 gold for the account creation
+  s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}});
+  
+  s1Player.find({"name": "Zoltar"});
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
+  
+  s1Player.updateOne({"name": "Zoltar"}, {"$inc": {"Gold": 10} });
+  
+  s1Player.find({"name": "Zoltar"});
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 112, "Apples": 9 }
+  
+  s1Player.insert({"name": "Merlin", "class": "Wizard", "Gold": 100, "Apples": 10 });
+  // EXPECTED RESULT:
+  // WriteCommandError({
+  //        "operationTime" : Timestamp(1549657865, 3),
+  //        "ok" : 0,
+  //        "errmsg" : "E11000 duplicate key error collection: game.player index: name_1 dup key: { : \"Merlin\" }",
+  //        "code" : 11000,
+  //        "codeName" : "DuplicateKey",
+  // })
+  
+  s1.abortTransaction();
+  
+  s1Player.find({"name": "Zoltar"});
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
+  ```
 
-// notice that the insert on session1 is only visible to it.
-s1Player.find()
-// {"name": "Zoltar", "class": "Mage", "Gold": 100, "Apples": 10 }
-// {"name": "Gilgamesh", "class": "Ranger", "Gold": 100, "Apples": 10}
-// {"name": "Merlin", "class": "Mage", "Gold": 100, "Apples": 10}"}
+__RESULT 3__: Before the transaction commits, _s1player_ should see the seemingly updated _gold_ value of _112_ for _Zoltar_, but once the transaction has aborted and hence rolled back, the original value should be seen
 
-// commit and end the session 
-// can demonstrate time out if commit is not done in 60 seconds
-s1.commitTransaction();
 
-// show the documents after committing the transaction
-s2Player.find();
-// {"name": "Zoltar", "class": "Mage", "Gold": 100, "Apples": 10 }
-// {"name": "Gilgamesh, "class": "Ranger", "Gold": 100, "Apples": 10}
-// {"name": "Merlin, "class": "Mage", "Gold": 100, "Apples": 10}"}
-```
-### 2.  Multiple document updates, atomicity and session isolation
-In the game Merlin decides to buy an apple from Zoltar for 2 gold.  This is an exchange of in game currency and items across two player documents. The transaction occurs in session 1 and the updated information is not available in other sessions until the commit is final.  Should an error occur the transaction is rolled back. Here we demonstrate both isolation and the atomicity of the transaction, neither document is actually updated until the changes on both documents are commited.
+### TEST 4: Multiple Document Updates and Retries Leading to Commit
+Zoltar's friend tries again to create the account after receiving the error that the name "Merlin" was taken. He retries with a new player name of "Tim" and he is successful. When the transaction commits Zoltar gets the 10 gold. Session 2 can not see the change until the commit completes.
+  ```js
+  // Start a transaction with Zoltar refers a friend and gets 10 gold for the account creation
+  s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}});
+  
+  s1Player.find({"name": "Zoltar"});
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
+  
+  s1Player.updateOne({"name": "Zoltar"}, {"$inc": {"Gold": 10} });
+  
+  s1Player.find({"name": "Zoltar"});
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 112, "Apples": 9 }
+  
+  s2Player.find({"name": "Zoltar"});
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
+  
+  s1Player.insert({"name": "Tim", "class": "Wizard", "Gold": 100, "Apples": 10 });
+  
+  s1.commitTransaction();
+  
+  s2Player.find({"name": "Zoltar"});
+  // EXPECTED RESULT:
+  // {"name": "Zoltar", "class": "Mage", "Gold": 112, "Apples": 9 }
+  
+  ```
 
-```
-// Let’s do a trade between Zoltar and Merlin
-// Merlin buys an apple from Zoltar for 2 gold
+__RESULT 4__: Before the transaction commits, _s1player_ should see the seemingly updated _gold_ value of _112_ for _Zoltar_ and _s2player_ should still see the original value, but once the transaction has committed, the new value should be visible to _s2player_
 
-s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}});
 
-s1Player.updateOne({"name": "Zoltar"}, {"$inc": {"Gold": 2, "Apples": -1} });
-s1Player.updateOne({"name": "Merlin"}, {"$inc": {"Gold": -2, "Apples": 1} });
+## Measurement
 
-s1Player.find();
-// {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
-// {"name": "Gilgamesh, "class": "Ranger", "Gold": 100, "Apples": 10}
-// {"name": "Merlin, "class": "Mage", "Gold": 98, "Apples": 11}"}
+For the four tests, the four respective __RESULT__ results shown above should be observed. In summary the observations should be:
 
-s2Player.find();
-// {"name": "Zoltar", "class": "Mage", "Gold": 100, "Apples": 10 }
-// {"name": "Gilgamesh, "class": "Ranger", "Gold": 100, "Apples": 10}
-// {"name": "Merlin, "class": "Mage", "Gold": 100, "Apples": 10}"}
+* __RESULT 1__: Before the transaction commits, for a single update, other sessions should not see changes made by a separate transaction, and only see them when the transaction is committed
+* __RESULT 2__: Before the transaction commits, for multiple updates, other sessions should not see changes made by a separate transaction, and only see them when the transaction is committed
+* __RESULT 3__: Before the transaction commits, the transaction section that updates some fields should be able to see those changes, but once the transaction has aborted and rolled-back, the session should now see the original values
+* __RESULT 4__: Before the transaction commits, the transaction section that updates some fields should be able to see those changes whereas the other session should only see the original values, but once the transaction has committed, all sessions should see the new values
 
-s1.commitTransaction();
 
-s2Player.find();
-// {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
-// {"name": "Gilgamesh, "class": "Ranger", "Gold": 100, "Apples": 10}
-// {"name": "Merlin, "class": "Mage", "Gold": 98, "Apples": 11}"}
-```
-
-### 4. Multiple document updates with atomicity, consistency and error handling 
-
-In this example Zoltar refers a friend.  Any friend who succesfully creates an account yields a 10 gold reward to the player who referred the friend.  Unaware that the name "Merlin" was taken Zoltar's friend fails to create an account, the transaction is rolled back and Zoltar's player data remains unchanged, he never recieves the 10 gold bonus.  Here we demonstrate atomicity and consistency as the player data is protected by a rollback when an error occurs.
-
-```
-// Zoltar refers a friend and gets 10 gold for the account creation, 
-// but the friend violates the unique name key before the transaction completes
-
-s1.startTransaction({readConcern: {level: 'snapshot'}, writeConcern: {w: 'majority'}});
-
-s1Player.updateOne({"name": "Zoltar"}, {"$inc": {"Gold": 10} });
-s1Player.find({"name": "Zoltar"});
-// {"name": "Zoltar", "class": "Mage", "Gold": 112, "Apples": 9 }
-
-s1Player.insert({"name": "Merlin", "class": "Wizard", "Gold": 100, "Apples": 10 });
-//WriteCommandError({
-        "operationTime" : Timestamp(1549657865, 3),
-        "ok" : 0,
-        "errmsg" : "E11000 duplicate key error collection: game.player index: name_1 dup key: { : \"Merlin\" }",
-        "code" : 11000,
-        "codeName" : "DuplicateKey",
-        "$clusterTime" : {
-                "clusterTime" : Timestamp(1549657865, 3),
-                "signature" : {
-                        "hash" : BinData(0,"I0jQCgd8b9m8aoiDd6aeM/aalGE="),
-                        "keyId" : NumberLong("6595591864114479105")
-                }
-        }
-})
-
-s1.abortTransaction();
-s1Player.find({"name": "Zoltar"});
-// {"name": "Zoltar", "class": "Mage", "Gold": 102, "Apples": 9 }
-
-```
 ### 5. Multiple document updates and retrys leading to commit
 Zoltar's friend retries to create the account after recieveing an error that the name "Merlin" was taken.  He retries with a new player name of "Tim" and he is succesful.  When the transaction commits Zoltar gets the 10 gold.  Session 2 can not see the change until the commit completes.
 
