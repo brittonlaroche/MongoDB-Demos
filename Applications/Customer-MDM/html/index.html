@@ -47,7 +47,7 @@
             searchDoc._id = new stitch.BSON.ObjectId(sCust.value); 
           }
           if ( sSource.value != "") {
-            searchDoc["sources._id"] = { $regex: new RegExp(sSource.value)}; 
+            searchDoc["sources._id"] = sSource.value; 
           }
           if ( sDob.value != "") {
             searchDoc["master.dob"] = { $regex: new RegExp(sDob.value)}; 
