@@ -1,5 +1,3 @@
-
-
 <html>
     <head>
       <title>Customer MDM</title>
@@ -11,8 +9,8 @@
          * (dont paste your API key in your code its easily obtained by the browser view source)
          * API key is pasted here for a simple prototype example with out key management 
          */       
-        const credential = new stitch.UserApiKeyCredential("your-api-key");
-        const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
+        const credential = new stitch.UserApiKeyCredential("pC4Zh114GuVouc9DDBGO0UeZlIpo7UppPuzQJwBfThapugCViKBs0I4xFdUIBwbc");
+        const client = stitch.Stitch.initializeDefaultAppClient('customer-rytyl');
         const db = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas").db('single');
         function displayCustomersOnLoad() {
           client.auth
@@ -26,8 +24,10 @@
           var sSource = document.getElementById('s_source_id'); 
           var sPhone = document.getElementById('s_contact_phone');
           var sFname = document.getElementById('s_fname');
+          var sMname = document.getElementById('s_mname');
           var sLname = document.getElementById('s_lname'); 
           var sGender = document.getElementById('s_gender'); 
+          var sDob = document.getElementById('s_dob'); 
           if ( sGender.value != "") {
             searchDoc["master.gender"] =  sGender.value; 
           }
@@ -37,6 +37,9 @@
           if ( sFname.value != "") {
             searchDoc["master.first_name"] = { $regex: new RegExp(sFname.value)}; 
           }
+          if ( sMname.value != "") {
+            searchDoc["master.middle_name"] = { $regex: new RegExp(sMname.value)}; 
+          }
           if ( sLname.value != "") {
             searchDoc["master.last_name"] = { $regex: new RegExp(sLname.value)}; 
           }
@@ -45,6 +48,9 @@
           }
           if ( sSource.value != "") {
             searchDoc["sources._id"] = { $regex: new RegExp(sSource.value)}; 
+          }
+          if ( sDob.value != "") {
+            searchDoc["master.dob"] = { $regex: new RegExp(sDob.value)}; 
           }
           //alert(JSON.stringify(searchDoc));
           const tStrt = "<div><table class=\"blueTable\"><tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th>" +
@@ -101,13 +107,15 @@
             //Get the adress information
             docs.map(c => {
               if (c.master.address) {
-                c.master.address.forEach( function(myDoc) {
-                  vAddrHtml = vAddrHtml + "<tr><td><input id=\"street\" value=\"" + myDoc.street + "\"></td>" +
-                  "<td><input id=\"city\" value=\""+ myDoc.city + "\"></td>" +
-                  "<td><input id=\"state\" value=\""+ myDoc.state + "\"></td>" +
-                  "<td><input id=\"zip\" value=\""+ myDoc.zip + "\"></td></tr>"
-                  ;
-                });
+                if (Array.isArray(c.master.address)) {
+                  c.master.address.forEach( function(myDoc) {
+                    vAddrHtml = vAddrHtml + "<tr><td><input id=\"street\" value=\"" + myDoc.street + "\"></td>" +
+                    "<td><input id=\"city\" value=\""+ myDoc.city + "\"></td>" +
+                    "<td><input id=\"state\" value=\""+ myDoc.state + "\"></td>" +
+                    "<td><input id=\"zip\" value=\""+ myDoc.zip + "\"></td></tr>"
+                    ;
+                  });
+                }
               }
             });
             //get the source information
@@ -229,8 +237,10 @@
               <fieldset><input type="text" placeholder="Source ID:" id="s_source_id"></fieldset>
               <fieldset><input type="text" placeholder="Contact Phone:" id="s_contact_phone"></fieldset>
               <fieldset><input type="text" placeholder="First Name:" id="s_fname"></fieldset>
+              <fieldset><input type="text" placeholder="Middle Name:" id="s_mname"></fieldset>
               <fieldset><input type="text" placeholder="Last Name:" id="s_lname"></fieldset>
               <fieldset><input type="text" placeholder="Gender:" id="s_gender"></fieldset>
+              <fieldset><input type="text" placeholder="Date of Birth:" id="s_dob"></fieldset>
               <button type="submit" id="contact-submit" onClick="displayCustomers()">Search</button>
               <hr>
               <br>
