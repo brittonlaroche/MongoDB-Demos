@@ -227,12 +227,16 @@ exports = async function(payload) {
   console.log("Executing addCustomerSourceWebhook");
   var queryArg = payload.query.arg || '';
   var body = {};
+  var voptout = "";
   var result = { "status": "Unknown: Payload body may be empty"};
   
   if (payload.body) {
     body = EJSON.parse(payload.body.text());
     console.log(JSON.stringify(body));
     var nDate = new Date();
+    if (body.optout) {
+      voptout = body.optout;
+    }
     //check the source_id
     if ( body._id ) {
         console.log("updating customer source document");
@@ -252,6 +256,7 @@ exports = async function(payload) {
               }],
               phone: body.phone,
               email: body.email,
+              optout: voptout,
               last_modified: nDate
               }
           },
@@ -300,6 +305,7 @@ We check for required fields and store then store all the specific fields into t
       },
       phone: body.phone,
       email: body.email,
+      optout: voptout,
       last_modified: nDate
       }
   },
