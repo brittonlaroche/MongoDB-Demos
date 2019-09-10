@@ -367,6 +367,25 @@ Navigate to the __"single"__ database and select the __"source"__ collection to 
 
 Later we can test the "opt out" functionality by setting a field __"optout"__ to true.  This will remove data from the master document and the source system that the user chose to opt out of.  Later we can enhance the function to opt out of all source systems.  
 
+```
+    {
+      "_id": "B-04227551",
+      "optout": "true",
+      "first_name": "MARION",
+      "middle_name": "ANITA",
+      "last_name": "COLE",
+      "gender": "FEMALE",
+      "dob": "1980-02-08",
+      "address": {
+        "street": "4620 FRANKLIN STREET",
+        "city": "SANTA ROSA",
+        "state": "CA",
+        "zip": "95409"
+      },
+      "phone": "+14823008921",
+      "email": "ox@tjwq.com"
+    }
+```
 
 ![end](../../Stitch/tools/img/section-end.png)   
 
