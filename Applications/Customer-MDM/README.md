@@ -558,7 +558,59 @@ exports = function(source){
   return copy;
 };
 ```
- 
+
+Create a new function called __optOut__ in the stitch console and copy past the code below and save it.
+
+__optOut__
+```js
+exports = async function(argSource){
+  var result = {};
+  var masterDoc = {};
+  var newMasterDoc = {};
+  var sourceAdressObject = context.functions.execute("addressObject", argSource);
+  var master = context.services.get("mongodb-atlas").db("single").collection("master");
+  var copyMaster = {"optout": "true"};
+  var copySource = {};
+  var nDate = new Date();
+  console.log("optOut source doc: " + JSON.stringify(argSource));
+
+  masterDoc = await context.functions.execute("findMaster", argSource);
+  console.log("optOut find master doc: " + JSON.stringify(masterDoc))
+  if(masterDoc.master){
+    /*
+    * we update the existing master doc with the source information
+    * the most recent information is considered to be correct
+    * this keeps data from getting stale
+    */
+    console.log("updating master document");
+    await master.updateOne(
+        { _id: masterDoc._id},
+        { $set: {
+          owner_id: argSource.owner_id,
+          master: copyMaster,
+          last_modified: nDate
+          }
+        }
+    );
+    if (masterDoc.sources){
+      console.log("master ... $pull..." );
+      await master.updateOne(
+        	{ _id: masterDoc._id },
+        	{ $pull: { "sources": { _id: argSource._id } }	}
+        );
+    }
+    console.log("master ... $addToSet..." );
+    copySource._id = argSource._id;
+    await master.updateOne(
+    	{ _id: masterDoc._id },
+    	{ $addToSet: { "sources": copySource  } } 
+    );
+  } 
+  result = await context.functions.execute("findMaster", argSource);
+  return result;
+};
+```
+
 We are now ready to design the function to create new master document or update our existing master document based on real time updates from the source systems.  The code below takes the source json document in as an argument processes the document into an object to store in an array.  Next it attempts to find an existing master document.  It makes use of all the functions we created earlier.
 
 If the function finds the master document it updates the master object information to the new data contained in the source document.  Then it updates the array of sources with the source object created from the function above. 
@@ -613,6 +665,18 @@ exports = async function(argSource){
     newMasterDoc.last_modified = nDate;
     console.log("updateMaster newMasterDoc: " + JSON.stringify(newMasterDoc));
     master.insertOne(newMasterDoc);
+  }
+  //OptOut by source system
+  if (argSource){
+    console.log("checking optout argSource: " + JSON.stringify(argSource));
+    if (argSource.optout){
+      var wantsOut = argSource.optout;
+      console.log("wantsOut: " + wantsOut);
+      if (wantsOut == "true"){
+        console.log("opting out" );
+        await context.functions.execute("optOut", argSource);
+      }
+    }
   }
   result = await context.functions.execute("findMaster", argSource);
   return result;
