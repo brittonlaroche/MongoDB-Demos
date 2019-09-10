@@ -976,7 +976,7 @@ Once connected to the datababse we can build our own search document based on us
             searchDoc._id = new stitch.BSON.ObjectId(sCust.value); 
           }
           if ( sSource.value != "") {
-            searchDoc["sources._id"] = { $regex: new RegExp(sSource.value)}; 
+            searchDoc["sources._id"] = sSource.value; 
           }
           //alert(JSON.stringify(searchDoc));
           const tStrt = "<div><table class=\"blueTable\"><tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th>" +
