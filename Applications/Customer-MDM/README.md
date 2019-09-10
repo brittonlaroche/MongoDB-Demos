@@ -365,6 +365,9 @@ Navigate to the __"single"__ database and select the __"source"__ collection to 
 
 ![Collections](img/collections3.jpg)
 
+Later we can test the "opt out" functionality by setting a field __"optout"__ to true.  This will remove data from the master document and the source system that the user chose to opt out of.  Later we can enhance the function to opt out of all source systems.  
+
+
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![6](../../Stitch/tools/img/6b.png) Matching the proper Master Document
