@@ -120,21 +120,37 @@
             });
             //get the source information
             docs.map(c => {
-              if (c.sources) {
+              if (c.sources && Array.isArray(c.sources)) {
                 c.sources.forEach( function(myDoc) {
-                  vSourceHtml = vSourceHtml + "<tr><td>" + myDoc._id + "</td>" +
-                  "<td>" + myDoc.first_name + " " +
-                  " " + myDoc.middle_name + " " +
-                  " " + myDoc.last_name + "</td>" +
-                  "<td>" + myDoc.gender + "</td>" +
-                  "<td>" + myDoc.dob + "</td>" +
-                  "<td>" + myDoc.phone + "</td>" +
-                  "<td>" + myDoc.email + "</td>" +
-                  "<td>" + myDoc.address.street + "</td>" +
-                  "<td>" + myDoc.address.city + "</td>" +
-                  "<td>" + myDoc.address.state + "</td>" +
-                  "<td>" + myDoc.address.zip + "</td></tr>"
-                  ;
+                  if(myDoc.optout) {
+                      if(myDoc.optout == "true"){
+                        vSourceHtml = vSourceHtml + "<tr><td>" + myDoc._id + "</td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td></td></tr>"
+                    ;
+                      }
+                  } else {
+                    vSourceHtml = vSourceHtml + "<tr><td>" + myDoc._id + "</td>" +
+                    "<td>" + myDoc.first_name + " " +
+                    " " + myDoc.middle_name + " " +
+                    " " + myDoc.last_name + "</td>" +
+                    "<td>" + myDoc.gender + "</td>" +
+                    "<td>" + myDoc.dob + "</td>" +
+                    "<td>" + myDoc.phone + "</td>" +
+                    "<td>" + myDoc.email + "</td>" +
+                    "<td>" + myDoc.address.street + "</td>" +
+                    "<td>" + myDoc.address.city + "</td>" +
+                    "<td>" + myDoc.address.state + "</td>" +
+                    "<td>" + myDoc.address.zip + "</td></tr>"
+                    ;
+                  }
                 });
               }
             });
