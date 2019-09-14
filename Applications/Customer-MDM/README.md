@@ -635,22 +635,57 @@ exports = async function(argSource){
           }
         }
     );
-    if (masterDoc.sources){
-      console.log("master ... $pull..." );
-      await master.updateOne(
-        	{ _id: masterDoc._id },
-        	{ $pull: { "sources": { _id: argSource._id } }	}
-        );
+    //Loop through all additional sources
+    if (masterDoc.sources && Array.isArray(masterDoc.sources) ){
+      masterDoc.sources.forEach( function(mySource) {
+        context.functions.execute("pullSource", masterDoc, mySource._id);
+      });
     }
-    console.log("master ... $addToSet..." );
-    copySource._id = argSource._id;
-    await master.updateOne(
-    	{ _id: masterDoc._id },
-    	{ $addToSet: { "sources": copySource  } } 
-    );
   } 
   result = await context.functions.execute("findMaster", argSource);
   return result;
+};
+```
+
+Create a new function called __pullSource__ in the stitch console and copy past the code below and save it.  The pull source function is repsonible for deleting all the customer personal data from the master document as well as each individual source document.
+
+__pullSource__
+```js
+exports = async function(argMaster, argSourceId){
+  var master = context.services.get("mongodb-atlas").db("single").collection("master");
+  var source = context.services.get("mongodb-atlas").db("single").collection("source");
+  var copySource = {"optout":"true"};
+  var nDate = new Date();
+  console.log("pullSource source id: " + JSON.stringify(argSourceId));
+  console.log("pullSource master doc: " + JSON.stringify(argMaster));
+  
+  if(argMaster.master){
+    /*
+    * Remove all customer master data from the source array
+    */
+    if (argMaster.sources){
+      console.log("master ... $pull..." );
+      await master.updateOne(
+        	{ _id: argMaster._id },
+        	{ $pull: { "sources": { _id: argSourceId } }	}
+        );
+    }
+    console.log("master ... $addToSet..." );
+    copySource._id = argSourceId;
+    await master.updateOne(
+    	{ _id: argMaster._id },
+    	{ $addToSet: { "sources": copySource  } } 
+    );
+    /*
+    * Remove all customer source data as well
+    */
+    console.log("source ... delete..." );
+    await source.deleteOne(
+    	{ _id: argSourceId }
+    );
+  } 
+  
+  return "complete";
 };
 ```
 
