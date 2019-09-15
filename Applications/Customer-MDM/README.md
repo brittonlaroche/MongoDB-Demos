@@ -319,7 +319,8 @@ We check for required fields and store then store all the specific fields into t
 
 Notice two key words: __await__ and __async__.  These key words are important as they tell stitch to wait for a response from the database before sending the results back to the calling application.  The function is declared as __async__ and the __await__ is used when accessing the database.
 
-Now that we have created our webhook and function we are ready to test it.
+Now that we have created our webhook and function we are ready to test it.   
+
 [Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
@@ -389,7 +390,8 @@ Later we can test the "opt out" functionality by setting a field __"optout"__ to
       "phone": "+14823008921",
       "email": "ox@tjwq.com"
     }
-```
+```   
+
 [Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
