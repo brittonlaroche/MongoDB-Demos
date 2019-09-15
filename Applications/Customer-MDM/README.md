@@ -162,6 +162,7 @@ Due to the CCPA laws, Katana wishes to store this document in their MongoDB Cust
 
 Our first step is to create a stitch HTTP service to recieve the customer source data and store it in MongoDB. MongoDB has a servless compute capability to provide a REST based API called stitch. To create the Stitch service, we must begin by creating a Stitch application.  Before creating a stitch application we need to have an Atlas cluster set up to recieve the document.  Lets begin by creating an Atlas cluster.
 
+![Tutorial Contents](#-tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)
 
 ## ![2](../../Stitch/tools/img/2b.png) Create the Atlas cluster
@@ -184,6 +185,7 @@ This will bring up a window prompting you to build your first cluster.  Click th
 
 __"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.   
 
+![Tutorial Contents](#-tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![3](../../Stitch/tools/img/3b.png) Create the Stitch Application
