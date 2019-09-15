@@ -162,7 +162,7 @@ Due to the CCPA laws, Katana wishes to store this document in their MongoDB Cust
 
 Our first step is to create a stitch HTTP service to recieve the customer source data and store it in MongoDB. MongoDB has a servless compute capability to provide a REST based API called stitch. To create the Stitch service, we must begin by creating a Stitch application.  Before creating a stitch application we need to have an Atlas cluster set up to recieve the document.  Lets begin by creating an Atlas cluster.
 
-[Tutorial Contents](#-tutorial-contents)
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)
 
 ## ![2](../../Stitch/tools/img/2b.png) Create the Atlas cluster
@@ -185,7 +185,7 @@ This will bring up a window prompting you to build your first cluster.  Click th
 
 __"Cluster0"__ is the default name and works well for importing data and projects later. Click the __"Create Cluster"__ button at the bottom and your cluster will be ready in the next 7 to 10 minutes.   
 
-[Tutorial Contents](#-tutorial-contents)
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![3](../../Stitch/tools/img/3b.png) Create the Stitch Application
@@ -199,7 +199,7 @@ We click the large green button labeled __"Create new Application"__ and give th
 Click the little green __"Create"__ button in the lower right hand of the popup window.  The stitch application console will appear as soon as the application has been created and linked with the cluster. 
 
 
-[Tutorial Contents](#-tutorial-contents)
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![4](../../Stitch/tools/img/4b.png) Adding customer source data through a REST based API
@@ -320,7 +320,7 @@ We check for required fields and store then store all the specific fields into t
 Notice two key words: __await__ and __async__.  These key words are important as they tell stitch to wait for a response from the database before sending the results back to the calling application.  The function is declared as __async__ and the __await__ is used when accessing the database.
 
 Now that we have created our webhook and function we are ready to test it.
-
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![5](../../Stitch/tools/img/5b.png) Testing the Rest based API
@@ -390,7 +390,7 @@ Later we can test the "opt out" functionality by setting a field __"optout"__ to
       "email": "ox@tjwq.com"
     }
 ```
-
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![6](../../Stitch/tools/img/6b.png) Matching the proper Master Document
@@ -561,7 +561,7 @@ exports = async function(argSource){
 ![findMaster](img/findMaster.jpg)
 
 Create the __"findMaster"__ function by selecting the __"Functions"__ menu item form the left navigation pane.  Click the __"Create New Function"__ button and name the function __"findMaster"__.  Make certain to run on the __"Run as System"__ toggle so we can access the master collection.  Save the function and copy and paste the code above into the function editor and then save the changes.
-
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![7](../../Stitch/tools/img/7b.png) Creating and updating the master document
@@ -816,8 +816,9 @@ __master.dob__
 { background : true }
 ```
 
-![Create Index](img/indexes2.jpg)
+![Create Index](img/indexes2.jpg)   
 
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![8](../../Stitch/tools/img/8b.png) The trigger for change
@@ -841,8 +842,9 @@ The created trigger is ready and watching for changes. When the REST based API _
 
 Additional functions can be developed to inspect the source data and apply rules, before the master record is updated.  This trigger is the hook to call multiple functions for real time updates and processing of data as changes occur in the source systems.
 
-The next step is to create the REST API for the source system to find the customer master record.
+The next step is to create the REST API for the source system to find the customer master record.   
 
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![9](../../Stitch/tools/img/9b.png) Accessing customer master data
@@ -941,8 +943,9 @@ Once the webhook url has been copied we can open postrapper.html and paste in th
 
 We have completed our prototype single view application.  We can submit source data through a REST based API, match and merge the source data in a master document, and return the master document to a calling program through a REST based API.  All that is missing is a beatiful web interface.
 
-Next we will develop our web interface utilizing the power of Stitch QueryAnywhere.
+Next we will develop our web interface utilizing the power of Stitch QueryAnywhere.   
 
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![10](../../Stitch/tools/img/10b.png) QueryAnywhere
@@ -1085,8 +1088,9 @@ Once connected to the datababse we can build our own search document based on us
           }
 ```
 
-The rest of the html file manipulates the results from the database and transforming the various document arrays into rows and columns.  Its allows the user to update the matser document data as well.
+The rest of the html file manipulates the results from the database and transforming the various document arrays into rows and columns.  Its allows the user to update the matser document data as well.   
 
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![11](../../Stitch/tools/img/11b.png) Host the web application
@@ -1136,8 +1140,9 @@ Lets see your new employee app in action! Type in the default address
 
 Notice how you can access the database directly from the web.  __***Note:***__  you may need to select the  __"Actions"__ drop list in the hosting console and "Flush CDN Cache" and deploy the changges to view the updates.
 
-We will upload the files in this [html directory](html/)
+We will upload the files in this [html directory](html/)   
 
+[Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
 ## ![12](../../Stitch/tools/img/12b.png) GitHub and CI/CD Integration
@@ -1247,5 +1252,7 @@ A basic outline of the process is as follows:
 4. Obtain the latest changes from GitHub or source control and Import them via the stitch-cli into the new Atlas test database environment.
 5. Commence testing against the new test database and stitch environment
 
-Steps 3 and 4 are typically scripted with the CICD build process making calls to Atlas and the stitch-cli.
+Steps 3 and 4 are typically scripted with the CICD build process making calls to Atlas and the stitch-cli.   
+
+[Tutorial Contents](#tutorial-contents)
 
