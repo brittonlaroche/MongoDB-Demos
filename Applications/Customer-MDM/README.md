@@ -1160,7 +1160,7 @@ The following section shows how to import the application via this GitHub and th
 
 The directions here are terse but complete as I refer you to documenation on setting up the stitch command line interface tool and importing the existing stitch customer application:
 
-#### 1. Intsall the stitch-cli tool
+#### 1. Install the stitch-cli tool
 Begin by [Installing the Stitch Command Line Interface tool](https://docs.mongodb.com/stitch/import-export/stitch-cli-reference/)
 
 #### 2. Creat a project API key
@@ -1172,7 +1172,7 @@ Right click this link [Create a Project API key](https://docs.atlas.mongodb.com/
 Export the MongoDB Demos as a zip file from https://github.com/brittonlaroche/MongoDB-Demos. Press the green button in the upper right labled __"Clone Or Download"__ and press the download a zip file link.   
 
 #### 4. Extract the zip file
-Exctact the zip file to the directory you installed the stitch-cli tool.  The shipping application stitch export is located under (stitch-cli path)/MongoDB-Demos-master/Applications/Customer-MDM/customer
+Exctact the zip file to the directory you installed the stitch-cli tool.  The customer single view application stitch export is located under (stitch-cli path)/MongoDB-Demos-master/Applications/Customer-MDM/customer
 
 #### 5. Log in via stitch-cli
 log into your atlas cluster with your API key (public and pprivate keys) with the stich command line tool.
@@ -1188,27 +1188,27 @@ stitch-cli login --api-key=ytqictxq --private-api-key=8137b118-4a36-4197-a3c7-23
 ←[0;0myou have successfully logged in as ytqictxq←[0m
 ```
 
-#### 6. Import the shipping application
+#### 6. Import the customer single view application
 After logging in the command line maintains the connection until you execute the command __stitch-cli logout__.  We are now ready to import the application. The following command below should work.
 ```
-stitch-cli import  --app-id=shipping-ekqoy --path=./MongoDB-Demos-master/Applications/Customer-MDM/customer --strategy=replace
+stitch-cli import  --app-id=customer-rytyl --path=./MongoDB-Demos-master/Applications/Customer-MDM/customer --strategy=replace
 ```
 
 Follow the prompts and respond __y__ when asked if you would like to create a new app. Press enter to accept the default values.  Change the values to match your configuration.  An example is provided below.
 
 ```
-stitch-cli import  --app-id=customer-rytyl --path=./MongoDB-Demos-master/Applications/Shipping/exported --strategy=replace
+stitch-cli import  --app-id=customer-rytyl --path=./MongoDB-Demos-master/Applications/Customer-MDM/customer --strategy=replace
 ←[0;0mUnable to find app with ID: "customer-rytyl": would you like to create a new app? [y/n]:←[0m y
-←[0;0mApp name [shipping]:←[0m
+←[0;0mApp name [customer]:←[0m
 ←[0;0mAvailable Projects:←[0m
 ←[0;0mProject 0 - 5ce58a9fc56c98145d922e93←[0m
 ←[0;0mAtlas Project Name or ID [Project 0]:←[0m
 ←[0;0mLocation [US-VA]:←[0m
 ←[0;0mDeployment Model [GLOBAL]:←[0m
-←[0;0mNew app created: shipping-vibtf←[0m
+←[0;0mNew app created: customer-vibtf←[0m
 ←[0;0mImporting app...←[0m
 ←[0;0mDone.←[0m
-←[0;0mSuccessfully imported 'shipping-vibtf'←[0m
+←[0;0mSuccessfully imported 'customer-vibtf'←[0m
 
 stitch-cli logout
 
