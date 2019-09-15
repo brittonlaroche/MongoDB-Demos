@@ -1172,7 +1172,7 @@ The following section shows how to import the application via this GitHub and th
 The directions here are terse but complete as I refer you to documenation on setting up the stitch command line interface tool and importing the existing stitch customer application:
 
 #### 1. Install the stitch-cli tool
-Begin by [Installing the Stitch Command Line Interface tool](https://docs.mongodb.com/stitch/import-export/stitch-cli-reference/)
+Begin by [Installing the Stitch Command Line Interface tool](https://docs.mongodb.com/stitch/deploy/stitch-cli-reference/)
 
 #### 2. Creat a project API key
 Next [Create a Project API key](https://docs.atlas.mongodb.com/configure-api-access/#programmatic-api-keys).  When you createthe API key be sure to give yourself the __"Project Owner"__ role as you will need this to import the stitch application.   
