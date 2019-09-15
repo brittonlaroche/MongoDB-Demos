@@ -45,6 +45,18 @@ exports = async function(argSource){
     console.log("updateMaster newMasterDoc: " + JSON.stringify(newMasterDoc));
     master.insertOne(newMasterDoc);
   }
+  //OptOut by source system
+  if (argSource){
+    console.log("checking optout argSource: " + JSON.stringify(argSource));
+    if (argSource.optout){
+      var wantsOut = argSource.optout;
+      console.log("wantsOut: " + wantsOut);
+      if (wantsOut == "true"){
+        console.log("opting out" );
+        await context.functions.execute("optOut", argSource);
+      }
+    }
+  }
   result = await context.functions.execute("findMaster", argSource);
   return result;
 };

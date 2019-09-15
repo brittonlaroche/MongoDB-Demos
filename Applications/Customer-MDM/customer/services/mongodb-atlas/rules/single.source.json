@@ -1,11 +1,14 @@
 {
-    "id": "5d7e98f37711612564a0962a",
+    "id": "5d7e98f37711612564a0962b",
     "database": "single",
-    "collection": "master",
+    "collection": "source",
     "roles": [
         {
-            "name": "default",
-            "apply_when": {},
+            "name": "owner",
+            "apply_when": {
+                "owner_id": "%%user.id"
+            },
+            "read": true,
             "write": true,
             "insert": true,
             "delete": true,
@@ -16,6 +19,9 @@
         "properties": {
             "_id": {
                 "bsonType": "objectId"
+            },
+            "owner_id": {
+                "bsonType": "string"
             }
         }
     }

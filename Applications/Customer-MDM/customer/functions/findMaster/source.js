@@ -28,9 +28,14 @@ exports = async function(argSource){
       docs.map(c => {
         if(c.sources){
           c.sources.forEach( function(testSource){
-            fdist = context.functions.execute("getNormalizedDistance", argSource.first_name,testSource.first_name);
-            ldist = context.functions.execute("getNormalizedDistance", argSource.last_name,testSource.last_name);
-            cdist = (0.5 * fdist) + (0.5 * ldist);
+            if (testSource.first_name &&  testSource.last_name) {
+                fdist = context.functions.execute("getNormalizedDistance", argSource.first_name,testSource.first_name);
+                ldist = context.functions.execute("getNormalizedDistance", argSource.last_name,testSource.last_name);
+                cdist = (0.5 * fdist) + (0.5 * ldist);
+            } else {
+              //cant match on empty value
+              cdist = 1;
+            }
             //console.log("testSource._id: " + testSource._id + ", ts first_name: " + testSource.first_name + ", ts last_name: " + testSource.last_name + ", cdist: " + cdist);
             if (cdist < 0.4) {
               console.log("Found Group Matching Names and DOB: " + JSON.stringify(c));

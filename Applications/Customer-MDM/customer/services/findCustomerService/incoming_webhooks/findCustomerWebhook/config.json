@@ -1,6 +1,7 @@
 {
-    "id": "5d4650976608010f2296ae9f",
+    "id": "5d7e98f37711612564a09613",
     "name": "findCustomerWebhook",
+    "run_as_authed_user": false,
     "run_as_user_id": "",
     "run_as_user_id_script_source": "",
     "options": {

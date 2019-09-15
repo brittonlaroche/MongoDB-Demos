@@ -1,12 +1,11 @@
 {
-    "id": "5d4b42d452cb5115469d38c5",
+    "id": "5d7e98f37711612564a09636",
     "name": "trgCustomerSource",
     "type": "DATABASE",
     "config": {
         "operation_types": [
             "INSERT",
             "UPDATE",
-            "DELETE",
             "REPLACE"
         ],
         "database": "single",

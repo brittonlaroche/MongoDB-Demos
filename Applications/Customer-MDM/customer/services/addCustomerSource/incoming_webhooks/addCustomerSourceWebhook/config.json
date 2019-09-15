@@ -1,6 +1,7 @@
 {
-    "id": "5d4b3eee52cb51154695a33f",
+    "id": "5d7e98f27711612564a095fc",
     "name": "addCustomerSourceWebhook",
+    "run_as_authed_user": false,
     "run_as_user_id": "",
     "run_as_user_id_script_source": "",
     "options": {
