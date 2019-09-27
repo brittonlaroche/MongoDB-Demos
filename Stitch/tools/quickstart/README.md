@@ -20,9 +20,9 @@ _Solution Architect Contributing Members_: [Chris Grabosky](mailto:chris.grabosk
 [15. Stitch Command Line - CICD Integration](#-stitch-command-line---cicd-integration)   
 
 # Overview
-Stitch provides Serverless compute functionality much like AWS labmda. In fact AWS Lambda can utilize the Stitch SDK to communicate directly with Atlas.  Stitch provides greater control over the connections to the database and reduces the number of concurrent connections required by Lambda.  Stitch serverless compute functionality can be accesed through and SDK or a REST based API. Additionaly you can write application code in JavaScript to run on Stitch serverless compute.  You can write an entire serveless application and access MongoDB through datbase as a service on Atlas.  This workshop will have your execute your code and host your entire application and data in the cloud.
+Stitch provides Serverless compute functionality much like AWS lambda. In fact AWS Lambda can utilize the Stitch SDK to communicate directly with Atlas.  Stitch provides greater control over the connections to the database and reduces the number of concurrent connections required by Lambda.  Stitch serverless compute functionality can be accessed through an SDK or a REST based API. Additionally, you can write application code in JavaScript to run on Stitch serverless compute.  You can write an entire serverless application and access MongoDB through database as a service on Atlas.  This workshop will have your execute your code and host your entire application and data in the cloud.
 
-Our lab is designed to teach Atlas and Stitch as quickly as possible with no dependencies.  You will only need a browser and a text editor. We will create a free tier Atlas cluster, load in some sample data and explore document data model.  We will learn some basic queries against the document datamodel.  Next we will create our first stitch application and query the database.  We will enable the Stitch serverlss REST API to access and update data.  We will create a stitch trigger and finally a QueryAnywhere browser SDK application.
+Our lab is designed to teach Atlas and Stitch as quickly as possible with no dependencies.  You will only need a browser and a text editor. We will create a free tier Atlas cluster, load in some sample data and explore the document data model.  We will learn some basic queries against the document data model.  Next, we will create our first stitch application and query the database.  We will enable the Stitch serverless REST API to access and update data.  We will create a stitch trigger and finally a QueryAnywhere browser SDK application.
 
 ![Diagram](../img/workshop8.png "Diagram")
 
@@ -43,7 +43,7 @@ Fill in your personal information.  Feel free to use your work or personal email
 
 ![build your cluster](../img/register3.jpg "build your first cluster")   
 
-This will bring up window promptin you to build your first cluster.  Click the __"build your first cluster"__ button.  When prompted select "Learning MongoDB" as to the reason you are interested in Atlas. After clicking the Click the __"build your first cluster"__ button, you will be prompted to name your cluster.  "
+This will bring up a window prompting you to build your first cluster.  Click the __"build your first cluster"__ button.  When prompted select "Learning MongoDB" as to the reason you are interested in Atlas. After clicking the Click the __"build your first cluster"__ button, you will be prompted to name your cluster.  "
 
 ![Name your cluster](../img/register4.jpg "Name your cluster")   
 
@@ -53,12 +53,12 @@ __"Cluster0"__ is the default name and works well for importing data and project
 
 ## ![2](../img/2b.png) Load Sample Data
 
-Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps viusalize some examples.  
+Once we have our cluster created the next step is to load data and explore the document structure.  Atlas provides sample data that helps visualize some examples.  
 
 ![Load Sample Data](../img/loadSampleData.jpg "Load Sample Data")   
 On the main screen for the __"Cluster0"__ home page you will notice four buttons, "Connect", "Metrics", "Collections" and  three dots "..." Click the button labeled with three dots __"..."__ to see a menu list of items.  Select the menu item __"Load Sample Dataset"__
 
-After the sample data is loaded, we will want to see the data and explore the document datamodel.  Lets click the __"Collections"__ button and explore the databases and collections we just loaded.
+After the sample data is loaded, we will want to see the data and explore the document data model.  Let's click the __"Collections"__ button and explore the databases and collections we just loaded.
 
 ![Collections](../img/collections.jpg "Collections") 
 
@@ -68,7 +68,7 @@ Navigate to the __"samples_supplies"__ database namespace and expand the databas
 
 ## ![3](../img/3b.png)  Query the Sample data
 
-We can create a simple query to pull back sales data for the store located in austin with the following document query:   
+We can create a simple query to pull back sales data for the store located in Austin with the following document query:   
 
 ```{"storeLocation": "Austin"}```   
 
@@ -79,22 +79,22 @@ Type this in query in the filter section and press the __"Find"__ button.
 We can try other locations as well.   
 ```{"storeLocation": "Denver"}```   
 
-We can do a more advanced find.  We have been asked to generate a report on customers who were of retirement age to offer a promotion and a special discount on their next purchase.  The customer is an object embeded in the sales document and we need to refrence the age demographic value.  A simple nested query with dot notaion will allow us to get all the customers greater than or equal to 65 years of age.   
+We can do a more advanced find.  We have been asked to generate a report on customers who were of retirement age to offer a promotion and a special discount on their next purchase.  The customer is an object embedded in the sales document and we need to reference the age demographic value.  A simple nested query with dot notation will allow us to get all the customers greater than or equal to 65 years of age.   
 
 ``` 
 {"customer.age":  {$gte: 65}}
 ```  
-After looking at the data Denver has been selected to test the theory that offering a discount on supplies will create an incentive for people who have retrired to greatly increase the number of items they purchase.   
+After looking at the data Denver has been selected to test the theory that offering a discount on supplies will create an incentive for people who have retired to greatly increase the number of items they purchase.   
 
 ![end](../img/section-end.png)
 
 
 ## ![4](../img/4b.png) Create a Stitch Application   
-Our next step is to create an application to query the sales data and offer promotional discounts to customers who live in Denver and are of retirement age.  We will begin by creating our stitch application.  This task is accomplished by selecting __"Stitch"__ from the left hand navigation menu of the cluster we just created.
+Our next step is to create an application to query the sales data and offer promotional discounts to customers who live in Denver and are of retirement age.  We will begin by creating our stitch application.  This task is accomplished by selecting __"Stitch"__ from the left-hand navigation menu of the cluster we just created.
 
 ![Application](../img/stitch1.jpg)
 
-We click the large green button labeled __"Create new Application"__ and give the application a name.  In this case we will name our application __"sales"__   
+We click the large green button labeled __"Create new Application"__ and give the application a name.  In this case, we will name our application __"sales"__   
 
 ![Application](../img/stitch2.jpg)
 
@@ -104,14 +104,14 @@ Click the little green __"Create"__ button in the lower right hand of the popup 
 
 
 ## ![5](../img/5b.png) Create stitch functions to query customer data
-There are some basic ways to query data via the stitch REST based API.  We will create functions that find specific documents in our sales collection.  Ther are two primary methods of passing in arguments that will be used to find our documents.  One method explicity defines the argument that will specify both the field and the value that we use for our find criteria.  The other method simply passes in a search document that is passed directly to the MongoDB __"find()"__ function.
+There are some basic ways to query data via the stitch REST based API.  We will create functions that find specific documents in our sales collection.  Ther are two primary methods of passing in arguments that will be used to find our documents.  One method explicitly defines the argument that will specify both the field and the value that we use for our find criteria.  The other method simply passes in a search document that is passed directly to the MongoDB __"find()"__ function.
 
 ### Query Parameters
-Lets begin with building a function that takes a query parameter.  From the left hand navigation menu of the Stitch console select __"Functions"__  click the __"Create New Function"__ button and give the new function an name of __"findCustomerByEmail"__.  Make sure the function runs as system to bypass rules as we have not set up any rules at this point in the workshop.  
+Let's begin with building a function that takes a query parameter.  From the left hand navigation menu of the Stitch console, select __"Functions"__  click the __"Create New Function"__ button and give the new function an name of __"findCustomerByEmail"__.  Make sure the function runs as the system user to bypass rules as we have not set up any rules at this point in the workshop.  
 
 ![Function](../img/function0.jpg)
 
-Click the save button and you will be preseneted with the function editor.  Cut and paste the code below.
+Click the save button and you will be presented with the function editor.  Cut and paste the code below.
 
 ```js
 exports = async function(arg){
@@ -125,7 +125,7 @@ exports = async function(arg){
     return doc;
 }
 ```
-Notice two important key words; __"async"__ and __"await"__ these keywords are not the default.  You have to specify this function is async and tell it to await the result from the findOne query to return a document.  
+Notice two important keywords; __"async"__ and __"await"__ these keywords are not the default.  You have to specify this function is async and tell it to await the result from the findOne query to return a document.  
 
 ![Function](../img/function01.jpg)
 
@@ -140,14 +140,14 @@ click the run button and view the returned document in the __"results"__ tab.
 
 
 ### Search Document
-Our first function took in an email address and returned a matching sales document.  This is a great first step.  Now we have to write a new function for every possible argument or combination of arguments.  Perhaps we want to know all purchases that were online in denver.  We now have to wriet a function that takes in the __"purchaseMethod"__ and __"storeLocation"__.  What about store location and age?  It quickly beomes apparent that we need away to pass in multiple arguments and conduct a query based on them.  How do we do this?  We use a search document.
+Our first function took in an email address and returned a matching sales document.  This is a great first step.  Now we have to write a new function for every possible argument or combination of arguments.  Perhaps we want to know all the purchases that were online in Denver.  We now have to write a function that takes in the __"purchaseMethod"__ and __"storeLocation"__.  What about store location and age?  It quickly becomes apparent that we need a way to pass in multiple arguments and conduct a query based on them.  How do we do this?  We use a search document.
 
 Lets create a new function that takes a search document.  Select __"Functions"__ from the left hand navigation menu of the stitch console and click the __"Create New Function"__ button.  Name the function __"findCustomer"__   
 
 ![Function](../img/function1.jpg)
 
 
-Click the save button and the function editor appears. It seems hard to beleive but three lines of code allows us to write our document search function. Cut and paste the code below, click save and deploy the changes.
+Click the save button and the function editor appears. It seems hard to believe, but three lines of code allow us to write our document search function. Cut and paste the code below, click save and deploy the changes.
 ```js
 exports = async function( aSearchDoc ){
   var sales = context.services.get("mongodb-atlas").db("sample_supplies").collection("sales");
@@ -171,7 +171,7 @@ exports = async function( aSearchDoc ){
 ```
 ![Function](../img/function2.jpg)
 
-Now lets test the function by passing in a search document.  Click the console tab at the bottom left.  At the bottom of the console after the comment section is a method called export.  Cut and paste the following export function below that passes in a search document.
+Now, let's test the function by passing in a search document.  Click the console tab at the bottom left.  At the bottom of the console after the comment section is a method called export.  Cut and paste the following export function below that passes in a search document.
 ```js
 exports({"customer.email": "div@me.it"})
 ```
@@ -180,7 +180,7 @@ Press the Run button in the upper right and view the returned document in the re
 
 ![Function](../img/function3.jpg)
 
-We are no longer limited to searching for any one particular field.  Lets find a customer by store location age and gender.
+We are no longer limited to searching for any one particular field.  Let us find a customer by store location age and gender.
 
 ```js
 exports({"customer.age": 65, "customer.gender": "F", "storeLocation": "Denver"})
@@ -190,19 +190,19 @@ exports({"customer.age": 65, "customer.gender": "F", "storeLocation": "Denver"})
 
 
 ## ![6](../img/6b.png) Create a Stitch service to expose the search function as a REST API
-The functions we created are useful but in order to build an application we need to expose these functions.  There are a number of ways to expose the functions.  One possible way is through the stitch SDK.  We can creat an application that authenticates through the stitch SDK and then executes our fucntions remotely.  Another way to expose these functions is through an HTTP Service.
+The functions we created are useful but in order to build an application, we need to expose these functions.  There are a number of ways to expose the functions.  One possible way is through the stitch SDK.  We can create an application that authenticates through the stitch SDK and then executes our functions remotely.  Another way to expose these functions is through an HTTP Service.
 
 We will now create two HTTP services for our find customer functions.   
 
 1. Our __getCustomerByEmailService__ will use a GET request with a query parameter.
-2. Our __getCustomerService__ will use a POST request with a json document body.
+2. Our __getCustomerService__ will use a POST request with a JSON document body.
 
 ### getCustomerByEmailService
 
-Lets begin by creating the get customer by email service. Select __"Services"__ from the left hand navigation menu in the stitch console. Since this is our fisrt service we are presented with a green button prompting us to add a new service.  Click the __"Add a Service"__ button.  And we are presented with a screen that shows a number of options.  We have native integration with GitHub, Twilio, AWS and HTTP services.  Select __"HTTP"__ and give the service the name __"getCustomerByEmailService"__
+Let's begin by creating the get customer by email service. Select __"Services"__ from the left-hand navigation menu in the stitch console. Since this is our first service we are presented with a green button prompting us to add a new service.  Click the __"Add a Service"__ button.  And we are presented with a screen that shows a number of options.  We have native integration with GitHub, Twilio, AWS and HTTP services.  Select __"HTTP"__ and give the service the name __"getCustomerByEmailService"__
 ![Service](../img/service0.jpg)
 
-Click the __"Add Service Button"__ and the webhook screen will appear.  The webhook is responsible for executing stitch serverless functions and providing an external URL to expose our service.  We will give the webhook the name __"getCustomerByEmailWebhook"__.  We will be sure to move the slider to __"Respond With Result"__ and run the webhook as system as we have not created any users at this point in our workshop.  We will select the "GET" method and we will not require validation.  Click the __"Save"__ button to save our work.
+Click the __"Add Service Button"__ and the webhook screen will appear.  The webhook is responsible for executing stitch serverless functions and providing an external URL to expose our service.  We will give the webhook the name __"getCustomerByEmailWebhook"__.  We will be sure to move the slider to __"Respond With Result"__ and run the webhook as the system user because we have not created any users at this point in our workshop.  We will select the "GET" method and we will not require validation.  Click the __"Save"__ button to save our work.
 
 ![Webhook](../img/webhook0.jpg)
 
@@ -215,27 +215,27 @@ exports = function(payload) {
 
 };
 ```
-We have created our first service and webhook!  This service is limited to one thing and one thing only, it will search for a customer by email and return the document.  Its a good start but it is limited to one argument and extending it will take considerable time to handle more arguments.  Lets move on to the flexibility provided by passing in a json document with any number of search parameters.
+We have created our first service and webhook!  This service is limited to one thing and one thing only, it will search for a customer by email and return the document.  Its a good start but it is limited to one argument and extending it will take considerable time to handle more arguments.  Let's move on to the flexibility provided by passing in a JSON document with any number of search parameters.
 
-We can test the webhook from a broswer using the webhook url and set arg1 equal to an email adress.  Rememebr we have to url encode the @ symbol as %40.  If we want to search for the email "div@me.it" we would pass that argument as "div%40me.it" 
+We can test the webhook from a browser using the webhook URL and set arg1 equal to an email address.  Remember we have to URL encode the @ symbol as %40.  If we want to search for the email "div@me.it" we would pass that argument as "div%40me.it" 
 
-The url would use the format:
+The URL would use the format:
 
 ```
 <webhook url>?arg1=div%40me.it
 ```
 
-To get the webhook url go back to the getCustomerByEmailService edit the webhook and select the settings tab.  Click the copy button for the webhook url and click paste in the browser, add in the argument and URL encoded email address, then hit enter.  We will do more on testing the service in the next section. We will create a purpose built HTML application using javacript to test our services.
+To get the text of the webhook URL (for cut and paste) go back to the getCustomerByEmailService edit the webhook and select the settings tab.  Click the copy button for the webhook URL and click paste in the browser, add in the argument and URL encoded email address, then hit enter.  We will do more on testing the service in the next section. We will create a purpose-built HTML application using javascript to test our services.
 
 ### getCustomerService
-We are now ready to create a flexible search based on any number of parameters passed in a json document.  The process for creating the service is the same.  Select __"Services"__ from the left hand navigation menu of the stitch console.  We will now be presented with a list of services and we can see our __"getCustomerByEmailService"__ listed.  Press the green button labaled __"Add a Service"__ and the add service window is back.  We will select __"HTTP"__ and give our new service the name __"getCustomerService"__.  Click the __"Add Service"__ button to bring up the webhook editor.
+We are now ready to create a flexible search based on any number of parameters passed in a JSON document.  The process for creating the service is the same.  Select __"Services"__ from the left-hand navigation menu of the stitch console.  We will now be presented with a list of services and we can see our __"getCustomerByEmailService"__ listed.  Press the green button labeled __"Add a Service"__ and the add service window is back.  We will select __"HTTP"__ and give our new service the name __"getCustomerService"__.  Click the __"Add Service"__ button to bring up the webhook editor.
 ![Service](../img/service.jpg)
 
-Give the webhook a name of __"getCustomerWebhook"__ and be sure to move the slider for __"Respond With Result"__ as we are returning a json document. Be wure to select __"POST"__ as the HTTP method.  Again we will select __"Do Not Validate"__.  Press the __"Save"__ button.
+Give the webhook the name of __"getCustomerWebhook"__ and be sure to move the slider for __"Respond With Result"__ as we are returning a JSON document. Be sure to select __"POST"__ as the HTTP method.  Again we will select __"Do Not Validate"__.  Press the __"Save"__ button.
 
 ![Webhook](../img/webhook1.jpg)
 
-The webhook function editor will appear and we will call the __"findCustomer"__ function we created earlier by passing in the json document that is part of the body of the HTTP request.  We need to parse the body to get the json document.  We use the following code to accomplish the parsing of the json document.
+The webhook function editor will appear and we will call the __"findCustomer"__ function we created earlier by passing in the JSON document that is part of the body of the HTTP request.  We need to parse the body to get the JSON document.  We use the following code to accomplish the parsing of the JSON document.
 
 ```
 body = EJSON.parse(payload.body.text());
@@ -277,9 +277,9 @@ We have created two functions and exposed them as REST based Services, it is now
 
 
 ## ![7](../img/7b.png) Test the REST API
-Its important to be able to test our services and the return documents. In this section we will create a small HTTP app similiar to POSTMAN. We will call our application "Postrapper." We do this because most modern office sites often have security policies in place that block ports or require access to https via a broswer proxy.  Its simple to create an application that uses https through the browser and its a great learning opportunity for the use of a REST based API.
+It is important to be able to test our services and view the return documents. In this section, we will create a small HTTP app similar to POSTMAN. We will call our application "Postrapper." We do this because most modern office sites often have security policies in place that block ports or require access to https via a browser proxy.  It's simple to create an application that uses https through the browser and its a great learning opportunity for the use of a REST based API.
 
-It is quite simple to create a fetch request that passes in a json document as an argument to a POST method of an HTTP request.  The sntax is below.
+It is quite simple to create a fetch request that passes in a JSON document as an argument to a POST method of an HTTP request.  The syntax is below.
 
 ```js
         const response = await fetch(webhook_url, {
@@ -290,7 +290,7 @@ It is quite simple to create a fetch request that passes in a json document as a
           }
 ```
 
-What we need is to be able to handle both a GET request with a query parameter (no json body), and a POST request with a json body.  We will build a simple html and javascript application that checks to see if we have an input json document, uses the correct HTTP method (verb) and makes the request to the right url.
+What we need is to be able to handle both a GET request with a query parameter (no JSON body), and a POST request with a JSON body.  We will build a simple HTML and javascript application that checks to see if we have an input JSON document, uses the correct HTTP method (verb), and makes the request to the right URL.
 
 ```js
 <!DOCTYPE html>
@@ -298,7 +298,7 @@ What we need is to be able to handle both a GET request with a query parameter (
   <head>
     <meta charset="UTF-8" />
     <title>Postrapper</title>
-    <!-- When you need to test a json body in a REST API call, but don't have access to postman. -->
+    <!-- When you need to test a JSON body in a REST API call, but don't have access to postman. -->
     <!-- Britton LaRoche's Postrapper can get you the results you need!  -->
     <!-- Let's use Bootstrap improve the default look a bit -->
     <link
@@ -318,7 +318,7 @@ What we need is to be able to handle both a GET request with a query parameter (
     <div>
       <h2>Postrapper</h2>
       <p>
-        This simple page demonstrates json REST based API calls
+        This simple page demonstrates JSON REST based API calls
       </p>
 
       <form>
@@ -367,11 +367,11 @@ What we need is to be able to handle both a GET request with a query parameter (
 ```
 Cut and paste the code above into your text editor and save the file as [postrapper.html](../html/postrapper.html).  Double click the file to open it in your browser.  Then copy and paste the webhook url from the webhook settings as seen below.
 
-Alternatively you can copy the source by clicking the [postrapper.html link here](../html/postrapper.html) and copying the contents to save in your sext editor as postrapper.html. 
+Alternatively you can copy the source by clicking the [postrapper.html link here](../html/postrapper.html) and copying the contents to save in your text editor as postrapper.html. 
 
 ![webhook](../img/webhook3.jpg)   
 
-Perform a search for the email below by cutting and pasting the seacrh document into the input section and pressing the __"Send"__ button.
+Perform a search for the email below by cutting and pasting the search document into the input section and pressing the __"Send"__ button.
 
 ```{"customer.email": "div@me.it"}```   
 
@@ -389,7 +389,7 @@ Our test has been successful.  Lets create an application using the broswer SDK 
 
 
 ## ![8](../img/8b.png) Create a user with an API key
-We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Lets click the providers tab at the top of the users window.  We are presented with a list of options as seen below.
+We begin by adding a bit of security and creating an API Key and assoicated user permissions.  This is not necessary as we could create an anonymous user, use a third party athentication method (facebook, google, AWS Cognito, JWT etc..)  Let us quickly explore our options.  Click on the __"Users"__ menu item in the left-hand navigation pane in the stitch console.  The users window will display a list of users (we have not created any). Let's click the __“providers”__ tab at the top of the __”Users”__ window.  We are presented with a list of options as seen below.
 
 ![users](../img/users5.jpg "users")
 
@@ -408,13 +408,13 @@ Type in a name for the API Key, something like "BackOffice" or "WebAccess" and c
 
 We will be using the [Mongo DB Stitch Browser SDK](https://docs.mongodb.com/stitch-sdks/js/4/index.html) to create a web based application that turns the browser into a fully functional stitch client.  The client will be able to execute the MongoDb Query Language (MQL) directly from the browser.  This will help us build an application to select specific customers for a promotional offering.
 
-Before we can access any data with the stitch browser SDK we must allow stitch to access our collections.  We do this by establishing rules.  Click the __"Rules"__ menu item from the left hand navigation pane on the stitch console.  This displays the rules we have defined.  
+Before we can access any data with the stitch browser SDK we must allow stitch to access our collections.  We do this by establishing rules.  Click the __"Rules"__ menu item from the left-hand navigation pane on the stitch console.  This displays the rules we have defined.  
 ![Rules 1](../img/rules1.jpg)
 There are two ways to add rules for a collection.  One is by selecting the __"..."__ button to the right of the "mongodb-atlas" tree item.  The other is by clickin the __"Add Collection"__ button.   
 
 ![Rules 2](../img/rules2.jpg)   
 
-Adding a new collection requires us to specify the database name, the collection name and pick a template.  Templates allow us to define who has access to the data in a predefined way that gives us an example to follow.  This is the place to talk about rules in depth, but as we have a limited time and a lot to cover we will simply state that the templates are only a starting point.  With rules you have the ability to filter and redact data, to remove all but the last 4 digits of a social security or credit card number for example.  Only the owner of the data could see the full account number, the CSR could only see the last 4 digits.  There is a lot to explore here.  For now we simply select "No Template" as we wish to allow anyone to see the data.
+Adding a new collection requires us to specify the database name, the collection name and pick a template.  Templates allow us to define who has access to the data in a predefined way that gives us an example to follow.  This is the place to talk about rules in depth, but as we have limited time and a lot to cover we will simply state that the templates are only a starting point.  With rules you have the ability to filter and redact data, to remove all but the last 4 digits of a social security or credit card number for example.  Only the owner of the data could see the full account number, the CSR could only see the last 4 digits.  There is a lot to explore here.  For now, we simply select "No Template" as we wish to allow anyone to see the data.
 
 ![Rules 3](../img/rules3.jpg)
 
@@ -422,14 +422,14 @@ We are now in the rules editor and we wish to allow reads and writes to all the 
 
 ![Rules 4](../img/rules4.jpg)
 
-When we deploy our changes the rules we have specified are displayed for us in json format.
+When we deploy our changes the rules we have specified are displayed for us in JSON format.
 
 ### Our HTML Application
 We have a prebuilt QueryAnywhere.html file that shows us how to use the browser SDK file.
 
 Copy the code from the [QueryAnywhere.html](../html/QueryAnywhere.html) file.  Right click and select "open file in new tab" on the [QueryAnywhere.html](../html/QueryAnywhere.html) link. Click the __"view raw file"__ button and select all the text. Copy it and paste it in your text editor.  Save the file as QueryAnywhere.html
 
-Inside the file we haveto make a few chnags before we can connect. Replace your your-api-key with the private api key you generated in step 8. You may have to repeat step 8 if you forgot to copy the private API key.  Replace your-app-id with the stitch APP-ID located in the upper left of the stitch console.
+Inside the file we have to make a few chnags before we can connect. Replace your your-api-key with the private api key you generated in step 8. You may have to repeat step 8 if you forgot to copy the private API key.  Replace your-app-id with the stitch APP-ID located in the upper left of the stitch console.
 ```js
       const credential = new stitch.UserApiKeyCredential("your-api-key");
       const client = stitch.Stitch.initializeDefaultAppClient('your-app-id');
@@ -440,11 +440,11 @@ Example
       const client = stitch.Stitch.initializeDefaultAppClient('sales-oxwdn');
 ```
 
-Double click the file, it will open in your browser and you should see someting very similar to the following image.
+Double click the file, it will open in your browser and you should see something very similar to the following image.
 
 ![Query Anywhere](../img/QueryAnywhere.jpg)
 
-The ability to connect to the Atlas database and use the Mongo Query Language directly is accomplished by including the browser SDK in the line below (its aready in the file we are just calling your attention to it.)
+The ability to connect to the Atlas database and use the Mongo Query Language directly is accomplished by including the browser SDK in the line below (its already in the file we are just calling your attention to it.)
 ```js
 <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.5.0/stitch.js"></script>
 ```
@@ -478,11 +478,11 @@ Additional information on the application of rules and third party authenticatio
 
 
 ## ![10](../img/10b.png) Create a trigger to capture changes to sales data
-Create a new trigger by selecting __"Triggers"__ on the left navigation pane in the stitch console. 
+Create a new trigger by selecting __"Triggers"__ on the left navigation panel in the stitch console. 
 
 ![Query Anywhere](../img/trigger1.jpg)
 
-Save the trigger then open the open the newly created function by selecting __"Functions"__ from the left navigation pane in the stitch console.   
+Save the trigger then open the open the newly created function by selecting __"Functions"__ from the left navigation panel in the stitch console.   
 
 ![Query Anywhere](../img/trigger2.jpg)
 
@@ -588,7 +588,7 @@ While we don't have the time to create this in the lab you can, create a new HTT
 
 
 ## ![12](../img/12b.png) Create an Atlas chart 
-We want to be able to graphically determine if offering a promotional discount to senior citizens in the Denver store actually increases the number of items they buy.  Do they indeed stock pile office supplies when they are on sale? Our job is to graphically represent the current number of items purchased by each age demographic. Select Charts from the left hand navigation panel of the Atlas Cluster and enable charts.      
+We want to be able to graphically determine if offering a promotional discount to senior citizens in the Denver store actually increases the number of items they buy.  Do they indeed stockpile office supplies when they are on sale? Our job is to graphically represent the current number of items purchased by each age demographic. Select Charts from the left-hand navigation panel of the Atlas Cluster and enable charts.      
 
 ![Charts](../img/charts1.jpg)
 
@@ -616,11 +616,11 @@ We now have our chart and we see that the Age 50-75 demographic represents a hea
 
 
 ## ![13](../img/13b.png) Embed the Atlas chart in your application
-Embedding Atlas charts is relatively easy.  The only challenge is in setting up the proper security.  More information on embedding charts with security can be found [here.](https://docs.mongodb.com/charts/saas/embedding-charts/) For our purposes we want to see the chart embeded in our application with out specifying a new key. 
+Embedding Atlas charts is relatively easy.  The only challenge is in setting up the proper security.  More information on embedding charts with security can be found [here.](https://docs.mongodb.com/charts/saas/embedding-charts/) For our purposes, we want to see the chart embeded in our application without specifying a new key. 
 
 The process begins by selecting __"Charts"__ from the left navigation pane of the cluster consloe window.  If you need to navigate out of the stitch console window to get back to the cluster window an easy way to do that is to simply open a new browser tab and navigate to https://cloud.mongodb.com. Because your current tab is already authenticated the new tab automatically opens to the cluster console. 
 
-Select __"Charts"__ from the cluster console left hand navigation menu.  When the chart browser is open, select your dashboard.  In the upper right hand corner of your chart you will notice three horizontal dots __"..."__.  Click the dots to reveal drop down menu and select __"Embed Chart"__.
+Select __"Charts"__ from the cluster console left hand navigation menu.  When the chart browser is open, select your dashboard.  In the upper right hand corner of your chart you will notice three horizontal dots __"..."__.  Click the dots to reveal drop-down menu and select __"Embed Chart"__.
 
 ![Charts](../img/embedchart1.jpg)
 
@@ -721,8 +721,10 @@ To be clear the process is as follows:
 
 1. Develop or change software (you did this in your own environment today).
 2. Check in to GitHub or sourcecode control.
-3. Integrate [Atlas rest API](https://docs.atlas.mongodb.com/api/) with build process to create or update new Atlas test database environment.
+3. Integrate [Atlas rest API](https://docs.atlas.mongodb.com/api/) with the build process to create or update a new Atlas test database environment.
 4. Obtain the latest changes from GitHub or source control and Import them via the stitch-cli into the new Atlas test database environment.
 5. Commence testing against the new test database and stitch environment
 
 Steps 3 and 4 are typically scripted with the CICD build process making calls to Atlas and the stitch-cli.
+
+
