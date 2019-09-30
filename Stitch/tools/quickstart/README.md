@@ -107,7 +107,7 @@ Click the little green __"Create"__ button in the lower right hand of the popup 
 There are some basic ways to query data via the stitch REST based API.  We will create functions that find specific documents in our sales collection.  Ther are two primary methods of passing in arguments that will be used to find our documents.  One method explicitly defines the argument that will specify both the field and the value that we use for our find criteria.  The other method simply passes in a search document that is passed directly to the MongoDB __"find()"__ function.
 
 ### Query Parameters
-Let's begin with building a function that takes a query parameter.  From the left hand navigation menu of the Stitch console, select __"Functions"__  click the __"Create New Function"__ button and give the new function an name of __"findCustomerByEmail"__.  Make sure the function runs as the system user to bypass rules as we have not set up any rules at this point in the workshop.  
+Let's begin with building a function that takes a query parameter.  From the left hand navigation menu of the Stitch console, select __"Functions"__  click the __"Create New Function"__ button and give the new function an name of __"findCustomerByEmail"__.  Make sure the function runs as the system user __"Run as System"__ to bypass rules as we have not set up any rules at this point in the workshop.  
 
 ![Function](../img/function0.jpg)
 
