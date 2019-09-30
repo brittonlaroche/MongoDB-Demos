@@ -607,11 +607,11 @@ Select the cluster (we only have one at this time, but we can have more in the f
 
 ![Charts](../img/charts4.jpg)
 
-Select the datasource __"Sample_Supplies"__ and then select the __"sales"__ collection to have some familiar data to build a chart against.   
+Select the datasource __"Sample_Supplies"__ and then select the __"sales"__ collection to have some familiar data to build a chart against.  __Note:__ you must select the collection with a check in the __"Checkbox"__ to the right of the collection name.
 
 ![Charts](../img/charts5.jpg)
 
-Now we build our chart. We will select a circular chart type.  We name the chart __"Item Quantity by Customer Age."__  Drag customer.age into the __"Label"__ category.  Set the binning on and the numeric value to 25.  This will break the age demographic into groups of 25 years. 
+Now we build our chart. The process begins by slecting the datasource we just created above.  The drop list for datasources is in the upper left hand of the charts development screen.  Once the datasource is selected, we will select a circular chart type.  We name the chart __"Item Quantity by Customer Age."__  Drag customer.age into the __"Label"__ category.  Set the binning on and the numeric value to 25.  This will break the age demographic into groups of 25 years. 
 
 Next we expand the items array and select __"quantity"__, and drag the field into the __"Arc"__ category of the graph. Be sure to __"unwind"__ the array and sum the quantity for each item.  This is how charts handles nested array values, the __"Unwind"__ function flattens the array and allows you to access each individual value.
 
