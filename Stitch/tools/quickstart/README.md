@@ -129,7 +129,7 @@ Notice two important keywords; __"async"__ and __"await"__ these keywords are no
 
 ![Function](../img/function01.jpg)
 
-Note: As we make changes to our Stitch application, we need to deploy the changes before we can test.  Be sure to click the "Review & Deploy Changes" button in the blue bar atthe top of the screen.
+__Note:__ As we make changes to our Stitch application, we need to deploy the changes before we can test.  Be sure to click the "Review & Deploy Changes" button in the blue bar atthe top of the screen.
 ![Function](../img/deploy.png)
 
 Click on the console tab and type in the following email parameter to find a sales document with a customer email.
@@ -273,8 +273,7 @@ exports = async function(payload) {
 
 ![webhook](../img/webhook2.jpg)
 
-We have created two functions and exposed them as REST based Services, it is now time to test the services we created.  
-Note: As we make changes to our Stitch application, we need to deploy the changes before we can test.  Be sure to click the "Review & Deploy Changes" button in the blue bar atthe top of the screen.
+We have created two functions and exposed them as REST based Services, it is now time to test the services we created. __Note:__ As we make changes to our Stitch application, we need to deploy the changes before we can test.  Be sure to click the "Review & Deploy Changes" button in the blue bar atthe top of the screen.
 ![Function](../img/deploy.png)
 
 ![end](../img/section-end.png)
@@ -284,7 +283,7 @@ Note: As we make changes to our Stitch application, we need to deploy the change
 It is important to be able to test our services and view the return documents. In this section, we will create a small HTTP app similar to POSTMAN. We will call our application "Postrapper." We do this because most modern office sites often have security policies in place that block ports or require access to https via a browser proxy.  It's simple to create an application that uses https through the browser and its a great learning opportunity for the use of a REST based API.
 
 
-Note: As we make changes to our Stitch application, we need to deploy the changes before we can test.  Be sure to click the "Review & Deploy Changes" button in the blue bar at the top of the screen before proceding with the test below.
+__Note:__ As we make changes to our Stitch application, we need to deploy the changes before we can test. This is for holds true for all procedures in the lab. Be sure to click the "Review & Deploy Changes" button in the blue bar at the top of the screen before proceeding with the test below.
 ![Function](../img/deploy.png)
 
 It is quite simple to create a fetch request that passes in a JSON document as an argument to a POST method of an HTTP request.  The syntax is below.
