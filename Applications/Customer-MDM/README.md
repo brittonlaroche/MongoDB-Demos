@@ -856,7 +856,7 @@ Create the indexes with the following information:
 __sources.\_id__
 ```js
 {
-  "sources._id: 1
+  "sources._id": 1
 }
 { background : true }
 ```
@@ -864,7 +864,16 @@ __sources.\_id__
 __master.dob__
 ```js
 {
-  "master.dob: 1
+  "master.dob": 1
+}
+{ background : true }
+```
+
+__master.first_name, master.last_name__
+```js
+{
+  "master.first_name": 1,
+  "master.last_name": 1
 }
 { background : true }
 ```
