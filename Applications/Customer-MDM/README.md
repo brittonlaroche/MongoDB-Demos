@@ -325,9 +325,9 @@ Notice the keyword: __await__.  This keyword tells stitch to wait for a response
 
 Notice that any additional fields such as favorite products or last order date would not be updated with our code above. Additional fields added in the body are not updated, and in effect, removed by this code.  This may run contrary to what one would expect with a flexible data model. One might want to be able to add new fields without updating source code.
 
-If we wished to take in all the fields supplied by the source system, including new fields that may be added in the future, we could replace the exiting source document with the payload body, without checking or specifying fields. We could simply replace the entire source document with a new one without doing an upsert. 
+If we wished to take in all the fields supplied by the source system, including new fields that may be added in the future, we could replace the existing source document with the payload body. We could replace the entire document in the source collection without checking or specifying fields. 
 
-Another possibility would be to call the __"updateMaster"__ function directly and skip the source collection altogether.  The source collection keeps a record of source data as it is, or as we see fit to store a representation of the source systems data.  We may not need the source collection, we may decide that performance is better without it.  
+Another possibility would be to call the __"updateMaster"__ function directly and skip the source collection altogether.  The source collection keeps a record of source data as it is, or as we see fit to store a representation of the source systems data.  We may not need the source collection, we may decide that performance is better without it. Instead of performing an upsert against the source collection, we simply call the function to update the master collection with the payload body directly. 
 
 ```js
 result = await context.functions.execute("updateMaster", body);
