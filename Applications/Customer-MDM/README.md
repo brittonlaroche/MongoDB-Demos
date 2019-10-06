@@ -327,9 +327,40 @@ Notice that any additional fields such as favorite products or last order date w
 
 If we wished to take in all the fields supplied by the source system, including new fields that may be added in the future, we could replace the exiting source document with the payload body, without checking or specifying fields. We could simply replace the entire source document with a new one without doing an upsert. 
 
-Another possibility would be to call the __"updateMaster"__ function directly and skip the source collection altogether.  The source collection keeps a record of source data as it is, or as we see fit to store a representation of the source systems data.  We may not need the source collection, we may decide that performance is better without it.
+Another possibility would be to call the __"updateMaster"__ function directly and skip the source collection altogether.  The source collection keeps a record of source data as it is, or as we see fit to store a representation of the source systems data.  We may not need the source collection, we may decide that performance is better without it.  Below is how that could be accomplished:
 
-Additionally, we could place logic here (or later in a trigger listening to the source collection) to apply rules such as ISO dates for date of birth or uppercase for all the name and address fields. We can process and correct source data here before we master the data.     
+```js
+exports = async function(payload) {
+  var source = context.services.get("mongodb-atlas").db("single").collection("source");
+  console.log("Executing addCustomerSourceWebhook");
+  var queryArg = payload.query.arg || '';
+  var body = {};
+  var voptout = "";
+  var result = { "status": "Unknown: Payload body may be empty"};
+  
+  if (payload.body) {
+    body = EJSON.parse(payload.body.text());
+    console.log(JSON.stringify(body));
+    var nDate = new Date();
+    if (body.optout) {
+      voptout = body.optout;
+    }
+    //check the source_id
+    if ( body._id ) {
+        console.log("updating customer source document");
+        result = await context.functions.execute("updateMaster", body);
+        console.log("after update");
+    } else {
+      result = { "status": "Error: source _id is not present"};
+      return result;
+    }
+  }
+  return  result;
+};
+
+```
+
+Additionally, we could place logic here (or later in a trigger listening to the source collection) to apply rules such as ISO dates for date of birth or uppercase for all the name and address fields. We can process and correct source data here before we master the data.   
 We chose this current design, not for speed or performance or applying business logic, but to showcase how a broad range of Stitch functions can be used together.  For now, we will use our simple upsert into the source collection and continue.
 
 Now that we have created our webhook and function we are ready to test it.   
