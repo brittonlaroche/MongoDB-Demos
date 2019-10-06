@@ -319,7 +319,7 @@ We check for required fields and store then store all the specific fields into t
 );
 ```
 
-Notice two key words: __await__ and __async__.  These key words are important as they tell stitch to wait for a response from the database before sending the results back to the calling application.  The function is declared as __async__ and the __await__ is used when accessing the database.
+Notice the key word: __await__.  This key word tells stitch to wait for a response from the database before proceeding.  The __await__ key word is used when accessing the database. In the code above we specify every field to update, another alternative would be simply to replace the exiting source document with out checking or specifying fields.  Additionally we could place logic here or in a trigger listening to the source collection to apply rules such as ISO dates for date of birth or uppercase for all the name and address fields.
 
 Now that we have created our webhook and function we are ready to test it.   
 
