@@ -333,7 +333,7 @@ Another possibility would be to call the __"updateMaster"__ function directly an
 result = await context.functions.execute("updateMaster", body);
 ```   
 
-Below is how that could be accomplished, once you complete the lab you can return here adn skip the source collection altogether. Simply replace the code above with the code below:
+Below is how that could be accomplished, once you complete the lab, you could return here and skip the source collection altogether. Simply replace the webhook code above with the code below:
 
 ```js
 exports = async function(payload) {
