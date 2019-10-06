@@ -367,6 +367,7 @@ exports = async function(payload) {
 ```
 
 Additionally, we could place logic here (or later in a trigger listening to the source collection) to apply rules such as ISO dates for date of birth or uppercase for all the name and address fields. We can process and correct source data here before we master the data.      
+
 We chose this current design, not for speed or performance or applying business logic, but to showcase how a broad range of Stitch functions can be used together.  For now, we will use our simple upsert into the source collection and continue.
 
 Now that we have created our webhook and function we are ready to test it.   
