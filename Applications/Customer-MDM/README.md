@@ -327,7 +327,13 @@ Notice that any additional fields such as favorite products or last order date w
 
 If we wished to take in all the fields supplied by the source system, including new fields that may be added in the future, we could replace the exiting source document with the payload body, without checking or specifying fields. We could simply replace the entire source document with a new one without doing an upsert. 
 
-Another possibility would be to call the __"updateMaster"__ function directly and skip the source collection altogether.  The source collection keeps a record of source data as it is, or as we see fit to store a representation of the source systems data.  We may not need the source collection, we may decide that performance is better without it.  Below is how that could be accomplished:
+Another possibility would be to call the __"updateMaster"__ function directly and skip the source collection altogether.  The source collection keeps a record of source data as it is, or as we see fit to store a representation of the source systems data.  We may not need the source collection, we may decide that performance is better without it.  
+
+```js
+result = await context.functions.execute("updateMaster", body);
+```   
+
+Below is how that could be accomplished, once you complete the lab you can return here adn skip the source collection altogether. Simply replace the code above with the code below:
 
 ```js
 exports = async function(payload) {
