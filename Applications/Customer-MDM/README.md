@@ -126,6 +126,9 @@ The above document can be translated into rows and columns with ease using html,
 ![QueryAnyWhere](img/KatanaQueryAnywhere.jpg)   
 The live prototype with 2,000,000 sample records is hosted in Stitch and can be accessed here:   
 https://customer-rytyl.mongodbstitch.com/
+Here are two hosted html page that sends and requests customer sample data through a REST based API. The html is a perfect simulation for seeing the documents sent through a microservice interaction:   
+__Add Customer Service:__ [addCustomerSource.html](https://customer-rytyl.mongodbstitch.com/addCustomerSource.html)
+__Find Customer Service:__ [findCustomerMaster.html](https://customer-rytyl.mongodbstitch.com/findCustomerMaster.html)
 
 This hands-on lab will cover the entire process (except the ETL process) in the data flow diagram. We will create the REST API that allows the source data to be inserted from the microservices. We will create the basics of the grouping and mastering functions. 
 
@@ -443,8 +446,9 @@ Later we can test the "optout" functionality by setting a field __"optout"__ to 
     }
 ```   
 
-If you would like to see a hosted version you can play with the following add customer function:
-(addCustomerSource.html)[https://customer-rytyl.mongodbstitch.com/addCustomerSource.html]
+If you would like to see a hosted version with sample data you can play with the following add customer service:
+__Add Customer Service:__ [addCustomerSource.html](https://customer-rytyl.mongodbstitch.com/addCustomerSource.html)
+
 
 [Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
@@ -997,6 +1001,9 @@ Right mouse click the link [postrapper.html](html/postrapper.html) and open in a
 
 Alternatively, you can use a hosted version of postrapper here:   
 https://customer-rytyl.mongodbstitch.com/postrapper.html
+
+If you would like to test with some existing hosted sample data you can use the following html to see an example of using the find service:   
+__Find Customer Service:__ [findCustomerMaster.html](https://customer-rytyl.mongodbstitch.com/findCustomerMaster.html)
 
 Once the webhook URL has been copied we can open postrapper.html and paste in the value in the __"URL"__ input field.  We can use the following search document or modify it to suit our needs.
 
