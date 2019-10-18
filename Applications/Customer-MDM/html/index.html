@@ -1,3 +1,4 @@
+
 <html>
     <head>
       <title>Customer MDM</title>
@@ -194,6 +195,11 @@
         }
         function addCustomer() {
           const cID = document.getElementById('customer_id');
+          if (cID.value == "") {
+            const newObjectId = new stitch.BSON.ObjectId()
+            document.getElementById('customer_id').value = newObjectId;
+            cID.value = newObjectId;
+          }
           const cFname = document.getElementById('first_name');
           const cMname = document.getElementById('middle_name');
           const cLname = document.getElementById('last_name');
