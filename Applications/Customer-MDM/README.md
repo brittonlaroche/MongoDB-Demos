@@ -125,7 +125,7 @@ The above document can be translated into rows and columns with ease using html,
 
 ![QueryAnyWhere](img/KatanaQueryAnywhere.jpg)   
 The live prototype with 2,000,000 sample records is hosted in Stitch and can be accessed here:   
-(right-click open in new tab) https://customer-rytyl.mongodbstitch.com/   
+__HTML JavaScript Application:__ (right-click open in new tab) https://customer-rytyl.mongodbstitch.com/   
 
 Here are two hosted html page that sends and requests customer sample data through a REST based API. The html is a perfect simulation for seeing the documents sent through a microservice interaction:    
 
