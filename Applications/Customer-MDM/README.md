@@ -443,6 +443,9 @@ Later we can test the "optout" functionality by setting a field __"optout"__ to 
     }
 ```   
 
+If you would like to see a hosted version you can play with the following add customer function:
+(addCustomerSource.html)[https://customer-rytyl.mongodbstitch.com/addCustomerSource.html]
+
 [Tutorial Contents](#tutorial-contents)
 ![end](../../Stitch/tools/img/section-end.png)   
 
