@@ -3,7 +3,7 @@
     <head>
       <title>Customer MDM</title>
       <link rel="stylesheet" type="text/css" href="./customer.css">
-      <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4/stitch.js"></script>
+      <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.5.0/stitch.js"></script>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <script>
         /* NOTE: handle your API key with another method than what is provided in this example 
@@ -196,7 +196,7 @@
         function addCustomer() {
           const cID = document.getElementById('customer_id');
           if (cID.value == "") {
-            const newObjectId = new stitch.BSON.ObjectId()
+            const newObjectId = new stitch.BSON.ObjectId();
             document.getElementById('customer_id').value = newObjectId;
             cID.value = newObjectId;
           }
