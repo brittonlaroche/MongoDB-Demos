@@ -4,7 +4,11 @@ Complete the registration process by clicking the link sent to your email addres
 
 ## Log in
 Go to https://cloud.mongodb.com   
-and login with the username of your email address and the use the password you specified during registration.   
+and login with the username of your email address and the use the password you specified during registration.  In order to connect compass to the database you will need to configure network access and create a database user.
 
 ## Network Access
-Click the "Network Access"
+Click the "Network Access" menu item from the left hand navigation menu under the "Security" header.
+
+![Network](img/networkAccess.jpg "Network")
+
+
