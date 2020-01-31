@@ -45,5 +45,15 @@ Open Compass, it sould automatically detect the connect string in the windows co
 ![copmass](img/compassConnect.png "compass") 
 
 
+## 5. Create Scripts that call the API
+Everything done above can be scripted through the Atlas API the over all refernce is listed below:   
+https://docs.atlas.mongodb.com/reference/api-resources/
+
+For database users:   
+https://docs.atlas.mongodb.com/reference/api/database-users/
+
+For IP Whitelist Network Access:  
+https://docs.atlas.mongodb.com/reference/api/whitelist/
+
 
 
