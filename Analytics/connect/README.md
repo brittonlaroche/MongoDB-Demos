@@ -46,7 +46,7 @@ Open Compass, it sould automatically detect the connect string in the windows co
 
 
 ## 5. Create Scripts that call the API
-Everything done above can be scripted through the Atlas API the over all refernce is listed below:   
+Everything done above can be scripted through the Atlas API. The over all reference is listed below:   
 https://docs.atlas.mongodb.com/reference/api-resources/
 
 For database users:   
