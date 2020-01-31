@@ -42,7 +42,7 @@ We click the copy button to copy the connect string as seen below:
 ## 4. Connect via Compass
 Open Compass, it sould automatically detect the connect string in the windows copy buffer.  If it does not fill in the information as shown below.  Note that the __"Authentication Database"__ should be __"admin"__ and not __"test"__.
 
-![copmass](img/connect3.png "compass") 
+![copmass](img/compassConnect.png "compass") 
 
 
 
