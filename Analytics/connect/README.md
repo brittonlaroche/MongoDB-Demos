@@ -9,6 +9,6 @@ and login with the username of your email address and the use the password you s
 ## Network Access
 Click the "Network Access" menu item from the left hand navigation menu under the "Security" header.
 
-![Network](img/networkAccess.jpg "Network")
+![Network](img/networkAccess.png "Network")
 
 
