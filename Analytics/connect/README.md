@@ -27,8 +27,22 @@ Click the __"Database Access"__ menu item from the left hand navigation menu und
 Create a new user, password and assign roles.  In the example above we created a __"test"__ user with admin priviliges.
 
 ## 3. Copy the connect string information from the Atlas Console
-Click the __"Connect"__ button from the top cluster view in the Atlas console.
+Click the __"Connect"__ button from the top cluster view in the Atlas console.   
 
+![connect](img/connect1.png "connect") 
+
+The list of connection methods are shown.  We select connect "Connect with MongoDB Compass"__   
+
+![connect](img/connect2.png "connect") 
+
+We click the copy button to copy the connect string as seen below:   
+
+![connect](img/connect3.png "connect") 
+
+## 4. Connect via Compass
+Open Compass, it sould automatically detect the connect string in the windows copy buffer.  If it does not fill in the information as shown below.  Note that the __"Authentication Database"__ should be __"admin"__ and not __"test"__.
+
+![copmass](img/connect3.png "compass") 
 
 
 
