@@ -109,7 +109,7 @@ exports = function(changeEvent) {
 
 };
 ```
-__Important note__: Stitch functions are typically based off of an earlier code branch while development coninues on the core database. As such the stitch query language and functions may not have all of the current mongodb functions that are avilable via command line and the through the MongoDB driver when a new version of the database is released.  To see what functions are supported and which ones are being developed follow the link here: https://docs.mongodb.com/stitch/mongodb/mongodb-service-limitations/
+__Important note__: Stitch functions are typically based off of an earlier code branch while development coninues on the core database. As such the stitch query language and functions may not have all of the current mongodb functions that are avilable via command line and the through the MongoDB driver when a new version of the database is released.  To see what functions are supported and which ones are being developed follow the link here: https://docs.mongodb.com/stitch/mongodb/crud-and-aggregation-apis/
 
 In this example we do not have access to an easy to use function for updating arrays, known as arrayFilers. 
 
