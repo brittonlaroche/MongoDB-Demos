@@ -105,4 +105,14 @@ Choose Done.
     Take this app key and replace the line in the script with your own (line 58). 
 ``` mail.login('your.name@10gen.com','yourapppassword') ```
 
+## Step 4. Run the program and specify the company name
 
+In this example we run the program to get a list of contacts from your email for our partners at microsoft.  My contacts will most likely be different from yours, and this gives us a personal touch.  You may need to set persmissions on the file.  I open a terminal and use a quick effective way of getting the job done.
+
+```chmod 755 mail.py```
+
+To run the script and get our personal microsft contacts issue the following form the terminal window:
+
+```python mail.py microsoft```
+
+![output](../img/mail.png "mail.py")   
