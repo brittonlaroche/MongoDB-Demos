@@ -25,6 +25,6 @@ Follow the instructions here: https://support.google.com/accounts/answer/185833
 7. Follow the instructions to enter the App Password. The App Password is the 16-character code in the yellow bar on your device.
 Choose Done.    
     Take this app key and replace the line in the script with your own   . 
-
+``` mail.login('your.name@10gen.com','yourapppassword') ```
 
 
