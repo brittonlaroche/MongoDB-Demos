@@ -101,8 +101,8 @@ Follow the instructions here: https://support.google.com/accounts/answer/185833
 5. Choose Select device and choose the device you’re using.  (this will be your mac)   
 6. Choose Generate.    
 7. Follow the instructions to enter the App Password. The App Password is the 16-character code in the yellow bar on your device.
-Choose Done.    
-    Take this app key and replace the line in the script with your own (line 58). 
+8. Choose Done.    
+9. Take this app key and replace the line in the script with your own (line 58). 
 ``` mail.login('your.name@10gen.com','yourapppassword') ```
 
 ## Step 4. Run the program and specify the company name
