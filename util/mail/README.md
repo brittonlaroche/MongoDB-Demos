@@ -126,4 +126,4 @@ To output the results to a file just use the unix redirect "> microsoft.txt":
 
 ## Step 5. Clean the output and import into google sheets
 
-I open the .txt file in a text editor or code tool of my choice (I use brackets or vscode) I replace all the "(", ")", single quotes and tab spaces so they are removed and then save the file with a .csv extension.  Then I open a google sheet and import the data.  Once its imported we are ready to split the name into seperate fields use "=SPLIT(A1,",") to split the name field into two fields and you are ready to cust and paste into the excel file for the challenge.
+I open the .txt file in a text editor or code tool of my choice (I use brackets or vscode) I replace all the "(", ")", single quotes and tab spaces so they are removed and then save the file with a .csv extension.  Then I open a google sheet and import the data.  Once its imported we are ready to split the name into seperate fields use "=SPLIT(A1,",") to split the name field into two fields. Now its ready to cut and paste into the spread sheet for the challenge.
