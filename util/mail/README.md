@@ -122,7 +122,7 @@ Notice we just specify "microsoft" and not "microsoft.com" the script appends th
 The output lists names or emails that are not paired first.  Most of these are not unique and will be found in the secton that lists both names and emails.  Just depends on the emails in your gmail account as to what was included.  You can inspect them and keep them or just use the complete list.
 
 To output the results to a file just use the unix redirect "> microsoft.txt":
-```python mail.py microsoft > microsoft.tct```
+```python mail.py microsoft > microsoft.txt```
 
 ## Step 5. Clean the output and import into google sheets
 
