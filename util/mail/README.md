@@ -12,7 +12,7 @@ Its a 5 step process to be a pro at creating your own personal contact list base
 ## Step 3 - Set up a google app password
 Follow the instructions here: https://support.google.com/accounts/answer/185833
 
-1. Go to your Google Account.   
+1. Go to your [Google Account](https://myaccount.google.com/)   
 2. On the left navigation panel, choose Security.   
 3. On the "Signing in to Google" panel, choose App Passwords. If you don’t see this option:   
     2-Step Verification is not set up for your account.    
