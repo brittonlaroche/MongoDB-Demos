@@ -111,8 +111,19 @@ In this example we run the program to get a list of contacts from your email for
 
 ```chmod 755 mail.py```
 
-To run the script and get our personal microsft contacts issue the following form the terminal window:
+To run the script and get our personal microsoft contacts issue the following form the terminal window:
 
 ```python mail.py microsoft```
 
+Notice we just specify "microsoft" and not "microsoft.com" the script appends the ".com" to the company name.
+
 ![output](../img/mail.png "mail.py")   
+
+The output lists names or emails that are not paired first.  Most of these are not unique and will be found in the secton that lists both names and emails.  Just depends on the emails in your gmail account as to what was included.  You can inspect them and keep them or just use the complete list.
+
+To output the results to a file just use the unix redirect "> microsoft.txt":
+```python mail.py microsoft > microsoft.tct```
+
+## Step 5. Clean the output and import into google sheets
+
+I open the .txt file in a text editor or code tool of my choice (I use brackets or vscode) I replace all the "(", ")", single quotes and tab spaces so they are removed and then save the file with a .csv extension.  Then I open a google sheet and import the data.  Once its imported we are ready to split the name into seperate fields use "=SPLIT(A1,",") to split the name field into two fields and you are ready to cust and paste into the excel file for the challenge.
