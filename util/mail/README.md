@@ -119,7 +119,7 @@ Notice we specify "microsoft" for the email adress "microsoft.com"
 
 ![output](../img/mail.png "mail.py")   
 
-The output lists names or emails that are not paired first.  Most of these are not unique and will be found in the secton that lists both names and emails.  Just depends on the emails in your gmail account as to what was included.  You can inspect them and keep them or just use the complete list.
+The output lists names or emails that are not paired first.  Most of these are not unique and will be found in the secton that lists both names and emails.  Whether or not an email has a name associated with it, or if a name has an email depends on how the emails in your gmail account were sent out and responded to.  You can inspect the first part of the list and keep them or just use the complete list which follows that pairs the name with the email account.
 
 To output the results to a file just use the unix redirect "> microsoft.txt":
 ```python mail.py microsoft > microsoft.txt```
