@@ -115,7 +115,7 @@ To run the script and get our personal microsoft contacts issue the following fo
 
 ```python mail.py microsoft```
 
-Notice we just specify "microsoft" and not "microsoft.com" the script appends the ".com" to the company name.
+Notice we specify "microsoft" for the email adress "microsoft.com"
 
 ![output](../img/mail.png "mail.py")   
 
