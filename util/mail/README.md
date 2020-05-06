@@ -3,7 +3,7 @@
 ## Getting started
 Its a 5 step process to be a pro at creating your own personal contact list based on your gmail account.  Any email or meeting invite sent via email will have a list of contacts you can search with this script. This script gathers everyone in the email chain, from, to and cc and gathers their first and last name if provided and generates a list while removing everyone from mongodb or 10gen.
 
-1. Be sure you have python installed.
+1. Be sure you have python 2.7 installed.
 2. Copy the source file ---> [here](https://raw.githubusercontent.com/brittonlaroche/MongoDB-Demos/master/util/mail/source/mail.py) <--- and save it as mail.py.
 3. Set up a google app password 
 4. Run the program and specify the company name you wish to generate email contacts for
