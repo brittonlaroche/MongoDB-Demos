@@ -464,7 +464,7 @@ To compare these field values between documents we will use the Levenshtein dist
 We will use this implementation of the Levenshtein distance by Andrei Mackenzie written in javascript in 2011.
 https://gist.github.com/andrei-m/982927
 
-Lets begin by creating our own getDistance function in stitch.  From the left-hand navigation pane in the Stitch console select __"Functions"__.  When the function editor appears, give the function the name __"getDistance"__ and click save.
+Lets begin by creating our own getDistance function in stitch.  From the left-hand navigation pane in the Stitch console select __"Functions"__.  When the function editor appears, give the function the name __"getNormalizedDistance"__ and click save.
 
 ![getDistance](img/getDistance.jpg)
 
@@ -472,13 +472,23 @@ The function editor appears next, copy and paste the code below and click save.
 
 __getDistance__
 ```js
-exports = function(a,b){
+exports = function getNormalizedDistance(a,b){
+  var result = getDistance(a,b);
+  var maxLength = Math.max (a.length, b.length);
+	return result / maxLength;
+};
+
+function getDistance(a,b){
 
   /*
 Copyright (c) 2011 Andrei Mackenzie
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 // Compute the edit distance between the two given strings
@@ -519,18 +529,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 The function above will compare two strings and calculate the number of changes needed between them to make them equal.  For example calling getDistance('BOB', 'BIB') would return 1 as we need to change one letter "O" to "I" to go from "BOB" to "BIB".  Calling getDistance('BOB', 'TIM')  would return 3, as all 3 letters are different.  What we need is a ratio of the number of changes to make compared to the total number of letters.
 
-Let's repeat the steps above and create a new function that takes the result from get distance and divides it by the maximum number of letters for both strings.
-
-__getNormalizedDistance__
-```js
-exports = function(a,b){
-  var result = context.functions.execute("getDistance", a,b);
-  var maxLength = Math.max (a.length, b.length);
-	return result / maxLength;
-};
-```
-
-Notice how we call the getDistance function from inside the getNoramlizedDistance function.
+Notice how we call the getDistance function from inside the getNormalizedDistance function. The getNoramlizedDistancetakes the result from getDistance and divides it by the maximum number of letters for both strings.
 
 Now we will test the functions.  Click the __"Console"__ tab on the bottom left of the function editor for getNormalizedDistance. Let's say we have a customer named Robert who goes by both "ROB" and "BOB".  Lest give this real-world example a test.  We will change the sample __"exports('Hello World')"__ to __"exports('BOB', 'ROB')"__
 
